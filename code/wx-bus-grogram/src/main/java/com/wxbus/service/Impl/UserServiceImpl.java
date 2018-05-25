@@ -73,5 +73,25 @@ public class UserServiceImpl implements UserService {
         log.info("更新用户");
         passengerMapper.updateByPrimaryKeySelective(user);
     }
+    @Override
+    /**
+     *@type method
+     *@parameter  [mobile, password]
+     *@back  com.wxbus.daomain.Passenger
+     *@author  如花
+     *@creattime 2018/5/25
+     *@describe 账号密码登录接口实现
+     */
+    public Passenger findUserByMoPaw(String mobile, String password) {
+        PassengerExample passengerExample=new PassengerExample();
+        passengerExample.or().andPassengerMobileEqualTo(mobile).andPassengerPasswordEqualTo(password);
+        log.info("手机号密码查找");
+        List<Passenger> passengerList=passengerMapper.selectByExample(passengerExample);
+        if(passengerList!=null&&passengerList.size()>0){
+            return passengerList.get(0);
+
+        }
+        return null;
+    }
 
 }

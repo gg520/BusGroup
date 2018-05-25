@@ -136,4 +136,27 @@ public class LoginController {
         logger.info("登录");
         return ResponseUtil.ok("登录成功");
     }
+    /**
+     *@type method
+     *@parameter  [mobile, password]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/5/25
+     *@describe 微信账号密码登录
+     */
+    @RequestMapping(value ="/loginByMoPaw",method = {RequestMethod.POST})
+    public Object loginByMoPaw(@RequestBody String mobile,String password){
+        logger.info("微信账号密码登录");
+        if(mobile==null||password==null){
+            return ResponseUtil.fail();
+        }
+        else{
+            Passenger passenger=userService.findUserByMoPaw(mobile,password);
+            if (passenger==null){
+                return ResponseUtil.fail();
+            }
+            return ResponseUtil.ok(passenger);
+
+        }
+    }
 }

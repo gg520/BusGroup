@@ -1,8 +1,11 @@
 package com.wxbus.wxController;
 
+import com.wxbus.daomain.Route;
+import com.wxbus.service.RouteService;
 import com.wxbus.util.ResponseUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/weixin/route")
 public class RouteController {
+    @Autowired
+    private RouteService routeService;
 
     private final Log logger= LogFactory.getLog(RouteController.class.getName());
 
@@ -28,22 +33,20 @@ public class RouteController {
     }
 
     @RequestMapping(value="/routeInfo",method = {RequestMethod.POST})
-    public Object routeInfo( @RequestBody String routeid){
-        logger.info("获取线路的详细信息:"+routeid);
+    public Object routeInfo(@RequestBody  Integer routeId){
+        logger.info("获取线路的详细信息:"+routeId);
+        if(routeId==null){
+            return ResponseUtil.fail();
 
-        String body="{" +
-                " starttime:'07:50'," +//出发时间
-                " arrivaltime:'08:10'," +//预计到达时间
-                " distance:6.6," +//距离
-                " price:3.00," +//单价
-                " monthNum:20," +//每月发车次数
-                " driver:'待定'," +//司机
-                " phone:'待定'," +//电话
-                " busNum:'待定'," +//车牌
-                " stations:[ '二七','龙湖','火车站']," +//车站的站点，有顺序
-                "}";
+        }
+        else{
+            Route route=routeService.findRouteById(routeId);
 
-        return ResponseUtil.ok(body);
+            return ResponseUtil.ok(route);
+
+
+        }
+
     }
 
     /**
