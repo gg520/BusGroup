@@ -1,0 +1,60 @@
+<!--ticketBooking.wxml-->
+<view class="container">
+
+<view class="search">
+<!--url="/pages/search/search"  -->
+    <navigator  class="input">
+      <image class="icon"></image>
+      <text class="txt">线路搜索</text>
+    </navigator>
+  </view>
+
+<!--白色背景区域-->
+  <view class="wrap">
+  <!--按钮切换-->
+    <!-- <view class="btn">
+      <view class="{{isAm?'active':''}}" bindtap="goAm">上午</view>
+  	  <view class="{{isPm?'active':''}}" bindtap="goPm">下午</view>
+    </view> -->
+
+    <!--线路选择-->
+    <view class="no-cart" wx:if="{{routes.length <= 0}}">
+       <view class="c">
+        <image src="/static/images/route_empty.png" />
+        <text>暂无开通路线</text>
+      </view>
+    </view>
+    <view wx:else>
+      <view class="chooseCity pd-70" wx:for="{{routes}}" bindtap='goRoute' id='{{item.routeid}}'>
+        <view class="citySelect" >
+          <view class="startCity" >{{item.startsite}}</view>
+          <view class="citySelect_img">
+            <view>
+              <image class="changeCity_bg" src="/static/images/changeCity_bg.png"></image>
+            </view>
+            <image class="samll_plane" src="/static/images/bus.png"></image>
+          </view>
+          <view class="endCity">{{item.endsite}}</view>
+        </view>
+
+        <view class="chooseDate">
+          <block>
+           
+              <view class="startDate">
+                <text class="date">发车时间：{{item.starttime}}</text>
+              </view>
+          </block>
+          <block>
+
+              <view class="endDate">
+                <text class="date">余座：{{item.nullnum}}</text>
+                <text class="date">已定：{{item.number}}</text>
+              </view>
+
+          </block>
+          
+        </view> 
+      </view>
+    </view>
+  </view>
+</view>

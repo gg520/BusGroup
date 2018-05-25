@@ -1,0 +1,75 @@
+<!--pages/ucenter/index/index.wxml-->
+<view class="container">
+  <view class="profile-info" bindtap="goLogin">
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <view class="info">
+       <text class="name">{{userInfo.nickName}}</text> 
+    </view>
+  </view>
+
+  <view class="user-menu">
+    <!-- <view class="item">
+      <view class="a" bindtap="goInquiryRoute">
+        <image class='icon local-image' src='/static/images/ic_onfont.png'></image>
+        <text class="txt">出行调查</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap="inquiryRote">
+        <image class='icon local-image' src='/static/images/ic_circuit.png'></image>
+        <text class="txt">线路招募</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap="goCollect">
+        <image class='icon local-image' src='/static/images/ic_circuit_next.png'></image>
+        <text class="txt">已开线路</text>
+      </view>
+    </view> -->
+     <view class="item">
+      <view class="a" bindtap="goFootprint">
+        <image class='icon local-image' src='/static/images/ic_inform.png'></image>
+        <text class="txt">个人信息</text>
+      </view>
+    </view> 
+    
+     <!-- <view class="item">
+      <view class="a" bindtap='goQRcode'>
+        <image class='icon local-image' src='/static/images/QR_code.png'></image>
+        <text class="txt">扫一扫</text>
+      </view>
+    </view> -->
+    <view class="item">
+      <view class="a" bindtap='goOreder'>
+        <image class='icon local-image' src='/static/images/icon_indent.png'></image>
+        <text class="txt">我的订单</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap=''>
+        <image class='icon local-image' src='/static/images/ic_collect.png'></image>
+        <text class="txt">我的收藏</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap="goAddress">
+        <image class='icon local-image' src='/static/images/ic_affiche.png'></image>
+        <text class="txt">通知公告</text>
+      </view>
+    </view>
+     <view class="item">
+      <view class="a">
+        <text class="icon kefu"></text>
+        <text class="txt">联系客服</text>
+      </view>
+    </view> 
+     <view class="item">
+      <view class="a">
+        <text class="icon help"></text>
+        <text class="txt">帮助中心</text>
+      </view>
+    </view> 
+  </view>
+
+  <view class="logout" bindtap="exitLogin" hidden='{{exitLoginBtn}}'>退出登录</view>
+</view>
