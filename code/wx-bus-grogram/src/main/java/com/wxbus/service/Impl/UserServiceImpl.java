@@ -94,4 +94,34 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    /**
+     *@type method
+     *@parameter  [passenger]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/5/26
+     *@describe 用户登陆接口实现
+     */
+    public void addPassenger(Passenger passenger) {
+        log.info("添加乘客");
+        passengerMapper.insertSelective(passenger);
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [passenger]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/5/26
+     *@describe
+     */
+    public void updatePassenger(Passenger passenger) {
+        log.info("更新用户信息");
+        PassengerExample passengerExample=new PassengerExample();
+        passengerExample.or().andPassengerMobileEqualTo(passenger.getPassengerMobile()).andPassengerPasswordEqualTo(passenger.getPassengerPassword());
+        passengerMapper.updateByExampleSelective(passenger,passengerExample);
+
+    }
 }

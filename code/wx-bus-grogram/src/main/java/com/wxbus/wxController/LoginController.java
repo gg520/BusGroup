@@ -8,9 +8,7 @@ import com.wxbus.pojo.UserInfo;
 import com.wxbus.pojo.UserToken;
 import com.wxbus.service.UserService;
 import com.wxbus.service.UserTokenManager;
-import com.wxbus.util.IpUtil;
-import com.wxbus.util.JacksonUtil;
-import com.wxbus.util.ResponseUtil;
+import com.wxbus.util.*;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -159,4 +157,60 @@ public class LoginController {
 
         }
     }
+    /**
+     *@type method
+     *@parameter  [passenger]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/5/26
+     *@describe 微信用户注册
+     */
+    @RequestMapping(value ="/register",method = {RequestMethod.POST})
+    public Object register(@RequestBody Passenger passenger,HttpServletRequest request){
+        logger.info("用户注册");
+        Date date = new Date();
+        passenger.setFistLoginTime(date);
+        passenger.setFistLoginIp(IpUtil.client(request));
+        passenger.setWeixinOpenid(CharUtil.getRandomString(8));
+        passenger.setDeleted(0);
+        if(passenger!=null){
+            if(passenger.getPassengerMobile()==null||passenger.getPassengerPassword()==null ||
+                    passenger.getPassengerGender()==null||passenger.getPassengerAvater()==null){
+                return ResponseUtil.fail();
+
+            }
+            userService.addPassenger(passenger);
+            return ResponseUtil.ok();
+        }
+        else {
+            return ResponseUtil.fail();
+        }
+    }
+
+    /**
+     *@type method
+     *@parameter  [passenger]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/5/26
+     *@describe 更新用户信息用于更改密码
+     */
+    @RequestMapping(value ="/reset",method = {RequestMethod.GET})
+    public Object reset(Passenger passenger){
+        logger.info("更新用户");
+        if(passenger!=null){
+            if(passenger.getPassengerMobile()!=null&&passenger.getPassengerPassword()!=null){
+                userService.updatePassenger(passenger);
+                return ResponseUtil.ok();
+            }
+            else{
+                return ResponseUtil.fail();
+            }
+        }
+        else {
+            return ResponseUtil.fail();
+        }
+
+    }
+
 }

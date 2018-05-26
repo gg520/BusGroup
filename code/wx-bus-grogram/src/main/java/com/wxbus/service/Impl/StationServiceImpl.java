@@ -29,7 +29,7 @@ public class StationServiceImpl implements StationService {
         stationName = ChangeUtil.changeString(stationName);
         StationExample stationExample=new StationExample();
         stationExample.or().andStationNameLike("%"+stationName);
-        log.info("根据名称查找站点");
+        log.info("根据名称模糊查找站点");
         return stationMapper.selectByExample(stationExample);
     }
 }

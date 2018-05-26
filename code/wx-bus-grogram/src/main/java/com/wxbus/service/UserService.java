@@ -26,5 +26,23 @@ public interface UserService {
      *@describe 根据手机号密码进行登陆
      */
     Passenger findUserByMoPaw(String mobile,String password);
+    /**
+     *@type interface
+     *@parameter  [passenger]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/5/26
+     *@describe 添加用户接口
+     */
+    void addPassenger(Passenger passenger);
+    /**
+     *@type interface
+     *@parameter  [passenger]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/5/26
+     *@describe 更新乘客信息
+     */
+    void updatePassenger(Passenger passenger);
 
 }
