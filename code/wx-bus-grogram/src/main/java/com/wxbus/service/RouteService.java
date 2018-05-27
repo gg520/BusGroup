@@ -2,6 +2,8 @@ package com.wxbus.service;
 
 import com.wxbus.daomain.Route;
 
+import java.util.List;
+
 public interface RouteService {
 
     /**
@@ -48,7 +50,17 @@ public interface RouteService {
      *@creattime 2018/5/23
      *@describe 通过id获取线路的详细信息
      */
-    Route findRouteById(Integer RouteId);
+    Route findRouteById(Integer routeId);
+    /**
+     *@type interface
+     *@parameter  [routeStatus]
+     *@back  com.wxbus.daomain.Route
+     *@author  如花
+     *@creattime 2018/5/26
+     *@describe 通过状态查找线路信息
+     */
+    List<Route> findRouteByStatus(Integer routeStatus);
+
 
 
     

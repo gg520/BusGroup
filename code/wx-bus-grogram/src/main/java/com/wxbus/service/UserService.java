@@ -19,13 +19,13 @@ public interface UserService {
     void update(Passenger user);
     /**
      *@type interface
-     *@parameter  [mobile, password]
+     *@parameter  [passenger]
      *@back  com.wxbus.daomain.Passenger
      *@author  如花
-     *@creattime 2018/5/25
-     *@describe 根据手机号密码进行登陆
+     *@creattime 2018/5/26
+     *@describe 
      */
-    Passenger findUserByMoPaw(String mobile,String password);
+    Passenger findUserByMoPaw(Passenger passenger);
     /**
      *@type interface
      *@parameter  [passenger]

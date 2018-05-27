@@ -136,24 +136,33 @@ public class LoginController {
     }
     /**
      *@type method
-     *@parameter  [mobile, password]
+     *@parameter  [passenger]
      *@back  java.lang.Object
      *@author  如花
      *@creattime 2018/5/25
      *@describe 微信账号密码登录
      */
     @RequestMapping(value ="/loginByMoPaw",method = {RequestMethod.POST})
-    public Object loginByMoPaw(@RequestBody String mobile,String password){
+    public Object loginByMoPaw(@RequestBody Passenger passenger,HttpServletRequest request){
         logger.info("微信账号密码登录");
-        if(mobile==null||password==null){
+        if(passenger.getPassengerMobile()==null||passenger.getPassengerPassword()==null){
             return ResponseUtil.fail();
         }
         else{
-            Passenger passenger=userService.findUserByMoPaw(mobile,password);
-            if (passenger==null){
+            Passenger user= userService.findUserByMoPaw(passenger);
+            if (user==null){
                 return ResponseUtil.fail();
             }
-            return ResponseUtil.ok(passenger);
+            try {
+
+                return ResponseUtil.ok(user);
+            }
+            finally {
+                user.setLastLoginIp(IpUtil.client(request));
+                user.setLastLoginTime(new Date());
+                userService.updatePassenger(user);
+            }
+
 
         }
     }

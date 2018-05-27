@@ -222,6 +222,66 @@ public class BusExample {
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
+        public Criteria andBusNumIsNull() {
+            addCriterion("bus_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumIsNotNull() {
+            addCriterion("bus_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumEqualTo(Integer value) {
+            addCriterion("bus_num =", value, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumNotEqualTo(Integer value) {
+            addCriterion("bus_num <>", value, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumGreaterThan(Integer value) {
+            addCriterion("bus_num >", value, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("bus_num >=", value, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumLessThan(Integer value) {
+            addCriterion("bus_num <", value, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumLessThanOrEqualTo(Integer value) {
+            addCriterion("bus_num <=", value, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumIn(List<Integer> values) {
+            addCriterion("bus_num in", values, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumNotIn(List<Integer> values) {
+            addCriterion("bus_num not in", values, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumBetween(Integer value1, Integer value2) {
+            addCriterion("bus_num between", value1, value2, "busNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBusNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("bus_num not between", value1, value2, "busNum");
+            return (Criteria) this;
+        }
+
         public Criteria andBusIdIsNull() {
             addCriterion("bus_id is null");
             return (Criteria) this;
@@ -1009,76 +1069,6 @@ public class BusExample {
 
         public Criteria andBusMarkNotBetween(Integer value1, Integer value2) {
             addCriterion("bus_mark not between", value1, value2, "busMark");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathIsNull() {
-            addCriterion("qrcode_path is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathIsNotNull() {
-            addCriterion("qrcode_path is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathEqualTo(String value) {
-            addCriterion("qrcode_path =", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathNotEqualTo(String value) {
-            addCriterion("qrcode_path <>", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathGreaterThan(String value) {
-            addCriterion("qrcode_path >", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathGreaterThanOrEqualTo(String value) {
-            addCriterion("qrcode_path >=", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathLessThan(String value) {
-            addCriterion("qrcode_path <", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathLessThanOrEqualTo(String value) {
-            addCriterion("qrcode_path <=", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathLike(String value) {
-            addCriterion("qrcode_path like", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathNotLike(String value) {
-            addCriterion("qrcode_path not like", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathIn(List<String> values) {
-            addCriterion("qrcode_path in", values, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathNotIn(List<String> values) {
-            addCriterion("qrcode_path not in", values, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathBetween(String value1, String value2) {
-            addCriterion("qrcode_path between", value1, value2, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathNotBetween(String value1, String value2) {
-            addCriterion("qrcode_path not between", value1, value2, "qrcodePath");
             return (Criteria) this;
         }
     }

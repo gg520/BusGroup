@@ -455,52 +455,52 @@ public class RouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeEqualTo(Date value) {
+        public Criteria andRecruitTimeEqualTo(Integer value) {
             addCriterion("recruit_time =", value, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeNotEqualTo(Date value) {
+        public Criteria andRecruitTimeNotEqualTo(Integer value) {
             addCriterion("recruit_time <>", value, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeGreaterThan(Date value) {
+        public Criteria andRecruitTimeGreaterThan(Integer value) {
             addCriterion("recruit_time >", value, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andRecruitTimeGreaterThanOrEqualTo(Integer value) {
             addCriterion("recruit_time >=", value, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeLessThan(Date value) {
+        public Criteria andRecruitTimeLessThan(Integer value) {
             addCriterion("recruit_time <", value, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeLessThanOrEqualTo(Date value) {
+        public Criteria andRecruitTimeLessThanOrEqualTo(Integer value) {
             addCriterion("recruit_time <=", value, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeIn(List<Date> values) {
+        public Criteria andRecruitTimeIn(List<Integer> values) {
             addCriterion("recruit_time in", values, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeNotIn(List<Date> values) {
+        public Criteria andRecruitTimeNotIn(List<Integer> values) {
             addCriterion("recruit_time not in", values, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeBetween(Date value1, Date value2) {
+        public Criteria andRecruitTimeBetween(Integer value1, Integer value2) {
             addCriterion("recruit_time between", value1, value2, "recruitTime");
             return (Criteria) this;
         }
 
-        public Criteria andRecruitTimeNotBetween(Date value1, Date value2) {
+        public Criteria andRecruitTimeNotBetween(Integer value1, Integer value2) {
             addCriterion("recruit_time not between", value1, value2, "recruitTime");
             return (Criteria) this;
         }
@@ -515,62 +515,52 @@ public class RouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeEqualTo(String value) {
+        public Criteria andRunTimeEqualTo(Date value) {
             addCriterion("run_time =", value, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeNotEqualTo(String value) {
+        public Criteria andRunTimeNotEqualTo(Date value) {
             addCriterion("run_time <>", value, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeGreaterThan(String value) {
+        public Criteria andRunTimeGreaterThan(Date value) {
             addCriterion("run_time >", value, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeGreaterThanOrEqualTo(String value) {
+        public Criteria andRunTimeGreaterThanOrEqualTo(Date value) {
             addCriterion("run_time >=", value, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeLessThan(String value) {
+        public Criteria andRunTimeLessThan(Date value) {
             addCriterion("run_time <", value, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeLessThanOrEqualTo(String value) {
+        public Criteria andRunTimeLessThanOrEqualTo(Date value) {
             addCriterion("run_time <=", value, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeLike(String value) {
-            addCriterion("run_time like", value, "runTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andRunTimeNotLike(String value) {
-            addCriterion("run_time not like", value, "runTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andRunTimeIn(List<String> values) {
+        public Criteria andRunTimeIn(List<Date> values) {
             addCriterion("run_time in", values, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeNotIn(List<String> values) {
+        public Criteria andRunTimeNotIn(List<Date> values) {
             addCriterion("run_time not in", values, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeBetween(String value1, String value2) {
+        public Criteria andRunTimeBetween(Date value1, Date value2) {
             addCriterion("run_time between", value1, value2, "runTime");
             return (Criteria) this;
         }
 
-        public Criteria andRunTimeNotBetween(String value1, String value2) {
+        public Criteria andRunTimeNotBetween(Date value1, Date value2) {
             addCriterion("run_time not between", value1, value2, "runTime");
             return (Criteria) this;
         }
@@ -935,52 +925,62 @@ public class RouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeEqualTo(Date value) {
+        public Criteria andStartTimeEqualTo(String value) {
             addCriterion("start_time =", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeNotEqualTo(Date value) {
+        public Criteria andStartTimeNotEqualTo(String value) {
             addCriterion("start_time <>", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeGreaterThan(Date value) {
+        public Criteria andStartTimeGreaterThan(String value) {
             addCriterion("start_time >", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andStartTimeGreaterThanOrEqualTo(String value) {
             addCriterion("start_time >=", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeLessThan(Date value) {
+        public Criteria andStartTimeLessThan(String value) {
             addCriterion("start_time <", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeLessThanOrEqualTo(Date value) {
+        public Criteria andStartTimeLessThanOrEqualTo(String value) {
             addCriterion("start_time <=", value, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeIn(List<Date> values) {
+        public Criteria andStartTimeLike(String value) {
+            addCriterion("start_time like", value, "startTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTimeNotLike(String value) {
+            addCriterion("start_time not like", value, "startTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTimeIn(List<String> values) {
             addCriterion("start_time in", values, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeNotIn(List<Date> values) {
+        public Criteria andStartTimeNotIn(List<String> values) {
             addCriterion("start_time not in", values, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeBetween(Date value1, Date value2) {
+        public Criteria andStartTimeBetween(String value1, String value2) {
             addCriterion("start_time between", value1, value2, "startTime");
             return (Criteria) this;
         }
 
-        public Criteria andStartTimeNotBetween(Date value1, Date value2) {
+        public Criteria andStartTimeNotBetween(String value1, String value2) {
             addCriterion("start_time not between", value1, value2, "startTime");
             return (Criteria) this;
         }
@@ -995,52 +995,62 @@ public class RouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeEqualTo(Date value) {
+        public Criteria andEndTimeEqualTo(String value) {
             addCriterion("end_time =", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeNotEqualTo(Date value) {
+        public Criteria andEndTimeNotEqualTo(String value) {
             addCriterion("end_time <>", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeGreaterThan(Date value) {
+        public Criteria andEndTimeGreaterThan(String value) {
             addCriterion("end_time >", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andEndTimeGreaterThanOrEqualTo(String value) {
             addCriterion("end_time >=", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeLessThan(Date value) {
+        public Criteria andEndTimeLessThan(String value) {
             addCriterion("end_time <", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeLessThanOrEqualTo(Date value) {
+        public Criteria andEndTimeLessThanOrEqualTo(String value) {
             addCriterion("end_time <=", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeIn(List<Date> values) {
+        public Criteria andEndTimeLike(String value) {
+            addCriterion("end_time like", value, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeNotLike(String value) {
+            addCriterion("end_time not like", value, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeIn(List<String> values) {
             addCriterion("end_time in", values, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeNotIn(List<Date> values) {
+        public Criteria andEndTimeNotIn(List<String> values) {
             addCriterion("end_time not in", values, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeBetween(Date value1, Date value2) {
+        public Criteria andEndTimeBetween(String value1, String value2) {
             addCriterion("end_time between", value1, value2, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeNotBetween(Date value1, Date value2) {
+        public Criteria andEndTimeNotBetween(String value1, String value2) {
             addCriterion("end_time not between", value1, value2, "endTime");
             return (Criteria) this;
         }
@@ -1055,52 +1065,62 @@ public class RouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriceEqualTo(Float value) {
+        public Criteria andPriceEqualTo(String value) {
             addCriterion("price =", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotEqualTo(Float value) {
+        public Criteria andPriceNotEqualTo(String value) {
             addCriterion("price <>", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThan(Float value) {
+        public Criteria andPriceGreaterThan(String value) {
             addCriterion("price >", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThanOrEqualTo(Float value) {
+        public Criteria andPriceGreaterThanOrEqualTo(String value) {
             addCriterion("price >=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThan(Float value) {
+        public Criteria andPriceLessThan(String value) {
             addCriterion("price <", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThanOrEqualTo(Float value) {
+        public Criteria andPriceLessThanOrEqualTo(String value) {
             addCriterion("price <=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceIn(List<Float> values) {
+        public Criteria andPriceLike(String value) {
+            addCriterion("price like", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotLike(String value) {
+            addCriterion("price not like", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIn(List<String> values) {
             addCriterion("price in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotIn(List<Float> values) {
+        public Criteria andPriceNotIn(List<String> values) {
             addCriterion("price not in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceBetween(Float value1, Float value2) {
+        public Criteria andPriceBetween(String value1, String value2) {
             addCriterion("price between", value1, value2, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotBetween(Float value1, Float value2) {
+        public Criteria andPriceNotBetween(String value1, String value2) {
             addCriterion("price not between", value1, value2, "price");
             return (Criteria) this;
         }

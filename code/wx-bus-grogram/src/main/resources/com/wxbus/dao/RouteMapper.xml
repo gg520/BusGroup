@@ -10,16 +10,16 @@
     <result column="creat_user" jdbcType="VARCHAR" property="creatUser" />
     <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="route_status" jdbcType="INTEGER" property="routeStatus" />
-    <result column="recruit_time" jdbcType="TIMESTAMP" property="recruitTime" />
-    <result column="run_time" jdbcType="VARCHAR" property="runTime" />
+    <result column="recruit_time" jdbcType="INTEGER" property="recruitTime" />
+    <result column="run_time" jdbcType="TIMESTAMP" property="runTime" />
     <result column="start_site" jdbcType="VARCHAR" property="startSite" />
     <result column="start_coord" jdbcType="VARCHAR" property="startCoord" />
     <result column="end_site" jdbcType="VARCHAR" property="endSite" />
     <result column="end_coord" jdbcType="VARCHAR" property="endCoord" />
     <result column="station_id" jdbcType="VARCHAR" property="stationId" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="price" jdbcType="REAL" property="price" />
+    <result column="start_time" jdbcType="VARCHAR" property="startTime" />
+    <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
     <result column="recruit_num" jdbcType="INTEGER" property="recruitNum" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -154,10 +154,10 @@
       end_time, price, recruit_num
       )
     values (#{routeId,jdbcType=INTEGER}, #{creatUser,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
-      #{routeStatus,jdbcType=INTEGER}, #{recruitTime,jdbcType=TIMESTAMP}, #{runTime,jdbcType=VARCHAR}, 
+      #{routeStatus,jdbcType=INTEGER}, #{recruitTime,jdbcType=INTEGER}, #{runTime,jdbcType=TIMESTAMP}, 
       #{startSite,jdbcType=VARCHAR}, #{startCoord,jdbcType=VARCHAR}, #{endSite,jdbcType=VARCHAR}, 
-      #{endCoord,jdbcType=VARCHAR}, #{stationId,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{price,jdbcType=REAL}, #{recruitNum,jdbcType=INTEGER}
+      #{endCoord,jdbcType=VARCHAR}, #{stationId,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
+      #{endTime,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{recruitNum,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.wxbus.daomain.Route">
@@ -227,10 +227,10 @@
         #{routeStatus,jdbcType=INTEGER},
       </if>
       <if test="recruitTime != null">
-        #{recruitTime,jdbcType=TIMESTAMP},
+        #{recruitTime,jdbcType=INTEGER},
       </if>
       <if test="runTime != null">
-        #{runTime,jdbcType=VARCHAR},
+        #{runTime,jdbcType=TIMESTAMP},
       </if>
       <if test="startSite != null">
         #{startSite,jdbcType=VARCHAR},
@@ -248,13 +248,13 @@
         #{stationId,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
+        #{startTime,jdbcType=VARCHAR},
       </if>
       <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
+        #{endTime,jdbcType=VARCHAR},
       </if>
       <if test="price != null">
-        #{price,jdbcType=REAL},
+        #{price,jdbcType=VARCHAR},
       </if>
       <if test="recruitNum != null">
         #{recruitNum,jdbcType=INTEGER},
@@ -291,10 +291,10 @@
         route_status = #{record.routeStatus,jdbcType=INTEGER},
       </if>
       <if test="record.recruitTime != null">
-        recruit_time = #{record.recruitTime,jdbcType=TIMESTAMP},
+        recruit_time = #{record.recruitTime,jdbcType=INTEGER},
       </if>
       <if test="record.runTime != null">
-        run_time = #{record.runTime,jdbcType=VARCHAR},
+        run_time = #{record.runTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.startSite != null">
         start_site = #{record.startSite,jdbcType=VARCHAR},
@@ -312,13 +312,13 @@
         station_id = #{record.stationId,jdbcType=VARCHAR},
       </if>
       <if test="record.startTime != null">
-        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+        start_time = #{record.startTime,jdbcType=VARCHAR},
       </if>
       <if test="record.endTime != null">
-        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+        end_time = #{record.endTime,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null">
-        price = #{record.price,jdbcType=REAL},
+        price = #{record.price,jdbcType=VARCHAR},
       </if>
       <if test="record.recruitNum != null">
         recruit_num = #{record.recruitNum,jdbcType=INTEGER},
@@ -338,16 +338,16 @@
       creat_user = #{record.creatUser,jdbcType=VARCHAR},
       creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
       route_status = #{record.routeStatus,jdbcType=INTEGER},
-      recruit_time = #{record.recruitTime,jdbcType=TIMESTAMP},
-      run_time = #{record.runTime,jdbcType=VARCHAR},
+      recruit_time = #{record.recruitTime,jdbcType=INTEGER},
+      run_time = #{record.runTime,jdbcType=TIMESTAMP},
       start_site = #{record.startSite,jdbcType=VARCHAR},
       start_coord = #{record.startCoord,jdbcType=VARCHAR},
       end_site = #{record.endSite,jdbcType=VARCHAR},
       end_coord = #{record.endCoord,jdbcType=VARCHAR},
       station_id = #{record.stationId,jdbcType=VARCHAR},
-      start_time = #{record.startTime,jdbcType=TIMESTAMP},
-      end_time = #{record.endTime,jdbcType=TIMESTAMP},
-      price = #{record.price,jdbcType=REAL},
+      start_time = #{record.startTime,jdbcType=VARCHAR},
+      end_time = #{record.endTime,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=VARCHAR},
       recruit_num = #{record.recruitNum,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -370,10 +370,10 @@
         route_status = #{routeStatus,jdbcType=INTEGER},
       </if>
       <if test="recruitTime != null">
-        recruit_time = #{recruitTime,jdbcType=TIMESTAMP},
+        recruit_time = #{recruitTime,jdbcType=INTEGER},
       </if>
       <if test="runTime != null">
-        run_time = #{runTime,jdbcType=VARCHAR},
+        run_time = #{runTime,jdbcType=TIMESTAMP},
       </if>
       <if test="startSite != null">
         start_site = #{startSite,jdbcType=VARCHAR},
@@ -391,13 +391,13 @@
         station_id = #{stationId,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null">
-        start_time = #{startTime,jdbcType=TIMESTAMP},
+        start_time = #{startTime,jdbcType=VARCHAR},
       </if>
       <if test="endTime != null">
-        end_time = #{endTime,jdbcType=TIMESTAMP},
+        end_time = #{endTime,jdbcType=VARCHAR},
       </if>
       <if test="price != null">
-        price = #{price,jdbcType=REAL},
+        price = #{price,jdbcType=VARCHAR},
       </if>
       <if test="recruitNum != null">
         recruit_num = #{recruitNum,jdbcType=INTEGER},
@@ -414,16 +414,16 @@
     set creat_user = #{creatUser,jdbcType=VARCHAR},
       creat_time = #{creatTime,jdbcType=TIMESTAMP},
       route_status = #{routeStatus,jdbcType=INTEGER},
-      recruit_time = #{recruitTime,jdbcType=TIMESTAMP},
-      run_time = #{runTime,jdbcType=VARCHAR},
+      recruit_time = #{recruitTime,jdbcType=INTEGER},
+      run_time = #{runTime,jdbcType=TIMESTAMP},
       start_site = #{startSite,jdbcType=VARCHAR},
       start_coord = #{startCoord,jdbcType=VARCHAR},
       end_site = #{endSite,jdbcType=VARCHAR},
       end_coord = #{endCoord,jdbcType=VARCHAR},
       station_id = #{stationId,jdbcType=VARCHAR},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
-      price = #{price,jdbcType=REAL},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
       recruit_num = #{recruitNum,jdbcType=INTEGER}
     where route_id = #{routeId,jdbcType=INTEGER}
   </update>

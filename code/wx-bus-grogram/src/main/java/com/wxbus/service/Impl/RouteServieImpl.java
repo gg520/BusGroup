@@ -7,6 +7,7 @@ import com.wxbus.service.RouteService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * \* Created with IntelliJ IDEA.
@@ -59,8 +60,8 @@ public class RouteServieImpl implements RouteService {
      *@creattime 2018/5/16
      *@describe 删除线路
      */
-    public void deleteRouteById(Integer Routed) {
-       routeMapper.deleteByPrimaryKey(Routed);
+    public void deleteRouteById(Integer routed) {
+       routeMapper.deleteByPrimaryKey(routed);
     }
 
     @Override
@@ -86,8 +87,21 @@ public class RouteServieImpl implements RouteService {
      *@creattime 2018/5/23
      *@describe 通过id查询线路的详细信息
      */
-    public Route findRouteById(Integer RouteId) {
-        return routeMapper.selectByPrimaryKey(RouteId);
+    public Route findRouteById(Integer routeId) {
+        return routeMapper.selectByPrimaryKey(routeId);
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [routeStatus]
+     *@back  com.wxbus.daomain.Route
+     *@author  如花
+     *@creattime 2018/5/26
+     *@describe
+     */
+    public List<Route> findRouteByStatus(Integer routeStatus) {
+        return null;
     }
 }
 

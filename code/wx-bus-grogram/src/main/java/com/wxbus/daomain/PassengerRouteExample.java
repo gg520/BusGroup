@@ -395,52 +395,62 @@ public class PassengerRouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyEqualTo(Float value) {
+        public Criteria andPayMoneyEqualTo(String value) {
             addCriterion("pay_money =", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyNotEqualTo(Float value) {
+        public Criteria andPayMoneyNotEqualTo(String value) {
             addCriterion("pay_money <>", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyGreaterThan(Float value) {
+        public Criteria andPayMoneyGreaterThan(String value) {
             addCriterion("pay_money >", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyGreaterThanOrEqualTo(Float value) {
+        public Criteria andPayMoneyGreaterThanOrEqualTo(String value) {
             addCriterion("pay_money >=", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyLessThan(Float value) {
+        public Criteria andPayMoneyLessThan(String value) {
             addCriterion("pay_money <", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyLessThanOrEqualTo(Float value) {
+        public Criteria andPayMoneyLessThanOrEqualTo(String value) {
             addCriterion("pay_money <=", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyIn(List<Float> values) {
+        public Criteria andPayMoneyLike(String value) {
+            addCriterion("pay_money like", value, "payMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMoneyNotLike(String value) {
+            addCriterion("pay_money not like", value, "payMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMoneyIn(List<String> values) {
             addCriterion("pay_money in", values, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyNotIn(List<Float> values) {
+        public Criteria andPayMoneyNotIn(List<String> values) {
             addCriterion("pay_money not in", values, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyBetween(Float value1, Float value2) {
+        public Criteria andPayMoneyBetween(String value1, String value2) {
             addCriterion("pay_money between", value1, value2, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyNotBetween(Float value1, Float value2) {
+        public Criteria andPayMoneyNotBetween(String value1, String value2) {
             addCriterion("pay_money not between", value1, value2, "payMoney");
             return (Criteria) this;
         }
@@ -622,76 +632,6 @@ public class PassengerRouteExample {
 
         public Criteria andStartStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("start_status not between", value1, value2, "startStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathIsNull() {
-            addCriterion("qrcode_path is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathIsNotNull() {
-            addCriterion("qrcode_path is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathEqualTo(String value) {
-            addCriterion("qrcode_path =", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathNotEqualTo(String value) {
-            addCriterion("qrcode_path <>", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathGreaterThan(String value) {
-            addCriterion("qrcode_path >", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathGreaterThanOrEqualTo(String value) {
-            addCriterion("qrcode_path >=", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathLessThan(String value) {
-            addCriterion("qrcode_path <", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathLessThanOrEqualTo(String value) {
-            addCriterion("qrcode_path <=", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathLike(String value) {
-            addCriterion("qrcode_path like", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathNotLike(String value) {
-            addCriterion("qrcode_path not like", value, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathIn(List<String> values) {
-            addCriterion("qrcode_path in", values, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathNotIn(List<String> values) {
-            addCriterion("qrcode_path not in", values, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathBetween(String value1, String value2) {
-            addCriterion("qrcode_path between", value1, value2, "qrcodePath");
-            return (Criteria) this;
-        }
-
-        public Criteria andQrcodePathNotBetween(String value1, String value2) {
-            addCriterion("qrcode_path not between", value1, value2, "qrcodePath");
             return (Criteria) this;
         }
     }

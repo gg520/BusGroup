@@ -82,9 +82,9 @@ public class UserServiceImpl implements UserService {
      *@creattime 2018/5/25
      *@describe 账号密码登录接口实现
      */
-    public Passenger findUserByMoPaw(String mobile, String password) {
+    public Passenger findUserByMoPaw(Passenger passenger) {
         PassengerExample passengerExample=new PassengerExample();
-        passengerExample.or().andPassengerMobileEqualTo(mobile).andPassengerPasswordEqualTo(password);
+        passengerExample.or().andPassengerMobileEqualTo(passenger.getPassengerMobile()).andPassengerPasswordEqualTo(passenger.getPassengerPassword());
         log.info("手机号密码查找");
         List<Passenger> passengerList=passengerMapper.selectByExample(passengerExample);
         if(passengerList!=null&&passengerList.size()>0){
