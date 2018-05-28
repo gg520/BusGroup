@@ -132,6 +132,11 @@
 			<artifactId>javase</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+		<!-- Spring Boot pagehelper 依赖 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+		</dependency>
 
 
 	</dependencies>

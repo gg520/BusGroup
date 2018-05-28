@@ -1,18 +1,25 @@
 package com.wxbus.service.Impl;
 
 
+import com.wxbus.dao.DriverMapper;
 import com.wxbus.dao.PassengerMapper;
+import com.wxbus.daomain.Driver;
+import com.wxbus.daomain.DriverExample;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.daomain.PassengerExample;
 import com.wxbus.pojo.UserInfo;
 import com.wxbus.service.UserService;
+import com.wxbus.util.JsonUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by g1154 on 2018/4/14.
@@ -21,6 +28,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Resource
     private PassengerMapper passengerMapper;
+    @Autowired
+    private DriverMapper driverMapper;
 
     private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
 
@@ -82,16 +91,37 @@ public class UserServiceImpl implements UserService {
      *@creattime 2018/5/25
      *@describe 账号密码登录接口实现
      */
-    public Passenger findUserByMoPaw(Passenger passenger) {
-        PassengerExample passengerExample=new PassengerExample();
-        passengerExample.or().andPassengerMobileEqualTo(passenger.getPassengerMobile()).andPassengerPasswordEqualTo(passenger.getPassengerPassword());
-        log.info("手机号密码查找");
-        List<Passenger> passengerList=passengerMapper.selectByExample(passengerExample);
-        if(passengerList!=null&&passengerList.size()>0){
-            return passengerList.get(0);
+    public String findUserByMoPaw(String username,String password) {
+        //查询司机账号信息
+        DriverExample driverExample=new DriverExample();
+        driverExample.or().andDriveIdEqualTo(username).andDriverPasswordEqualTo(password);
+        List<Driver> list=driverMapper.selectByExample(driverExample);
 
+        Map map=new HashMap();
+
+        if(null==list||list.size()<=0){//不是司机账号
+            PassengerExample passengerExample=new PassengerExample();
+            passengerExample.or().andPassengerMobileEqualTo(username).
+                    andPassengerPasswordEqualTo(password);
+            List<Passenger> passengerList=passengerMapper.selectByExample(passengerExample);
+            if(passengerList!=null&&passengerList.size()>0){
+                log.info("乘客登陆成功");
+                map.put("userId",passengerList.get(0).getId());
+                map.put("username",passengerList.get(0).getPassengerNickname());
+                map.put("Connect_Platform","Weixin_Passenger");
+                return JsonUtil.stringify(map);
+            }else{
+                log.info("账号或密码错误");
+                return null;
+            }
+        }else{
+            log.info("司机登录成功");
+            map.put("userId",list.get(0).getDriverNum());
+            map.put("username",list.get(0).getDriverNum());
+            map.put("Connect_Platform","Weixin_Driver");
+
+            return JsonUtil.stringify(map);
         }
-        return null;
     }
 
     @Override

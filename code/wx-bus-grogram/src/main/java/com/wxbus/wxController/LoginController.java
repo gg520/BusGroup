@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -113,7 +114,7 @@ public class LoginController {
 
 
         // token
-        UserToken userToken = UserTokenManager.generateToken(user.getId());
+        UserToken userToken = UserTokenManager.generateToken(user.getId(),"乘客");
 
         Map<Object, Object> result = new HashMap<Object, Object>();
         result.put("token", userToken.getToken());
@@ -128,12 +129,12 @@ public class LoginController {
         return id;
     }
 
-    @PostMapping(value = "login")
-    public Object login(@RequestBody String body){
-        System.out.println(body);
-        logger.info("登录");
-        return ResponseUtil.ok("登录成功");
-    }
+//    @PostMapping(value = "login")
+//    public Object login(@RequestBody String body){
+//        System.out.println(body);
+//        logger.info("登录");
+//        return ResponseUtil.ok("登录成功");
+//    }
     /**
      *@type method
      *@parameter  [passenger]
@@ -142,28 +143,45 @@ public class LoginController {
      *@creattime 2018/5/25
      *@describe 微信账号密码登录
      */
-    @RequestMapping(value ="/loginByMoPaw",method = {RequestMethod.POST})
-    public Object loginByMoPaw(@RequestBody Passenger passenger,HttpServletRequest request){
+    @RequestMapping(value ="/login",method = {RequestMethod.POST})
+    public Object loginByMoPaw(@RequestBody String body, HttpServletRequest request,
+                               HttpServletResponse response){
         logger.info("微信账号密码登录");
-        if(passenger.getPassengerMobile()==null||passenger.getPassengerPassword()==null){
-            return ResponseUtil.fail();
+
+        String username= JacksonUtil.parseString(body, "username");
+        String password= JacksonUtil.parseString(body, "password");
+
+        if(username==null||"".equals(username)||"".equals(password)||password==null){
+            return ResponseUtil.fail(-1,"账号或密码不能为空");
         }
-        else{
-            Passenger user= userService.findUserByMoPaw(passenger);
-            if (user==null){
-                return ResponseUtil.fail();
-            }
-            try {
 
-                return ResponseUtil.ok(user);
-            }
-            finally {
-                user.setLastLoginIp(IpUtil.client(request));
-                user.setLastLoginTime(new Date());
-                userService.updatePassenger(user);
-            }
+        password = MD5Util.toMD5(password);
 
+        String userInfo= userService.findUserByMoPaw(username,password);
 
+        if(userInfo==null||"".equals(userInfo)){
+            return ResponseUtil.fail(-1,"账号或密码错误");
+        }else{
+//            String Connect_Platform=JacksonUtil.parseString(userInfo,"Connect_Platform");
+
+            String Connect_Platform= JacksonUtil.parseString(userInfo,"Connect_Platform");
+
+            String userId= JacksonUtil.parseString(userInfo,"userId");
+            response.setHeader("Connect_Platform",Connect_Platform);
+
+            UserToken userToken=null;
+            //将数据添加到token
+            if("Weixin_Driver".equals(Connect_Platform)){//司机
+                 userToken= UserTokenManager.generateToken(Integer.valueOf(userId),"司机");
+            }else if("Weixin_Passenger".equals(Connect_Platform)){
+                userToken= UserTokenManager.generateToken(Integer.valueOf(userId),"乘客");
+            }
+            //返回数据到前台中
+            //昵称和token
+            Map map=new HashMap();
+            map.put("username", JacksonUtil.parseString(userInfo,"username"));
+            map.put("token",userToken.getToken());
+            return ResponseUtil.ok(map);
         }
     }
     /**
@@ -175,7 +193,7 @@ public class LoginController {
      *@describe 微信用户注册
      */
     @RequestMapping(value ="/register",method = {RequestMethod.POST})
-    public Object register(@RequestBody Passenger passenger,HttpServletRequest request){
+    public Object register(@RequestBody Passenger passenger, HttpServletRequest request){
         logger.info("用户注册");
         Date date = new Date();
         passenger.setFistLoginTime(date);

@@ -222,6 +222,66 @@ public class DriverExample {
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
+        public Criteria andDriverNumIsNull() {
+            addCriterion("driver_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumIsNotNull() {
+            addCriterion("driver_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumEqualTo(Integer value) {
+            addCriterion("driver_num =", value, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumNotEqualTo(Integer value) {
+            addCriterion("driver_num <>", value, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumGreaterThan(Integer value) {
+            addCriterion("driver_num >", value, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("driver_num >=", value, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumLessThan(Integer value) {
+            addCriterion("driver_num <", value, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumLessThanOrEqualTo(Integer value) {
+            addCriterion("driver_num <=", value, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumIn(List<Integer> values) {
+            addCriterion("driver_num in", values, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumNotIn(List<Integer> values) {
+            addCriterion("driver_num not in", values, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumBetween(Integer value1, Integer value2) {
+            addCriterion("driver_num between", value1, value2, "driverNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("driver_num not between", value1, value2, "driverNum");
+            return (Criteria) this;
+        }
+
         public Criteria andDriverIdIsNull() {
             addCriterion("driver_id is null");
             return (Criteria) this;

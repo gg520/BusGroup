@@ -8,6 +8,8 @@ public class UserToken {
     private LocalDateTime expireTime;
     private LocalDateTime updateTime;
 
+    private String user;//用户权限，乘客或者司机
+
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
@@ -38,5 +40,13 @@ public class UserToken {
 
     public LocalDateTime getUpdateTime() {
         return updateTime;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

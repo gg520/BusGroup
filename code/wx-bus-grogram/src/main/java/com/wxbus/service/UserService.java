@@ -23,16 +23,16 @@ public interface UserService {
      *@back  com.wxbus.daomain.Passenger
      *@author  如花
      *@creattime 2018/5/26
-     *@describe 
+     *@describe 查找用户
      */
-    Passenger findUserByMoPaw(Passenger passenger);
+    String findUserByMoPaw(String username, String password);
     /**
      *@type interface
      *@parameter  [passenger]
      *@back  void
      *@author  如花
      *@creattime 2018/5/26
-     *@describe 添加用户接口
+     *@describe 添加用户
      */
     void addPassenger(Passenger passenger);
     /**

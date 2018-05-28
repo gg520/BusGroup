@@ -2,9 +2,9 @@ package com.wxbus.service;
 
 import com.wxbus.pojo.UserToken;
 import com.wxbus.util.CharUtil;
+import com.wxbus.util.JsonUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -17,7 +17,15 @@ public class UserTokenManager {
 
     //日志
     private static final Log logger= LogFactory.getLog(UserTokenManager.class.getName());
-    public static Integer getUserId(String token) {
+
+    /**
+     * 根据token获取ID,和身份 在json中
+     *  userId:用户主键ID
+     *  user： 用户身份 “司机、乘客”
+     * @param token
+     * @return
+     */
+    public static String getUserId(String token) {
 
 
         //测试
@@ -39,19 +47,31 @@ public class UserTokenManager {
             return null;
         }
         logger.info("验证token");
-        return userToken.getUserId();
+        Map map=new HashMap();
+        map.put("userId",userToken.getUserId());
+        map.put("user",userToken.getUser());
+        return JsonUtil.stringify(map);
     }
 
 
-    public static UserToken generateToken(Integer id){
+    /**
+     * 获取token
+     * @param id
+     * @param user 用户类型，司机，乘客
+     * @return
+     */
+    public static UserToken generateToken(Integer id, String user){
+        //检查是否已经登录了
+
+        while (idMap.containsKey(id)){
+            UserToken m=idMap.remove(id);
+
+            System.out.println(m.getToken());
+            tokenMap.remove(m.getToken());
+        }
+        System.out.println(idMap.size()+"   "+tokenMap.size());
+
         UserToken userToken = null;
-
-//        userToken = idMap.get(id);
-//        if(userToken != null) {
-//            tokenMap.remove(userToken.getToken());
-//            idMap.remove(id);
-//        }
-
         String token = CharUtil.getRandomString(32);//获取随机数
         while (tokenMap.containsKey(token)) {
             token = CharUtil.getRandomString(32);
@@ -65,6 +85,7 @@ public class UserTokenManager {
         userToken.setUpdateTime(update);
         userToken.setExpireTime(expire);
         userToken.setUserId(id);
+        userToken.setUser(user);
         tokenMap.put(token, userToken);
         idMap.put(id, userToken);
 

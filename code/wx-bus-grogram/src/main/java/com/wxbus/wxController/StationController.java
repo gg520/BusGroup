@@ -19,23 +19,6 @@ import java.util.List;
  * Description:
  */
 @RestController
-@RequestMapping(value="/weixin/station")
+@RequestMapping(value="/weixin/")
 public class StationController {
-
-    @Autowired
-    private StationService stationService;
-
-    @RequestMapping(value="/queryStation",method={RequestMethod.GET})
-    public  Object queryStation(@RequestBody String endSiteName) throws  Exception{
-        if (endSiteName!=null||!"".equals(endSiteName)){
-            List<Station> stationList=new ArrayList<Station>();
-            stationList=stationService.findStationByName(endSiteName);
-            return ResponseUtil.ok(stationList);
-
-        }
-        else{
-            return ResponseUtil.fail();
-        }
-
-    }
 }

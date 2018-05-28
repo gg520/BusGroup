@@ -1,20 +1,30 @@
 package com.wxbus.service;
 
+import com.wxbus.daomain.DriverBusRoute;
 import com.wxbus.daomain.Route;
 
 import java.util.List;
 
 public interface RouteService {
+    /**
+     *@type interface
+     *@parameter  [startSite, endSite]
+     *@back  java.util.List<com.wxbus.daomain.Route>
+     *@author  如花
+     *@creattime 2018/5/28
+     *@describe 根据开始终点搜索已开线路
+     */
+    List<Route> findOpenRouteByStartEnd(String startSite, String endSite,Integer startNum,Integer num);
 
     /**
      *@type interface
-     *@parameter  [start, station, end]
+     *@parameter  [startCoord, endSite]
      *@back  com.wxbus.daomain.Route
      *@author  如花
-     *@creattime 2018/5/17
-     *@describe 起始点终点坐标模糊查询线路查询
+     *@creattime 2018/5/27
+     *@describe 开始结束站点查找招募线路
      */
-    Route findRouteByStartEnd(String start, String station, String end);
+    List<Route> findRouteByStartEnd(String startSite, String endSite,Integer startNum,Integer num);
     /**
      *@type interface
      *@parameter  [route]
@@ -53,13 +63,22 @@ public interface RouteService {
     Route findRouteById(Integer routeId);
     /**
      *@type interface
+     *@parameter  [routeId]
+     *@back  com.wxbus.daomain.DriverBusRoute
+     *@author  如花
+     *@creattime 2018/5/28
+     *@describe 通过线路的id查询司机汽车路线关联表
+     */
+    DriverBusRoute findDriverBusRouteById(Integer routeId);
+    /**
+     *@type interface
      *@parameter  [routeStatus]
      *@back  com.wxbus.daomain.Route
      *@author  如花
      *@creattime 2018/5/26
-     *@describe 通过状态查找线路信息
+     *@describe 通过状态分页查找线路信息
      */
-    List<Route> findRouteByStatus(Integer routeStatus);
+    List<Route> findRouteByStatus(Integer routeStatus,Integer startNum,Integer num);
 
 
 
