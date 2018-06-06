@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by g1154 on 2018/5/12.
  */
+
 @Controller
 @RequestMapping("/web")
 public class test {
