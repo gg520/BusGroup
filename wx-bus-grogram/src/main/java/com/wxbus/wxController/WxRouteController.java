@@ -1,7 +1,6 @@
 package com.wxbus.wxController;
 
 import com.wxbus.daomain.Route;
-import com.wxbus.pojo.UserToken;
 import com.wxbus.service.HeadersName;
 import com.wxbus.service.RouteService;
 import com.wxbus.service.UserTokenManager;
@@ -25,11 +24,11 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/weixin/route")
-public class RouteController {
+public class WxRouteController {
     @Autowired
     private RouteService routeService;
 
-    private final Log logger= LogFactory.getLog(RouteController.class.getName());
+    private final Log logger= LogFactory.getLog(WxRouteController.class.getName());
 
     @RequestMapping(value = "/inquiryRoute",method = {RequestMethod.POST})
     /**

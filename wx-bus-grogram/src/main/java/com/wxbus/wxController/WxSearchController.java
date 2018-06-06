@@ -8,7 +8,6 @@ import com.wxbus.daomain.Station;
 import com.wxbus.service.RouteService;
 import com.wxbus.service.StationService;
 import com.wxbus.util.JacksonUtil;
-import com.wxbus.util.MathUtil;
 import com.wxbus.util.ResponseUtil;
 import com.wxbus.util.SortUtil;
 import org.apache.commons.logging.Log;
@@ -16,9 +15,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -26,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/weixin/search")
-public class SearchController {
+public class WxSearchController {
 
 
     @Autowired
@@ -34,7 +30,7 @@ public class SearchController {
 
     @Autowired
     private RouteService routeService;
-    private final Log logger = LogFactory.getLog(LoginController.class);
+    private final Log logger = LogFactory.getLog(WxLoginController.class);
 
     /**
      *@type method

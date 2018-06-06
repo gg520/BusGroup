@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/web/examline")
 public class WebSearchController {
 
-    private final Log logger = LogFactory.getLog(com.wxbus.wxController.LoginController.class);
+    private final Log logger = LogFactory.getLog(com.wxbus.wxController.WxLoginController.class);
     @Autowired
     private RouteService routeService;
 
@@ -83,7 +83,7 @@ public class WebSearchController {
         }
         return  ResponseUtil.ok(routeList);
     }
-    @RequestMapping(value = "toNotPass" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/toNotPass" ,method = RequestMethod.POST)
     /**
      *@type method
      *@parameter  [body]

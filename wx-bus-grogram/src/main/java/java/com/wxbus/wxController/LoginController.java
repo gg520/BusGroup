@@ -30,7 +30,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/weixin/auth")
 public class LoginController {
-    private final Log logger = LogFactory.getLog(com.wxbus.wxController.LoginController.class);
+    private final Log logger = LogFactory.getLog(com.wxbus.wxController.WxLoginController.class);
 
     @Autowired
     private UserService userService;

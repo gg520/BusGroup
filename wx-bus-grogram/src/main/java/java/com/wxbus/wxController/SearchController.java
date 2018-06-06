@@ -9,7 +9,7 @@ import com.wxbus.service.StationService;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.ResponseUtil;
 import com.wxbus.util.SortUtil;
-import com.wxbus.wxController.LoginController;
+import com.wxbus.wxController.WxLoginController;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class SearchController {
 
     @Autowired
     private RouteService routeService;
-    private final Log logger = LogFactory.getLog(LoginController.class);
+    private final Log logger = LogFactory.getLog(WxLoginController.class);
 
     /**
      *@type method

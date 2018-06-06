@@ -23,7 +23,7 @@ import java.io.IOException;
 @RequestMapping(value = "/weixin/check")
 public class CheckInfoController {
 
-    private final Log logger= LogFactory.getLog(com.wxbus.wxController.CheckInfoController.class.getName());
+    private final Log logger= LogFactory.getLog(com.wxbus.wxController.WxCheckInfoController.class.getName());
 
 
 

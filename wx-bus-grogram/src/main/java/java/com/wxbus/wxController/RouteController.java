@@ -28,7 +28,7 @@ public class RouteController {
     @Autowired
     private RouteService routeService;
 
-    private final Log logger= LogFactory.getLog(com.wxbus.wxController.RouteController.class.getName());
+    private final Log logger= LogFactory.getLog(com.wxbus.wxController.WxRouteController.class.getName());
 
     @RequestMapping(value = "/inquiryRoute",method = {RequestMethod.POST})
     /**

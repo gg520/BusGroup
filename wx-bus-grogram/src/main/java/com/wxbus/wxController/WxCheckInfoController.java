@@ -21,9 +21,9 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping(value = "/weixin/check")
-public class CheckInfoController {
+public class WxCheckInfoController {
 
-    private final Log logger= LogFactory.getLog(CheckInfoController.class.getName());
+    private final Log logger= LogFactory.getLog(WxCheckInfoController.class.getName());
 
 
 
