@@ -1,0 +1,62 @@
+
+<view class="head">
+    <view class="bord containerSmall " >  
+        <text class="line">河南职业技术学院----郑东新区昆丽河小学</text>
+    </view>
+ <view class="state containerSmall">
+    <view class="gostate">出发时间：
+        <text class="txtstate_01">07:00</text>
+        <text class="txtstate_02">|</text>预计到达时间:
+        <text class="txtstate_03">08:00</text>
+         <text class="txtstate_04">单价：3.00</text> 
+    </view>
+    <view class="gostate">整月发车：
+        <text class="txtstate_01">16 天</text>
+        <text class="txtstate_02">|</text>司机:
+        <text class="txtstate_03">李师傅</text>
+        <text class="txtstate_04">车牌：待定</text>
+    </view>
+    <view class="gostate">总公里：
+        <text class="txtstate_01">6.6公里</text>
+        <text class="txtstate_02">|</text>电话:
+        <text class="txtstate_03">待定</text>
+        <text class="txtstate_04">车号：1064</text>
+    </view>
+ </view>
+</view>
+<!-- start 日历 -->
+<view class="flex box box-tb box-align-center">
+  <view class="calendar pink-color box box-tb">
+        <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
+           
+            <view  class="date-area box box-lr box-align-center box-pack-center">{{curYear || "--"}} 年 {{curMonth || "--"}} 月</view>
+            
+        </view>
+        <view class="weeks box box-lr box-pack-center box-align-center">
+        <!-- 周次设置 -->
+            <view class="flex week fs28" wx:for="{{weeksCh}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+        </view>
+        <view class="days box box-lr box-wrap">
+            <view wx:if="{{hasEmptyGrid}}" class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+            </view>
+            <view class="grid white-color box box-align-center box-pack-center" wx:for="{{days}}" wx:key="{{index}}" data-idx="{{index}}">
+                <view class="day {{item.choosed ? 'border-radius pink-bg' : ''}} box box-align-center box-pack-center">{{item.day}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- end 日历 -->
+
+<!-- 购买的显示 -->
+<scroll-view class="container" scroll-y="true">
+  <view class="bottom-btn">
+    <view class="btn-left">
+      <text>已选择{{countday}}天，共：{{totalmoney}}元</text>
+    </view>
+    <!-- <view class="btn-right" bindtap="addBuy">购买</view>
+     -->
+    <view class="buy" bindtap="addBuy">购买</view>
+    <view class="btn-right" bindtap="addToMy">收藏</view>
+  </view>
+</scroll-view>

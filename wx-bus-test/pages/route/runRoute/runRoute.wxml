@@ -1,0 +1,94 @@
+<!--ticketBooking.wxml-->
+<view class="container">
+  <view class="search-header">
+    <view class="input-box">
+      <image class="icon" src="/static/images/icon_red_site.png"></image>
+      <input name="start_site" class="keywrod" focus="true" value="{{search.startSite}}" confirm-type="search" bindinput="inputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm"  placeholder='起始地点' value='我的位置' />
+      <image class="del" wx:if="{{keyword}}" bindtap="clearKeyword" src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/clearIpt-f71b83e3c2.png"></image>
+    </view>
+    <!-- 交换位置 -->
+  <image class="icon_last" src="/static/images/icon_swop_site.png" bindtap='swop'></image>
+    <view class="input-box">
+      <image class="icon" src="/static/images/icon_blue_site.png"></image>
+      <input name="end_site" class="keywrod" focus="true" value="{{search.endSite}}" confirm-type="search" bindinput="inputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm" placeholder='到达地点' />
+      <image class="del" wx:if="{{endSite}}" bindtap="clearKeyword" src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/clearIpt-f71b83e3c2.png"></image>
+    </view>
+  </view> 
+<!--白色背景区域-->
+  <view class="no-cart" wx:if="{{isEmptySite}}">
+       <view class="c">
+        <image src="/static/images/route_empty.png" />
+        <text>未找到匹配站点</text>
+      </view>
+    </view>
+
+  <view class="cart-view"  wx:if="{{flagSeach}}">
+    <view class="list" >
+        <view class="group-item">
+          <view class="goods">
+            <view class="item" wx:for="{{searchSite}}" wx:key="id" bindtap='searchSiteIndex' id="{{item.stationName}}">
+              <view class="checkbox" bindtap="checkedItem"></view>
+              <view class="cart-goods">
+                <view class="info">
+                  <view class="t">
+                    <text class="name">{{item.stationName}}</text>
+                  </view>
+                  <view class="attr"></view>
+                  <view class="b">
+                    <text class="price">{{item.stationDescribe}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+  </view>
+  <view wx:else>
+    <view class="wrap">
+    <!--按钮切换-->
+      <view class="btn">
+        <view class="{{isAll?'active':''}}" bindtap="goAll">全部</view>
+        <view class="{{isAm?'active':''}}" bindtap="goAm">上午</view>
+      <view class="{{isPm?'active':''}}" bindtap="goPm">下午</view>
+    </view> 
+    <!--线路选择-->
+    <view class="no-cart" wx:if="{{routes.length <= 0}}">
+       <view class="c">
+        <image src="/static/images/route_empty.png" />
+        <text>暂无相关路线</text>
+      </view>
+    </view>
+    <view wx:else>
+      <view class="chooseCity pd-70" wx:for="{{routes}}" bindtap='goRoute' id='{{item.routeid}}'>
+        <view class="citySelect" >
+          <view class="startCity" >{{item.startSite}}</view>
+          <view class="citySelect_img">
+            <view>
+              <image class="changeCity_bg" src="/static/images/changeCity_bg.png"></image>
+            </view>
+            <image class="samll_plane" src="/static/images/bus.png"></image>
+          </view>
+          <view class="endCity">{{item.endSite}}</view>
+        </view>
+        <view class="chooseDate">
+          <block>
+              <view class="startDate">
+                <text class="date">发车时间：{{item.startTime}}</text>
+              </view>
+          </block>
+          <block>
+              <view class="endDate">
+                <!-- <text class="date">座位数：{{item.recruitNum}}</text>
+                <text class="date">已定：{{item.recruitNum}}</text> -->
+                <text class="date">剩余：{{item.recruitNum-item.orderNum}}座</text>
+                单价：<text class="data-price">￥{{item.price}}元</text>
+              </view>
+          </block>
+        </view> 
+      </view>
+    </view>
+    </view>
+  </view>
+</view>

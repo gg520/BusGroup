@@ -1,0 +1,107 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.98",
+	"appid": "wxcafa41f5d5ff69b0",
+	"projectname": "wx-bus-test",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "线路征集",
+					"pathName": "pages/route/inquiryRoute/inquiryRoute",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "线路招募",
+					"pathName": "pages/route/planRoute/planRoute",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "路线详细信息",
+					"pathName": "pages/route/routeInfo/routeInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "日历测试",
+					"pathName": "pages/test/calendar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单明细",
+					"pathName": "pages/shopping/checkout/checkout",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/ucenter/order/order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/auth/register/register",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单",
+					"pathName": "pages/ucenter/order/order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人资料",
+					"pathName": "pages/ucenter/myInfo/myInfo",
+					"query": ""
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,98 @@
+<view class="container">
+    <view class="address-box"></view>
+    <view class="coupon-box">
+        <view class="coupon-item">
+            <view class="l">
+                <text class="name">郭苏州，男，412728199609144952</text>
+                <!-- <text class="txt">{{couponList.length}}张</text> -->
+            </view>
+        </view>
+    </view>
+
+    <view class="order-box">
+        <view class="order-item">
+            <view class="l">
+                <text class="name">线路名称：</text>
+            </view>
+            <view class="r">
+                <text class="txt">博颂路丰华路-省实验中学</text>
+            </view>
+        </view>
+        <view class="order-item">
+            <view class="l">
+                <text class="name">发车时间：</text>
+            </view>
+            <view class="r">
+                <text class="txt">07:00</text>
+            </view>
+        </view>
+        <view class="order-item">
+            <view class="l">
+                <text class="name">车号：</text>
+            </view>
+            <view class="r">
+                <text class="txt">10489</text>
+            </view>
+        </view>
+        <view class="order-item">
+            <view class="l">
+                <text class="name">单价：</text>
+            </view>
+            <view class="r">
+                <text class="txt">￥3.00元</text>
+            </view>
+        </view>
+        <view class="order-item">
+            <view class="l">
+                <text class="name">订购天数：</text>
+            </view>
+            <view class="r">
+                <text class="txt">1天</text>
+            </view>
+        </view>
+        <view class="order-item no-border">
+            <view class="l">
+                <text class="name">总价：</text>
+            </view>
+            <view class="r">
+                <text class="txt">￥3.00元</text>
+            </view>
+        </view>
+        
+        
+    </view>
+
+    <!-- <view class="goods-items">
+        <view class="item">
+            <view class="img">
+                <image src="{{item.picUrl}}"></image>
+            </view>
+            <view class="info">
+                <view class="t">
+                    <text class="name">内容</text>
+                    <text class="number">x{{item.number}}</text>
+                </view>
+                <view class="m">{{item.goodsSpecificationValues}}</view>
+                <view class="b">￥{{item.retailPrice}}</view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="img">
+                <image src="{{item.picUrl}}"></image>
+            </view>
+            <view class="info">
+                <view class="t">
+                    <text class="name">内容</text>
+                    <text class="number">x{{item.number}}</text>
+                </view>
+                <view class="m">{{item.goodsSpecificationValues}}</view>
+                <view class="b">￥{{item.retailPrice}}</view>
+            </view>
+        </view>
+    </view> -->
+
+    <view class="order-total">
+        <view class="l">实付：￥3.00元</view>
+        <view class="r" bindtap="submitOrder">结算</view>
+    </view>
+</view>

@@ -1,0 +1,58 @@
+<view class="container">
+<!-- 首页搜索，点击跳转搜索 -->
+  <view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <image class="icon"></image>
+      <text class="txt">线路搜索</text>
+    </navigator>
+  </view>
+
+
+  
+  <!-- 宣传位，为轮转图 -->
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{banner}}" wx:key="id">
+        <image src="{{item.url}}" background-size="cover"></image>
+      <!-- </navigator> -->
+    </swiper-item>
+  </swiper>
+  <!-- 菜单 -->
+  <view class="m-menu">
+    <view class='item' bindtap='getQRcode' wx:if="{{isPassenger}}">
+      <image src='/static/images/QR_code.png' background-size="cover"></image>
+      <text>我的码</text>
+    </view>
+    <view class='item' bindtap='goInquiryRoute' wx:if="{{isPassenger}}">
+      <image src='/static/images/ic_onfont.png' background-size="cover"></image>
+      <text>发起团</text>
+    </view> 
+    <view class='item' bindtap='goQRcode' wx:if="{{isPassenger}}">
+      <image src='/static/images/ic_saoma.png' background-size="cover"></image>
+      <text>扫码上车</text>
+    </view>
+    
+    <view class='item' bindtap='Checkticket' wx:if="{{isDirver}}">
+      <image src='/static/images/QR_code.png' background-size="cover"></image>
+      <text>车票验证</text>
+    </view>
+    <view class='item' bindtap='Blindcar' wx:if="{{isDirver}}">
+      <image src='/static/images/bus.png' background-size="cover"></image>
+      <text>车辆绑定</text>
+    </view>
+    
+
+    
+    <view class='item' bindtap='goPlantRoute'>
+      <image src='/static/images/ic_circuit.png' background-size="cover"></image>
+      <text>团招募</text>
+    </view>
+    <view class='item' bindtap='goRunRoute'>
+      <image src='/static/images/ic_circuit_next.png' background-size="cover"></image>
+      <text>已开线路</text>
+    </view>
+
+    
+     
+  </view>
+
+</view>

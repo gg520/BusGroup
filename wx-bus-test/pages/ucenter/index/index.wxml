@@ -1,0 +1,74 @@
+<!--pages/ucenter/index/index.wxml-->
+<view class="container">
+  <view class="profile-info"  bindtap="goLogin">
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <view class="info">
+       <text class="name">{{userInfo.nickName}}</text> 
+    </view>
+  </view>
+
+  <view class="user-menu">
+    <view wx:if="{{isPassenger}}">
+      <view class="item">
+        <view class="a" bindtap="goMyInfo">
+          <image class='icon local-image' src='/static/images/ic_inform.png'></image>
+          <text class="txt">个人信息</text>
+        </view>
+      </view> 
+      <view class="item">
+        <view class="a" bindtap='goOreder'>
+          <image class='icon local-image' src='/static/images/icon_indent.png'></image>
+          <text class="txt">我的订单</text>
+        </view>
+      </view>
+      <view class="item">
+        <view class="a" bindtap='goMyCollect'>
+          <image class='icon local-image' src='/static/images/ic_collect.png'></image>
+          <text class="txt">我的收藏</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{isDirver}}">
+      <view class="item">
+        <view class="a" bindtap="goFootprint">
+          <image class='icon local-image' src='/static/images/ic_inform.png'></image>
+          <text class="txt">个人信息</text>
+        </view>
+      </view> 
+      <view class="item">
+        <view class="a" bindtap='goOreder'>
+          <image class='icon local-image' src='/static/images/icon_indent.png'></image>
+          <text class="txt">任务记录</text>
+        </view>
+      </view>
+      <view class="item">
+        <view class="a" bindtap=''>
+          <image class='icon local-image' src='/static/images/ic_collect.png'></image>
+          <text class="txt">车辆信息</text>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a" bindtap="goAddress">
+        <image class='icon local-image' src='/static/images/ic_affiche.png'></image>
+        <text class="txt">通知公告</text>
+      </view>
+    </view>
+     <view class="item">
+      <view class="a">
+        <text class="icon kefu"></text>
+        <text class="txt">联系客服</text>
+      </view>
+    </view> 
+     <view class="item">
+      <view class="a">
+        <text class="icon help"></text>
+        <text class="txt">帮助中心</text>
+      </view>
+    </view> 
+  </view>
+
+  <view class="logout" bindtap="exitLogin" hidden='{{userInfo.exitLoginBtn}}'>退出登录</view>
+
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 数据</button> -->
+</view>
