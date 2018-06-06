@@ -1,5 +1,12 @@
-wx.showLoading({
-  title: '加载中.  const hour = date.getHours()
+
+var api=require("../config/api.js");
+var app=getApp();
+
+const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
