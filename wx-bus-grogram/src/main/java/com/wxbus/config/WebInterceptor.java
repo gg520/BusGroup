@@ -1,5 +1,6 @@
 package com.wxbus.config;
 
+import com.wxbus.annotation.support.WebLoginHanderIntercept;
 import com.wxbus.annotation.support.WeixinLoginHandlerInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -19,7 +20,7 @@ public class WebInterceptor extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-//        registry.addInterceptor(new WeixinLoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/login/loginByWeixin","/view/**");
+        registry.addInterceptor(new WebLoginHanderIntercept()).addPathPatterns("/**").excludePathPatterns("/weixin/**","/web/login","/web/loginout","/web/view/**","/web/index","/web/loginhandle");
 
     }
 }
