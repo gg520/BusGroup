@@ -2,6 +2,8 @@ package com.wxbus.service;
 
 import com.wxbus.daomain.Admin;
 
+import java.util.List;
+
 public interface AdminService {
     /**
      *@type interface
@@ -21,4 +23,9 @@ public interface AdminService {
      *@describe 添加管理员
      */
     void addAdmin(Admin admin);
+    /**
+     * @author KS
+     * @msg 用于登录时放入session的管理员信息
+     */
+    Admin admin(String username, String password);
 }
