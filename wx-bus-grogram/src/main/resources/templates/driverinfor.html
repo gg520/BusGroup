@@ -1,0 +1,169 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" th:href="@{/assets/img/apple-icon.png}">
+    <link rel="icon" type="image/png" sizes="96x96" th:href="@{/assets/img/favicon.png}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Paper Dashboard by Creative Tim</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- Bootstrap core CSS     -->
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- Animation library for notifications   -->
+    <link th:href="@{/assets/css/animate.min.css}" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link th:href="@{/assets/css/paper-dashboard.css}" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link th:href="@{/assets/css/demo.css}" rel="stylesheet"/>
+
+    <!--  Fonts and icons     -->
+    <link th:href="@{http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Muli:400,300}" rel='stylesheet' type='text/css'>
+    <link th:href="@{/assets/css/themify-icons.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+        <!--
+            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+        -->
+
+        <div th:replace="~{index::sidebar-wrapper}"></div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">司机信息</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-bell"></i>
+                                <p class="notification">5</p>
+                                <p>收件箱</p>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">新消息 1</a></li>
+                                <li><a href="#">新消息 2</a></li>
+                                <li><a href="#">新消息 3</a></li>
+                                <li><a href="#">新消息 4</a></li>
+                                <li><a href="#">更多</a></li>
+                            </ul>
+                        </li>
+                        <li th:replace="~{index::exit}"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <th>身份证号码</th>
+                                    <th>姓名</th>
+                                    <th>性别</th>
+                                    <th>年龄</th>
+                                    <th>驾驶证号码</th>
+                                    <th>国籍</th>
+                                    <th>住址</th>
+                                    <th>出生日期</th>
+                                    <th>手机</th>
+                                    <th>准驾车型</th>
+                                    <th>信誉积分</th>
+                                    <th>司机类型</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>412826199612102515</td>
+                                        <td>坤少</td>
+                                        <td>男</td>
+                                        <td>20</td>
+                                        <td>GBK2562566</td>
+                                        <td>中国</td>
+                                        <td>北京市XXX</td>
+                                        <td>1997-02-05</td>
+                                        <td>13598465784</td>
+                                        <td>B类</td>
+                                        <td>95</td>
+                                        <td>私人</td>
+                                        <td>可用</td>
+                                        <td><a class="btn">冻结</a><a class="btn">复用</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div align="center">
+                                    <ul class="pagination">
+                                        <li><a href="#">&laquo;</a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">&raquo;</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <footer th:replace="~{index::footer}"></footer>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<!--   Core JS Files   -->
+<script th:src="@{/assets/js/jquery-1.10.2.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script th:src="@{/assets/js/bootstrap-checkbox-radio.js}"></script>
+
+<!--  Charts Plugin -->
+<script th:src="@{/assets/js/chartist.min.js}"></script>
+
+<!--  Notifications Plugin    -->
+<script th:src="@{/assets/js/bootstrap-notify.js}"></script>
+
+
+
+
+</html>
+

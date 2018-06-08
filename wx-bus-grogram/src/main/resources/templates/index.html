@@ -1,0 +1,251 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" th:href="@{/assets/img/apple-icon.png}">
+    <link rel="icon" type="image/png" sizes="96x96" th:href="@{/assets/img/favicon.png}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Paper Dashboard by Creative Tim</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- Bootstrap core CSS     -->
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- Animation library for notifications   -->
+    <link th:href="@{/assets/css/animate.min.css}" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link th:href="@{/assets/css/paper-dashboard.css}" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link th:href="@{/assets/css/demo.css}" rel="stylesheet"/>
+
+    <!--  Fonts and icons     -->
+    <link th:href="@{http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Muli:400,300}" rel='stylesheet' type='text/css'>
+
+    <link th:href="@{/assets/css/themify-icons.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+        <!--
+            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+        -->
+
+        <div class="sidebar-wrapper" th:fragment="sidebar-wrapper">
+            <div class="logo">
+                <a th:href="@{/web/index}" class="simple-text">
+                    首页
+                </a>
+            </div>
+
+            <div class="nav" id="accordion">
+                <!--汽车管理-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">汽车管理</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/bus}"><strong>汽车信息</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/toaddbus}"><strong>添加汽车</strong></a>
+                        </div>
+                    </div>
+
+                </div>
+                <!--线路管理-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">线路管理</a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/site}"><strong>站点信息</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/addsite}"><strong>添加站点</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/line}"><strong>线路信息</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/addline}"><strong>添加线路</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/examline}"><strong>审核线路</strong></a>
+                        </div>
+                    </div>
+
+                </div>
+                <!--人员管理-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">人员管理</a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/driver}"><strong>司机信息</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/staff}"><strong>职员信息</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/addriver}"><strong>添加司机</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/addstaff}"><strong>添加职员</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/examdriver}"><strong>司机审核</strong></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--招募管理-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">招募管理</a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/recruit}"><strong>招募信息</strong></a>
+                        </div>
+                        <div class="panel-body">
+                            <a class="" th:href="@{/web/refund}"><strong>退款处理</strong></a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand">首页板块</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-bell"></i>
+                                <p class="notification">5</p>
+                                <p>收件箱</p>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">新消息 1</a></li>
+                                <li><a href="#">新消息 2</a></li>
+                                <li><a href="#">新消息 3</a></li>
+                                <li><a href="#">新消息 4</a></li>
+                                <li><a href="#">更多</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" th:fragment="exit">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-settings"></i>
+                                <p>设置</p>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">个人资料</a></li>
+                                <li><a th:href="@{/web/loginout}">退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer" th:fragment="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+
+                        <li>
+                            <a href="#">
+                                关于我们
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                联系我们
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                我要投诉
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    , made with <i class="fa fa-heart heart"></i> by <a href="#">巴士团</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script th:src="@{/assets/js/jquery-1.10.2.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script th:src="@{/assets/js/bootstrap-checkbox-radio.js}"></script>
+
+<!--  Charts Plugin -->
+<script th:src="@{/assets/js/chartist.min.js}"></script>
+
+<!--  Notifications Plugin    -->
+<script th:src="@{/assets/js/bootstrap-notify.js}"></script>
+
+
+
+
+</html>
+

@@ -1,0 +1,186 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <!--<link rel="apple-touch-icon" sizes="76x76" th:href="@{/assets/img/apple-icon.png}">-->
+    <!--<link rel="icon" type="image/png" sizes="96x96" th:href="@{/assets/img/favicon.png}">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Paper Dashboard by Creative Tim</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- Bootstrap core CSS     -->
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- Animation library for notifications   -->
+    <link th:href="@{/assets/css/animate.min.css}" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link th:href="@{/assets/css/paper-dashboard.css}" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link th:href="@{/assets/css/demo.css}" rel="stylesheet"/>
+
+    <!--  Fonts and icons     -->
+    <link th:href="@{http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Muli:400,300}" rel='stylesheet' type='text/css'>
+    <link th:href="@{/assets/css/themify-icons.css}" rel="stylesheet">
+    <!--<script type="text/javascript" th:src="@{/assets/js/mybusiness.js}"></script>-->
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+        <!--
+            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+        -->
+
+        <div th:replace="~{index::sidebar-wrapper}"></div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">审核线路</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-bell"></i>
+                                <p class="notification">5</p>
+                                <p>收件箱</p>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">新消息 1</a></li>
+                                <li><a href="#">新消息 2</a></li>
+                                <li><a href="#">新消息 3</a></li>
+                                <li><a href="#">新消息 4</a></li>
+                                <li><a href="#">更多</a></li>
+                            </ul>
+                        </li>
+                        <li th:replace="~{index::exit}"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <!--表格导航栏-->
+
+                            <nav class="navbar navbar-inverse " role="navigation">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <a class="navbar-brand" href="#">审核线路</a>
+                                    </div>
+                                    <div>
+                                        <ul class="nav navbar-nav">
+                                            <li class="active flag_0"><a href="#">待审核</a></li>
+                                            <li class="flag_1"><a href="#">已通过</a></li>
+                                            <li class="flag_2"><a href="#">未通过</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <!--表格导航栏-->
+                            <input type="hidden" value="0">
+                            <div class="content table-responsive table-full-width">
+
+                                <table class="table table-striped">
+                                    <thead>
+                                    <th>线路编号</th>
+                                    <th>创建人</th>
+                                    <th>创建时间</th>
+                                    <th>起点站</th>
+                                    <th>终点站</th>
+                                    <th>出发时间</th>
+                                    <th>预计到达</th>
+                                    <th>运行周期</th>
+                                    <th>当前状态</th>
+                                    <th>审核操作</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="route:${routeList}">
+                                        <td th:text="${route.routeId}"></td>
+                                        <td th:text="${route.creatUser}"></td>
+                                        <td th:text="${#dates.format(route.creatTime,'yyyy-MM-dd')}"></td>
+                                        <td th:text="${route.startSite}"></td>
+                                        <td th:text="${route.endSite}"></td>
+                                        <td th:text="${#dates.format(route.startTime,'HH:mm:ss')}"></td>
+                                        <td th:text="${#dates.format(route.endTime,'HH:mm:ss')}"></td>
+                                        <td th:text="${route.runTime}"></td>
+                                        <td th:if="${route.routeStatus==0}">待审核</td>
+                                        <td th:if="${route.routeStatus==1}">审核通过</td>
+                                        <td><a class="btn exam-p" th:data-routeId="${route.routeId}">通过</a><a class="btn exam-n" th:data-routeId="${route.routeId}">不通过</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!--翻页-->
+                                <div align="center">
+                                    <ul class="pagination">
+                                        <li><a th:href="@{'/web/examline/page=1'}">首页</a></li>
+                                        <li><a th:href="@{'/web/examline/page='+${prePage}}">上一页</a></li>
+                                        <li><a th:href="@{'/web/examline/page='+${nextPage}}">下一页</a></li>
+                                        <li><a th:href="@{'/web/examline/page='+${totalPage}}">尾页</a></li>
+                                        <!--<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>-->
+                                        <!--<li><a href="#">第几页/共几页</a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <footer th:replace="~{index::footer}"></footer>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<!--   Core JS Files   -->
+<script th:src="@{/assets/js/jquery-1.10.2.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/buiness/examline.js}" type="text/javascript"></script>
+
+<!--ajax for getting  data-->
+
+
+<script th:src="@{/assets/js/bootstrap.min.js}" type="text/javascript"></script>
+<!--  Checkbox, Radio & Switch Plugins -->
+<script th:src="@{/assets/js/bootstrap-checkbox-radio.js}"></script>
+
+<!--  Charts Plugin -->
+<script th:src="@{/assets/js/chartist.min.js}"></script>
+
+<!--  Notifications Plugin    -->
+<script th:src="@{/assets/js/bootstrap-notify.js}"></script>
+
+
+<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+<script th:src="@{/assets/js/paper-dashboard.js}"></script>
+
+
+</html>
