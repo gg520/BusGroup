@@ -49,7 +49,7 @@ public class WebSearchControllerTest{
         map.put("startNum",0);
         map.put("num",1);
         String body=JsonUtil.stringify(map);
-        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.get("/web/examline/toWaitCheck").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
+        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/examline/toWaitCheck").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         System.out.println(result.getResponse().toString());
@@ -81,7 +81,7 @@ public class WebSearchControllerTest{
         map.put("startNum",0);
         map.put("num",1);
         String body=JsonUtil.stringify(map);
-        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.get("/web/examline/toNotPass").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
+        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/examline/toNotPass").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         System.out.println(result.getResponse().toString());
