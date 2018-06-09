@@ -183,8 +183,30 @@ public class RouteServieImpl implements RouteService {
         return routeMapper.selectByExample(routeExample);
     }
 
-
-
-
+    @Override
+    /**
+     *@type method
+     *@parameter  [startNum, num, time]
+     *@back  java.util.List<com.wxbus.daomain.Route>
+     *@author  如花
+     *@creattime 2018/6/8
+     *@describe 查找全部线路
+     */
+    public List<Route> findAllRoute(Integer startNum, Integer num, Integer time) {
+        PageHelper.startPage(startNum, num);
+        RouteExample routeExample=new RouteExample();
+        if(time!=null&&time!=0){
+            routeExample.clear();
+            if(time==1){
+                //上午
+                routeExample.or().andStartTimeLessThan("12:00");
+            }else if (time==2){
+                //下午
+                routeExample.or().andStartTimeGreaterThan("12:00");
+            }
+        }
+        routeExample.setOrderByClause("recruit_time asc");
+        return routeMapper.selectByExample(routeExample);
+    }
 }
 

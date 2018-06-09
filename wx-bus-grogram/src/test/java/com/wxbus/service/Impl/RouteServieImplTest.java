@@ -44,4 +44,14 @@ public class RouteServieImplTest extends WxBusGrogramApplicationTests{
             System.out.println(gson.toJson(routeList.get(i)));
 
     }
+    @Test
+    public void finAllRoute() throws Exception{
+        Gson gson=new Gson();
+
+        List<Route> routeList=routeService.findAllRoute(0,20,0);
+
+        for (int i=0;i<routeList.size();i++)
+            System.out.println(gson.toJson(routeList.get(i)));
+
+    }
 }

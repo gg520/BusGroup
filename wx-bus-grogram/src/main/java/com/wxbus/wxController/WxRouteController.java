@@ -1,10 +1,13 @@
 package com.wxbus.wxController;
 
+import com.wxbus.daomain.NewRoute;
 import com.wxbus.daomain.Route;
 import com.wxbus.service.HeadersName;
+import com.wxbus.service.Passenger_RouteServise;
 import com.wxbus.service.RouteService;
 import com.wxbus.service.UserTokenManager;
 import com.wxbus.util.JacksonUtil;
+import com.wxbus.util.JsonUtil;
 import com.wxbus.util.ResponseUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * 实现线路的controller
@@ -27,6 +29,8 @@ import java.util.List;
 public class WxRouteController {
     @Autowired
     private RouteService routeService;
+    @Autowired
+    private Passenger_RouteServise passenger_routeServise;
 
     private final Log logger= LogFactory.getLog(WxRouteController.class.getName());
 
@@ -83,7 +87,8 @@ public class WxRouteController {
      *@describe 获取线路详细信息
      */
     @RequestMapping(value="/routeInfo",method = {RequestMethod.POST})
-    public Object routeInfo(@RequestBody  Integer routeId){
+    public Object routeInfo(@RequestBody  String body){
+        Integer routeId =JacksonUtil.parseInteger(body,"routeId");
         logger.info("获取线路的详细信息:"+routeId);
         if(routeId==null){
             return ResponseUtil.fail();
@@ -91,8 +96,15 @@ public class WxRouteController {
         }
         else{
             Route route=routeService.findRouteById(routeId);
+            NewRoute newRoute =new NewRoute(route);
 
-            return ResponseUtil.ok(route);
+            Integer passengerCount=passenger_routeServise.findPassengerCountByRouteId(routeId);
+            newRoute.setPassengerCount(passengerCount);
+
+//            String result=JsonUtil.stringify(route).substring(0,JsonUtil.stringify(route).length()-1)+","+"\"passengerCount\":"+passengerCount+"}";*/
+
+
+            return ResponseUtil.ok(newRoute);
 
 
         }
@@ -108,6 +120,7 @@ public class WxRouteController {
      */
     @RequestMapping(value = "/routePlant",method = {RequestMethod.POST})
     public Object routePlant(@RequestBody String body){
+        Integer passengerCount;
 
         logger.info("招募路线查询：" +body);
         Integer startNum= JacksonUtil.parseInteger(body,"startNum");
@@ -118,11 +131,20 @@ public class WxRouteController {
         }
         Integer time=JacksonUtil.parseInteger(body,"time");
         List<Route> routeList = routeService.findRouteByStatus(routeStatus,startNum,num,time);
+        List<NewRoute> newRouteList=new ArrayList<NewRoute>();
+        for(int i=0;i<routeList.size();i++){
+            NewRoute newRoute=new NewRoute(routeList.get(i));
+            passengerCount=passenger_routeServise.findPassengerCountByRouteId(routeList.get(i).getRouteId());
+            newRoute.setPassengerCount(passengerCount);
+            newRouteList.add(newRoute);
+
+
+        }
 
         //将List 里面的数据转换成map
 
 
-        return ResponseUtil.ok(routeList);
+        return ResponseUtil.ok(newRouteList);
     }
 
     /**
@@ -135,6 +157,7 @@ public class WxRouteController {
      */
     @RequestMapping(value = "/routeRun",method = {RequestMethod.POST})
     public Object routeRun(@RequestBody String body){
+        Integer passengerCount;
 
         logger.info("运行路线查询：" +body);
         Integer startNum= JacksonUtil.parseInteger(body,"startNum");
@@ -145,6 +168,45 @@ public class WxRouteController {
             return ResponseUtil.fail();
         }
         List<Route> routeList = routeService.findRouteByStatus(routeStatus,startNum,num,time);
-        return ResponseUtil.ok(routeList);
+        List<NewRoute> newRouteList=new ArrayList<NewRoute>();
+        for(int i=0;i<routeList.size();i++){
+            NewRoute newRoute=new NewRoute(routeList.get(i));
+            passengerCount=passenger_routeServise.findPassengerCountByRouteId(routeList.get(i).getRouteId());
+            newRoute.setPassengerCount(passengerCount);
+            newRouteList.add(newRoute);
+
+
+        }
+        return ResponseUtil.ok(newRouteList);
+    }
+    @RequestMapping(value = "/queryAllReoute",method = {RequestMethod.POST})
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/8
+     *@describe 分页返回全部路线
+     */
+    public Object queryAllReoute(@RequestBody String body){
+        Integer passengerCount;
+
+        logger.info("全部路线查询：" +body);
+        Integer startNum= JacksonUtil.parseInteger(body,"startNum");
+        Integer num=JacksonUtil.parseInteger(body,"num");
+        Integer time=JacksonUtil.parseInteger(body,"time");
+        if(startNum==null||num==null){
+            return ResponseUtil.fail();
+        }
+        List<Route> routeList = routeService.findAllRoute(startNum,num,time);
+        List<NewRoute> newRouteList=new ArrayList<NewRoute>();
+        for(int i=0;i<routeList.size();i++) {
+            NewRoute newRoute = new NewRoute(routeList.get(i));
+            passengerCount = passenger_routeServise.findPassengerCountByRouteId(routeList.get(i).getRouteId());
+            newRoute.setPassengerCount(passengerCount);
+            newRouteList.add(newRoute);
+        }
+
+        return ResponseUtil.ok(newRouteList);
     }
 }
