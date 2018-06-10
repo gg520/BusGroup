@@ -2,14 +2,12 @@ package com.wxbus.service.Impl;
 
 import com.wxbus.dao.PassengerRouteMapper;
 import com.wxbus.daomain.PassengerRouteExample;
-import com.wxbus.service.Passenger_RouteServise;
+import com.wxbus.service.PassengerRouteService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.security.PublicKey;
 
 /**
  * @author: Demon
@@ -18,7 +16,7 @@ import java.security.PublicKey;
  * Description:
  */
 @Service
-public class Passenger_RouteServiseImpl implements Passenger_RouteServise {
+public class PassengerRouteServiceImpl implements PassengerRouteService {
     @Resource
     private PassengerRouteMapper passengerRouteMapper;
     private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());

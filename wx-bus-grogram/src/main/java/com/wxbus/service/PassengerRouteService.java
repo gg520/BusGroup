@@ -6,7 +6,7 @@ package com.wxbus.service;
  * @time: 19:50
  * Description:
  */
-public interface Passenger_RouteServise {
+public interface PassengerRouteService {
     /**
      *@type interface
      *@parameter  [routeId]

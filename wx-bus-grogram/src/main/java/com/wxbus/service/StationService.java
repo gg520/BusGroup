@@ -23,5 +23,14 @@ public interface StationService {
      *@describe 通过站点状态查找所有站点
      */
     List<Station> findAllStation();
+    /**
+     *@type interface
+     *@parameter  [stationId]
+     *@back  com.wxbus.daomain.Station
+     *@author  如花
+     *@creattime 2018/6/10
+     *@describe 通过id查站点
+     */
+    Station findStationById(Integer stationId);
 
 }

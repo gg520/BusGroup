@@ -1,7 +1,9 @@
 package com.wxbus.webController;
 
 
+import com.wxbus.daomain.Bus;
 import com.wxbus.daomain.Route;
+import com.wxbus.service.BusService;
 import com.wxbus.service.RouteService;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.ResponseUtil;
@@ -24,6 +26,8 @@ public class WebSearchController {
     private final Log logger = LogFactory.getLog(com.wxbus.wxController.WxLoginController.class);
     @Autowired
     private RouteService routeService;
+    @Autowired
+    private BusService busService;
 
     /**
      *@type method
@@ -112,5 +116,68 @@ public class WebSearchController {
         }
         return  ResponseUtil.ok(routeList);
     }
+
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/10
+     *@describe 停用汽车查询
+     */
+    @RequestMapping(value = "/findNotUseBus" ,method = RequestMethod.POST)
+    @ResponseBody
+    public Object findNotUseBus(@RequestBody String body){
+        logger.info("停用汽车查询");
+        Integer startNum= JacksonUtil.parseInteger(body,"startNum");
+        Integer num= JacksonUtil.parseInteger(body,"num");
+        if(startNum==null||num==null){
+            return ResponseUtil.fail();
+        }
+        List<Bus> busList= busService.findBusByStatus(1,startNum,num);
+        return  ResponseUtil.ok(busList);
+    }
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/10
+     *@describe 可用汽车查询
+     */
+    @RequestMapping(value = "/findCanUseBus" ,method = RequestMethod.POST)
+    @ResponseBody
+    public Object findCanUseBus(@RequestBody String body){
+        logger.info("可用汽车查询");
+        Integer startNum= JacksonUtil.parseInteger(body,"startNum");
+        Integer num= JacksonUtil.parseInteger(body,"num");
+        if(startNum==null||num==null){
+            return ResponseUtil.fail();
+        }
+        List<Bus> busList= busService.findBusByStatus(0,startNum,num);
+        return  ResponseUtil.ok(busList);
+    }
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/10
+     *@describe 占用汽车查询
+     */
+    @RequestMapping(value = "/findUsingBus" ,method = RequestMethod.POST)
+    @ResponseBody
+    public Object findUsingBus(@RequestBody String body){
+        logger.info("占用汽车查询");
+        Integer startNum= JacksonUtil.parseInteger(body,"startNum");
+        Integer num= JacksonUtil.parseInteger(body,"num");
+        if(startNum==null||num==null){
+            return ResponseUtil.fail();
+        }
+        List<Bus> busList= busService.findBusByStatus(2,startNum,num);
+        return  ResponseUtil.ok(busList);
+    }
+
+
 
 }

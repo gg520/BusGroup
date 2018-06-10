@@ -28,7 +28,7 @@ import java.util.List;
  * \
  */
 @Service
-public class RouteServieImpl implements RouteService {
+public class RouteServiceImpl implements RouteService {
     @Resource
     private RouteMapper routeMapper;
     @Resource
@@ -140,22 +140,6 @@ public class RouteServieImpl implements RouteService {
     public Route findRouteById(Integer routeId) {
 
         return routeMapper.selectByPrimaryKey(routeId);
-    }
-
-    @Override
-    /**
-     *@type method
-     *@parameter  [routeId]
-     *@back  com.wxbus.daomain.DriverBusRoute
-     *@author  如花
-     *@creattime 2018/5/28
-     *@describe 通过线路的id查询司机汽车路线关联表
-     */
-    public DriverBusRoute findDriverBusRouteById(Integer routeId) {
-        DriverBusRouteExample driverBusRouteExample=new DriverBusRouteExample();
-        driverBusRouteExample.or().andRouteIdEqualTo(routeId);
-       return null;
-
     }
 
     @Override

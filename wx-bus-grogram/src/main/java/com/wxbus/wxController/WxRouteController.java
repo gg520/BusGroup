@@ -2,12 +2,9 @@ package com.wxbus.wxController;
 
 import com.wxbus.daomain.NewRoute;
 import com.wxbus.daomain.Route;
-import com.wxbus.service.HeadersName;
-import com.wxbus.service.Passenger_RouteServise;
-import com.wxbus.service.RouteService;
-import com.wxbus.service.UserTokenManager;
+import com.wxbus.daomain.Station;
+import com.wxbus.service.*;
 import com.wxbus.util.JacksonUtil;
-import com.wxbus.util.JsonUtil;
 import com.wxbus.util.ResponseUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,9 +25,18 @@ import java.util.*;
 @RequestMapping(value = "/weixin/route")
 public class WxRouteController {
     @Autowired
+    private  StationService stationService;
+    @Autowired
+    private DriverBusRouteService driverBusRouteService;
+    @Autowired
     private RouteService routeService;
     @Autowired
-    private Passenger_RouteServise passenger_routeServise;
+    private PassengerRouteService passenger_routeServise;
+    @Autowired
+    private DriverService driverService;
+    @Autowired
+    private BusService busService;
+
 
     private final Log logger= LogFactory.getLog(WxRouteController.class.getName());
 
@@ -84,30 +90,66 @@ public class WxRouteController {
      *@back  java.lang.Object
      *@author  如花
      *@creattime 2018/5/28
-     *@describe 获取线路详细信息
+     *@describe 根据线路id获取线路详细信息包括车辆司机等
      */
     @RequestMapping(value="/routeInfo",method = {RequestMethod.POST})
     public Object routeInfo(@RequestBody  String body){
         Integer routeId =JacksonUtil.parseInteger(body,"routeId");
         logger.info("获取线路的详细信息:"+routeId);
-        if(routeId==null){
+        if(routeId==null||"".equals(routeId)){
             return ResponseUtil.fail();
 
         }
         else{
+            String driverId=driverBusRouteService.findInfoByRouteId(routeId).getDriverId();
+            String busId=driverBusRouteService.findInfoByRouteId(routeId).getBusId();
             Route route=routeService.findRouteById(routeId);
-            NewRoute newRoute =new NewRoute(route);
+            String driverName=driverService.findDriverById(driverId).getDriverName();
+            String driverMobile=driverService.findDriverById(driverId).getDriverMobile();
+            Integer busNum=busService.findBusById(busId).getBusNum();
+            String stationId=route.getStationId();
+            Map<Object,Object> map1=new HashMap<Object,Object>();
+            Map<Object,Object> map2=new HashMap<Object,Object>();
+            for(int i=0;i<stationId.length();i++){
+                Integer id= Integer.parseInt(stationId.substring(i,i+1));
+                Station station=stationService.findStationById(id);
+                map2.put("stationId",station.getStationId());
+                map2.put("stationName",station.getStationName());
 
+            }
+
+
+            List mapList = new ArrayList<>();
+            map1.put("routeId",route.getRouteId());
+            map1.put("startSite",route.getStartSite());
+            map1.put("endSite",route.getEndSite());
+            map1.put("startTime",route.getStartTime());
+            map1.put("endTime",route.getEndTime());
+            map1.put("price",route.getPrice());
+            map1.put("recruitTime",route.getRecruitTime());
+
+            map1.put("busId",busId);
+            map1.put("busNum",busNum);
+            map1.put("driverName",driverName);
+            map1.put("driverMobile",driverMobile);
+            mapList.add(map2);
+            map1.put("station",mapList);
+
+            /*NewRoute newRoute =new NewRoute(route);
             Integer passengerCount=passenger_routeServise.findPassengerCountByRouteId(routeId);
-            newRoute.setPassengerCount(passengerCount);
+            newRoute.setPassengerCount(passengerCount);*/
+            return ResponseUtil.ok(map1);
 
-//            String result=JsonUtil.stringify(route).substring(0,JsonUtil.stringify(route).length()-1)+","+"\"passengerCount\":"+passengerCount+"}";*/
 
 
-            return ResponseUtil.ok(newRoute);
+
+
 
 
         }
+
+
+
 
     }
 

@@ -28,11 +28,11 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
     @Resource
     private PassengerMapper passengerMapper;
-    @Autowired
+    @Resource
     private DriverMapper driverMapper;
 
     private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
-
+    @Override
     public UserInfo getInfo(Integer userId) {
         Passenger passenger= passengerMapper.selectByPrimaryKey(userId);
         Assert.state(passenger!=null,"用户不存在");
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
         log.info("获取用户的信息");
         return userInfo;
     }
-
+    @Override
     public Passenger findById(Integer userId) {
 
         log.info("查找用户，根据id");
@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
      * @param openId
      * @return
      */
+    @Override
     public Passenger queryByOid(String openId) {
         PassengerExample example=new PassengerExample();
         example.or().andWeixinOpenidEqualTo(openId).andPassengerStatusEqualTo(0);//可用的
@@ -69,6 +70,7 @@ public class UserServiceImpl implements UserService {
      * 添加用户
      * @param user
      */
+    @Override
     public void add(Passenger user) {
         log.info("添加用户");
         passengerMapper.insertSelective(user);
@@ -78,6 +80,7 @@ public class UserServiceImpl implements UserService {
      * 更新用户信息
      * @param user
      */
+    @Override
     public void update(Passenger user) {
         log.info("更新用户");
         passengerMapper.updateByPrimaryKeySelective(user);
@@ -94,7 +97,7 @@ public class UserServiceImpl implements UserService {
     public String findUserByMoPaw(String username,String password) {
         //查询司机账号信息
         DriverExample driverExample=new DriverExample();
-        driverExample.or().andDriveIdEqualTo(username).andDriverPasswordEqualTo(password);
+        driverExample.or().andDriverIdEqualTo(username).andDriverPasswordEqualTo(password);
         List<Driver> list=driverMapper.selectByExample(driverExample);
 
         Map map=new HashMap();
@@ -130,7 +133,7 @@ public class UserServiceImpl implements UserService {
             //司机设置信息
             userInfo.setAvatarUrl(list.get(0).getDriverAvater());
             userInfo.setCity(list.get(0).getDriverAddress());
-            userInfo.setGender((byte) (list.get(0).getDeiverGender().equals("男")?'1':'2'));
+            userInfo.setGender((byte) (list.get(0).getDriverGender().equals("男")?'1':'2'));
             userInfo.setNickName(list.get(0).getDriverName());
 
 

@@ -6,7 +6,7 @@ import com.wxbus.daomain.NewRoute;
 import com.wxbus.daomain.NewStation;
 import com.wxbus.daomain.Route;
 import com.wxbus.daomain.Station;
-import com.wxbus.service.Passenger_RouteServise;
+import com.wxbus.service.PassengerRouteService;
 import com.wxbus.service.RouteService;
 import com.wxbus.service.StationService;
 import com.wxbus.util.JacksonUtil;
@@ -27,7 +27,7 @@ import java.util.List;
 @RequestMapping("/weixin/search")
 public class WxSearchController {
     @Autowired
-    private Passenger_RouteServise passenger_routeServise;
+    private PassengerRouteService passenger_routeServise;
 
 
     @Autowired

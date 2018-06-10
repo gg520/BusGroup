@@ -632,6 +632,76 @@ public class PassengerExample {
             return (Criteria) this;
         }
 
+        public Criteria andPassengerAddressIsNull() {
+            addCriterion("passenger_address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressIsNotNull() {
+            addCriterion("passenger_address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressEqualTo(String value) {
+            addCriterion("passenger_address =", value, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressNotEqualTo(String value) {
+            addCriterion("passenger_address <>", value, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressGreaterThan(String value) {
+            addCriterion("passenger_address >", value, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("passenger_address >=", value, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressLessThan(String value) {
+            addCriterion("passenger_address <", value, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressLessThanOrEqualTo(String value) {
+            addCriterion("passenger_address <=", value, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressLike(String value) {
+            addCriterion("passenger_address like", value, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressNotLike(String value) {
+            addCriterion("passenger_address not like", value, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressIn(List<String> values) {
+            addCriterion("passenger_address in", values, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressNotIn(List<String> values) {
+            addCriterion("passenger_address not in", values, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressBetween(String value1, String value2) {
+            addCriterion("passenger_address between", value1, value2, "passengerAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerAddressNotBetween(String value1, String value2) {
+            addCriterion("passenger_address not between", value1, value2, "passengerAddress");
+            return (Criteria) this;
+        }
+
         public Criteria andPassengerBirthdayIsNull() {
             addCriterion("passenger_birthday is null");
             return (Criteria) this;
