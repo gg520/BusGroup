@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * Created by g1154 on 2018/5/12.
  */
 @Configuration
-public class WebInterceptor extends WebMvcConfigurerAdapter {
+public class WebInterceptorConfig extends WebMvcConfigurerAdapter {
 
     /**
      * 配置web的拦截器
@@ -20,7 +20,7 @@ public class WebInterceptor extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        registry.addInterceptor(new WebLoginHanderIntercept()).addPathPatterns("/**").excludePathPatterns("/weixin/**","/web/login","/web/loginout","/web/view/**","/web/index");
+        registry.addInterceptor(new WebLoginHanderIntercept()).addPathPatterns("/web/**").excludePathPatterns("/web/login/**","/web/view/**","/web/index");
 
     }
 }

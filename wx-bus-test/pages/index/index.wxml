@@ -1,7 +1,7 @@
 <view class="container">
 <!-- 首页搜索，点击跳转搜索 -->
   <view class="search">
-    <navigator url="/pages/search/search" class="input">
+    <navigator url="/pages/search/search/search" class="input">
       <image class="icon"></image>
       <text class="txt">线路搜索</text>
     </navigator>

@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.98",
+	"libVersion": "1.9.94",
 	"appid": "wxcafa41f5d5ff69b0",
 	"projectname": "wx-bus-test",
 	"isGameTourist": false,
@@ -99,6 +99,12 @@
 					"id": -1,
 					"name": "个人资料",
 					"pathName": "pages/ucenter/myInfo/myInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "站点搜索",
+					"pathName": "pages/search/searchStation/searchStation",
 					"query": ""
 				}
 			]

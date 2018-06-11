@@ -1,56 +1,77 @@
-<!--pages/auth/register/register.wxml-->
-<view class="container">
-    <view class="form-box">
-
-<!--起始地点  -->
-    	<view class="form-item">
-    		<view class="site">测试</view>
-    	</view>
-
-<!--到达地点  -->
-    	<view class="form-item">
-      <!-- <text class="site">测试</text> -->
-    		<!-- <view >测试</view> -->
-        <text style='text-align:right;position: absolute;' >测试</text>
-    	</view>
-
-      <view class="form-item">
-    		<input class="site" value="{{period}}" bindinput="bindPeriodInput" placeholder="招募周期"/>
-    		<image class="clear" id="clear-period" wx:if="{{ period.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
-    	</view>
-      
-      <!-- <view bindtap="choiceTime" data-item="startTime" class="chioce-item chioce-item-last"      hover-class="click-once-opaque">{{starttimename}}
-        <image class="icon-chioce" src="{{startChioceIcon}}"></image>
-      </view> -->
-      <!-- 启程时间 -->
-      <view class="chioce-item chioce-item-last">
-        <picker mode="time" value="{{starttimename}}" start="00:00" end="23:59" bindchange="bindStartTimeChange">
-        <view >{{starttimename}}</view>
-        </picker>
-        <image class="icon-chioce" src="{{startChioceIcon}}"></image>
-      </view>
-      <!-- 返程时间  -->
-      <view class="chioce-item chioce-item-last">
-        <picker mode="time" value="{{endtimename}}" start="00:00" end="23:59" bindchange="bindEndTimeChange">
-        <view >{{endtimename}}</view>
-        </picker>
-        <image class="icon-chioce" src="{{startChioceIcon}}"></image>
-      </view>
-      
-
-    <view class="form-item">
-      <input class="username" value="{{username}}" bindinput="bindUsernameInput" placeholder="您的姓名" />
-    	<image wx:if="{{ username.length > 0 }}" id="clear-username" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+<!-- <view class="accident">
+  <view class="ac-item">
+    <label>事故地址</label>
+    <view class="lh">
+      <text bindtap="openMap">{{address}}</text>
     </view>
-
-    <view class="form-item">
-      <input class="mobile" value="{{mobile}}" bindinput="bindMobileInput" placeholder="您的电话" />
-    	<image wx:if="{{ mobile.length > 0 }}" id="clear-mobile" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+  </view>
+  <view class="ac-item">
+    <label>事故时间</label>
+    <view class="lh">
+      <text>{{time}}</text>
     </view>
-		
+  </view>
+</view> -->
+<view class="upload-img">
+  <view class="title">头像</view>
+  <view class="upload">
+    <view class="upload-item">
+      <image bindtap="up" src="{{userInfo.avatarUrl}}"></image>
+      <!-- <text>前方部位</text> -->
+    </view>
     
-
-    	<button type="default" class="register-btn" bindtap="start">确定</button>
-
-    </view>
+    
+    <!-- <view class="upload-item">
+      <image src="http://jtb-1253661417.cossh.myqcloud.com/images/%E4%BA%8B%E6%95%85%E5%A4%84%E7%90%86/icons/jtb_icn_add_pic%402x.png"></image>
+    </view> -->
+  </view>
 </view>
+<view class="accident-type">
+  <view class="ac-type-item">
+    <label>昵称</label>
+    <input type="text" placeholder="您的昵称" value='{{userInfo.nickName}}'/>
+    <view class="important">*</view>
+  </view>
+  <view class="ac-type-item">
+    <label>电话</label>
+    <input type="text" placeholder="您的电话号码" value='{{userInfo.mobile}}' bindinput='mobileChange'/>
+    <view class="important">
+      <icon wx:if="{{userInfo.mobile.length > 0}}" type="{{mobileIcon?'success':'warn'}}" size='10'></icon>*
+    </view>
+  </view>
+  <view class="ac-type-item">
+    <label>性别</label>
+    <!-- <input type="text" placeholder="你的性别" value="{{userInfo.gender==1?'男':'女'}}"/> -->
+    <picker mode="selector" range ="{{gender}}" value="{{userInfo.gender==1?'男':'女'}}" bindchange='genderChange'>
+      
+      {{userInfo.gender==1?'男':'女'}}
+    </picker>
+
+  </view>
+  
+  <view class="ac-type-item">
+    <label>出生日期</label>
+    <picker class="{cc}}" mode="date" value="{{userInfo.birthday}}" start="1949-01-01" end="2099-12-31" bindchange="datePickerBindchange">
+      {{userInfo.birthday.length>0? userInfo.birthday:'未设置出生日期'}}
+    </picker>
+  </view>
+  <view class="ac-type-item">
+    <label>家庭地址</label>
+    <input type="text" placeholder="家庭详细地址" placeholder-style="font-size: 28rpx" value='{{userInfo.address}}' />
+  </view>
+</view>
+<view class="person-info">
+  <view class="info-title">实名信息</view>
+  <view class="info-item">
+    <label>姓名</label>
+    <input type="text" value="{{userInfo.name}}" placeholder='您的真实姓名'/>
+    <view class="important">*</view>
+  </view>
+  <view class="info-item">
+    <label>身份证号码</label>
+    <input type="text" value="{{userInfo.citizenship}}" placeholder='您的身份证号码'/>
+    <view class="important">*</view>
+  </view>
+  
+</view>
+<button type="default"  bindtap="changeInfo">修改</button>

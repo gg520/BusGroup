@@ -7,7 +7,8 @@ module.exports = {
   AuthReset: WxApiRoot + 'auth/reset', //重置密码
   AuthRegister: WxApiRoot + 'auth/register', //注册账号
   AuthLoginByAccount: WxApiRoot + 'auth/login', //账号登录
-  UserInfo:WxApiRoot+"user/userInfo",
+
+  ChangUserInfo:WxApiRoot+"user/changeUserInfo",//修改个人，或者实名验证
 
   RouteInquiry: WxApiRoot+'route/inquiryRoute',//线路征集链接
   RouteInfo: WxApiRoot + 'route/routeInfo',//获取路线的详细信息链接
@@ -19,6 +20,7 @@ module.exports = {
   SearchRun: WxApiRoot + 'search/routeRun',  //搜索开通线路
   SearchHelper: WxApiRoot + 'search/helper',  //搜索帮助
   SearchClearHistory: WxApiRoot + 'search/clearhistory',  //搜索历史清楚
+  SearchRoute:WxApiRoot+'search/routeAll',
 
   CheckInfo:WxApiRoot+"check/info",//验证是否实名注册
   GetQRcode:WxApiRoot+"qrcode/getQRcode",//獲取二維碼，即是二維碼的下載，post

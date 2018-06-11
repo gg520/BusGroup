@@ -1,0 +1,541 @@
+page{
+  min-height: 100%;
+  background-color: #f4f4f4;
+}
+
+.container {
+  min-height: 100%;
+  background-color: #f4f4f4;
+}
+
+.search-header{
+    /* position: fixed; */
+    top: 0;
+    width: 750rpx;
+    height: 91rpx;
+    display: flex;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    padding: 0 31.25rpx;
+    font-size: 29rpx;
+    color: #333;
+}
+
+.search-header .input-box, input-box2{
+    position: relative;
+    margin-top: 16rpx;
+    float: left;
+    width: 0;
+     flex: 1; 
+    height: 59rpx;
+    line-height: 59rpx;
+    padding: 0 20rpx;
+     background: #f4f4f4; 
+}
+
+.search-header .icon{
+    position: absolute;
+    top: 14rpx;
+    left: 20rpx;
+    width: 31rpx;
+    height: 31rpx;
+}
+
+.search-header .icon_last{
+     top: 20rpx;
+    left: 20rpx; 
+    width: 50rpx;
+    height: 50rpx;
+    margin-top: 20rpx;
+}
+
+.search-header .del{
+    position: absolute;
+    top: 3rpx;
+    right: 10rpx;
+    width: 53rpx;
+    height: 53rpx;
+    z-index: 10;
+}
+
+.search-header .keywrod{
+    position: absolute;
+    top: 0;
+    left: 40rpx;
+    width: 506rpx;
+    height: 59rpx;
+    padding-left: 30rpx;
+}
+
+.search-header .right{
+    margin-top: 24rpx;
+    margin-left: 31rpx;
+    margin-right: 6rpx;
+    width: 58rpx;
+    height: 43rpx;
+    line-height: 43rpx;
+    float: right;
+}
+
+/* 搜索 */
+.search {
+  height: 88rpx;
+  width: 100%;
+  padding: 0 30rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.search .input {
+  width: 690rpx;
+  height: 56rpx;
+  background: #ededed;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search .icon {
+  background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png) center no-repeat;
+  background-size: 100%;
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.pd-70 {
+  padding: 0 1.867rem;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 32rpx;
+  justify-content: center;
+  border-bottom: 2rpx solid #cececf;
+}
+
+.btn view {
+  width: 40%;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  color: #000;
+  font-weight: 500;
+}
+
+.btn view.active {
+  color: #59A5F0;
+  border-bottom: 7rpx solid #59A5F0;
+}
+
+.chooseCity {
+  box-sizing: border-box;
+  padding-top: 0.96rem;
+  background-color: #fff;
+  border-bottom: 2rpx solid #cececf;
+  overflow: hidden;
+}
+
+.pdt-0 {
+  padding-top: 0;
+}
+
+.chooseCity .citySelect {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 2.667rem;
+  line-height: 2.667rem;
+  font-size: 42rpx;
+}
+
+.chooseCity .citySelect .hotelCity {
+  width: 100%;
+  border-bottom: 1rpx solid #F0EFF5;
+  color: #4A586A;
+}
+
+.chooseCity .citySelect .startCity {
+  width: 6.187rem;
+  border-bottom: 1rpx solid #F0EFF5;
+  color: #4A586A;
+}
+
+.chooseCity .citySelect .citySelect_img {
+  width: 2.693rem;
+  height: 2.587rem;
+  position: relative;
+  margin-top: 0.533rem;
+}
+
+.chooseCity .citySelect .citySelect_img view {
+  position: absolute;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.chooseCity .citySelect .citySelect_img view .changeCity_bg {
+  width: 2.693rem;
+  height: 2.693rem;
+}
+
+.chooseCity .citySelect .citySelect_img .samll_plane {
+  width: 1.653rem;
+  height: 1.12rem;
+  position: absolute;
+  top: 54%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+}
+
+.chooseCity .citySelect .endCity {
+  width: 6.187rem;
+  border-bottom: 1rpx solid #F0EFF5;
+  text-align: right;
+  color: #4A586A;
+}
+
+.chooseDate {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 2.4rem;
+  line-height: 2.4rem;
+}
+
+.date {
+  font-size: 30rpx;
+  margin-right: 1.067rem;
+}
+
+.title {
+  color: #888;
+  width: 100%;
+  height: 2.13rem;
+  line-height: 2.13rem;
+  padding: 0 1rem;
+  border-bottom: 2rpx solid #cececf;
+  font-size: 30rpx;
+}
+
+
+
+
+
+.text {
+  font-size: 24rpx;
+  color: #536277;
+  margin-right: 0.266667rem;
+}
+
+
+/*
+没有线路
+  */
+.no-cart .c image{
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 258rpx;
+    height: 258rpx;
+}
+
+.no-cart .c text{
+    margin: 0 auto;
+    display: block;
+    width: 258rpx;
+    height: 29rpx;
+    line-height: 29rpx;
+    text-align: center;
+    font-size: 29rpx;
+    color: #999;
+}
+
+
+/* 搜索站点显示样式 */
+
+page{
+    height: 100%;
+    min-height: 100%;
+    background: #f4f4f4;
+}
+.container{
+    background: #f4f4f4;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+}
+.service-policy{
+    width: 750rpx;
+    height: 73rpx;
+    background: #f4f4f4;
+    padding: 0 31.25rpx;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.service-policy .item{
+    background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png) 0 center no-repeat;
+    background-size: 10rpx;
+    padding-left: 15rpx;
+    display: flex;
+    align-items: center;
+    font-size: 25rpx;
+    color: #666;
+}
+
+
+.no-login{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.no-login .c{
+    width: 100%;
+    height: auto;
+    margin-top: 200rpx;
+}
+
+.no-login .c image{
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 258rpx;
+    height: 258rpx;
+}
+
+.no-login .c text{
+    margin: 0 auto;
+    display: block;
+    width: 258rpx;
+    height: 59rpx;
+    line-height: 29rpx;
+    text-align: center;
+    font-size: 50rpx;
+    color: #999;
+}
+
+.no-login button{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.no-cart{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.no-cart .c{
+    width: 100%;
+    height: auto;
+    margin-top: 200rpx;
+}
+
+.no-cart .c image{
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 258rpx;
+    height: 258rpx;
+}
+
+.no-cart .c text{
+    margin: 0 auto;
+    display: block;
+    width: 258rpx;
+    height: 29rpx;
+    line-height: 29rpx;
+    text-align: center;
+    font-size: 29rpx;
+    color: #999;
+}
+
+
+.cart-view{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    
+}
+
+.cart-view .list{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 120rpx;
+}
+
+.cart-view .group-item{
+    height: auto;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 18rpx;
+}
+
+.cart-view .item{
+    height: 164rpx;
+    width: 100%;
+    overflow: hidden;
+}
+.cart-view .item .checkbox{
+    float: left;
+    height: 34rpx;
+    width: 34rpx;
+    margin: 65rpx 18rpx 65rpx 26rpx;
+    background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-0e09baa37e.png) no-repeat;
+    background-size: 34rpx;
+}
+
+.cart-view .item .checkbox.checked{
+    background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-checked-822e54472a.png) no-repeat;
+    background-size: 34rpx;
+}
+
+.cart-view .item .cart-goods{
+    float: left;
+    height: 164rpx;
+    width: 672rpx;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+
+.cart-view .item .info{
+    float: left;
+    height:125rpx;
+    width: 503rpx;
+    margin: 19.5rpx 26rpx 19.5rpx 0;
+}
+
+.cart-view .item .t{
+    margin: 8rpx 0;
+    height: 28rpx;
+    font-size: 25rpx;
+    color: #333;
+    overflow: hidden;
+}
+
+
+.cart-view .item .name{
+    height: 28rpx;
+    max-width: 310rpx;
+    line-height: 28rpx;
+    font-size: 30rpx;
+    color: #333;
+    overflow: hidden;
+}
+
+.cart-view .item .num{
+    height: 28rpx;
+    line-height: 28rpx;
+    float: right;
+}
+
+.cart-view .item .attr{
+    margin-bottom: 17rpx;
+    height: 24rpx;
+    line-height: 24rpx;
+    font-size: 22rpx;
+    color: #666;
+    overflow: hidden;
+}
+
+.cart-view .item .b{
+    height: 28rpx;
+    line-height: 28rpx;
+    font-size: 25rpx;
+    color: #333;
+    overflow: hidden;
+}
+
+.cart-view .item .price{
+    float: left;
+}
+.data-price{
+  
+  font-size: 30rpx;
+  color: #ff0000;
+  margin-right: 1.067rem;
+
+}
+
+/* 历史记录显示 */
+
+.no-search{
+    height: auto;
+    overflow: hidden;
+    margin-top: 91rpx;
+}
+
+.search-keywords{
+    background: #fff;
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 20rpx;
+}
+
+.search-keywords .h{
+    padding: 0 31.25rpx;
+    height: 93rpx;
+    line-height: 93rpx;
+    width: 100%;
+    color: #999;
+    font-size: 29rpx;
+}
+
+.search-keywords .title-history{
+    display: block;
+    width: 120rpx;
+    float: left;
+}
+
+.search-keywords .icon{
+    margin-top: 19rpx;
+    float: right;
+    display: block;
+    margin-left: 511rpx;
+    height: 55rpx;
+    width: 55rpx;
+}
+
+.search-keywords .b{
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    padding-left: 31.25rpx;
+}
+
+.search-keywords .item{
+    display: inline-block;
+    width: auto;
+    height: 48rpx;
+    line-height: 48rpx;
+    padding:0 15rpx;
+    border: 1px solid #999;
+    margin: 0 31.25rpx 31.25rpx 0;
+    font-size: 24rpx;
+    color: #333;
+}
+
+.search-keywords .item.active{
+    color: #b4282d;
+    border: 1px solid #b4282d;
+}

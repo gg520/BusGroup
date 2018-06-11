@@ -4,6 +4,7 @@ var api=require("./config/api.js")
 var user=require("./services/user.js")
 App({
   onLaunch: function () {
+    let that = this;
     //获取权限
     wx.getSetting({
       success(res){
@@ -20,6 +21,8 @@ App({
                   var speed = res.speed
                   var accuracy = res.accuracy
                   console.log("latitude:" + latitude + ";longitude:" + longitude + ";speed:" + speed + ";accuracy:" + accuracy);
+                  that.search.startLatitude = latitude;
+                  that.search.startLongitude = longitude;
                   // wx.openLocation({
                   //   latitude: latitude,
                   //   longitude: longitude,
@@ -55,5 +58,13 @@ App({
   },
   globalData: {
     hasLogin:false
-  }
+  },
+  search: {
+    startLatitude: '',
+    startLongitude: '',
+    endLatitude: '',
+    endLongitude: '',
+    endSite: '',//到达站点
+    startSite: '我的位置',//起始位置
+  },
 })

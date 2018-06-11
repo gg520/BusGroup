@@ -71,4 +71,17 @@ public class UserInfo {
     public String getAvatarUrl() {
         return avatarUrl;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "nickName='" + nickName + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", country='" + country + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", language='" + language + '\'' +
+                ", gender=" + gender +
+                '}';
+    }
 }

@@ -492,73 +492,73 @@ public class BusExample {
             return (Criteria) this;
         }
 
-        public Criteria andCharacterIsNull() {
-            addCriterion("character is null");
+        public Criteria andCharactersIsNull() {
+            addCriterion("characters is null");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterIsNotNull() {
-            addCriterion("character is not null");
+        public Criteria andCharactersIsNotNull() {
+            addCriterion("characters is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterEqualTo(String value) {
-            addCriterion("character =", value, "character");
+        public Criteria andCharactersEqualTo(String value) {
+            addCriterion("characters =", value, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterNotEqualTo(String value) {
-            addCriterion("character <>", value, "character");
+        public Criteria andCharactersNotEqualTo(String value) {
+            addCriterion("characters <>", value, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterGreaterThan(String value) {
-            addCriterion("character >", value, "character");
+        public Criteria andCharactersGreaterThan(String value) {
+            addCriterion("characters >", value, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterGreaterThanOrEqualTo(String value) {
-            addCriterion("character >=", value, "character");
+        public Criteria andCharactersGreaterThanOrEqualTo(String value) {
+            addCriterion("characters >=", value, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterLessThan(String value) {
-            addCriterion("character <", value, "character");
+        public Criteria andCharactersLessThan(String value) {
+            addCriterion("characters <", value, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterLessThanOrEqualTo(String value) {
-            addCriterion("character <=", value, "character");
+        public Criteria andCharactersLessThanOrEqualTo(String value) {
+            addCriterion("characters <=", value, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterLike(String value) {
-            addCriterion("character like", value, "character");
+        public Criteria andCharactersLike(String value) {
+            addCriterion("characters like", value, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterNotLike(String value) {
-            addCriterion("character not like", value, "character");
+        public Criteria andCharactersNotLike(String value) {
+            addCriterion("characters not like", value, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterIn(List<String> values) {
-            addCriterion("character in", values, "character");
+        public Criteria andCharactersIn(List<String> values) {
+            addCriterion("characters in", values, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterNotIn(List<String> values) {
-            addCriterion("character not in", values, "character");
+        public Criteria andCharactersNotIn(List<String> values) {
+            addCriterion("characters not in", values, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterBetween(String value1, String value2) {
-            addCriterion("character between", value1, value2, "character");
+        public Criteria andCharactersBetween(String value1, String value2) {
+            addCriterion("characters between", value1, value2, "characters");
             return (Criteria) this;
         }
 
-        public Criteria andCharacterNotBetween(String value1, String value2) {
-            addCriterion("character not between", value1, value2, "character");
+        public Criteria andCharactersNotBetween(String value1, String value2) {
+            addCriterion("characters not between", value1, value2, "characters");
             return (Criteria) this;
         }
 

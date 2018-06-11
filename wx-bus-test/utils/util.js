@@ -107,11 +107,41 @@ function showSuccessToast(msg) {
   })
 }
 
+function saveSearchHistory(msg){
+  // wx.setStorageSync('searchHistory', ["上海","正在"]);
+  // wx.removeStorageSync('searchHistory');
+  var searchHistory =wx.getStorageSync('searchHistory');
+  console.log(searchHistory)
+  console.log(searchHistory.length)
+  if(searchHistory.length<=0){
+    console.log("空")
+    wx.setStorageSync('searchHistory', [msg]);
+  }else{
+    console.log("有值")
+    var flag = false;
+    for (var i = 0; i < searchHistory.length; ++i) {
+      //将数组遍历
+      if (msg.title === searchHistory[i]) {
+        flag = true;
+        break;
+      }
+    }
+    if (!flag) {//没有该搜索历史
+      //插入新的历史
+      searchHistory.push(msg);
+    }
+    
+    wx.setStorageSync('searchHistory', searchHistory);
+  }
+  console.log(msg + " : " + wx.getStorageSync('searchHistory'))
+}
+
 module.exports = {
   formatTime,
   request,
   redirect,
   showErrorToast,
   showWarningToast,
-  showSuccessToast
+  showSuccessToast,
+  saveSearchHistory
 }

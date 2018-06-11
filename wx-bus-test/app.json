@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/ucenter/index/index",
-    "pages/search/search",
     "pages/route/inquiryRoute/inquiryRoute",
     "pages/auth/login/login",
     "pages/auth/register/register",
@@ -17,7 +16,9 @@
     "pages/ucenter/order/order",
     "pages/qrcode/qrcode",
     "pages/ucenter/myInfo/myInfo",
-    "pages/ucenter/myCollect/myCollect"
+    "pages/ucenter/myCollect/myCollect",
+    "pages/search/search/search",
+    "pages/search/searchStation/searchStation"
   ],
   "window": {
     "backgroundTextStyle": "dark",
