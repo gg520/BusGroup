@@ -30,7 +30,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/web/login")
 public class WebLoginController {
-    private final Log logger = LogFactory.getLog(com.wxbus.wxController.WxLoginController.class);
+    private final Log logger = LogFactory.getLog(WebLoginController.class);
     @Autowired
     private AdminService adminService;
     @RequestMapping(value ="/webLogin",method = {RequestMethod.POST})

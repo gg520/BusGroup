@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Service
 public class AdminServiceImpl implements AdminService {
-    private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
+    private final Log log= LogFactory.getLog(AdminServiceImpl.class.getName());
     @Resource
     private AdminMapper adminMapper;
     @Override

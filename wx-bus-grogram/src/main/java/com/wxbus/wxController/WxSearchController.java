@@ -35,7 +35,7 @@ public class WxSearchController {
 
     @Autowired
     private RouteService routeService;
-    private final Log logger = LogFactory.getLog(WxLoginController.class);
+    private final Log logger = LogFactory.getLog(WxSearchController.class);
 
     /**
      *@type method

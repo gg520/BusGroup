@@ -33,7 +33,7 @@ public class RouteServiceImpl implements RouteService {
     private RouteMapper routeMapper;
     @Resource
     private DriverBusRouteMapper driverBusRouteMapper;
-    private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
+    private final Log log= LogFactory.getLog(RouteServiceImpl.class.getName());
     @Override
     /**
      *@type method
@@ -97,6 +97,7 @@ public class RouteServiceImpl implements RouteService {
      *@describe 添加线路
      */
     public void addRoute(Route route) {
+        log.info("添加线路");
 
         routeMapper.insertSelective(route);
     }

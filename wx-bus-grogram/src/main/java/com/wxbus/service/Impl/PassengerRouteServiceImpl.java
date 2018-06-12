@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 public class PassengerRouteServiceImpl implements PassengerRouteService {
     @Resource
     private PassengerRouteMapper passengerRouteMapper;
-    private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
+    private final Log log= LogFactory.getLog(PassengerRouteServiceImpl.class.getName());
     @Override
     /**
      *@type method

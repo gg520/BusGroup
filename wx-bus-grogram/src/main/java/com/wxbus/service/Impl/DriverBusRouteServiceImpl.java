@@ -1,6 +1,7 @@
 package com.wxbus.service.Impl;
 
 import com.wxbus.dao.DriverBusRouteMapper;
+import com.wxbus.daomain.Bus;
 import com.wxbus.daomain.DriverBusRoute;
 import com.wxbus.daomain.DriverBusRouteExample;
 import com.wxbus.service.DriverBusRouteService;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service
 public class DriverBusRouteServiceImpl implements DriverBusRouteService{
-    private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
+    private final Log log= LogFactory.getLog(DriverBusRouteServiceImpl.class.getName());
     @Resource
     DriverBusRouteMapper driverBusRouteMapper;
     @Override
@@ -24,6 +25,10 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
         driverBusRouteExample.or().andRouteIdEqualTo(routeId);
 
         List<DriverBusRoute> list=driverBusRouteMapper.selectByExample(driverBusRouteExample);
-        return list.get(0);
+        if(list!=null&&list.size()>0){
+            return list.get(0);
+        }
+        return new DriverBusRoute();
+
     }
 }
