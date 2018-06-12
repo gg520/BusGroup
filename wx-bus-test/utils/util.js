@@ -108,9 +108,8 @@ function showSuccessToast(msg) {
 }
 
 function saveSearchHistory(msg){
-  // wx.setStorageSync('searchHistory', ["上海","正在"]);
-  // wx.removeStorageSync('searchHistory');
   var searchHistory =wx.getStorageSync('searchHistory');
+  wx.removeStorageSync("searchHistory");
   console.log(searchHistory)
   console.log(searchHistory.length)
   if(searchHistory.length<=0){
@@ -121,7 +120,8 @@ function saveSearchHistory(msg){
     var flag = false;
     for (var i = 0; i < searchHistory.length; ++i) {
       //将数组遍历
-      if (msg.title === searchHistory[i]) {
+      if (msg.stationId === searchHistory[i].stationId) {
+        console.log(msg+"  === "+searchHistory[i])
         flag = true;
         break;
       }
@@ -136,6 +136,7 @@ function saveSearchHistory(msg){
   console.log(msg + " : " + wx.getStorageSync('searchHistory'))
 }
 
+
 module.exports = {
   formatTime,
   request,
@@ -143,5 +144,6 @@ module.exports = {
   showErrorToast,
   showWarningToast,
   showSuccessToast,
-  saveSearchHistory
+  saveSearchHistory,
+
 }

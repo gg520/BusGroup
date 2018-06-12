@@ -14,7 +14,8 @@ Page({
       { stationId: 3, stationName: "范家新村-公交站", stationCoord: "20,30", stationStatus: 0, stationDescribe: "青三湖区广兰路东" },
       { stationId: 4, stationName: "万达广场(红谷滩店)", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西省南昌市青山湖区会展路999号" },
       { stationId: 5, stationName: "昌北机场T2航空楼", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西南昌市新建区机场大道" },
-    ]
+    ],
+    history:[],
   },
   goSite:function(e){
     let that=this;
@@ -23,7 +24,10 @@ Page({
     const routeId = e.currentTarget.dataset.routeid;//站点ID
     const coord = e.currentTarget.dataset.coord; //坐标获取
     //将数据传送回搜索页面
-    console.log("什么：" + destination + "   加  " + stationName + "routeId:" + routeId+"坐标："+coord);
+    // console.log("什么：" + destination + "   加  " + stationName + "routeId:" + routeId+"坐标："+coord);
+    //将数据保存到
+    var msg = { stationId: routeId, stationName: stationName, stationCoord: coord, stationStatus: 0, stationDescribe: destination };
+    util.saveSearchHistory(msg);//保存历史
     wx.navigateTo({
       url: '/pages/search/search/search?sign=' + that.data.searchSite + '&name=' + stationName + '&id=' + routeId + '&coord=' + coord,
     })
@@ -42,9 +46,19 @@ Page({
     this.setData({
       searchSite:value,
     });
-    //获取历史信息
-    //将信息设置出来
   
+
+    /**
+     * 获取历史信息将信息输出
+     * 历史信息的读取历史信息的保存
+     * util.saveSearchHistory(msg)
+     * wx.getStorageSync('searchHistory');
+     */
+    var history = wx.getStorageSync('searchHistory');// JSON.stringify(wx.getStorageSync('searchHistory'));
+    console.log("长度"+history)
+    this.setData({
+      history:history,
+    })
   },
   searchInput:function(e){
     let that = this;
@@ -72,7 +86,8 @@ Page({
             //设置信息为空显示
             that.setData({
 
-              address: res.data.data
+              address: res.data.data,
+              history:[],
             });
           }
         },
@@ -135,5 +150,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  back:function(){
+    wx.navigateTo({
+      url: '/pages/search/search/search?sign=brack',
+
+    })
   }
 })

@@ -17,7 +17,7 @@ Page({
       endLongitude: '',
       //到达站点
       endSite: '',
-      startSite: '',//起始位置
+      startSite: '我的位置',//起始位置
     },
     //搜索数据的现实, 名称，详细位置信息，相距距离,坐标
     searchSite: '',
@@ -56,21 +56,23 @@ Page({
       inputStartSite: app.search.startSite,
       search: app.search,
     })
+    // console.log("cehsissdfsdfsdf")
     if (options.sign!=null){
-      var coords = options.coord.split(",");
+      // console.log("不看")
+
       let search = that.data.search;
       if (options.sign==='start'){
         //设置搜索的初始坐标
-        search.startLatitude=coords[0];
-        search.startLongitude = coords[1];
+        search.startLatitude = options.coord.split(",")[0];
+        search.startLongitude = options.coord.split(",")[1];
         search.startSite = options.name;
         
       }else if(options.sign==='end'){
         
-        search.endLatitude = coords[0];
-        search.endLongitude = coords[1];
+        search.endLatitude = options.coord.split(",")[0];
+        search.endLongitude = options.coord.split(",")[1];
         search.endSite = options.name;
-      }else{
+      }else{//其他即是不修改内容
         console.log("错误")
       }
       app.search = search;
@@ -112,6 +114,18 @@ Page({
           }
         })
       }
+    }else{
+      let search = that.data.search;
+      wx.getLocation({
+        type: 'gcj02',
+        success: function (res) {
+          search.startLatitude = res.latitude;
+          search.startLongitude = res.longitude;
+        },
+      })
+      search.startSite='我的位置';
+      app.search = search;
+      // console.log("sesrch:"+search)
     }
     //获取历史记录
     // let searchHistory = wx.getStorageSync('searchHistory');
@@ -393,17 +407,32 @@ Page({
    */
   onHide: function () {
     console.log("界面隐藏")
+    wx.navigateTo({
+      url: '/pages/index/index',
+    })
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log("界面卸载")
-    wx.navigateTo({
-      url: '/pages/index/index',
+    // console.log("界面卸载")
+    // wx.navigateTo({
+    //   url: '/pages/index/index',
+    // })
+    let search = this.data.search;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        search.startLatitude = res.latitude;
+        search.startLongitude = res.longitude;
+      },
     })
-
+    search.startSite = '我的位置';
+    search.endLatitude='';
+    search.endLongitude='';
+    search.endSite='';//到达站点
+    app.search = search;
   },
 
   /**
