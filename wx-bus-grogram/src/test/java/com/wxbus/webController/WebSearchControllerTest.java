@@ -123,11 +123,23 @@ public class WebSearchControllerTest{
     }
     @Test
     public void findStopUseDriverTest() throws Exception{
+
         Map<String,Integer> map=new HashMap<String,Integer>();
         map.put("startNum",0);
         map.put("num",20);
         String body=JsonUtil.stringify(map);
         MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/search/searchstopusedriver").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print()).andReturn();
+        System.out.println(result.getResponse().toString());
+    }
+    @Test
+    public void findAllAdminTest() throws Exception{
+        Map<String,Integer> map=new HashMap<String,Integer>();
+        map.put("startNum",0);
+        map.put("num",20);
+        String body=JsonUtil.stringify(map);
+        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/search/findalladmin").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         System.out.println(result.getResponse().toString());

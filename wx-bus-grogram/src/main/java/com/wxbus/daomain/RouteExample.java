@@ -1194,6 +1194,146 @@ public class RouteExample {
             addCriterion("recruit_num not between", value1, value2, "recruitNum");
             return (Criteria) this;
         }
+
+        public Criteria andStartRecruitIsNull() {
+            addCriterion("start_recruit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitIsNotNull() {
+            addCriterion("start_recruit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitEqualTo(String value) {
+            addCriterion("start_recruit =", value, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitNotEqualTo(String value) {
+            addCriterion("start_recruit <>", value, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitGreaterThan(String value) {
+            addCriterion("start_recruit >", value, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitGreaterThanOrEqualTo(String value) {
+            addCriterion("start_recruit >=", value, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitLessThan(String value) {
+            addCriterion("start_recruit <", value, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitLessThanOrEqualTo(String value) {
+            addCriterion("start_recruit <=", value, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitLike(String value) {
+            addCriterion("start_recruit like", value, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitNotLike(String value) {
+            addCriterion("start_recruit not like", value, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitIn(List<String> values) {
+            addCriterion("start_recruit in", values, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitNotIn(List<String> values) {
+            addCriterion("start_recruit not in", values, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitBetween(String value1, String value2) {
+            addCriterion("start_recruit between", value1, value2, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartRecruitNotBetween(String value1, String value2) {
+            addCriterion("start_recruit not between", value1, value2, "startRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitIsNull() {
+            addCriterion("ends_recruit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitIsNotNull() {
+            addCriterion("ends_recruit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitEqualTo(String value) {
+            addCriterion("ends_recruit =", value, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitNotEqualTo(String value) {
+            addCriterion("ends_recruit <>", value, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitGreaterThan(String value) {
+            addCriterion("ends_recruit >", value, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitGreaterThanOrEqualTo(String value) {
+            addCriterion("ends_recruit >=", value, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitLessThan(String value) {
+            addCriterion("ends_recruit <", value, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitLessThanOrEqualTo(String value) {
+            addCriterion("ends_recruit <=", value, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitLike(String value) {
+            addCriterion("ends_recruit like", value, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitNotLike(String value) {
+            addCriterion("ends_recruit not like", value, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitIn(List<String> values) {
+            addCriterion("ends_recruit in", values, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitNotIn(List<String> values) {
+            addCriterion("ends_recruit not in", values, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitBetween(String value1, String value2) {
+            addCriterion("ends_recruit between", value1, value2, "endsRecruit");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndsRecruitNotBetween(String value1, String value2) {
+            addCriterion("ends_recruit not between", value1, value2, "endsRecruit");
+            return (Criteria) this;
+        }
     }
 
     /**

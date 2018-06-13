@@ -1,14 +1,8 @@
 package com.wxbus.webController;
 
 
-import com.wxbus.daomain.Bus;
-import com.wxbus.daomain.Driver;
-import com.wxbus.daomain.Route;
-import com.wxbus.daomain.Station;
-import com.wxbus.service.BusService;
-import com.wxbus.service.DriverService;
-import com.wxbus.service.RouteService;
-import com.wxbus.service.StationService;
+import com.wxbus.daomain.*;
+import com.wxbus.service.*;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.ResponseUtil;
 import org.apache.commons.logging.Log;
@@ -36,6 +30,8 @@ public class WebSearchController {
     private BusService busService;
     @Autowired
     private StationService stationService;
+    @Autowired
+    private AdminService adminService;
 
     /**
      *@type method
@@ -338,7 +334,47 @@ public class WebSearchController {
         List<Driver> driverList=driverService.findDriverByStatus(startNum,num,2);
         return ResponseUtil.ok(driverList);
     }
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/13
+     *@describe 查找全部管理员
+     */
+    @RequestMapping(value = "findalladmin",method = RequestMethod.POST)
+    @ResponseBody
 
+    public Object findAllAdmin(@RequestBody String body){
+        logger.info("");
+        if(body==null||"".equals(body)){
+            return  ResponseUtil.fail(505,"未接收数据");
+        }
+        Integer startNum= JacksonUtil.parseInteger(body,"startNum");
+        Integer num= JacksonUtil.parseInteger(body,"num");
+        if(startNum==null||num==null){
+            return ResponseUtil.fail(502,"分页信息不能为空");
+        }
+        List<Admin> adminList=adminService.findAllAdmin(startNum,num);
+        return ResponseUtil.ok(adminList);
+    }
+    /**
+     *@type method
+     *@parameter
+     *@back
+     *@author  如花
+     *@creattime 2018/6/13
+     *@describe 添加管理员信息
+     */
+    @RequestMapping(value = "addadmin",method = RequestMethod.POST)
+    @ResponseBody
+    public Object addAdmin(@RequestBody Admin admin){
+        if(admin==null){
+            return ResponseUtil.fail();
+        }
+        adminService.addAdmin(admin);
+        return ResponseUtil.ok();
+    }
 
 
 

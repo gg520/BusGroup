@@ -2,6 +2,8 @@ package com.wxbus.service;
 
 import com.wxbus.daomain.Admin;
 
+import java.util.List;
+
 public interface AdminService {
     /**
      *@type interface
@@ -21,4 +23,13 @@ public interface AdminService {
      *@describe 添加管理员
      */
     void addAdmin(Admin admin);
+    /**
+     *@type interface
+     *@parameter  []
+     *@back  java.util.List<com.wxbus.daomain.Admin>
+     *@author  如花
+     *@creattime 2018/6/13
+     *@describe 查找所有管理员
+     */
+    List<Admin> findAllAdmin(Integer startNum,Integer num);
 }

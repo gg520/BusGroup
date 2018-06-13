@@ -1,5 +1,6 @@
 package com.wxbus.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.wxbus.dao.AdminMapper;
 import com.wxbus.daomain.Admin;
 import com.wxbus.daomain.AdminExample;
@@ -50,8 +51,33 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    /**
+     *@type method
+     *@parameter  [admin]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/13
+     *@describe 添加管理员
+     */
     public void addAdmin(Admin admin) {
         log.info("添加管理员");
         adminMapper.insertSelective(admin);
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  []
+     *@back  java.util.List<com.wxbus.daomain.Admin>
+     *@author  如花
+     *@creattime 2018/6/13
+     *@describe 查找所有管理员
+     */
+    public List<Admin> findAllAdmin(Integer startNum,Integer num) {
+        log.info("查找所有管理员");
+        PageHelper.startPage(startNum,num);
+        AdminExample adminExample=new AdminExample();
+
+        return adminMapper.selectByExample(adminExample);
     }
 }

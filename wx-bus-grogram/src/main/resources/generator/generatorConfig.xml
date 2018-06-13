@@ -42,5 +42,6 @@
         <table tableName="passenger_route" domainObjectName="PassengerRoute"></table>
         <table tableName="driver_bus_route" domainObjectName="DriverBusRoute"></table>
         <table tableName="admin" domainObjectName="Admin"></table>
+        <table tableName="overall_configC" domainObjectName="OverallConfig"></table>
     </context>
 </generatorConfiguration>
