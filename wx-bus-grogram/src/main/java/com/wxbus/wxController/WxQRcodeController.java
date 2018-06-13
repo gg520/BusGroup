@@ -23,9 +23,9 @@ import java.io.PrintWriter;
  */
 @Controller
 @RequestMapping("/weixin/qrcode")
-public class QRcodeController {
+public class WxQRcodeController {
 
-    private Log logger= LogFactory.getLog(QRcodeController.class);
+    private Log logger= LogFactory.getLog(WxQRcodeController.class);
 
     @Autowired
     private CheckServier checkServier;

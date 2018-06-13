@@ -2,7 +2,6 @@ package com.wxbus.wxController;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
-import com.wxbus.daomain.Driver;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.pojo.FullUserInfo;
 import com.wxbus.pojo.ResponseUserInfo;
@@ -28,8 +27,8 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/weixin/auth")
-public class LoginController {
-    private final Log logger = LogFactory.getLog(LoginController.class);
+public class WxLoginController {
+    private final Log logger = LogFactory.getLog(WxLoginController.class);
 
     @Autowired
     private UserService userService;

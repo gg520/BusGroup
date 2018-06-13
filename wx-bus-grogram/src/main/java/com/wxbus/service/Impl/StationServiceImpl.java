@@ -48,4 +48,18 @@ public class StationServiceImpl implements StationService {
         List<Station> list = stationMapper.selectByExample(stationExample);
         return list;
     }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [stationId]
+     *@back  com.wxbus.daomain.Station
+     *@author  如花
+     *@creattime 2018/6/10
+     *@describe 通过id查站点
+     */
+    public Station findStationById(Integer stationId) {
+        log.info("通过id查站点");
+        return stationMapper.selectByPrimaryKey(stationId);
+    }
 }

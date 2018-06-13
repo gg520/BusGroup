@@ -28,7 +28,7 @@ import java.util.List;
  * \
  */
 @Service
-public class RouteServieImpl implements RouteService {
+public class RouteServiceImpl implements RouteService {
     @Resource
     private RouteMapper routeMapper;
     @Resource
@@ -145,22 +145,6 @@ public class RouteServieImpl implements RouteService {
     @Override
     /**
      *@type method
-     *@parameter  [routeId]
-     *@back  com.wxbus.daomain.DriverBusRoute
-     *@author  如花
-     *@creattime 2018/5/28
-     *@describe 通过线路的id查询司机汽车路线关联表
-     */
-    public DriverBusRoute findDriverBusRouteById(Integer routeId) {
-        DriverBusRouteExample driverBusRouteExample=new DriverBusRouteExample();
-        driverBusRouteExample.or().andRouteIdEqualTo(routeId);
-       return null;
-
-    }
-
-    @Override
-    /**
-     *@type method
      *@parameter  [routeStatus]
      *@back  com.wxbus.daomain.Route
      *@author  如花
@@ -183,8 +167,30 @@ public class RouteServieImpl implements RouteService {
         return routeMapper.selectByExample(routeExample);
     }
 
-
-
-
+    @Override
+    /**
+     *@type method
+     *@parameter  [startNum, num, time]
+     *@back  java.util.List<com.wxbus.daomain.Route>
+     *@author  如花
+     *@creattime 2018/6/8
+     *@describe 查找全部线路
+     */
+    public List<Route> findAllRoute(Integer startNum, Integer num, Integer time) {
+        PageHelper.startPage(startNum, num);
+        RouteExample routeExample=new RouteExample();
+        if(time!=null&&time!=0){
+            routeExample.clear();
+            if(time==1){
+                //上午
+                routeExample.or().andStartTimeLessThan("12:00");
+            }else if (time==2){
+                //下午
+                routeExample.or().andStartTimeGreaterThan("12:00");
+            }
+        }
+        routeExample.setOrderByClause("recruit_time asc");
+        return routeMapper.selectByExample(routeExample);
+    }
 }
 

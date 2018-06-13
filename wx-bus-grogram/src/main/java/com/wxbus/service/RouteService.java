@@ -63,15 +63,6 @@ public interface RouteService {
     Route findRouteById(Integer routeId);
     /**
      *@type interface
-     *@parameter  [routeId]
-     *@back  com.wxbus.daomain.DriverBusRoute
-     *@author  如花
-     *@creattime 2018/5/28
-     *@describe 通过线路的id查询司机汽车路线关联表
-     */
-    DriverBusRoute findDriverBusRouteById(Integer routeId);
-    /**
-     *@type interface
      *@parameter  [routeStatus]
      *@back  com.wxbus.daomain.Route
      *@author  如花
@@ -79,6 +70,15 @@ public interface RouteService {
      *@describe 通过状态分页查找线路信息
      */
     List<Route> findRouteByStatus(Integer routeStatus,Integer startNum,Integer num,Integer time);
+    /**
+     *@type interface
+     *@parameter  [startNum, num, time]
+     *@back  java.util.List<com.wxbus.daomain.Route>
+     *@author  如花
+     *@creattime 2018/6/8
+     *@describe 查找全部路线
+     */
+    List<Route> findAllRoute(Integer startNum,Integer num,Integer time);
 
 
 
