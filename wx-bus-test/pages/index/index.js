@@ -107,13 +107,10 @@ Page({
   },
   //跳转到已开线路
   goRunRoute:function(){
-    if (app.globalData.hasLogin) {
-      wx.navigateTo({
-        url: '/pages/route/runRoute/runRoute',
-      })
-    } else {
-      util.showWarningToast("未登录");
-    }
+    
+    wx.navigateTo({
+      url: '/pages/route/runRoute/runRoute',
+    })
   },
   getQRcode:function(){
     //获取我订购的距离该时间的或者地点最近的线路的二维码

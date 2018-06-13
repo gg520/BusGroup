@@ -61,7 +61,7 @@
       </view>
     </view>
     <view wx:else>
-      <view class="chooseCity pd-70" wx:for="{{routes}}" bindtap='goRoute' id='{{item.routeid}}'>
+      <view class="chooseCity pd-70" wx:for="{{routes}}" bindtap='goRoute' data-routeid='{{item.routeId}}'>
         <view class="citySelect" >
           <view class="startCity" >{{item.startSite}}</view>
           <view class="citySelect_img">

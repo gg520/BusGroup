@@ -14,11 +14,19 @@
     		<image class="clear" id="clear-endsite" wx:if="{{ endsite.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
     	</view>
 
-      <view class="form-item">
+      <!-- <view class="form-item">
     		<input class="site" value="{{period}}" bindinput="bindPeriodInput" placeholder="招募周期"/>
     		<image class="clear" id="clear-period" wx:if="{{ period.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
-    	</view>
-      
+    	</view> -->
+      <view class="chioce-item chioce-item-last">
+        <picker mode="date" value="{{!periodStart ? '招募周期':periodStart}}" start="{{startDefault}}" end="2088-01-01" bindchange="bindPeriodStartChange">
+        <view >{{!periodStart ? '开始日期':periodStart}}</view>
+        </picker>--
+        <picker mode="date" value="{{!periodEnd ? '招募周期':periodEnd}}" start="{{!periodStart ? 2018-01-01:periodStart}}" end="{{endsDefault}}" bindchange="bindPeriodEndChange">
+        <view >{{!periodEnd ? '结束日期':periodEnd}}</view>
+        </picker>
+        <image class="icon-chioce" src="{{startChioceIcon}}"></image>
+      </view>
       <!-- <view bindtap="choiceTime" data-item="startTime" class="chioce-item chioce-item-last"      hover-class="click-once-opaque">{{starttimename}}
         <image class="icon-chioce" src="{{startChioceIcon}}"></image>
       </view> -->

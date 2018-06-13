@@ -26,7 +26,7 @@
     <view class="list" >
         <view class="group-item">
           <view class="goods">
-            <view class="item" wx:for="{{searchSite}}" wx:key="id" bindtap='searchSiteIndex' id="{{item.stationName}}">
+            <view class="item" wx:for="{{searchSite}}" wx:key="id" bindtap='searchSiteIndex' id="{{item.stationName}}" >
               <view class="checkbox" bindtap="checkedItem"></view>
               <view class="cart-goods">
                 <view class="info">
@@ -61,7 +61,7 @@
       </view>
     </view>
     <view wx:else>
-      <view class="chooseCity pd-70" wx:for="{{routes}}" bindtap='goRoute' id='{{item.routeid}}'>
+      <view class="chooseCity pd-70" wx:for="{{routes}}" bindtap='goRoute' data-routeid='{{item.routeId}}'>
         <view class="citySelect" >
           <view class="startCity" >{{item.startSite}}</view>
           <view class="citySelect_img">

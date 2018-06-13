@@ -54,10 +54,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "路线详细信息",
 					"pathName": "pages/route/routeInfo/routeInfo",
-					"query": ""
+					"query": "routeid=1&comeFrom=plan"
 				},
 				{
 					"id": -1,

@@ -139,6 +139,9 @@ public class RouteServiceImpl implements RouteService {
      */
     public Route findRouteById(Integer routeId) {
 
+        if(routeId==null||routeId==0){
+            return new Route();
+        }
         return routeMapper.selectByPrimaryKey(routeId);
     }
 

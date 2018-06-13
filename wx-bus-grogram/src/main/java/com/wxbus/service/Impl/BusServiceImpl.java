@@ -33,12 +33,14 @@ public class BusServiceImpl implements BusService{
      *@describe 通过id查找汽车信息
      */
     public Bus findBusById(String busId) {
+        if(busId==null||"".equals(busId))
+            return new Bus();
         BusExample busExample=new BusExample();
         busExample.or().andBusIdEqualTo(busId);
         List<Bus> list=busMapper.selectByExample(busExample);
-
-
-        return list.get(0);
+        if(list!=null&&list.size()>0)
+            return list.get(0);
+        return new Bus();
     }
 
     @Override

@@ -4,219 +4,393 @@ var util=require("../../../utils/util.js");
 var api=require("../../../config/api.js");
 
 var app = getApp();
-
-//日历
-let chooseYear = null;
-let chooseMonth = null;
-let chooseDay=null;
+/**
+ * getWorkDay方法设置不可选的数据，然后根据数据进行数据的处理，节假日等数据的断定
+ */
+var countday=0;
+var comeFrom='';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    rInfo:
-    {
-      starttime:'',//出发时间
-      arrivaltime:'',//预计到达时间
-      distance:'',//距离
-      price:'',//单价
-      monthNum:'',//每月发车次数
-      driver:'',//司机
-      phone:'',//电话
-      busNum:'',//车牌
-      stations:[
-        '','',''
-      ],//车站的站点，有顺序
-    },
+    comeFrom:'',//plan 或者 run
+
+    price: '',//单价
+    startSite: '',//出发地点
+    endSite: '',//到达地点
+    driver: '',//司机
+    starttime: '',//出发时间
+    arrivaltime: '',//预计到达时间
+    busNum: '',//车号
+    phone: '',//电话
+    busId: '',//牌照
+    stations:[//途径站信息
+      { stationname: "", stationid: '' }
+    ],//车站的站点，有顺序
+
+    startRecruit:'',//运行周期开始
+    endsRecruit:'',//运行结束
+    recruit:'',//发车周期
+
     countday:0,//选择的天数
     routeid:'',//线路的id
     totalmoney:0.00,//总钱数，即为支付金额
-    // 日历
-    hasEmptyGrid: false,
-    showPicker: false,
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that=this;
     console.log(options.routeid);
+    //获取来源页面
+    console.log("执行")
+    comeFrom = options.comeFrom;
+    if (options.comeFrom != 'plan' && options.comeFrom!='run'){
+      util.showErrorToast("错误参数");
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+    
+    // let comeForm =options.comeFrom,//设置来源页面
     if (options.routeid.length > 0){
       let that=this;
       that.setData({
         routeid: options.routeid
       });
       //获取到线路的id，根据id获取后台的线路信息
-      util.request(api.RouteInfo, { routeid: options.routeid},'POST').then(function(res){
+      util.request(api.RouteInfo, { routeId: options.routeid},'POST').then(function(res){
+        // console.log("数据：" + JSON.stringify(res.data));
         if(res.errno === 0){//请求成功
-          console.log(res.data);
+          let data = res.data;
+          console.log("测试时间：" + data.price)
           that.setData({
-            rInfo:res.data,
-            
-            totalmoney: res.data.monthNum * res.data.price,
+            price: data.price,
+            startSite: data.startSite,//出发地点
+            endSite: data.endSite,//到达地点
+            driver: data.driver,//司机
+            starttime: data.starttime,//出发时间
+            arrivaltime: data.arrivaltime,//预计到达时间
+            busNum: data.busNum,//车号
+            phone: data.phone,//电话
+            busId:data.busId,//牌照
+            stations:data.stations,
+            startRecruit: data.startRecruit,//运行周期开始
+            endsRecruit: data.endsRecruit,//运行结束
+            // comeForm:comeForm,
           });
+          that.getNowDayAndWeek(data.startRecruit, data.endsRecruit);
+          
         }else{
           console.log("失败"+res);
         }
       });
-    };
-    // 日历
-    const date = new Date();
-    const curYear = date.getFullYear();
-    const curMonth = date.getMonth() + 1;
+    }else{
+      util.showErrorToast("加载失败");
+    }
+    // console.log()
     const weeksCh = ['日', '一', '二', '三', '四', '五', '六'];
-   //设置选择日期
-   
-    this.calculateEmptyGrids(curYear, curMonth);
-    this.calculateDays(curYear, curMonth);
+    
     this.setData({
-      curYear,
-      curMonth,
       weeksCh,
-      // days
     });
+    
+    
+    
   }, 
-  getThisMonthDays(year, month) {//获取也的第一天
-    return new Date(year, month, 0).getDate();
-  },
-  getFirstDayOfWeek(year, month) {//获取周的第一天
-    return new Date(Date.UTC(year, month - 1, 1)).getDay();
-  },
-  calculateEmptyGrids(year, month) {
-    const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
-    let empytGrids = [];
-    if (firstDayOfWeek > 0) {
-      for (let i = 0; i < firstDayOfWeek; i++) {
-        empytGrids.push(i);
-      }
-      this.setData({
-        hasEmptyGrid: true,
-        empytGrids
-      });
-    } else {
-      this.setData({
-        hasEmptyGrid: false,
-        empytGrids: []
-      });
-    }
-  },
-  calculateDays(year, month) {
-    let days = [];
 
-    const thisMonthDays = this.getThisMonthDays(year, month);
+// 日期的设置获取当前日期day和周次，
+  getNowDayAndWeek: function (starttime, endstime) {//startTime 开始时间，countNum 天数，flag 是否计算节假日
+ 
+  
+  // console.log("价格" + this.data.stations.length)
+  
 
-    for (let i = 1; i <= thisMonthDays; i++) {
+  //获取开始时间
+  
+
+console.log(starttime+"  cc  "+endstime)
+
+  var sD=starttime.split("-");
+  var eD=endstime.split("-");
+  var startDate=new Date(sD[0],sD[1]-1,sD[2]);
+  var endsDate=new Date(eD[0],eD[1]-1,eD[2]);
+  var longDi=endsDate.getTime()-startDate.getTime();
+
+  var maxDay = new Date(sD[0], sD[1], 0).getDate();//开始月的最大时间
+
+  //计算时间差
+  var dayDi=longDi/(1000*60*60*24);
+  //设置时间表
+  var week = startDate.getDay();//开始时间的周次
+  let empytGrids = [];
+  let days=[];
+
+  /**
+   * 设置占位符
+   */
+  for (let i = 0; i < week - sD[2] + 1; i++) {
+    empytGrids.push(i);
+    // console.log("站位")
+  }
+
+  /**
+   * 判断设置前半部分不可选
+   * 
+   */
+  if((sD[2])<week-1){//小于周次
+    console.log("小于周次")
+    for (let i = 1; i < sD[2]; ++i) {
       days.push({
-        day: i,
-        choosed: false
+        day: i,//日期
+        month:sD[1],
+        choosed: false,//已选择
+        check: false,//可更改
+      });
+      
+    }
+  }else{
+    console.log("不小于周次")
+    for(let i=0;i<week;i++){
+      days.push({
+        day: sD[2]-week+i,//日期
+        month: sD[1],
+        choosed: false,//已选择
+        check: false,//可更改
       });
     }
+  }
+  
+  this.setData({
+    days: days,
+    hasEmptyGrid: true,
+    empytGrids,
+    recruit: dayDi,
+  })
 
-    this.setData({
-      days
-    });
-  },
-  // 查找上月或下月
-  // handleCalendar(e) {
-  //   const handle = e.currentTarget.dataset.handle;
-  //   const curYear = this.data.curYear;
-  //   const curMonth = this.data.curMonth;
-  //   if (handle === 'prev') {//上月
-  //     let newMonth = curMonth - 1;
-  //     let newYear = curYear;
-  //     if (newMonth < 1) {
-  //       newYear = curYear - 1;
-  //       newMonth = 12;
-  //     }
+  /**
+   * 设置选择日期
+   * 
+   */
+  this.setSelect(starttime, endstime);//设置选择日期
 
-  //     this.calculateDays(newYear, newMonth);
-  //     this.calculateEmptyGrids(newYear, newMonth);
+},
+//设置可选日期
+  setSelect: function (starttime, endstime){
 
-  //     this.setData({
-  //       curYear: newYear,
-  //       curMonth: newMonth
-  //     });
-  //   } else {//下月
-  //     let newMonth = curMonth + 1;
-  //     let newYear = curYear;
-  //     if (newMonth > 12) {
-  //       newYear = curYear + 1;
-  //       newMonth = 1;
-  //     }
+  var sD = starttime.split("-");
+  var eD = endstime.split("-");
+  var startDate = new Date(sD[0], sD[1]-1, sD[2]);
+  var endsDate = new Date(eD[0], eD[1]-1, eD[2]);
+  var longDi = endsDate.getTime() - startDate.getTime();
 
-  //     this.calculateDays(newYear, newMonth);
-  //     this.calculateEmptyGrids(newYear, newMonth);
+  var maxDay = new Date(sD[0], sD[1], 0).getDate();//开始月的最大时间
 
-  //     this.setData({
-  //       curYear: newYear,
-  //       curMonth: newMonth
-  //     });
-  //   }
-  // },
-  // tapDayItem(e) {
-  //   console.log("点击");
-  //   date = new Date();
-  //   console.log(date.getDay());
-  //   console.log(this.data.days);
+  //计算时间差
+  var dayDi = longDi / (1000 * 60 * 60 * 24);
 
-  //   // const idx = e.currentTarget.dataset.idx;
-  //   var idx = date.getDate()-1;
-  //   const days = this.data.days;
-  //   days[idx].choosed = true;
-  //   this.setData({
-  //     days,
-  //   });
-  // },
-  // chooseYearAndMonth() {
-  //   const curYear = this.data.curYear;
-  //   const curMonth = this.data.curMonth;
-  //   let pickerYear = [];
-  //   let pickerMonth = [];
-  //   for (let i = 1900; i <= 2100; i++) {
-  //     pickerYear.push(i);
-  //   }
-  //   for (let i = 1; i <= 12; i++) {
-  //     pickerMonth.push(i);
-  //   }
-  //   const idxYear = pickerYear.indexOf(curYear);
-  //   const idxMonth = pickerMonth.indexOf(curMonth);
-  //   this.setData({
-  //     pickerValue: [idxYear, idxMonth],
-  //     pickerYear,
-  //     pickerMonth,
-  //     showPicker: true,
-  //   });
-  // },
-  pickerChange(e) {
-    const val = e.detail.value;
-    chooseYear = this.data.pickerYear[val[0]];
-    chooseMonth = this.data.pickerMonth[val[1]];
-  },
-  tapPickerBtn(e) {
-    const type = e.currentTarget.dataset.type;
-    const o = {
-      showPicker: false,
-    };
-    if (type === 'confirm') {
-      o.curYear = chooseYear;
-      o.curMonth = chooseMonth;
-      this.calculateEmptyGrids(chooseYear, chooseMonth);
-      this.calculateDays(chooseYear, chooseMonth);
+  let days=this.data.days;
+
+  if ((dayDi + startDate.getDate()) > maxDay) {//第二月有数据
+    //设置文
+    console.log("第二个月有数据")
+    dayDi=dayDi-(maxDay-sD[2]);//第二月拥有的天数
+    while(sD[2]<=maxDay){//将第一个月的数据保存
+      if (this.getWorkDay(sD[0], sD[1], (sD[2]))) {
+        if (comeFrom === 'plan') {
+          countday++;
+          days.push({
+            day: sD[2],//日期
+            month: sD[1],
+            choosed: true,//已选择
+            check: true,//可更改
+          });
+        }else{
+          days.push({
+            day: sD[2],//日期
+            month: sD[1],
+            choosed: false,//已选择
+            check: true,//可更改
+          });
+        }
+       
+      }else{
+        days.push({
+          day: sD[2],//日期
+          month: sD[1],
+          choosed: false,//已选择
+          check: false,//可更改
+        });
+      }
+      
+      sD[2]++;
     }
+    for(let i=1;i<dayDi;++i){//将第二个月数据保存
+      if (this.getWorkDay(sD[0], eD[1], i)) {
+        if (comeFrom === 'plan') {
+          countday++;
+          days.push({
+            day: i,//日期
+            month: eD[1],
+            choosed: true,//已选择
+            check: true,//可更改
+          });
+        }else{
+          days.push({
+            day: i,//日期
+            month: eD[1],
+            choosed: false,//已选择
+            check: true,//可更改
+          });
+        }
+        
+      }else{
+        days.push({
+          day: i,//日期
+          month: eD[1],
+          choosed: false,//已选择
+          check: false,//可更改
+        });
+      }
+      
+    }
+  }else{//第二个月没有数据
+    console.log("第二个月没有数据")
+    let i=0;
+    while (i < dayDi-1) {
+      if (this.getWorkDay(sD[0], sD[1], (sD[2] + i))){
+        if (comeFrom === 'plan') {
+          countday++;
+          days.push({
+            day: sD[2] + i,//日期
+            month: sD[1],
+            choosed: true,//已选择
+            check: true,//可更改
+          });
+        }else{
+          days.push({
+            day: sD[2] + i,//日期
+            month: sD[1],
+            choosed: false,//已选择
+            check: true,//可更改
+          });
+        }
+        
+      }else{
+        days.push({
+          day: sD[2] + i,//日期
+          month: sD[1],
+          choosed: false,//已选择
+          check: false,//可更改
+        });
+      }
+      
+      i++;
+    }
+  }
+  console.log("结束周次：" + endsDate)
+  if(endsDate.getDay()!=0){
+    let i = 1;
+    while (i <= (7 - endsDate.getDay())) {
+      days.push({
+        day: eD[2]++,//日期
+        month: eD[1],
+        choosed: false,//已选择
+        check: false,//可更改
+      });
+      i++;
+    }
+  }
+  if (comeFrom === 'plan') {
+    this.setData({
+      days: days,
+      countday: countday,
+      totalmoney: (countday * this.data.price).toFixed(2),
+    });
 
-    this.setData(o);
-  },
-  onShareAppMessage() {
-    return {
-      title: '小程序日历',
-      desc: '还是新鲜的日历哟',
-      path: 'pages/index/index'
-    };
-  },
+  }else{
+    this.setData({
+      days: days,
+    })
+  }
+  
+},
+
   addBuy:function(){
-    // console.log(this.data);
-    wx.navigateTo({
-      url: '/pages/shopping/checkout/checkout',
+    if(countday===0){
+      util.showWarningToast("请选择坐车日期");
+      return false;
+    }
+    let that=this;
+    //验证是否完善信息，不完善提示并保存到收藏
+    if (app.globalData.hasLogin) {
+
+      //判断是否实名认证了
+      wx.request({
+
+        url: api.CheckInfo,
+        header: {
+          "X-Bus-Token": wx.getStorageSync("token"),
+          "Connect_Platform": "Weixin_Passenger"
+        },
+        success: function (res) {
+          if (res.statusCode===302){
+            util.showErrorToast("未登录");
+            wx.navigateTo({
+              url: '/pages/auth/login/login',
+            })
+          }else if (res.data.errno === 0) {
+            //验证通过
+            wx.navigateTo({
+              url: '/pages/shopping/checkout/checkout?countDay='+countday+'&routeid='+that.data.routeid,
+            })
+
+          } else if (res.data.errno === 402){
+            //验证失败
+            util.showWarningToast("未完善信息");
+            wx.navigateTo({
+              url: '/pages/ucenter/myInfo/myInfo',
+            })
+          }else{
+            util.showWarningToast("未知错误");
+          }
+        }
+      })
+
+    } else {
+      util.showWarningToast("未登录");
+      wx.navigateTo({
+        url: '/pages/auth/login/login',
+      })
+    }
+    
+  },
+  selectDays:function(e){
+    if (comeFrom === 'plan') {
+      return false;
+    }
+    const day = e.currentTarget.dataset.day;//日期
+    const months = e.currentTarget.dataset.months;//月份
+    const days=this.data.days;
+    for(let i=0; i<days.length;i++){
+      if (days[i].check&&day==days[i].day&&months==days[i].month){
+        if (days[i].choosed){
+          days[i].choosed = false;
+          countday--;
+        }else{
+          days[i].choosed = true;
+          countday++;
+        }
+        
+      }
+    }
+    let that=this;
+    this.setData({
+      days: days,
+      countday: countday,
+      totalmoney: (countday * that.data.price).toFixed(2),
     })
   },
   /**
@@ -226,63 +400,22 @@ Page({
   
   },
   /**
-   * 根据本月的多少号判断周次
+   * 根据年月日判断是否可选
    */
-  getWorkDay(day,nowDay,nowWeek){//本月的多少号，现在周几
-    // console.log("参数："+day+","+nowDay+","+nowWeek)
-    if(day>31||day<0){
-      return false;
-    }else{
-      if (day < nowDay){
-        return false;
-      }
-      // console.log("nowWeek:" + nowWeek)
-      var week = nowWeek + (day - nowDay) % 7;//获取到周次
-      if(week>7){
-        week = week % 7;
-      }
-      // console.log( week <= 5);
-      if (week <= 5){
-        // console.log("week:" + week);
-        return true;
-      }else{
-        return false;
-      }
-    }
+  getWorkDay:function(year,month,day){
+    var date = new Date(year, month - 1, day);
+    // console.log(year, month, day, date.getDay())
     
-
+    if (date.getDay() == 6 || date.getDay()===0){
+      return false;
+    }
+    return true;
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var countdays=0;
-    const date=new Date();
-    console.log("当前周次："+date.getTimezoneOffset());
-    var idx = date.getDate() ;
-    var nowDay=idx;
-    const days = this.data.days;
     
-    var week = date.getDay();
-    if (week != 0 && week != 6){
-      days[idx].choosed = true;
-      countdays++;
-    }
-    
-    while(idx<30){
-      idx += 1;
-      
-      // console.log(this.getWorkDay(idx + 1, nowDay, week))
-      if (this.getWorkDay(idx + 1, nowDay, week)){
-        countdays++;
-        days[idx].choosed = true;
-      }
-      // console.log(idx);
-    }
-    this.setData({
-      days,
-      countday: countdays,
-    });
   },
 
   /**

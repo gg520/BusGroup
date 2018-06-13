@@ -59,6 +59,8 @@ public class StationServiceImpl implements StationService {
      *@describe 通过id查站点
      */
     public Station findStationById(Integer stationId) {
+        if(stationId==null||stationId==0)
+            return new Station();
         log.info("通过id查站点");
         return stationMapper.selectByPrimaryKey(stationId);
     }

@@ -2,14 +2,9 @@
 
 var api=require("../../../config/api.js");
 var util=require("../../../utils/util.js");
-//时间
-var dateTimePicker=require("../../../libs/dateTimePicker.js");
-
+var routeInquiryPeriod=7;
 var app=getApp();
-// var startList = ["07:30", "08:00", "08:30", "08:50", "09:00"];
-// var endList = ["16:30", "17:00", "17:30", "18:00", "18:30"];
-var successFalg=false;
-var index=-1;
+
 Page({
   /**
    * 页面的初始数据
@@ -26,59 +21,12 @@ Page({
     mobile:'13592573327',//您的真实电话
     startChioceIcon:'/static/images/icon_time.png',
     endChioceIcon:'/static/images/icon_time.png',
-    // startChioce:false,
-    // endChioce:false,
+    startDefault:'',//默认线路运行时间，设定线路招募的周期，统一设定由后台设定
+    endsDefault:'',//结束的最晚时间,默认一个月，可以适当的减少
+
+    periodStart:'',
+    periodEnd:'',
   },
-  //时间选择
-  // choiceTime:function(e){
-  //   // console.log(e.currentTarget.dataset.item);
-  //   switch(e.currentTarget.dataset.item){
-  //     case "startTime":
-  //       //设置弹框
-  //       wx.showActionSheet({
-  //         itemList: startList,
-  //         success:function(res){
-  //           console.log(startList[res.tapIndex]);//显示的下标
-  //           index = res.tapIndex;//设置下标
-  //           successFalg=true;
-            
-  //         },
-  //         fail:function(res){
-  //           console.log(res.errMsg);
-  //         }
-  //       });
-  //       if(successFalg){
-  //         successFalg = false;
-  //         this.setData({
-  //           starttimename: "出发时间：" + startList[index],
-  //           starttime: startList[index],
-  //         })
-  //       }
-  //       break;
-  //     case "endTime":
-  //       //设置弹框
-  //       wx.showActionSheet({
-  //         itemList: endList,
-  //         success: function (res) {
-  //           console.log(endList[res.tapIndex]);//显示的下标
-  //           index = res.tapIndex;//设置下标
-  //           successFalg=true;
-  //         },
-  //         fail: function (res) {
-  //           console.log(res.errMsg);
-  //         }
-  //       });
-  //       if (successFalg) {
-  //         successFalg=false;
-  //         console.log("返程时间：" + endList[index]);
-  //         this.setData({
-  //           endtimename: "返程时间：" + endList[index],
-  //           endtime: endList[index],
-  //         })
-  //       }
-  //       break;
-  //   }
-  // },
   start:function(){
     //正则
     //手机
@@ -104,6 +52,10 @@ Page({
       util.showErrorToast("未选择时间");
       return false;
     }
+    if (this.data.periodStart.length <= 0 || this.data.periodEnd <= 0){
+      util.showErrorToast("未选择日期");
+      return false;
+    }
     if(this.data.username.length <= 0 || this.data.mobile.length <= 0){
     // if (this.data.mobile.length <= 0){
       util.showErrorToast("未输入姓名或电话");
@@ -127,6 +79,8 @@ Page({
         starttime: this.data.starttime,
         endtime: this.data.endtime,
         period: this.data.period,
+        periodStart: this.data.periodStart,
+        periodEnd: this.data.periodEnd,
       },'POST').then(function(res){
         console.log(res);
         if (res.errno === 0){
@@ -157,9 +111,25 @@ Page({
       username: e.detail.value
     })
   },
-  bindPeriodInput:function(e){
+  bindPeriodStartChange:function(e){
+    //设置开始时间
+    //根据开始时间设置默认时间
+    let start = e.detail.value;
+    var sd=start.split("-");
+    ++sd[1];
+    if(sd[1]>12){
+      ++sd[0];
+      sd[1]=01;
+
+    }
     this.setData({
-      period: e.detail.value
+      periodStart: start,
+      endsDefault: sd[0]+"-"+sd[1]+"-"+sd[2]
+    })
+  },
+  bindPeriodEndChange:function(e){
+    this.setData({
+      periodEnd: e.detail.value
     })
   },
   bindMobileInput:function(e){
@@ -212,8 +182,57 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取后台的招募 周期，即是招募时间
+    wx.showLoading({
+      title: '加载中...',
+    });
+    //将信息发送到后台
+    console.log(this.data.startsite)
+    // util.request(
+    //   api.RouteInquiryPeriod,
+    //   {}, 'POST').then(function (res) {
+    //     console.log(res);
+    //     if (res.errno === 0) {
+    //       //获取招募周期
+    //       routeInquiryPeriod=res.data;
+    //     }
+    // })
+    wx.hideLoading();
+    //初始化线路招募周期
+    this.initDefault();
   },
-
+  //初始化线路招募周期
+  initDefault:function(){
+    var date = new Date();
+    var day = date.getDate();//获取当前时间
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    var maxDay = new Date(year, month, 0).getDate();//获取当月最大的天数
+    day = routeInquiryPeriod + day;
+    if (day > maxDay){
+      if(month===12){
+        ++year;
+        month=01;
+        day=day-maxDay;
+      }else{
+        ++month;
+        day = day - maxDay;
+      }
+    }
+    
+    var dayStr = year + "-" + month + '-' + day;
+    ++month;
+    if (month>12){
+      ++year;
+      month=01;
+    }
+    var dayends = year + "-" + month + '-' + day;
+    console.log(dayStr)
+    this.setData({
+      startDefault: dayStr,
+      endsDefault:dayends,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -247,15 +266,17 @@ Page({
    */
   onPullDownRefresh: function () {//刷新界面
     this.setData({
-      startsite: '',//出发地点
-      endsite: '',//结束地点
+      startsite: '中原工学院南区',//出发地点
+      endsite: '郑州火车站',//结束地点
+      period: '8',//招募周期
       starttimename: "出发时间",
+      starttime: '08:00',
+      endtime: '17:00',
       endtimename: '返程时间',
-      username: '',//您的姓名
-      mobile: '',//您的真实电话
-      mesage: '',//备注信息
-      startChioceIcon: '/static/images/icon-chioce.png',
-      endChioceIcon: '/static/images/icon-chioce.png',
+      username: '郭苏州',//您的姓名
+      mobile: '13592573327',//您的真实电话
+      startChioceIcon: '/static/images/icon_time.png',
+      endChioceIcon: '/static/images/icon_time.png',
     })
   },
 
