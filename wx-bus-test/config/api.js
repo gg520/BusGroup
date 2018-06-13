@@ -26,6 +26,7 @@ module.exports = {
   SearchRun: WxApiRoot + 'search/routeRun',  //搜索开通线路
   SearchRoute:WxApiRoot+'search/routeAll',//搜索所有站点
 
+  CheckPassword:WxApiRoot+'check/password',//验证密码是否正确
   CheckInfo:WxApiRoot+"check/info",//验证是否完善信息
   GetQRcode:WxApiRoot+"qrcode/getQRcode",//獲取二維碼，即是二維碼的下載，post
   

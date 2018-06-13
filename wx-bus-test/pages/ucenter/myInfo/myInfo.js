@@ -8,17 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // dateValue: '请选择车辆上路时间',
-    // array: [
-    //   '京', '粤', '沪', '津', '湘', '鄂', '豫', '冀','渝',
-    //   '云','辽','黑','皖','鲁','新','苏','浙','赣','鄂',
-    //   '桂','甘','晋','蒙','陕','吉','闽','贵','粤','青',
-    //   '藏','川','宁','琼'],
-    // index: 0,
     userInfo:'',
     gender:['男','女'],
     mobileIcon:'',//手机号码是否正确
-    brithday:'2018-04-10'
+    brithday:'2018-04-10',
+    password:'1234567891023',
+
+    showModal:false,//模态框显示
+    showcheck:false,//旧密码验证
+    shownewpw:false,//新密码显示
+    oldpw:'',//旧密码
+    newpw1:'',//新密码1
+    newpw2: '',//新密码2
   },
 
   /**
@@ -166,25 +167,117 @@ Page({
     //将信息发送到后台
     console.log(this.data.startsite)
     util.request(
-      api.RouteInquiry,
+      api.ChangUserInfo,
       {
-        username: this.data.username,
-        phone: this.data.mobile,
-        startsite: this.data.startsite,
-        endsite: this.data.endsite,
-        starttime: this.data.starttime,
-        endtime: this.data.endtime,
-        period: this.data.period,
+        // username: this.data.username,
+        // phone: this.data.mobile,
+        // startsite: this.data.startsite,
+        // endsite: this.data.endsite,
+        // starttime: this.data.starttime,
+        // endtime: this.data.endtime,
+        // period: this.data.period,
+        userInfo: this.data.userInfo,
       }, 'POST').then(function (res) {
         console.log(res);
         if (res.errno === 0) {
           //成功
           util.showSuccessToast("提交成功");
-          wx.navigateBack({//返回上页
-            delta: 1
-          })
+          // wx.navigateBack({//返回上页
+          //   delta: 1
+          // })
         }
       })
     wx.hideLoading();
+  },
+  changpw:function(e){
+    var pwd = e.detail.value;
+    this.setData({
+      showModal: true,
+      showcheck: true,//旧密码验证
+    })
+  },
+  /**
+   * showModal:false,//模态框显示
+    showcheck:false,//旧密码验证
+    shownewpw:false,//新密码显示
+    oldpw:'',//旧密码
+    newpw1:'',//新密码1
+    newpw2: '',//新密码2
+   */
+  onCancel:function(){
+    //取消
+    this.setData({
+      showModal: false,//模态框显示
+      showcheck: false,//旧密码验证
+      shownewpw: false,//新密码显示
+      oldpw: '',//旧密码
+      newpw1: '',//新密码1
+      newpw2: '',//新密码2
+    })
+  },
+  changChackpw:function(e){
+    this.setData({
+      oldpw:e.detail.value
+    });
+    
+  },
+  checkConfirm:function(e){
+    if (!this.data.oldpw){
+      util.showWarningToast("密码不能为空");
+      return false;
+    }
+    //验证信息
+    wx.showLoading({
+      title: '验证中...',
+    });
+    util.request(
+      api.CheckPassword,
+      { password: this.data.oldpw}, 'POST').then(function (res) {
+        console.log(res);
+        if (res.errno === 0) {
+          //成功，将模态框改成
+          this.setData({
+            showcheck: false,//旧密码验证
+            shownewpw: true,//新密码显示
+            oldpw: '',//旧密码
+            newpw1: '',//新密码1
+            newpw2: '',//新密码2
+          })
+          
+        }
+      })
+    wx.hideLoading();
+  },
+  inputNew1Change:function(e){
+    this.setData({
+      newpw1: e.detail.value
+    });
+  },
+  inputNew2Change: function (e) {
+    this.setData({
+      newpw2: e.detail.value
+    });
+  },
+  newConfirm:function(){
+    if (this.data.newpw2 && this.data.newpw1){//不为空
+      if (this.data.newpw2 === this.data.newpw1){
+        //将数据提交个给userInfo
+        var userInfo=this.data.userInfo;
+        userInfo.password = this.data.newpw2;
+        this.setData({
+          userInfo: userInfo,
+          showModal: false,//模态框显示
+          showcheck: false,//旧密码验证
+          shownewpw: false,//新密码显示
+          oldpw: '',//旧密码
+          newpw1: '',//新密码1
+          newpw2: '',//新密码2
+        })
+      }else{
+        util.showWarningToast("两次密码不一致");
+      }
+    }else{
+      util.showWarningToast("密码不能为空");
+    }
   }
 })

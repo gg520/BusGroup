@@ -75,14 +75,14 @@
         <view class="chooseDate">
           <block>
               <view class="startDate">
-                <text class="date">发车时间：{{item.startTime}}</text>
+                <text class="date">出发：{{item.startTime}}</text>
               </view>
           </block>
           <block>
               <view class="endDate">
                 <!-- <text class="date">座位数：{{item.recruitNum}}</text>
                 <text class="date">已定：{{item.recruitNum}}</text> -->
-                <text class="date">剩余：{{item.recruitNum-item.recruitNum}}座</text>
+                <text class="date">剩余：{{item.recruitNum-item.passengerCount}}座</text>
                 单价：<text class="data-price">￥{{item.price}}元</text>
               </view>
           </block>

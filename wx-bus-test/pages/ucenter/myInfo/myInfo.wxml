@@ -61,7 +61,8 @@
   </view>
 </view>
 <view class="person-info">
-  <view class="info-title">实名信息</view>
+  <view class="info-title">重要信息</view>
+  
   <view class="info-item">
     <label>姓名</label>
     <input type="text" value="{{userInfo.name}}" placeholder='您的真实姓名'/>
@@ -72,6 +73,41 @@
     <input type="text" value="{{userInfo.citizenship}}" placeholder='您的身份证号码'/>
     <view class="important">*</view>
   </view>
-  
+  <view class="info-item">
+    <label>密码</label>
+    <input type="password" value="{{password}}" placeholder='您的密码' disabled='true' bindtap='changpw'/>
+    <view class="important">*</view>
+  </view>
 </view>
 <button type="default"  bindtap="changeInfo">修改</button>
+
+<!-- 模态框 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showcheck}}">
+  <view class="modal-title">密码验证</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" type="password" maxlength="15" class="input" placeholder="请输入当前密码" bindinput='changChackpw' ></input>
+    </view>
+  </view>
+  
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="checkConfirm" data-status="confirm">确定</view>
+  </view>
+</view>
+
+<view class="modal-dialog" wx:if="{{shownewpw}}">
+  <view class="modal-title">新的密码</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" type="password" maxlength="15" bindinput="inputNew1Change" class="input" placeholder="请输入新的密码"></input>
+      <input placeholder-class="input-holder" type="password" maxlength="15" bindinput="inputNew2Change" class="input" placeholder="请再次输入新的密码"></input>
+    </view>
+  </view>
+  
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="newConfirm" data-status="confirm">确定</view>
+  </view>
+</view>
