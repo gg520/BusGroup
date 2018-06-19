@@ -8,12 +8,12 @@ Page({
   data: {
     searchSite:'',//搜索站点锁定的位置，开始 start 或者 end，默认end
     address:[
-      { stationId: 0, stationName: "江西农业大学", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西南昌市志敏大道1101号" },
-      { stationId: 1, stationName: "江西财经大学(蛟桥园校区)", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西省南昌市青山湖区双港东大街169号" },
-      { stationId: 2, stationName: "东华大道", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西省南昌市青山湖区" },
-      { stationId: 3, stationName: "范家新村-公交站", stationCoord: "20,30", stationStatus: 0, stationDescribe: "青三湖区广兰路东" },
-      { stationId: 4, stationName: "万达广场(红谷滩店)", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西省南昌市青山湖区会展路999号" },
-      { stationId: 5, stationName: "昌北机场T2航空楼", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西南昌市新建区机场大道" },
+      // { stationId: 0, stationName: "江西农业大学", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西南昌市志敏大道1101号" },
+      // { stationId: 1, stationName: "江西财经大学(蛟桥园校区)", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西省南昌市青山湖区双港东大街169号" },
+      // { stationId: 2, stationName: "东华大道", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西省南昌市青山湖区" },
+      // { stationId: 3, stationName: "范家新村-公交站", stationCoord: "20,30", stationStatus: 0, stationDescribe: "青三湖区广兰路东" },
+      // { stationId: 4, stationName: "万达广场(红谷滩店)", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西省南昌市青山湖区会展路999号" },
+      // { stationId: 5, stationName: "昌北机场T2航空楼", stationCoord: "20,30", stationStatus: 0, stationDescribe: "江西南昌市新建区机场大道" },
     ],
     history:[],
   },

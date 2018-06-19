@@ -10,15 +10,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    startsite:'中原工学院南区',//出发地点
-    endsite:'郑州火车站',//结束地点
-    period:'8',//招募周期
-    starttimename:"出发时间",
-    starttime:'08:00',
-    endtime:'17:00',
-    endtimename:'返程时间',
-    username:'郭苏州',//您的姓名
-    mobile:'13592573327',//您的真实电话
+    startsite: '',//出发地点   中原工学院南区
+    endsite: '',//结束地点  郑州火车站
+    period: '',//招募周期  8
+    starttimename: "出发时间",//
+    starttime: '',//08:00
+    endtime: '',//17:00
+    endtimename: '返程时间',//
+    username: '',//您的姓名  郭苏州
+    mobile: '',//您的真实电话 //13592573327
     startChioceIcon:'/static/images/icon_time.png',
     endChioceIcon:'/static/images/icon_time.png',
     startDefault:'',//默认线路运行时间，设定线路招募的周期，统一设定由后台设定

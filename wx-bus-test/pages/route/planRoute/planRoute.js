@@ -547,8 +547,10 @@ Page({
     //获取地址信息
     let itemIndex = event.currentTarget.id;
     let that = this;
+    let search = this.data.search;
+    search.endSite = itemIndex;
     this.setData({
-      searchSite:itemIndex
+      search: search
     })
     console.log(that.data.search.startLatitude);
      //获取到站点的ID从而将数据封装到数据传输获取站点数据

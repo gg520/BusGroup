@@ -30,7 +30,7 @@ Page({
     inputStartSite: "我的位置",
     inputEndSite:'',
     //搜索历史
-    historyKeyword:['新郑','中原工学院']
+    historyKeyword: []//'新郑','中原工学院'
   },
   //出发位置焦点
   inputStartFocus: function () {
