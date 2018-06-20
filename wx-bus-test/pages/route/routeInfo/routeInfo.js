@@ -42,6 +42,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    countday = 0;
     let that=this;
     console.log(options.routeid);
     //获取来源页面
@@ -84,7 +85,7 @@ Page({
           that.getNowDayAndWeek(data.startRecruit, data.endsRecruit);
           
         }else{
-          console.log("失败"+res);
+          console.log("失败" + res.errno);
         }
       });
     }else{
@@ -323,6 +324,9 @@ console.log(starttime+"  cc  "+endstime)
       util.showWarningToast("请选择坐车日期");
       return false;
     }
+
+    console.log();
+
     let that=this;
     //验证是否完善信息，不完善提示并保存到收藏
     if (app.globalData.hasLogin) {
@@ -344,7 +348,7 @@ console.log(starttime+"  cc  "+endstime)
           }else if (res.data.errno === 0) {
             //验证通过
             wx.navigateTo({
-              url: '/pages/shopping/checkout/checkout?countDay='+countday+'&routeid='+that.data.routeid,
+              url: '/pages/shopping/checkout/checkout?countDay=' + countday + '&routeid=' + that.data.routeid + '&selectdays=' + that.getDays(),
             })
 
           } else if (res.data.errno === 402){
@@ -367,13 +371,31 @@ console.log(starttime+"  cc  "+endstime)
     }
     
   },
+ 
+  addMyCollect:function(){
+    //收藏
+    util.request(api.CollectAdd,
+    {
+      routeId:this.data.routeId,
+
+    },"POST").then(function(res){
+      if (res.data.erron === 0) {
+        util.showSuccessToast("收藏成功");
+      } else {
+        util.showErrorToast("收藏失败");
+      }
+    });
+  },
   selectDays:function(e){
-    if (comeFrom === 'plan') {
+    if (comeFrom === 'plan') {//招募
       return false;
     }
     const day = e.currentTarget.dataset.day;//日期
     const months = e.currentTarget.dataset.months;//月份
+   
+    
     const days=this.data.days;
+    // console.log(days)
     for(let i=0; i<days.length;i++){
       if (days[i].check&&day==days[i].day&&months==days[i].month){
         if (days[i].choosed){
@@ -392,6 +414,38 @@ console.log(starttime+"  cc  "+endstime)
       countday: countday,
       totalmoney: (countday * that.data.price).toFixed(2),
     })
+  },
+// 获取时间的数据方法
+  getDays:function(){
+    var selectdays="";
+    const days = this.data.days;//获取日期
+    var startRecruit = this.data.startRecruit;//运行周期开始
+    var endsRecruit = this.data.endsRecruit;//运行结束
+    var startmonth = startRecruit.substring(startRecruit.indexOf("-") + 1, startRecruit.lastIndexOf("-"));//第一个月
+    var endmonth = endsRecruit.substring(endsRecruit.indexOf("-") + 1, endsRecruit.lastIndexOf("-"));//第二个月   
+    for (let i = 0; i < days.length; i++) {
+      // console.log(i)
+      if (days[i].choosed){
+        // console.log("选中："+days.day)
+        if ( startmonth == days[i].month) {//第一个月
+          if (selectdays.length>0){
+            selectdays += "," + startRecruit.substring(0, startRecruit.lastIndexOf("-")+1)+days[i].day;
+          }else{
+            selectdays += startRecruit.substring(0, startRecruit.lastIndexOf("-") + 1) + days[i].day;
+          }
+        }else if(endmonth==days[i].month){//第二个月
+          if (selectdays.length > 0) {
+            selectdays += "," + endsRecruit.substring(0, endsRecruit.lastIndexOf("-") + 1) + days[i].day;
+          } else {
+            selectdays += endsRecruit.substring(0, endsRecruit.lastIndexOf("-") + 1) + days[i].day;
+          }
+        }
+      }
+      
+    }
+    // console.log(days)
+    // console.log(selectdays)
+    return selectdays;//返回选择的数据
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

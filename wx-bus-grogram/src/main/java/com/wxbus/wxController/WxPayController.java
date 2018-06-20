@@ -11,7 +11,7 @@ import com.wxbus.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("weixin/pay")
-public class PayController {
+public class WxPayController {
 
 
     @RequestMapping("prepay")

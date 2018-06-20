@@ -117,13 +117,16 @@ public class WxRouteController {
 
             Map<Object,Object> map1=new HashMap<Object, Object>();
             Map<Object,Object> map2=new HashMap<Object, Object>();
-            for(int i=0;i<stationId.length();i++){
-                Integer id= Integer.parseInt(stationId.substring(i,i+1));
-                Station station=stationService.findStationById(id);
-                map2.put("stationid",station.getStationId());
-                map2.put("stationname",station.getStationName());
+            if(stationId!=null&&"".equals(stationId)){
+                for(String stId:stationId.split(",")){
+                    Integer id= Integer.parseInt(stId);
+                    Station station=stationService.findStationById(id);
+                    map2.put("stationid",station.getStationId());
+                    map2.put("stationname",station.getStationName());
+                }
 
             }
+
 
 
             List mapList = new ArrayList<>();

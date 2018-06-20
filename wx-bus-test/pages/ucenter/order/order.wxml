@@ -24,7 +24,8 @@
     </view>
 
     <view class="orders">
-      <navigator url="/pages/route/routeInfo/routeInfo?routeid={{item.routeStatus}}" class="order" wx:for="{{orderList}}" wx:key="id">
+    <!-- 根据订单编号获取订单信息 -->
+      <navigator url="/pages/route/routeInfo/routeInfo?orderNumber={{item.orderNumber}}" class="order" wx:for="{{orderList}}" wx:key="id">
             <view class="h">
                 <view class="l">订单编号：{{item.orderSn}}</view>
                 <view class="r {{ item.routeStatus == 1 ? 'ok' : ''}}">{{ item.routeStatus == 1 ? '未过期' : '已过期'}}</view>
@@ -48,14 +49,14 @@
                 </block>
                 <block>
                     <view class="endDate">
-                      <text class="date">订购：20天</text>单价：
-                      <text class="price">￥2</text>
+                      <text class="date">订购：{{item.reserveDay}}天</text>单价：
+                      <text class="price">￥{{item.price}}元</text>
                     </view>
                 </block>
               </view> 
             </view>
             <view class="b">
-                <view class="l">实付：￥{{item.actualPrice}}</view>
+                <view class="l" style='color:#b4282d;font-weight:bold'>实付：￥{{item.payMoney}}元</view>
             </view>
       </navigator>
     </view>

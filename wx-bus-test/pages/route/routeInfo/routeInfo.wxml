@@ -95,9 +95,9 @@
     </view>
 
     <view class="buy" bindtap="addBuy">购买</view>
-    <view class="btn-right" bindtap="addToMy">收藏</view>
+    <view class="btn-right" bindtap="addMyCollect">收藏</view>
   </view>
 
- <!-- <button bindtap='getNowDayAndWeek'>测试</button>  -->
+  <!-- <button bindtap='getDays'>测试</button>   -->
 
 </scroll-view>

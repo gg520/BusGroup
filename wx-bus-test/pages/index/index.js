@@ -9,8 +9,8 @@ Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     banner: [
-      { url:'/static/images/ic_menu_me_nor.png'},
-      { url: '/static/images/ic_menu_me_nor.png'}
+      { url:'/static/images/ic_mu_index1.png'},
+      { url: '/static/images/ic_mu_index2.jpg'}
     ],
     //设置显示信息
     //乘客

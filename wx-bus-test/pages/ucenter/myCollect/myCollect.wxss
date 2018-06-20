@@ -93,15 +93,37 @@ page{
 }
 
 .order .h .r{
+    padding-right: 23rpx;
     float: right;
     color: #b4282d;
+    
     font-size: 24rpx;
 }
 /*未过期  */
 .order .h .r.ok{
+   /* padding-right: 62.5rpx;  */
     float: right;
     color: #0066ff;
     font-size: 24rpx;
+}
+/* 关闭按钮 */
+/* .close {
+   position: absolute;
+  float: right;
+  /* height: 31.25rpx;
+  height: 31.25rpx; 
+} */
+.order .h .close {
+  position: absolute;
+  right: 0;
+  /* top: 0; */
+  width: 40rpx;
+  height: 40rpx;
+}
+.order .h .close image {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 
@@ -234,3 +256,4 @@ page{
   color: #ff0000;
   margin-right: 1.067rem;
 }
+

@@ -1,9 +1,11 @@
 //服务器的信息
 // var WxApiRoot ="http://47.94.232.43:8888/weixin/";//测试本地后台数据
-var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
-// var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
+// var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
+var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
 
 module.exports = {
+  Test:WxApiRoot+"test/test2",//测试数据，只用于开发前台测试接口连接问题
+
   AuthLoginByWeixin: WxApiRoot + 'auth/loginByWeixin',//微信登录
   AuthReset: WxApiRoot + 'auth/reset', //重置密码
   AuthRegister: WxApiRoot + 'auth/register', //注册账号
@@ -12,9 +14,11 @@ module.exports = {
   ChangUserInfo:WxApiRoot+"user/changeUserInfo",//修改个人信息，完善个人信息
   Payment:WxApiRoot+'pay/',//支付
 
-  CollectGet:WxApiRoot+'user/getCollect',//获取收藏信息
-  CollectAdd:WxApiRoot+'user/addCollect',//添加到收藏
-  CollectClear:WxApiRoot+'user/clearCollect',//删除收藏的信息
+  OrderList: WxApiRoot +"order/orderList",//获取订单信息
+
+  CollectGet:WxApiRoot+'collect/getCollect',//获取收藏信息
+  CollectAdd: WxApiRoot +'collect/addCollect',//添加到收藏
+  CollectClear: WxApiRoot +'collect/clearCollect',//删除收藏的信息
 
   RouteInquiry: WxApiRoot+'route/inquiryRoute',//线路征集链接
   RouteInfo: WxApiRoot + 'route/routeInfo',//获取路线的详细信息链接

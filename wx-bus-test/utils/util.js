@@ -22,6 +22,7 @@ const formatNumber = n => {
  * 封装微信登录后的request
  */
 function request(url,data={},method="GET"){
+  console.log(data)
   return new Promise(function (resolve,reject){
     wx.request({
       url: url,

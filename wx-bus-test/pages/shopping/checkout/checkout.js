@@ -14,7 +14,14 @@ Page({
   submitOrder:function(){
     //结算付款
     //请求后台
-    
+    //将数据保存到后台
+    util.request(api.RouteInfo, { routeId: options.routeid }, 'POST').then(function (res) {
+      if(res.data.erron===0){
+
+      }else{
+        
+      }
+    });
     wx.navigateTo({
       url: '/pages/shopping/payResult/payResult',
     })
@@ -26,10 +33,12 @@ Page({
   onLoad: function (options) {
     //获取参数
     if (options.routeid.length > 0) {
+      console.log("新：" + options.selectdays)
       let that = this;
       that.setData({
         routeid: options.routeid,
         countday: options.countDay,
+        selectdays: options.selectdays,//选择的日期
       });
       //获取到线路的id，根据id获取后台的线路信息
       util.request(api.RouteInfo, { routeId: options.routeid }, 'POST').then(function (res) {

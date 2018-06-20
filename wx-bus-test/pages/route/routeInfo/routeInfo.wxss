@@ -544,3 +544,11 @@ page {
     border-top: 1px solid #f4f4f4;
     border-bottom: 1px solid #f4f4f4;
 }
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40rpx;
+  height: 40rpx;
+}

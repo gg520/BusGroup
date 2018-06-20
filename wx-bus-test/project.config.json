@@ -106,6 +106,12 @@
 					"name": "站点搜索",
 					"pathName": "pages/search/searchStation/searchStation",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收藏",
+					"pathName": "pages/ucenter/myCollect/myCollect",
+					"query": ""
 				}
 			]
 		}
