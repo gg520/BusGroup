@@ -29,7 +29,7 @@ module.exports = {
   SearchSite: WxApiRoot + "search/site",//搜索站点
   SearchPlant: WxApiRoot + "search/routePlant",//搜索招募线路3
   SearchRun: WxApiRoot + 'search/routeRun',  //搜索开通线路
-  SearchRoute:WxApiRoot+'search/routeAll',//搜索所有站点
+  SearchRoute: WxApiRoot +'route/queryAllReoute',//搜索所有线路
 
   CheckPassword:WxApiRoot+'check/password',//验证密码是否正确
   CheckInfo:WxApiRoot+"check/info",//验证是否完善信息

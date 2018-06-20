@@ -27,19 +27,11 @@ public class UserTokenManager {
      */
     public static String getUserId(String token) {
 
-
-        //测试
-//        System.out.println("token数据："+tokenMap.size());
-
-
-//        System.out.println("token:"+token);
-
         UserToken userToken = tokenMap.get(token);
         if(userToken == null){
             logger.warn("未找到 token");
             return null;
         }
-
         if(userToken.getExpireTime().isBefore(LocalDateTime.now())){
             tokenMap.remove(token);
             idMap.remove(userToken.getUserId());

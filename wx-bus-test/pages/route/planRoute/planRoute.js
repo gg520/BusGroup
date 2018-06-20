@@ -172,7 +172,7 @@ Page({
       //获取线路的id
       //根据界面跳转
       wx.navigateTo({
-        url: '/pages/route/routeInfo/routeInfo?comeFrom=plan&routeid=' + e.currentTarget.dataset.routeid,//站点ID,
+        url: '/pages/route/routeInfo/routeInfo?routeid=' + e.currentTarget.dataset.routeid,//站点ID,
       })
     }else{//未登录，确定跳转到登录界面
       wx.showModal({

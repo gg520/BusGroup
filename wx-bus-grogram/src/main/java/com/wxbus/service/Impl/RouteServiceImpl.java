@@ -16,6 +16,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -182,16 +183,22 @@ public class RouteServiceImpl implements RouteService {
     public List<Route> findAllRoute(Integer startNum, Integer num, Integer time) {
         PageHelper.startPage(startNum, num);
         RouteExample routeExample=new RouteExample();
+        List<Integer> statusList=new ArrayList<>();
+        statusList.add(3);
+        statusList.add(5);
         if(time!=null&&time!=0){
             routeExample.clear();
             if(time==1){
                 //上午
-                routeExample.or().andStartTimeLessThan("12:00");
+                routeExample.or().andStartTimeLessThan("12:00").andRouteStatusIn(statusList);
             }else if (time==2){
                 //下午
-                routeExample.or().andStartTimeGreaterThan("12:00");
+                routeExample.or().andStartTimeGreaterThan("12:00").andRouteStatusIn(statusList);
             }
+        }else{
+            routeExample.or().andRouteStatusIn(statusList);
         }
+
         routeExample.setOrderByClause("recruit_time asc");
         return routeMapper.selectByExample(routeExample);
     }

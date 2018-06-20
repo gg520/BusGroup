@@ -41,21 +41,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+
+  /**
+   * 根据routeid获取到数据，然后根据routestaute确定是招募信息还是其他
+   */
   onLoad: function (options) {
     countday = 0;
     let that=this;
+    comeFrom = '';
     console.log(options.routeid);
     //获取来源页面
     console.log("执行")
-    comeFrom = options.comeFrom;
-    if (options.comeFrom != 'plan' && options.comeFrom!='run'){
-      util.showErrorToast("错误参数");
-      wx.navigateBack({
-        delta: 1
-      })
-    }
-    
-    // let comeForm =options.comeFrom,//设置来源页面
+  
     if (options.routeid.length > 0){
       let that=this;
       that.setData({
@@ -66,7 +63,9 @@ Page({
         // console.log("数据：" + JSON.stringify(res.data));
         if(res.errno === 0){//请求成功
           let data = res.data;
-          console.log("测试时间：" + data.price)
+          console.log("测试时间：" + data)
+          comeFrom = data.routeStatus==3?'plan':'run';
+          console.log("comFrom:" + comeFrom + "标示量：" + data.routeStatus)
           that.setData({
             price: data.price,
             startSite: data.startSite,//出发地点
@@ -80,7 +79,6 @@ Page({
             stations:data.stations,
             startRecruit: data.startRecruit,//运行周期开始
             endsRecruit: data.endsRecruit,//运行结束
-            // comeForm:comeForm,
           });
           that.getNowDayAndWeek(data.startRecruit, data.endsRecruit);
           

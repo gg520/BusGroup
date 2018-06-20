@@ -97,7 +97,7 @@ Page({
           success: function (res) {
             console.log(res.data)
             if (res.data.errno === 0) {
-              // console.log("设置：" + res.data.data)
+              console.log("设置：" + res.data.data)
               that.setData({
                 flagSeach: false,
                 routes: res.data.data,
@@ -141,7 +141,7 @@ Page({
    */
   goRoute: function (e) {
     if (app.globalData.hasLogin) {//判断您是否登录，登录可以跳转
-      console.log(e.currentTarget.id);
+      console.log("线路ID："+e.currentTarget.id);
       //获取线路的id
       //根据界面跳转
       wx.navigateTo({
@@ -173,7 +173,7 @@ Page({
     //查找数据
     if (that.data.searchSite.length > 0) {
       wx.request({
-        url: api.SearchPlant,
+        url: api.SearchRoute,
         data: {
           startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
           endSite: that.data.searchSite,
@@ -207,7 +207,7 @@ Page({
     } else {
       //所有数据
       wx.request({
-        url: api.RoutePlant,
+        url: api.SearchRoute,
         data: {
           startNum: 0,
           num: 20,
@@ -248,7 +248,7 @@ Page({
 
     if (that.data.searchSite.length > 0) {
       wx.request({
-        url: api.SearchPlant,
+        url: api.SearchRoute,
         data: {
           startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
           endSite: that.data.searchSite,
@@ -282,7 +282,7 @@ Page({
     } else {
       //所有数据
       wx.request({
-        url: api.RoutePlant,
+        url: api.SearchRoute,
         data: {
           startNum: 0,
           num: 20,
@@ -323,7 +323,7 @@ Page({
 
     if (that.data.searchSite.length > 0) {
       wx.request({
-        url: api.SearchPlant,
+        url: api.SearchRoute,
         data: {
           startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
           endSite: that.data.searchSite,
@@ -356,7 +356,7 @@ Page({
     } else {
       //所有数据
       wx.request({
-        url: api.RoutePlant,
+        url: api.SearchRoute,
         data: {
           startNum: 0,
           num: 20,
@@ -563,7 +563,7 @@ Page({
       console.log(that.data.search.startLatitude);
       //获取到站点的ID从而将数据封装到数据传输获取站点数据
       wx.request({
-        url: api.SearchPlant,
+        url: api.SearchRoute,
         data: {
           startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
           endSite: itemIndex,

@@ -135,6 +135,7 @@ public class WxRouteController {
             map1.put("endSite",route.getEndSite());
             map1.put("starttime",route.getStartTime());
             map1.put("arrivaltime",route.getEndTime());
+            map1.put("routeStatus",route.getRouteStatus());
             map1.put("price",route.getPrice());
             map1.put("recruitTime",route.getRecruitTime());//周期
 

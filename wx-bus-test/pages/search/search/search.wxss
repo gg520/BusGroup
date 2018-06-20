@@ -539,3 +539,17 @@ page{
     color: #b4282d;
     border: 1px solid #b4282d;
 }
+
+/* 状态 */
+.chooseCity .citySelect .close {
+  position: absolute;
+  right: 0;
+  /* top: 0; */
+  /* width: 40rpx;
+  height: 40rpx; */
+}
+.chooseCity .citySelect .close image {
+  display: block;
+  width: 100rpx;
+  height: 50rpx;
+}
