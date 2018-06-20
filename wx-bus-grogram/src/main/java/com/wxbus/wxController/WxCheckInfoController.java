@@ -3,6 +3,7 @@ package com.wxbus.wxController;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.service.CheckServier;
 import com.wxbus.service.HeadersName;
+import com.wxbus.service.UserService;
 import com.wxbus.service.UserTokenManager;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.QRcodeUtil;
@@ -81,6 +82,31 @@ public class WxCheckInfoController {
             e.printStackTrace();
         }
 
+    }
+    
+
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/20
+     *@describe 
+     */
+    @RequestMapping(value = "/password",method =RequestMethod.POST)
+    public Object checkPassword(@RequestBody String body){
+        if(body==null||"".equals(body)){
+            return  ResponseUtil.fail(500,"传入密码不能为空");
+
+        }
+        else{
+            String password=JacksonUtil.parseString(body,"password");
+            Passenger passenger=checkServier.findPassangerByPassword(password);
+            if(passenger==null){
+                return ResponseUtil.fail();
+            }
+            return ResponseUtil.ok();
+        }
     }
 
 }

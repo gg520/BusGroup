@@ -13,4 +13,13 @@ public interface CheckServier {
      * @return
      */
     Passenger getPassengerInfo(Integer id);
+    /**
+     *@type interface
+     *@parameter  [password]
+     *@back  com.wxbus.daomain.Passenger
+     *@author  如花
+     *@creattime 2018/6/20
+     *@describe 根据密码查找乘客信息
+     */
+    Passenger findPassangerByPassword(String password);
 }

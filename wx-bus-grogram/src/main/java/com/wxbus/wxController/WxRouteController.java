@@ -110,8 +110,10 @@ public class WxRouteController {
             String stationId=route.getStationId();
             Map<Object,Object> map1=new HashMap<Object,Object>();
             Map<Object,Object> map2=new HashMap<Object,Object>();
-            for(int i=0;i<stationId.length();i++){
-                Integer id= Integer.parseInt(stationId.substring(i,i+1));
+            String[] newStationId=stationId.split(",");
+            for(int i=0;i<newStationId.length;i++){
+
+                Integer id= Integer.parseInt(newStationId[i]);
                 Station station=stationService.findStationById(id);
                 map2.put("stationId",station.getStationId());
                 map2.put("stationName",station.getStationName());
@@ -251,4 +253,5 @@ public class WxRouteController {
 
         return ResponseUtil.ok(newRouteList);
     }
+
 }

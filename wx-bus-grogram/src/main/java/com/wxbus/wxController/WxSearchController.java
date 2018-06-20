@@ -2,10 +2,8 @@ package com.wxbus.wxController;
 
 
 
-import com.wxbus.daomain.NewRoute;
-import com.wxbus.daomain.NewStation;
-import com.wxbus.daomain.Route;
-import com.wxbus.daomain.Station;
+import com.wxbus.daomain.*;
+import com.wxbus.service.CheckServier;
 import com.wxbus.service.PassengerRouteService;
 import com.wxbus.service.RouteService;
 import com.wxbus.service.StationService;
@@ -15,6 +13,7 @@ import com.wxbus.util.SortUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -28,6 +27,8 @@ import java.util.List;
 public class WxSearchController {
     @Autowired
     private PassengerRouteService passenger_routeServise;
+    @Autowired
+    private CheckServier checkServier;
 
 
     @Autowired
@@ -159,6 +160,4 @@ public class WxSearchController {
 
 
     }
-
-
 }
