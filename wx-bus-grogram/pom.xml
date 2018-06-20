@@ -5,7 +5,8 @@
 
 	<groupId>com.wxbus</groupId>
 	<artifactId>wx-bus-grogram</artifactId>
-	<version>0.2</version>
+	<!--发布的版本号-->
+	<version>0.3</version>
 	<packaging>jar</packaging>
 
 	<name>wx-bus-grogram</name>

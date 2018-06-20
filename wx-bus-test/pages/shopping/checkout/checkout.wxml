@@ -29,7 +29,7 @@
     <view class="coupon-box">
         <view class="coupon-item">
             <view class="l">
-                <text class="name">郭苏州，男，412728199609144952</text>
+                <text class="name">{{userInfo.name}}，{{userInfo.gender==1?'男':'女'}}，{{userInfo.citizenship}}</text>
                 <!-- <text class="txt">{{couponList.length}}张</text> -->
             </view>
         </view>

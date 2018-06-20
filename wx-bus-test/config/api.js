@@ -1,7 +1,7 @@
 //服务器的信息
 // var WxApiRoot ="http://47.94.232.43:8888/weixin/";//测试本地后台数据
-// var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
-var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
+var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
+// var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
 
 module.exports = {
   Test:WxApiRoot+"test/test2",//测试数据，只用于开发前台测试接口连接问题
@@ -15,6 +15,7 @@ module.exports = {
   Payment:WxApiRoot+'pay/',//支付
 
   OrderList: WxApiRoot +"order/orderList",//获取订单信息
+  OrderAdd:WxApiRoot+"order/orderAdd",//添加订单
 
   CollectGet:WxApiRoot+'collect/getCollect',//获取收藏信息
   CollectAdd: WxApiRoot +'collect/addCollect',//添加到收藏

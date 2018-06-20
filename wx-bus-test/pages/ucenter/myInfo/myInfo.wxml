@@ -1,17 +1,4 @@
-<!-- <view class="accident">
-  <view class="ac-item">
-    <label>事故地址</label>
-    <view class="lh">
-      <text bindtap="openMap">{{address}}</text>
-    </view>
-  </view>
-  <view class="ac-item">
-    <label>事故时间</label>
-    <view class="lh">
-      <text>{{time}}</text>
-    </view>
-  </view>
-</view> -->
+
 <view class="upload-img">
   <view class="title">头像</view>
   <view class="upload">
@@ -19,11 +6,7 @@
       <image bindtap="up" src="{{userInfo.avatarUrl}}"></image>
       <!-- <text>前方部位</text> -->
     </view>
-    
-    
-    <!-- <view class="upload-item">
-      <image src="http://jtb-1253661417.cossh.myqcloud.com/images/%E4%BA%8B%E6%95%85%E5%A4%84%E7%90%86/icons/jtb_icn_add_pic%402x.png"></image>
-    </view> -->
+
   </view>
 </view>
 <view class="accident-type">

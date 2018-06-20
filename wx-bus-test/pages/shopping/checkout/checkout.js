@@ -12,19 +12,28 @@ Page({
   },
 
   submitOrder:function(){
+
+    
     //结算付款
     //请求后台
     //将数据保存到后台
-    util.request(api.RouteInfo, { routeId: options.routeid }, 'POST').then(function (res) {
-      if(res.data.erron===0){
+    util.request(api.OrderAdd, 
+    { 
+      routeId: this.data.routeid,
+      payMoney: this.data.totalmoney,//支付的总钱数
+      reserveDay: this.data.countday,//订购的总天数
+      reserveDays: this.data.selectdays,//订购的日期列表
 
+    }, 'POST').then(function (res) {
+      if(res.data.erron===0){
+          console.log("结算成功");
       }else{
-        
+        console.log("结算失败");
       }
     });
-    wx.navigateTo({
-      url: '/pages/shopping/payResult/payResult',
-    })
+    // wx.navigateTo({
+    //   url: '/pages/shopping/payResult/payResult',
+    // })
   },
   
   /**
@@ -33,7 +42,7 @@ Page({
   onLoad: function (options) {
     //获取参数
     if (options.routeid.length > 0) {
-      console.log("新：" + options.selectdays)
+      // console.log("新：" + options.selectdays)
       let that = this;
       that.setData({
         routeid: options.routeid,
@@ -44,9 +53,14 @@ Page({
       util.request(api.RouteInfo, { routeId: options.routeid }, 'POST').then(function (res) {
         // console.log("数据：" + JSON.stringify(res.data));
         if (res.errno === 0) {//请求成功
+
+          //获取个人信息的数据
+          let userInfo=wx.getStorageSync("userInfo");
+
           let data = res.data;
-          console.log("测试时间：" + data.price)
+          console.log("测试时间：" + userInfo)
           that.setData({
+            userInfo: userInfo,
             price: data.price,
             startSite: data.startSite,//出发地点
             endSite: data.endSite,//到达地点
