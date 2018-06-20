@@ -189,11 +189,14 @@ Page({
       })
     wx.hideLoading();
   },
-  changpw:function(e){
+  changpw:function(e){//每次修改密码将以前输入的记录清空
     var pwd = e.detail.value;
     this.setData({
       showModal: true,
       showcheck: true,//旧密码验证
+      oldpw: '',//旧密码
+      newpw1: '',//新密码1
+      newpw2: '',//新密码2
     })
   },
   /**
@@ -239,7 +242,7 @@ Page({
           this.setData({
             showcheck: false,//旧密码验证
             shownewpw: true,//新密码显示
-            oldpw: '',//旧密码
+            // oldpw: '',//旧密码
             newpw1: '',//新密码1
             newpw2: '',//新密码2
           })
@@ -262,10 +265,26 @@ Page({
     if (this.data.newpw2 && this.data.newpw1){//不为空
       if (this.data.newpw2 === this.data.newpw1){
         //将数据提交个给userInfo
-        var userInfo=this.data.userInfo;
-        userInfo.password = this.data.newpw2;
+        // var userInfo=this.data.userInfo;
+        // userInfo.password = this.data.newpw2;
+        //两次密码一致将密码更新
+        wx.showLoading({
+          title: '正在修改...',
+        });
+        util.request(
+          api.ChangePassword,
+          { 
+            oldPassword: this.data.oldpw,//旧密码
+            newPassword: this.data.newpw2,//新密码
+          }, 'POST').then(function (res) {
+            // console.log(res);
+            if (res.errno === 0) {
+              util.showSuccessToast("密码修改成功！");
+            }
+          });
+      
         this.setData({
-          userInfo: userInfo,
+          // userInfo: userInfo,
           showModal: false,//模态框显示
           showcheck: false,//旧密码验证
           shownewpw: false,//新密码显示
@@ -273,6 +292,7 @@ Page({
           newpw1: '',//新密码1
           newpw2: '',//新密码2
         })
+        wx.hideLoading();
       }else{
         util.showWarningToast("两次密码不一致");
       }

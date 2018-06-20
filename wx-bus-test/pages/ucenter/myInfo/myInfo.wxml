@@ -44,6 +44,14 @@
   </view>
 </view>
 <view class="person-info">
+  <view class="info-title">修改密码</view>
+  <view class="info-item">
+    <label>密码</label>
+    <input type="password" value="{{password}}" placeholder='您的密码' disabled='true' bindtap='changpw'/>
+    <view class="important">*</view>
+  </view>
+</view>
+<view class="person-info">
   <view class="info-title">重要信息</view>
   
   <view class="info-item">
@@ -54,11 +62,6 @@
   <view class="info-item">
     <label>身份证号码</label>
     <input type="text" value="{{userInfo.citizenship}}" placeholder='您的身份证号码'/>
-    <view class="important">*</view>
-  </view>
-  <view class="info-item">
-    <label>密码</label>
-    <input type="password" value="{{password}}" placeholder='您的密码' disabled='true' bindtap='changpw'/>
     <view class="important">*</view>
   </view>
 </view>

@@ -90,23 +90,44 @@ Page({
   },
   clearCollect:function(e){
     let id = e.currentTarget.dataset.id;//获取ID
-    let that=this;
-    //根据ID删除数据
-    util.request(api.CollectClear, { pRId:id},"POST").then(function (res) {
-      if (res.errno === 0) {
-        console.log(res.data);
-        //成功,隐藏该条数据
-        let collectList=that.data.collectList;
-        for(let i=0;i<collectList.length;i++){
-          if (collectList[i].pRId==id){
-            collectList[i].hidden=true;
-          }
+    let that = this;
+ 
+
+
+    //弹框确定删除收藏
+    wx.showModal({
+      title: '',
+      confirmColor: '#b4282d',
+      content: '删除该收藏？', 
+      success: function (res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '加载中...',
+          });
+
+          //根据ID删除数据
+          util.request(api.CollectClear, { pRId: id }, "POST").then(function (res) {
+            if (res.errno === 0) {
+              console.log(res.data);
+              //成功,隐藏该条数据
+              let collectList = that.data.collectList;
+              for (let i = 0; i < collectList.length; i++) {
+                if (collectList[i].pRId == id) {
+                  collectList[i].hidden = true;
+                }
+              }
+              that.setData({
+                collectList: collectList,
+              });
+            }
+          });
+          wx.hideLoading();
         }
-        that.setData({
-          collectList:collectList,
-        });
       }
     });
+
+    
+    
   },
   goRoute:function(e){
     if (app.globalData.hasLogin) {//判断您是否登录，登录可以跳转

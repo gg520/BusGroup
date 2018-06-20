@@ -12,7 +12,9 @@ module.exports = {
   AuthLoginByAccount: WxApiRoot + 'auth/login', //账号登录
 
   ChangUserInfo:WxApiRoot+"user/changeUserInfo",//修改个人信息，完善个人信息
-  Payment:WxApiRoot+'pay/',//支付
+  ChangePassword:WxApiRoot+"user/changePassword",//修改密码
+  
+  Payment: WxApiRoot +'pay/prepay',//支付
 
   OrderList: WxApiRoot +"order/orderList",//获取订单信息
   OrderAdd:WxApiRoot+"order/orderAdd",//添加订单
