@@ -7,11 +7,12 @@ import com.wxbus.daomain.Driver;
 import com.wxbus.daomain.DriverExample;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.daomain.PassengerExample;
+import com.wxbus.pojo.ResponseUserInfo;
 import com.wxbus.pojo.UserInfo;
 import com.wxbus.service.UserService;
 import com.wxbus.util.JsonUtil;
-import com.wxbus.util.MD5Util;
-import org.apache.commons.logging.Log;
+import com.wxbus.util.TimeUtil;
+import com.wxbus.util.MD5Util;import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,11 +30,11 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
     @Resource
     private PassengerMapper passengerMapper;
-    @Resource
+    @Autowired
     private DriverMapper driverMapper;
 
     private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
-    @Override
+
     public UserInfo getInfo(Integer userId) {
         Passenger passenger= passengerMapper.selectByPrimaryKey(userId);
         Assert.state(passenger!=null,"用户不存在");
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService {
         log.info("获取用户的信息");
         return userInfo;
     }
-    @Override
+
     public Passenger findById(Integer userId) {
 
         log.info("查找用户，根据id");
@@ -56,7 +57,6 @@ public class UserServiceImpl implements UserService {
      * @param openId
      * @return
      */
-    @Override
     public Passenger queryByOid(String openId) {
         PassengerExample example=new PassengerExample();
         example.or().andWeixinOpenidEqualTo(openId).andPassengerStatusEqualTo(0);//可用的
@@ -71,7 +71,6 @@ public class UserServiceImpl implements UserService {
      * 添加用户
      * @param user
      */
-    @Override
     public void add(Passenger user) {
         log.info("添加用户");
         passengerMapper.insertSelective(user);
@@ -81,7 +80,6 @@ public class UserServiceImpl implements UserService {
      * 更新用户信息
      * @param user
      */
-    @Override
     public void update(Passenger user) {
         log.info("更新用户");
         passengerMapper.updateByPrimaryKeySelective(user);
@@ -102,7 +100,7 @@ public class UserServiceImpl implements UserService {
         List<Driver> list=driverMapper.selectByExample(driverExample);
 
         Map map=new HashMap();
-        UserInfo userInfo=new UserInfo();
+        ResponseUserInfo responseUserInfo=new ResponseUserInfo();
 
 //        userInfo.setCity("Henan");
 //        userInfo.setCountry("China");
@@ -115,14 +113,20 @@ public class UserServiceImpl implements UserService {
             List<Passenger> passengerList=passengerMapper.selectByExample(passengerExample);
             if(passengerList!=null&&passengerList.size()>0){
 
-                userInfo.setAvatarUrl(passengerList.get(0).getPassengerAvater());
+                responseUserInfo.setAvatarUrl(passengerList.get(0).getPassengerAvater());
 
-                userInfo.setGender((byte) (passengerList.get(0).getPassengerGender().equals("男")?'1':'2'));
-                userInfo.setNickName(passengerList.get(0).getPassengerNickname());
+                responseUserInfo.setGender((byte)(passengerList.get(0).getPassengerGender().equals("男")?1:2));
+                responseUserInfo.setNickName(passengerList.get(0).getPassengerNickname());
+
+                responseUserInfo.setMobile(passengerList.get(0).getPassengerMobile());//电话号码
+                responseUserInfo.setCitizenship(passengerList.get(0).getPassengerCitizenship());//身份证号码
+                responseUserInfo.setAddress(passengerList.get(0).getPassengerAddress());
+                responseUserInfo.setBirthday(TimeUtil.getTimeByType(passengerList.get(0).getPassengerBirthday(),"yyyy-MM-dd"));
+                responseUserInfo.setName(passengerList.get(0).getPassengerName());
 
                 log.info("乘客登陆成功");
                 map.put("userId",passengerList.get(0).getId());
-                map.put("userInfo",userInfo);
+                map.put("userInfo",responseUserInfo);
                 map.put("Connect_Platform","Weixin_Passenger");
                 return JsonUtil.stringify(map);
             }else{
@@ -132,16 +136,22 @@ public class UserServiceImpl implements UserService {
         }else{
 
             //司机设置信息
-            userInfo.setAvatarUrl(list.get(0).getDriverAvater());
-            userInfo.setCity(list.get(0).getDriverAddress());
-            userInfo.setGender((byte) (list.get(0).getDriverGender().equals("男")?'1':'2'));
-            userInfo.setNickName(list.get(0).getDriverName());
+            responseUserInfo.setAvatarUrl(list.get(0).getDriverAvater());
+            responseUserInfo.setCity(list.get(0).getDriverAddress());
+            responseUserInfo.setGender((byte) (list.get(0).getDriverGender().trim().equals("男")?'1':'2'));
+            responseUserInfo.setNickName(list.get(0).getDriverName());
+
+            responseUserInfo.setAddress(list.get(0).getDriverAddress());
+            responseUserInfo.setCitizenship(list.get(0).getDriverCitizenship());
+            responseUserInfo.setMobile(list.get(0).getDriverMobile());
+            responseUserInfo.setBirthday(TimeUtil.getTimeByType(list.get(0).getBirthday(),"yyyy-MM-dd"));
+            responseUserInfo.setName(list.get(0).getDriverName());
 
 
             log.info("司机登录成功");
             map.put("userId",list.get(0).getDriverNum());
 
-            map.put("userInfo",userInfo);
+            map.put("userInfo",responseUserInfo);
             map.put("Connect_Platform","Weixin_Driver");
 
             return JsonUtil.stringify(map);
@@ -174,10 +184,8 @@ public class UserServiceImpl implements UserService {
     public Integer updatePassenger(Passenger passenger) {
         log.info("更新用户信息");
         PassengerExample passengerExample=new PassengerExample();
-        passengerExample.or().andPassengerMobileEqualTo(passenger.getPassengerMobile()).andPassengerPasswordEqualTo(passenger.getPassengerPassword());
+        passengerExample.or().andIdEqualTo(passenger.getId());
         return passengerMapper.updateByExampleSelective(passenger,passengerExample);
 
     }
-
-
 }

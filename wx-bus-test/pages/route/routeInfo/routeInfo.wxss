@@ -1,0 +1,554 @@
+/* 头 start */
+
+page {
+  background-color: #eee;
+}
+
+.address-box{
+    width: 100%;
+    height: 10.5rpx;
+    background: url('http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/address-bg-bd30f2bfeb.png') 0 0 repeat-x;
+    background-size: 62.5rpx 10.5rpx;
+    margin-bottom: 20rpx;
+    padding-top: 10.5rpx;
+}
+
+
+
+.accident {
+  width: 100%;
+  background-color: #fff;
+}
+/* 起点 */
+.ac-item-start {
+  width: 100%;
+  height: 90rpx;
+  margin-left: 65rpx;
+   border-left: 4px none #00ff99; 
+  box-sizing: border-box;
+}
+
+
+.ac-item-start label {
+  float: left;
+  display: inline-block;
+  width: 80rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  
+  box-sizing: border-box;
+  margin-left: 34rpx;
+}
+
+.ac-item-start .lh {
+  float: left;
+  display: inline-block;
+  width: 500rpx;
+  height: 90rpx;
+  position: relative;
+}
+
+.ac-item-start text {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+/*终点  */
+.ac-item-ends {
+  width: 100%;
+  height: 90rpx;
+  /* margin-left: 30rpx; */
+   border-bottom: 4px solid #eee;
+  box-sizing: border-box;
+}
+
+
+.ac-item-ends label {
+  float: left;
+  display: inline-block;
+  width: 80rpx;
+  line-height: 90rpx;
+  margin-left: 95rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.ac-item-ends .lh {
+  float: left;
+  display: inline-block;
+  width: 500rpx;
+  height: 90rpx;
+  position: relative;
+}
+
+.ac-item-ends text {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+/* 途径 start  */
+.ac-item-mid {
+  width: 100%;
+  height: 90rpx;
+  margin-left: 65rpx;
+   border-left: 4px dotted #3399ff; 
+  box-sizing: border-box;
+}
+
+.ac-item-mid label {
+  float: left;
+  display: inline-block;
+  width: 80rpx;
+  margin-left: 30rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.ac-item-mid .lh {
+  float: left;
+  display: inline-block;
+  width: 500rpx;
+  height: 90rpx;
+  position: relative;
+}
+
+.ac-item-mid text {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  font-weight: bold;
+  transform: translateY(-50%);
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+/* 途径ends */
+
+/* 信息  */
+.accident-type {
+  margin-top: 20rpx;
+  padding-left: 30rpx;
+  background-color: #fff;
+}
+
+.ac-type-item {
+  width: 100%;
+  height: 80rpx;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.ac-type-item label {
+  display: inline-block;
+  float: left;
+  /* text-align: right; */
+  width: 20%;
+  font-size: 28rpx;
+  line-height: 80rpx;
+}
+.ac-type-item text {
+  display: inline-block;
+  float: left;
+  width: 30%;
+  color: #C0C0C0;
+  font-size: 28rpx;
+  line-height: 80rpx;
+}
+
+/*标题  */
+.info-title {
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 28rpx;
+  padding-left: 14rpx;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  font-weight: bold;
+}
+/* 占位符 */
+.solid-item{
+  border-bottom: 7px solid #eee;
+}
+
+/*头 ends  */
+
+
+
+
+.container{
+    margin-bottom: 100rpx;
+}
+/* 上部显示的起点和终点 范围 */
+.route-view {
+    
+    height: 164rpx;
+    width: 100%;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+/* 详细信息 */
+.route-view .img{
+    float: center;
+    height:18rpx;
+    width: 98rpx;
+    background: #f4f4f4;
+    margin: 60rpx 18rpx 19.5rpx 0;
+}
+
+.route-view .item{
+  float: center;
+  font-size: 40rpx;
+  margin: 19.5rpx 18rpx 19.5rpx 0;
+  color: #333;
+  overflow: hidden;
+}
+
+.route-view .item .attr{
+    margin-bottom: 17rpx;
+    height: 24rpx;
+    line-height: 24rpx;
+    font-size: 22rpx;
+    color: #666;
+    overflow: hidden;
+}
+
+
+.bottom-btn{
+    position: fixed;
+    left:0;
+    bottom:0;
+    z-index: 10;
+    width: 750rpx;
+    height: 100rpx;
+    display: flex;
+    background: #fff;
+}
+
+.bottom-btn .btn-left{
+    float: left;
+    height: 100rpx;
+    line-height: 96rpx;
+    width: 50%;
+    text-align: center;
+    color: #333;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
+}
+/*购买按钮的css  */
+.bottom-btn .btn-right{
+    border:1px solid #b4282d;
+    background: #b4282d;
+    float: left;
+    height: 100rpx;
+    line-height: 96rpx;
+    width: 25%;
+    text-align: center;
+    color: #fff;
+}
+
+/* 日历css
+
+  选中的字体颜色
+  #b8b8f1
+  背景颜色#eee
+  未选中的字体颜色
+  #b8b8f1
+  背景颜色#fff
+
+ */
+page {
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+.box {
+	display: flex;
+}
+
+.box-lr {
+	flex-direction: row;
+}
+
+.box-rl {
+	flex-direction: row-reverse;
+}
+
+.box-tb {
+	flex-direction: column;
+}
+
+.box-bt {
+	flex-direction: column-reverse;
+}
+
+.box-pack-center {
+	justify-content: center;
+}
+
+.box-pack-start {
+	justify-content: flex-start;
+}
+
+.box-pack-end {
+	justify-content: flex-end;
+}
+
+.box-pack-between {
+	justify-content: space-between;
+}
+
+.box-pack-around {
+	justify-content: space-around;
+}
+
+.box-align-center {
+	align-items: center;
+}
+
+.box-align-start {
+	align-items: flex-start;
+}
+
+.box-align-end {
+	align-items: flex-end;
+}
+
+.self-align-center {
+	align-self: center;
+	margin: 0 auto;
+}
+
+.self-align-start {
+	align-self: flex-start;
+}
+
+.self-align-end {
+	align-self: flex-end;
+}
+
+.self-align-stretch {
+	align-self: stretch;
+}
+
+.box-wrap {
+	flex-wrap: wrap;
+}
+
+.box-nowrap {
+	flex-wrap: nowrap;
+}
+
+.flex {
+	flex-grow: 1;
+}
+
+.shrink {
+	flex-shrink: 1;
+}
+
+.bg {
+	background-image: linear-gradient(to bottom, #faefe7, #ffcbd7);
+	overflow: hidden;
+}
+
+.brown-color {
+	color: #784344;
+}
+
+.pink-color {
+	color: #ff629a;
+}
+
+.white-color {
+	color: #fff;
+}
+
+.fs24 {
+	font-size: 24rpx;
+}
+
+.fs28 {
+	font-size: 28rpx;
+}
+
+.fs32 {
+	font-size: 32rpx;
+}
+
+.fs36 {
+	font-size: 36rpx;
+}
+
+.top-handle {
+	height: 80rpx;
+}
+
+.prev {
+	text-align: right;
+	height: 80rpx;
+}
+
+.next {
+	height: 80rpx;
+}
+
+.prev-handle {
+	width: 80rpx;
+	height: 100%;
+}
+
+.next-handle {
+	width: 80rpx;
+	height: 100%;
+}
+
+.date-area {
+	width: 100%;
+	height: 80rpx;
+	text-align: center;
+}
+
+.weeks {
+	height: 50rpx;
+	line-height: 50rpx;
+	opacity: 0.5;
+}
+
+.week {
+	text-align: center;
+}
+
+.days {
+	height: 500rpx;
+  /* line-height: 160rpx; */
+}
+
+.grid {
+	width: 107.1428571429rpx;
+}
+
+.day {
+	width: 60rpx;
+	height: 60rpx;
+	color: #88d2ac;
+	font-size: 26rpx;
+	font-weight: 200;
+  
+}
+
+.border-radius {
+	border-radius: 50%;
+	position: relative;
+	left: 0;
+	top: 0;
+	color: #3399ff;
+}
+
+.border-radius-select {
+	border-radius: 50%;
+	position: relative;
+	left: 0;
+	top: 0;
+	color: #eee;
+}
+
+.pink-bg {
+	background-color: #eee;
+}
+.select-bg{
+  background-color: #3399ff;
+}
+
+.purple-bg {
+	background-color: #b8b8f1;
+}
+
+.right-triangle::after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border: 15rpx solid transparent;
+	border-left-color: #ff629a;
+	position: absolute;
+	right: -22rpx;
+	top: 18rpx;
+}
+
+.left-triangle::before {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border: 15rpx solid transparent;
+	border-right-color: #ff629a;
+	position: absolute;
+	left: -22rpx;
+	top: 18rpx;
+}
+
+.tips {
+	text-align: center;
+	margin-top: 20rpx;
+	margin-bottom: 20rpx;
+}
+
+
+
+
+
+
+.picker-btns {
+	height: 120rpx;
+	line-height: 120rpx;
+	border-bottom: 1rpx solid #ff7ca0;
+}
+
+.picker-confirm {
+	margin-right: 50rpx;
+}
+
+.picker-cancel {
+	margin-left: 50rpx;
+}
+
+.picker-view {
+	color: #ff7ca0;
+	text-align: center;
+}
+/*购买  */
+.bottom-btn .buy{
+    float: left;
+    height: 100rpx;
+    line-height: 96rpx;
+    flex: 1;
+    text-align: center;
+    color: #333;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40rpx;
+  height: 40rpx;
+}

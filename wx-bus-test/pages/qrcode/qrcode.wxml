@@ -1,0 +1,7 @@
+<!--pages/main/index.wxml-->
+<view class="container-box">
+    <view class="img-box">
+        <image bindtap="previewImg" mode="scaleToFill" src="{{imgpath}}"></image>
+    </view>  
+</view>
+

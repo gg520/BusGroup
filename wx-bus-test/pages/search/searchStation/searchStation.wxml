@@ -1,0 +1,37 @@
+<view class="container">
+    <view class="location">
+        <view class="location-city" bindtap="switchCity">
+            <text>郑州</text>
+        </view>
+        <input type="text" class="location-input" value="{{value}}"  bindinput="searchInput"placeholder="{{searchSite=='start'?'您在哪儿上车':'您在哪下车'}}"placeholder-style="color:#cccccc" focus='{{true}}'/>
+        <navigator  ><view class="location-cancel" bindtap='back'>取消</view></navigator>
+    </view>
+    <view class="addressList">
+    <scroll-view  scroll-with-animation="{{true}}" >
+    <!--  -->
+    <view class="destination" wx:for="{{history}}" data-destination="{{item.stationDescribe}}" data-stationname="{{item.stationName}}" data-routeid='{{item.stationId}}' data-coord='{{item.stationCoord}}' bindtap="goSite" wx:key="{{item.stationId}}">
+               <view class="destination-content">
+                   <view class="content-image">
+                   <image src="/static/images/clock.png"></image>
+                </view>
+                   <view class="content">
+                        <text class="content-name">{{item.stationName}}</text>
+                    <text class="content-detail">{{item.stationDescribe}}</text>
+                   </view>
+               </view> 
+        </view>
+        <view class="destination" wx:for="{{address}}" data-destination="{{item.stationDescribe}}" data-stationname="{{item.stationName}}" data-routeid='{{item.stationId}}' data-coord='{{item.stationCoord}}' bindtap="goSite" wx:key="{{item.stationId}}">
+               <view class="destination-content">
+                   <view class="content-image">
+                   <image src="/static/images/icon_site.png"></image>
+                </view>
+                   <view class="content">
+                        <text class="content-name">{{item.stationName}}</text>
+                    <text class="content-detail">{{item.stationDescribe}}</text>
+                   </view>
+               </view> 
+        </view>
+          <!--  -->
+    </scroll-view>
+</view>
+</view>

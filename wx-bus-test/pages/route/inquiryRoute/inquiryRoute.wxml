@@ -1,0 +1,64 @@
+<!--pages/auth/register/register.wxml-->
+<view class="container">
+    <view class="form-box">
+
+<!--起始地点  -->
+    	<view class="form-item">
+    		<input class="site" value="{{startsite}}" bindinput="bindStartsiteInput" placeholder="出发地点" auto-focus/>
+    		<image wx:if="{{ startsite.length > 0 }}" id="clear-startsite" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+    	</view>
+
+<!--到达地点  -->
+    	<view class="form-item">
+    		<input class="site" value="{{endsite}}" bindinput="bindEndsiteInput" placeholder="到达地点"/>
+    		<image class="clear" id="clear-endsite" wx:if="{{ endsite.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+    	</view>
+
+      <!-- <view class="form-item">
+    		<input class="site" value="{{period}}" bindinput="bindPeriodInput" placeholder="招募周期"/>
+    		<image class="clear" id="clear-period" wx:if="{{ period.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+    	</view> -->
+      <view class="chioce-item chioce-item-last">
+        <picker mode="date" value="{{!periodStart ? '招募周期':periodStart}}" start="{{startDefault}}" end="2088-01-01" bindchange="bindPeriodStartChange">
+        <view >{{!periodStart ? '开始日期':periodStart}}</view>
+        </picker>--
+        <picker mode="date" value="{{!periodEnd ? '招募周期':periodEnd}}" start="{{!periodStart ? 2018-01-01:periodStart}}" end="{{endsDefault}}" bindchange="bindPeriodEndChange">
+        <view >{{!periodEnd ? '结束日期':periodEnd}}</view>
+        </picker>
+        <image class="icon-chioce" src="{{startChioceIcon}}"></image>
+      </view>
+      <!-- <view bindtap="choiceTime" data-item="startTime" class="chioce-item chioce-item-last"      hover-class="click-once-opaque">{{starttimename}}
+        <image class="icon-chioce" src="{{startChioceIcon}}"></image>
+      </view> -->
+      <!-- 启程时间 -->
+      <view class="chioce-item chioce-item-last">
+        <picker mode="time" value="{{starttimename}}" start="00:00" end="23:59" bindchange="bindStartTimeChange">
+        <view >{{starttimename}}</view>
+        </picker>
+        <image class="icon-chioce" src="{{startChioceIcon}}"></image>
+      </view>
+      <!-- 返程时间  -->
+      <view class="chioce-item chioce-item-last">
+        <picker mode="time" value="{{endtimename}}" start="00:00" end="23:59" bindchange="bindEndTimeChange">
+        <view >{{endtimename}}</view>
+        </picker>
+        <image class="icon-chioce" src="{{startChioceIcon}}"></image>
+      </view>
+      
+
+    <view class="form-item">
+      <input class="username" value="{{username}}" bindinput="bindUsernameInput" placeholder="您的姓名" />
+    	<image wx:if="{{ username.length > 0 }}" id="clear-username" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+    </view>
+
+    <view class="form-item">
+      <input class="mobile" value="{{mobile}}" bindinput="bindMobileInput" placeholder="您的电话" />
+    	<image wx:if="{{ mobile.length > 0 }}" id="clear-mobile" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+    </view>
+		
+    
+
+    	<button type="default" class="register-btn" bindtap="start">确定</button>
+
+    </view>
+</view>

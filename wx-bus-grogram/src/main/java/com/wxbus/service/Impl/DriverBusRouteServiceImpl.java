@@ -20,6 +20,9 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
     DriverBusRouteMapper driverBusRouteMapper;
     @Override
     public DriverBusRoute findInfoByRouteId(Integer routeId) {
+        if(routeId==null||routeId==0) {
+            return new DriverBusRoute();
+        }
         log.info("线路id查找详细信息");
         DriverBusRouteExample driverBusRouteExample=new DriverBusRouteExample();
         driverBusRouteExample.or().andRouteIdEqualTo(routeId);
@@ -29,6 +32,5 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
             return list.get(0);
         }
         return new DriverBusRoute();
-
     }
 }

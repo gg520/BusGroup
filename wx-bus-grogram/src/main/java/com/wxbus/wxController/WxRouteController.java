@@ -129,7 +129,6 @@ public class WxRouteController {
             map1.put("endTime",route.getEndTime());
             map1.put("price",route.getPrice());
             map1.put("recruitTime",route.getRecruitTime());
-
             map1.put("busId",busId);
             map1.put("busNum",busNum);
             map1.put("driverName",driverName);

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * 微信数据的配置
  */
 @Configuration
-public class WeixinConfig {
+public class WeixinConfig {//	wxcafa41f5d5ff69b0
     public static final String WX_AppId = "wxcafa41f5d5ff69b0";
     public static final String WX_Secret = "475bd4f487892ff68ac72b98c77f323d";
     public static final String WX_Token = "";

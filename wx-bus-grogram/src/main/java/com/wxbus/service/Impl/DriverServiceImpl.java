@@ -34,14 +34,16 @@ public class DriverServiceImpl implements DriverService{
      *@describe 司机id查找司机信息
      */
     public Driver findDriverById(String driverId) {
+        if(driverId==null||"".equals(driverId)){
+            return new Driver();
+        }
         DriverExample driverExample= new DriverExample();
         driverExample.or().andDriverIdEqualTo(driverId);
         List<Driver> list=driverMapper.selectByExample(driverExample);
 
         log.info("司机id查找司机信息");
-        if(list!=null&&list.size()>0){
+        if(list!=null&&list.size()>0)
             return list.get(0);
-        }
         return new Driver();
     }
 

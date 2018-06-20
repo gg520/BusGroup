@@ -1,0 +1,103 @@
+<view class="container">
+  <view class="address-box"></view>
+  <view class="accident">
+<!-- <view class='info-title'>站点信息 </view> -->
+  <view class="ac-item-start">
+    <label style='color:#00ff99'>起点</label>
+    <view class="lh">
+      <text bindtap="openMap">{{startSite}}</text>
+    </view>
+  </view>
+
+  <view wx:for='{{stations}}' wx:key='{{item.id}}'>
+  <view class="ac-item-mid">
+    <label style='color:#3399ff'>途经</label>
+    <view class="lh">
+      <text bindtap="openMap">{{item.stationname}}</text>
+    </view>
+  </view>
+  </view>
+  <view class="ac-item-ends">
+    <label style='color:red'>终点</label>
+    <view class="lh">
+      <text>{{endSite}}</text>
+    </view>
+  </view>
+</view>
+<!-- 站点 ends -->
+
+    <view class="coupon-box">
+        <view class="coupon-item">
+            <view class="l">
+                <text class="name">郭苏州，男，412728199609144952</text>
+                <!-- <text class="txt">{{couponList.length}}张</text> -->
+            </view>
+        </view>
+    </view>
+
+    <view class="order-box">
+      <view class="order-item" wx:if='{{starttime.length>0}}'>
+        <view class="l">
+            <text class="name">发车时间：</text>
+        </view>
+        <view class="r">
+            <text class="txt">{{starttime}}</text>
+        </view>
+      </view> 
+      <view class="order-item" wx:if='{{driver.length>0}}'>
+        <view class="l">
+            <text class="name">司机：</text>
+        </view>
+        <view class="r">
+            <text class="txt">{{driver}}</text>
+        </view>
+      </view>  
+      <view class="order-item" wx:if='{{busNum.length>0}}'>
+        <view class="l">
+            <text class="name">车号：</text>
+        </view>
+        <view class="r">
+            <text class="txt">{{busNum}}</text>
+        </view>
+      </view>  
+      <view class="order-item" wx:if='{{busId.length>0}}'>
+        <view class="l">
+            <text class="name">车牌号码：</text>
+        </view>
+        <view class="r">
+            <text class="txt">{{busId}}</text>
+        </view>
+      </view>  
+      <view class="order-item" wx:if='{{price.length>0}}'>
+        <view class="l">
+            <text class="name">单价：</text>
+        </view>
+        <view class="r">
+            <text style='color:red'>￥{{price}}元</text>
+        </view>
+      </view>
+      <view class="order-item" wx:if='{{countday.length>0}}'>
+        <view class="l">
+            <text class="name">订购天数：</text>
+        </view>
+        <view class="r">
+            <text >{{countday}}天</text>
+        </view>
+      </view>
+      <view class="order-item" wx:if='{{totalmoney.length>0}}'>
+        <view class="l">
+            <text class="name">总价：</text>
+        </view>
+        <view class="r">
+            <text style='color:red'>￥{{totalmoney}}元</text>
+        </view>
+      </view>
+    </view>
+
+   
+
+    <view class="order-total">
+        <view class="l">实付：￥{{totalmoney}}元</view>
+        <view class="r" bindtap="submitOrder">结算</view>
+    </view>
+</view>

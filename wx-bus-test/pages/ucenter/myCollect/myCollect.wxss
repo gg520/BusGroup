@@ -1,0 +1,259 @@
+page{
+    height: 100%;
+    width: 100%;
+    background: #f4f4f4;
+}
+
+
+.orders-switch{
+    width: 100%;
+    background: #fff;
+    height: 84rpx;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+.orders-switch .item{
+    display: inline-block;
+    height: 82rpx;
+    width: 25%;
+    padding: 0 15rpx;
+    text-align: center;
+}
+
+.orders-switch .item .txt{
+    display: inline-block;
+    height: 82rpx;
+    padding: 0 20rpx;
+    line-height: 82rpx;
+    color: #333;
+    font-size: 30rpx;
+    width: 170rpx;
+}
+
+.orders-switch .item.active .txt{
+    color: #ab2b2b;
+    border-bottom: 4rpx solid #ab2b2b;
+}
+
+
+.no-order{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.no-order .c{
+    width: 100%;
+    height: auto;
+    margin-top: 200rpx;
+}
+
+.no-order .c image{
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 258rpx;
+    height: 258rpx;
+}
+
+.no-order .c text{
+    margin: 0 auto;
+    display: block;
+    width: 258rpx;
+    height: 29rpx;
+    line-height: 29rpx;
+    text-align: center;
+    font-size: 29rpx;
+    color: #999;
+}
+
+.orders{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.order{
+    margin-top: 20rpx;
+    background: #fff;
+}
+
+.order .h{
+    height: 83.3rpx;
+    line-height: 83.3rpx;
+    margin-left: 31.25rpx;
+    padding-right: 31.25rpx;
+    border-bottom: 1px solid #f4f4f4;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.order .h .l{
+    float: left;
+}
+
+.order .h .r{
+    padding-right: 23rpx;
+    float: right;
+    color: #b4282d;
+    
+    font-size: 24rpx;
+}
+/*未过期  */
+.order .h .r.ok{
+   /* padding-right: 62.5rpx;  */
+    float: right;
+    color: #0066ff;
+    font-size: 24rpx;
+}
+/* 关闭按钮 */
+/* .close {
+   position: absolute;
+  float: right;
+  /* height: 31.25rpx;
+  height: 31.25rpx; 
+} */
+.order .h .close {
+  position: absolute;
+  right: 0;
+  /* top: 0; */
+  width: 40rpx;
+  height: 40rpx;
+}
+.order .h .close image {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+
+.order .b{
+    height: 103rpx;
+    line-height: 103rpx;
+    margin-left: 31.25rpx;
+    padding-right: 31.25rpx;
+    border-top: 1px solid #f4f4f4;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.order .b .l{
+    float: left;
+}
+
+.order .b .r{
+    float: right;
+}
+
+.order .b .btn{
+    margin-top: 19rpx;
+    height: 64.5rpx;
+    line-height: 64.5rpx;
+    text-align: center;
+    padding: 0 20rpx;
+    border-radius: 5rpx;
+    font-size: 28rpx;
+    color: #fff;
+    background: #b4282d;
+}
+
+/* 线路 */
+/* .order .goods{
+    display: flex;
+    align-items: center;
+    height: 199rpx;
+    margin-left: 31.25rpx;
+} */
+ .order .chooseCity {
+  box-sizing: border-box;
+  padding-top: 0.96rem;
+  background-color: #fff;
+  border-bottom: 2rpx solid #cececf;
+  overflow: hidden;
+  margin-left: 31.25rpx;
+  margin-right: 31.25rpx;
+  align-items: center;
+}
+
+.pdt-0 {
+  padding-top: 0;
+}
+
+.chooseCity .citySelect {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 2.667rem;
+  line-height: 2.667rem;
+  font-size: 42rpx;
+}
+
+.chooseCity .citySelect .hotelCity {
+  width: 100%;
+  border-bottom: 1rpx solid #F0EFF5;
+  color: #4A586A;
+}
+
+.chooseCity .citySelect .startCity {
+  width: 6.187rem;
+  border-bottom: 1rpx solid #F0EFF5;
+  color: #4A586A;
+}
+
+.chooseCity .citySelect .citySelect_img {
+  width: 2.693rem;
+  height: 2.587rem;
+  position: relative;
+  margin-top: 0.533rem;
+}
+
+.chooseCity .citySelect .citySelect_img view {
+  position: absolute;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.chooseCity .citySelect .citySelect_img view .changeCity_bg {
+  width: 2.693rem;
+  height: 2.693rem;
+}
+
+.chooseCity .citySelect .citySelect_img .samll_plane {
+  width: 1.653rem;
+  height: 1.12rem;
+  position: absolute;
+  top: 54%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+}
+
+.chooseCity .citySelect .endCity {
+  width: 6.187rem;
+  border-bottom: 1rpx solid #F0EFF5;
+  text-align: right;
+  color: #4A586A;
+}
+
+
+.chooseDate {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 2.4rem;
+  line-height: 2.4rem;
+}
+
+.date {
+  font-size: 30rpx;
+  margin-right: 1.067rem;
+}
+.price {
+  font-size: 30rpx;
+  color: #ff0000;
+  margin-right: 1.067rem;
+}
+

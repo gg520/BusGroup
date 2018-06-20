@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录</title>
+
+
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+</head>
+<body class="style-2">
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4">
+
+
+            <!-- Start Sign In Form -->
+            <form th:action="@{/web/login/webLogin}" class="fh5co-form animate-box" method="post">
+                <h2>巴士团后台登录</h2>
+                <p style="color:red;" th:text="${loginmsg}"></p>
+                <div class="form-group">
+                    <label for="username" class="sr-only">用户名</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="用户名" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only">密码</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="密码" autocomplete="off">
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="登录" class="btn btn-primary">
+                    <a href="#">立即注册</a>
+
+                </div>
+            </form>
+            <!-- END Sign In Form -->
+
+        </div>
+    </div>
+    <div class="row" style="padding-top: 60px; clear: both;">
+        <div class="col-md-12 text-center">
+            &copy;
+            <script>document.write(new Date().getFullYear())</script>
+            ,中原工学院软件学院实训团队<i class="fa fa-heart heart"></i>  <a href="#">巴士团</a>
+        </div>
+    </div>
+</div>
+
+</body>
+<!--jquery js-->
+<script th:src="@{/assets/js/jquery-1.10.2.js}" type="text/javascript"></script>
+<script typeof="text/javascript">
+    $(document).ready(function () {
+        $('input[type="submit"]').click(function () {
+            var username=$('input[name="username"]').val();
+            var passwd=$('input[name="password"]').val();
+            if(username.length==0){
+                alert("账号不能为空");
+                if(passwd.length==0){
+                    alert("密码不能为空");
+                }
+                return false;
+            }
+
+        });
+    });
+
+
+</script>
+</html>

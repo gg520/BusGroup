@@ -63,7 +63,17 @@ public class AdminServiceImpl implements AdminService {
         log.info("添加管理员");
         adminMapper.insertSelective(admin);
     }
-
+    @Override
+    public Admin admin(String username, String password) {
+        AdminExample adminExample=new AdminExample();
+        adminExample.createCriteria().andAdminPasswordEqualTo(password).andAdminIdEqualTo(username);
+        List<Admin> adminList=adminMapper.selectByExample(adminExample);
+        if(adminList.size()>0){
+            return adminList.get(0);
+        }else {
+            return null;
+        }
+    }
     @Override
     /**
      *@type method

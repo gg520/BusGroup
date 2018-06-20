@@ -1,6 +1,7 @@
 package com.wxbus.service.Impl;
 
 import com.wxbus.dao.PassengerRouteMapper;
+import com.wxbus.daomain.PassengerRoute;
 import com.wxbus.daomain.PassengerRouteExample;
 import com.wxbus.service.PassengerRouteService;
 import org.apache.commons.logging.Log;
@@ -8,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author: Demon
@@ -35,5 +37,21 @@ public class PassengerRouteServiceImpl implements PassengerRouteService {
         passengerRouteExample.or().andRouteIdEqualTo(routeId);
         return passengerRouteMapper.countByExample(passengerRouteExample);
 
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [id]
+     *@back  java.lang.Integer
+     *@author  如花
+     *@creattime 2018/6/20
+     *@describe 通过乘客的id查找该乘客订单的信息
+     */
+    public List<PassengerRoute> findBoughtRouteByPassengerId(Integer  passengerId) {
+        PassengerRouteExample passengerRouteExample=new PassengerRouteExample();
+        passengerRouteExample.or().andPassengerIdEqualTo(passengerId).andStartStatusEqualTo(1);
+
+        return passengerRouteMapper.selectByExample(passengerRouteExample);
     }
 }

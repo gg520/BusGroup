@@ -1,0 +1,103 @@
+
+<scroll-view>
+<view class='address-box' style='border-bottom: 7px solid #eee;'></view>
+<!-- 线路途径站点 -->
+<view class="accident">
+<view class='info-title'>站点信息 </view>
+  <view class="ac-item-start">
+    <label style='color:#00ff99'>起点</label>
+    <view class="lh">
+      <text bindtap="openMap">{{startSite}}</text>
+    </view>
+  </view>
+
+  <view wx:for='{{stations}}' wx:key='{{item.id}}'>
+  <view class="ac-item-mid">
+    <label style='color:#3399ff'>途经</label>
+    <view class="lh">
+      <text bindtap="openMap">{{item.stationname}}</text>
+    </view>
+  </view>
+  </view>
+  <view class="ac-item-ends">
+    <label style='color:red'>终点</label>
+    <view class="lh">
+      <text>{{endSite}}</text>
+    </view>
+  </view>
+</view>
+<!-- 站点 ends -->
+
+<!-- 信息 -->
+<view style='border-bottom: 3px solid #eee;'></view>
+<view class="accident-type">
+<view class='info-title'>线路信息 </view>
+  <view class="ac-type-item">
+    <label>出发时间：</label>
+    <text >{{starttime}}</text>
+    <label>到达时间：</label>
+    <text >{{arrivaltime}}</text>
+  </view>
+  <view class="ac-type-item">
+    <label>发车周期：</label>
+    <text >{{recruit}}天</text>
+    <label>单价：</label>
+    <text style='color:red'>￥{{price}}元</text>
+  </view>
+  <view class="ac-type-item">
+    <label>司机：</label>
+    <text >{{!driver?'待定':driver}}</text>
+    <label>电话：</label>
+    <text >{{!phone?'待定':phone}}</text>
+  </view>
+  <view class="ac-type-item">
+    <label>车号：</label>
+    <text >{{busNum?busNum:'待定'}}</text>
+    <label>车牌：</label>
+    <text >{{busId?busId:'待定'}}</text>
+  </view>
+</view>
+<view class='solid-item'></view>
+<!-- 信息ends -->
+
+<!-- start 日历 -->
+<view class='info-title'>选择日期 </view>
+<view class="flex box box-tb box-align-center">
+
+  <view class="calendar pink-color box box-tb">
+        <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
+           
+            <view  class="date-area box box-lr box-align-center box-pack-center">{{startRecruit || "--"}} ——{{endsRecruit || "--"}} </view>
+        </view>
+        <view class="weeks box box-lr box-pack-center box-align-center">
+        <!-- 周次设置 -->
+            <view class="flex week fs28" wx:for="{{weeksCh}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+        </view>
+        <view class="days box box-lr box-wrap">
+        <!-- 空白占位 -->
+            <view  class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+            </view>
+            <view class="grid white-color box box-align-center box-pack-center" wx:for="{{days}}" wx:key="{{index}}" data-day="{{item.day}}" data-months='{{item.month}}' bindtap='selectDays'>
+            <!-- check可选显示  -->
+                <view class="day {{item.check ? item.choosed?'border-radius-select select-bg':'border-radius pink-bg' : ''}} box box-align-center box-pack-center">{{item.day}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- end 日历 -->
+</scroll-view>
+<!-- 购买的显示 -->
+<scroll-view class="container" scroll-y="true">
+  <view class="bottom-btn">
+    <view class="btn-left">
+      <text>已选择{{countday}}天，共：{{totalmoney}}元</text>
+    </view>
+
+    <view class="buy" bindtap="addBuy">购买</view>
+    <view class="btn-right" bindtap="addMyCollect">收藏</view>
+  </view>
+
+  <!-- <button bindtap='getDays'>测试</button>   -->
+
+</scroll-view>

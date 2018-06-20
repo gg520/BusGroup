@@ -4,6 +4,7 @@ import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.pojo.FullUserInfo;
+import com.wxbus.pojo.ResponseUserInfo;
 import com.wxbus.pojo.UserInfo;
 import com.wxbus.pojo.UserToken;
 import com.wxbus.service.UserService;
@@ -68,7 +69,11 @@ public class WxLoginController {
             return ResponseUtil.badArgument();
         }
 
-        UserInfo userInfo = fullUserInfo.getUserInfo();
+        UserInfo userInfo =  fullUserInfo.getUserInfo();
+
+        ResponseUserInfo responseUserInfo = new ResponseUserInfo();
+
+        responseUserInfo.setUserInfo(userInfo);
 
         String sessionKey = null;
         String openId = null;
@@ -95,10 +100,10 @@ public class WxLoginController {
         Passenger user = userService.queryByOid(openId);//未获取到用户，将以新用户插入其中
         if(user == null){
             user = new Passenger();
-            user.setPassengerNickname(userInfo.getNickName());  // 其实没有用，因为用户没有真正注册
+            user.setPassengerNickname(responseUserInfo.getNickName());  // 其实没有用，因为用户没有真正注册
             user.setWeixinOpenid(openId);
-            user.setPassengerAvater(userInfo.getAvatarUrl());
-            user.setPassengerGender(userInfo.getGender() == 1 ? "男" : "女");
+            user.setPassengerAvater(responseUserInfo.getAvatarUrl());
+            user.setPassengerGender(responseUserInfo.getGender() == 1 ? "男" : "女");
             user.setPassengerStatus(0);
             user.setLastLoginTime(new Date());
             user.setLastLoginIp(IpUtil.client(request));
@@ -110,6 +115,13 @@ public class WxLoginController {
         else{
             user.setLastLoginTime(new Date());
             user.setLastLoginIp(IpUtil.client(request));
+//            responseUserInfo.setAddress();
+            responseUserInfo.setCitizenship(user.getPassengerCitizenship());
+            responseUserInfo.setMobile(user.getPassengerMobile());
+            responseUserInfo.setBirthday(TimeUtil.getTimeByType(user.getPassengerBirthday(),"yyyy-MM-dd"));
+
+            responseUserInfo.setAddress(user.getPassengerAddress());
+            responseUserInfo.setName(user.getPassengerName());
             userService.update(user);
         }
 
@@ -120,7 +132,10 @@ public class WxLoginController {
         Map<Object, Object> result = new HashMap<Object, Object>();
         result.put("token", userToken.getToken());
         result.put("tokenExpire", userToken.getExpireTime().toString());
-        result.put("userInfo", userInfo);
+        //设置几个数据
+
+        result.put("userInfo", responseUserInfo);
+        //返回的数据信息需要更改
         return ResponseUtil.ok(result);
     }
 
@@ -187,8 +202,8 @@ public class WxLoginController {
             Map map=new HashMap();
             map.put("username", JacksonUtil.parseString(userInfo,"username"));
             map.put("token",userToken.getToken());
-            map.put("userInfo", JacksonUtil.parseObject(userInfo,"userInfo",UserInfo.class));
-            System.out.println("userInfo : "+ JacksonUtil.parseObject(userInfo,"userInfo",UserInfo.class));
+            map.put("userInfo", JacksonUtil.parseObject(userInfo,"userInfo",ResponseUserInfo.class));
+            System.out.println("userInfo : "+ JacksonUtil.parseObject(userInfo,"userInfo",ResponseUserInfo.class));
             return ResponseUtil.ok(map);
         }
     }

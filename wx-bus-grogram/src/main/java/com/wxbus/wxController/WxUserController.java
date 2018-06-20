@@ -5,7 +5,9 @@ import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.sun.net.httpserver.HttpsServer;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.pojo.FullUserInfo;
+import com.wxbus.pojo.ResponseUserInfo;
 import com.wxbus.pojo.UserInfo;
+import com.wxbus.pojo.UserToken;
 import com.wxbus.service.UserService;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.MD5Util;
@@ -21,6 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author: Demon
@@ -32,6 +39,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "/weixin/user")
 public class WxUserController {
     private final Log logger= LogFactory.getLog(WxUserController.class.getName());
+    private static Map<String, UserToken> tokenMap = new HashMap<>();
     @Autowired
     private UserService userService;
 //    @RequestMapping(value = "changeUserInfo",method = RequestMethod.POST)
@@ -44,24 +52,40 @@ public class WxUserController {
      *@creattime 2018/6/20
      *@describe 修改个人信息
      */
-    /*public Object changeUserInfo(@RequestBody String body, HttpServletRequest request){
+    public Object changeUserInfo(@RequestBody String body, HttpServletRequest request){
         logger.info("修改个人信息");
-        Passenger passenger= JacksonUtil.parseObject(body,"userInfo",Passenger.class);
-        if(passenger==null){
+        ResponseUserInfo responseUserInfo= JacksonUtil.parseObject(body,"userInfo",ResponseUserInfo.class);
+        if(responseUserInfo==null){
             return ResponseUtil.badArgument();
         }
-        String password=passenger.getPassengerPassword();
-        if(password==null||"".equals(password)){
-            return ResponseUtil.fail(500,"密码不能为空");
+        UserToken userToken=tokenMap.get(request.getHeader("X-Bus-Token"));
+        if(userToken.getUser().equals("司机")){
+            return ResponseUtil.fail(500,"司机没有此权限");
         }
-        password= MD5Util.toMD5(password);
-        if(passenger.getPassengerMobile()==null||"".equals(passenger.getPassengerMobile())){
-            return ResponseUtil.fail(500,"手机号不能为空");
+        Passenger passenger=new Passenger();
+        passenger.setId(userToken.getUserId());
+        passenger.setPassengerCitizenship(responseUserInfo.getCitizenship());
+        passenger.setPassengerNickname(responseUserInfo.getNickName());
+        passenger.setPassengerAvater(responseUserInfo.getAvatarUrl());
+        passenger.setPassengerAddress(responseUserInfo.getAddress());
+        if(responseUserInfo.getGender()==0){
+            passenger.setPassengerGender("女");
+        }
+        passenger.setPassengerGender("男");
+        passenger.setPassengerMobile(responseUserInfo.getMobile());
+        passenger.setPassengerName(responseUserInfo.getName());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date=simpleDateFormat.parse(responseUserInfo.getBirthday());
+            passenger.setPassengerBirthday(date);
+        }
+        catch (ParseException pe){
+            pe.printStackTrace();
         }
         Integer flag=userService.updatePassenger(passenger);
         if(flag==0){
-            return ResponseUtil.fail(500,"手机密码不匹配更新失败");
+            return ResponseUtil.fail(500,"更新失败");
         }
         return ResponseUtil.ok("更新成功");
-    }*/
+    }
 }

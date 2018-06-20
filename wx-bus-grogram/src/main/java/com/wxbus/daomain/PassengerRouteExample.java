@@ -335,62 +335,52 @@ public class PassengerRouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdEqualTo(String value) {
+        public Criteria andPassengerIdEqualTo(Integer value) {
             addCriterion("passenger_id =", value, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdNotEqualTo(String value) {
+        public Criteria andPassengerIdNotEqualTo(Integer value) {
             addCriterion("passenger_id <>", value, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdGreaterThan(String value) {
+        public Criteria andPassengerIdGreaterThan(Integer value) {
             addCriterion("passenger_id >", value, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdGreaterThanOrEqualTo(String value) {
+        public Criteria andPassengerIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("passenger_id >=", value, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdLessThan(String value) {
+        public Criteria andPassengerIdLessThan(Integer value) {
             addCriterion("passenger_id <", value, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdLessThanOrEqualTo(String value) {
+        public Criteria andPassengerIdLessThanOrEqualTo(Integer value) {
             addCriterion("passenger_id <=", value, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdLike(String value) {
-            addCriterion("passenger_id like", value, "passengerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPassengerIdNotLike(String value) {
-            addCriterion("passenger_id not like", value, "passengerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPassengerIdIn(List<String> values) {
+        public Criteria andPassengerIdIn(List<Integer> values) {
             addCriterion("passenger_id in", values, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdNotIn(List<String> values) {
+        public Criteria andPassengerIdNotIn(List<Integer> values) {
             addCriterion("passenger_id not in", values, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdBetween(String value1, String value2) {
+        public Criteria andPassengerIdBetween(Integer value1, Integer value2) {
             addCriterion("passenger_id between", value1, value2, "passengerId");
             return (Criteria) this;
         }
 
-        public Criteria andPassengerIdNotBetween(String value1, String value2) {
+        public Criteria andPassengerIdNotBetween(Integer value1, Integer value2) {
             addCriterion("passenger_id not between", value1, value2, "passengerId");
             return (Criteria) this;
         }
@@ -702,76 +692,6 @@ public class PassengerRouteExample {
 
         public Criteria andEndTimeNotBetween(Date value1, Date value2) {
             addCriterion("end_time not between", value1, value2, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysIsNull() {
-            addCriterion("reserve_days is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysIsNotNull() {
-            addCriterion("reserve_days is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysEqualTo(String value) {
-            addCriterion("reserve_days =", value, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysNotEqualTo(String value) {
-            addCriterion("reserve_days <>", value, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysGreaterThan(String value) {
-            addCriterion("reserve_days >", value, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysGreaterThanOrEqualTo(String value) {
-            addCriterion("reserve_days >=", value, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysLessThan(String value) {
-            addCriterion("reserve_days <", value, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysLessThanOrEqualTo(String value) {
-            addCriterion("reserve_days <=", value, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysLike(String value) {
-            addCriterion("reserve_days like", value, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysNotLike(String value) {
-            addCriterion("reserve_days not like", value, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysIn(List<String> values) {
-            addCriterion("reserve_days in", values, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysNotIn(List<String> values) {
-            addCriterion("reserve_days not in", values, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysBetween(String value1, String value2) {
-            addCriterion("reserve_days between", value1, value2, "reserveDays");
-            return (Criteria) this;
-        }
-
-        public Criteria andReserveDaysNotBetween(String value1, String value2) {
-            addCriterion("reserve_days not between", value1, value2, "reserveDays");
             return (Criteria) this;
         }
 

@@ -1,0 +1,50 @@
+<view class="container">
+    
+    <view class="no-order" wx:if="{{orderList.length <= 0}}">
+      <view class="c">
+        <image src="/static/images/route_empty.png" />
+        <text>暂无收藏</text>
+      </view>
+    </view>
+
+    <view class="orders">
+      <scroll-view class="order" wx:for="{{collectList}}" wx:key="id" hidden='{{item.hidden}}'>
+            <view class="h">
+                <view class="l">时间：{{item.creatTime}}</view>
+                <view class="r {{ item.routeStatus == 1 ? 'ok' : ''}}">{{ item.routeStatus == 1 ? '未过期' : '已过期'}}
+                </view>
+                <view class="close" bindtap="clearCollect" data-id='{{item.pRId}}'>
+                    <image src="/static/images/icon_close.png"></image>
+                  </view>
+            </view>
+            <view class=" chooseCity pd-70"  bindtap='goRoute' data-routeid='{{item.routeId}}'>
+              <view class="citySelect" >
+                <view class="startCity" >{{item.startSite}}</view>
+                <view class="citySelect_img">
+                  <view>
+                    <image class="changeCity_bg" src="/static/images/changeCity_bg.png"></image>
+                  </view>
+                  <image class="samll_plane" src="/static/images/bus.png"></image>
+                </view>
+                <view class="endCity">{{item.endSite}}</view>
+              </view>
+              <view class="chooseDate">
+                <block>
+                    <view class="startDate">
+                      <text class="date">发车时间：{{item.startTime}}</text>
+                    </view>
+                </block>
+                <block>
+                    <view class="endDate">
+                      单价：
+                      <text class="price">￥{{item.price}}元</text>
+                    </view>
+                </block>
+              </view> 
+            </view>
+            <!-- <view class="b">
+                <view class="l">实付：￥{{item.actualPrice}}</view>
+            </view> -->
+      </scroll-view> 
+    </view>
+</view>
