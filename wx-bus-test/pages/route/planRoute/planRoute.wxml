@@ -3,15 +3,15 @@
   <view class="search-header">
     <view class="input-box">
       <image class="icon" src="/static/images/icon_red_site.png"></image>
-      <input name="start_site" class="keywrod" focus="true" value="{{search.startSite}}" confirm-type="search" bindinput="inputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm"  placeholder='起始地点' value='我的位置' />
-      <image class="del" wx:if="{{keyword}}" bindtap="clearKeyword" src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/clearIpt-f71b83e3c2.png"></image>
+      <input name="start_site" class="keywrod" focus="true" value="{{search.startSite}}" confirm-type="search" bindinput="startInputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm"  placeholder='起始地点'  />
+      <image class="del" wx:if="{{search.startSite}}" bindtap="clearstatSite" src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/clearIpt-f71b83e3c2.png"></image>
     </view>
     <!-- 交换位置 -->
   <image class="icon_last" src="/static/images/icon_swop_site.png" bindtap='swop'></image>
     <view class="input-box">
       <image class="icon" src="/static/images/icon_blue_site.png"></image>
-      <input name="end_site" class="keywrod" focus="true" value="{{search.endSite}}" confirm-type="search" bindinput="inputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm" placeholder='到达地点' />
-      <image class="del" wx:if="{{endSite}}" bindtap="clearKeyword" src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/clearIpt-f71b83e3c2.png"></image>
+      <input name="end_site" class="keywrod" focus="true" value="{{search.endSite}}" confirm-type="search" bindinput="endInputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm" placeholder='到达地点' />
+      <image class="del" wx:if="{{search.endSite}}" bindtap="clearendSite" src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/clearIpt-f71b83e3c2.png"></image>
     </view>
   </view> 
 <!--白色背景区域-->
@@ -25,18 +25,6 @@
   <view class="cart-view"  wx:if="{{flagSeach}}">
     <view class="addressList">
     <scroll-view  scroll-with-animation="{{true}}" >
-    <!--  -->
-    <!-- <view class="destination" wx:for="{{history}}" data-destination="{{item.stationDescribe}}" data-stationname="{{item.stationName}}" data-routeid='{{item.stationId}}' data-coord='{{item.stationCoord}}' bindtap="goSite" wx:key="{{item.stationId}}">
-               <view class="destination-content">
-                   <view class="content-image">
-                   <image src="/static/images/clock.png"></image>
-                </view>
-                   <view class="content">
-                        <text class="content-name">{{item.stationName}}</text>
-                    <text class="content-detail">{{item.stationDescribe}}</text>
-                   </view>
-               </view> 
-        </view> -->
         <view class="destination" wx:for="{{searchSite}}" data-destination="{{item.stationDescribe}}" data-stationname="{{item.stationName}}" data-routeid='{{item.stationId}}' data-coord='{{item.stationCoord}}' bindtap='searchSiteIndex' id="{{item.stationName}}" wx:key="{{item.stationId}}">
                <view class="destination-content">
                    <view class="content-image">

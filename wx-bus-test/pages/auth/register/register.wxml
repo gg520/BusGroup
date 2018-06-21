@@ -1,47 +1,65 @@
-<!--pages/auth/register/register.wxml-->
-<view class="container">
-<view class='getimage'>
- <image class="avatar" src="{{empFilePaths}}" bindtap='getavatar'>
- </image>
- <text class='text' bindtap='getavatar'>点击上传</text>
+
+<view class="upload-img">
+  <view class="title">图片3/3</view>
+  <view class="upload">
+    <view class="upload-item">
+      <image bindtap="up_" src="{{empFilePaths}}"></image>
+       <text>头像</text> 
+    </view>
+    <view class="upload-item">
+      <image bindtap="up" src="{{empFilePaths}}"></image>
+       <text>身份证正面</text> 
+    </view>
+    <view class="upload-item">
+      <image bindtap="up" src="{{empFilePaths}}"></image>
+       <text>身份证反面</text>
+    </view>
+  </view>
 </view>
-    <view class="form-box">
-    	<view class="form-item">
-    		<input class="username" value="{{driver_name}}" bindinput="binddriver_name" placeholder="真实姓名" auto-focus/>
-    		<image wx:if="{{ driver_name.length > 0 }}" id="clear-driver_name" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
-    	</view>
-
-    	<view class="form-item">
-    		<input class="driver_password" value="{{driver_password}}" password bindinput="binddriver_password" placeholder="密码"/>
-    		<image class="clear" id="clear-password" wx:if="{{driver_password.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
-    	</view>
-
-      <view class="form-item">
-    		<input class="password" value="{{confirmPassword}}" password bindinput="bindConfirmPasswordInput" placeholder="确认密码"/>
-    		<image class="clear" id="clear-confirm-password" wx:if="{{ confirmPassword.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
-    	</view>
-<view class="form-item">
-      <input class="driver_citizenship" value="{{driver_citizenship}}" bindinput="driver_citizenship" placeholder="身份证号" />
-    	<image wx:if="{{driver_citizenship.length > 0 }}" id="clear-driver_citizenship" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+<view class="accident-type">
+  <view class="ac-type-item">
+    <label>姓名</label>
+    <input type="text" placeholder="您的真实姓名" value='{{username}}'/>
+    <view class="important">*</view>
+  </view>
+  <view class="ac-type-item">
+    <label>密码</label>
+    <input type="password" placeholder="您的密码" value='{{password1}}' bindinput='password1Change'/>
+    <view class="important">
+      *
     </view>
-    <view class="form-item">
-      <input class="drive_id"  maxlength='18' value="{{drive_id}}" bindinput="binddrive_id" placeholder="驾驶证号码" />
-    	<image wx:if="{{ drive_id.length > 0 }}" id="clear-drive_id" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+  </view>
+  <view class="ac-type-item">
+    <label>确认密码</label>
+    <input type="password" placeholder="您的密码" value='{{password2}}' bindinput='password2Change'/>
+    <view class="important">
+      <icon wx:if="{{password2.length > 0}}" type="{{pwsIcon?'success':'warn'}}" size='10'></icon>*
     </view>
-    <view class="form-item">
-      <input class="driver_mobile" value="{{driver_mobile}}" bindinput="binddriver_mobile" placeholder="手机号" />
-    	<image wx:if="{{driver_mobile.length > 0 }}" id="clear-driver_mobile" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+  </view>
+  <view class="ac-type-item">
+    <label>电话</label>
+    <input type="text" placeholder="您的电话号码" value='{{mobile}}' bindinput='mobileChange'/>
+    <view class="important">
+      <icon wx:if="{{mobile.length > 0}}" type="{{mobileIcon?'success':'warn'}}" size='10'></icon>*
     </view>
-		
-    <view class="form-item-code" >
-			<view class="form-item code-item">
-				<input class="code" value="{{code}}" bindinput="bindCodeInput" placeholder="验证码"/>
-				<image class="clear" id="clear-code" wx:if="{{ code.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
-			</view>
-			<view class="code-btn" bindtap="sendCode">获取验证码</view>
-		</view>
+  </view>
+  <view class="ac-type-item">
+    <label>驾驶证号码</label>
+    <input type="text" placeholder="您的驾驶证号码" value='{{drivenum}}' bindinput='drivenumChange'/>
+    <view class="important">
+      <icon wx:if="{{drivenum.length > 0}}" type="{{drivenumIcon?'success':'warn'}}" size='10'></icon>*
+    </view>
 
-    	<button type="default" class="register-btn" bindtap="startRegister">注册</button>
-
+  </view>
+  
+  <view class="ac-type-item">
+    <label>身份证</label>
+    <input type="text" placeholder="您的身份证号码" placeholder-style="font-size: 28rpx" value='{{userInfo.address}}' />
+    <view class="important">
+      <icon wx:if="{{userInfo.mobile.length > 0}}" type="{{mobileIcon?'success':'warn'}}" size='10'></icon>*
     </view>
+  </view>
+  
 </view>
+
+<button type="default"  bindtap="changeInfo">注册</button>

@@ -18,35 +18,34 @@ Page({
       endLongitude: '',
       //到达站点
       endSite: '',
-      startSite: '',//起始位置
+      startSite: '我的位置',//起始位置
     },
     //搜索数据的现实, 名称，详细位置信息，相距距离,坐标
-    searchSite:'',
+    searchSite: '',
     countRout: 0,//显示的线路的数量默认是0
     pm: 0,//上午 1 下午 2，默认是0 没有选择上下午
     isAm: false,//是否上午
     isPm: false,//是否是下午
     isAll: true,
     isEmptySite: false,
+
+    //设置搜索标识量
+    searchMark: 0,//0 空闲，1 开始 ，2 结束
   },
 
   inputFocus: function () {
-    // console.log("获取焦点");
 
-    // console.log(this.data.searchSite);
-    //将数据屏蔽
-    // this.setData({
-    //   searchSite:'假数据',
-    // });
+
   },
-
-  inputChange: function (e) {
+  //开始改变
+  startInputChange: function (e) {
 
     let that = this;
     if (e.detail.value != null && '' != e.detail.value) {
       //获取匹配站点
       console.log(e.detail.value);
       this.setData({
+        searchMark: 1,//设置开始标量
         flagSeach: true
       });
       wx.request({
@@ -71,34 +70,53 @@ Page({
             });
 
 
+          }
+        },
+        fail: function (res) {
 
-            //请求成功
-            //获取到站点信息，然后根据站点信息获取数据的显示怎么显示
+        }
+      })
+    } else {
+      this.setData({
+        flagSeach: false
+      });
+    }
 
-            // var BMap=new bmap.BMapWX({//创建
-            //   ak:'N0KvpqkorE9GPG467fqlThoTX6QLFjGH'
-            // });
-            // var fail=function(data){
-            //   console.log(data);
-            // };
+  },
+  //结束改变
+  endInputChange: function (e) {
 
-            // var success=function(data){
-            //   wxMarkerData = data.wxMarkerData;
-            //   console.log("信息：" + wxMarkerData[0].address)
-            // }
-            // // 发起regeocoding检索请求 
-            // BMap.regeocoding({
-            //   fail: fail,
-            //   success: success,
-            //   // iconPath: '../../img/marker_red.png',
-            //   // iconTapPath: '../../img/marker_red.png'
-            //   location: '37.74725,113.62493'
+    let that = this;
+    if (e.detail.value != null && '' != e.detail.value) {
+      //获取匹配站点
+      console.log(e.detail.value);
+      this.setData({
+        searchMark: 2,//设置开始标量
+        flagSeach: true
+      });
+      console.log("改变的位置：" + this.data.searchMark)
+      wx.request({
+        url: api.SearchSite,
+        data: {
+          site: e.detail.value,
+        },
+        method: "POST",
+        header: {
+          "Content-Type": "application/json",
+          "Connect_Platform": "Weixin_Passenger"
+        },
+        success: function (res) {
 
-            //   //  address: '地址：' + data[i].address + '\n',
-            //   // desc: '描述：' + data[i].desc + '\n',
-            //   // business: '商圈：' + data[i].business
+          if (res.data.errno === 0) {
+            console.log(res.data)
+            //获取站点信息
+            //设置信息为空显示
+            that.setData({
 
-            // });
+              searchSite: res.data.data
+            });
+
+
           }
         },
         fail: function (res) {
@@ -126,6 +144,7 @@ Page({
           search: {
             startLatitude: res.latitude,
             startLongitude: res.longitude,
+            startSite: '我的位置'
           }
         })
       },
@@ -149,7 +168,7 @@ Page({
           console.log("设置：" + res.data.data)
           that.setData({
             routes: res.data.data,
-            countRout: that.countRout + 20//这个值由后台确定
+            countRout: that.countRout + res.data.data.length//这个值由后台确定
           })
         }
       },
@@ -158,7 +177,6 @@ Page({
       },
       complete: function () {
         console.log(that.data)
-
       }
     });
     wx.hideLoading();
@@ -169,11 +187,11 @@ Page({
    */
   goRoute: function (e) {
     if (app.globalData.hasLogin) {//判断您是否登录，登录可以跳转
-      console.log(e.currentTarget.dataset.routeid);
+      console.log("routeid" + e.currentTarget.dataset.routeid);
       //获取线路的id
       //根据界面跳转
       wx.navigateTo({
-        url: '/pages/route/routeInfo/routeInfo?routeid=' + e.currentTarget.dataset.routeid,
+        url: '/pages/route/routeInfo/routeInfo?routeid=' + e.currentTarget.dataset.routeid,//站点ID,
       })
     } else {//未登录，确定跳转到登录界面
       wx.showModal({
@@ -198,12 +216,14 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
+    //查找数据
     if (that.data.searchSite.length > 0) {
       wx.request({
         url: api.SearchRun,
         data: {
           startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
-          endSite: that.data.searchSite,
+          endSite: that.data.search.endSite,
+          startSite: that.data.search.startSite,
           startNum: 0,
           num: 20,
           time: 1
@@ -263,20 +283,23 @@ Page({
         }
       });
     }
-    wx.hideLoading();
 
+
+    wx.hideLoading();
   },
   goPm: function () {
     let that = this;
     wx.showLoading({
       title: '加载中...',
     });
+
     if (that.data.searchSite.length > 0) {
       wx.request({
         url: api.SearchRun,
         data: {
           startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
-          endSite: that.data.searchSite,
+          endSite: that.data.search.endSite,
+          startSite: that.data.search.startSite,
           startNum: 0,
           num: 20,
           time: 2
@@ -337,20 +360,22 @@ Page({
       });
     }
     wx.hideLoading();
-    
   },
 
   goAll: function () {
     let that = this;
+    //加载请求后台数据,options跳转带来的参数
     wx.showLoading({
       title: '加载中...',
     });
+
     if (that.data.searchSite.length > 0) {
       wx.request({
         url: api.SearchRun,
         data: {
           startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
-          endSite: that.data.searchSite,
+          endSite: that.data.search.endSite,
+          startSite: that.data.search.startSite,
           startNum: 0,
           num: 20,
         },
@@ -444,25 +469,45 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    //重新加载数据
     let that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+
+        that.setData({
+          search: {
+            startLatitude: res.latitude,
+            startLongitude: res.longitude,
+          }
+        })
+      },
+    })
+
+    //加载请求后台数据,options跳转带来的参数
     wx.showLoading({
       title: '加载中...',
-    })
+    });
+    var time = 0;
+    if (that.data.isAm) {
+      time = 1;
+    } else if (that.data.isPm) {
+      time = 2;
+    }
     wx.request({
       url: api.RouteRun,
       data: {
-        countRout: 0,
-        pm: 0,
+        startNum: 0,
+        num: 20,
+        time: time,
       },
       method: 'POST',
       success: function (res) {
+        console.log(res.data)
         if (res.data.errno === 0) {
+          console.log("设置：" + res.data.data)
           that.setData({
-            routes: res.data.data.routes,
-            countRout: that.countRout + 10,//一次加10
-            isAm: true,
-            isPm: false
+            routes: res.data.data,
+            countRout: that.countRout + res.data.data.length//这个值由后台确定
           })
         }
       },
@@ -470,9 +515,11 @@ Page({
         util.showErrorToast("加载失败");
       },
       complete: function () {
-        wx.hideLoading();
+        console.log(that.data)
+
       }
-    })
+    });
+    wx.hideLoading();
   },
 
   /**
@@ -488,16 +535,17 @@ Page({
     wx.request({
       url: api.RouteRun,
       data: {
-        countRout: that.data.countRout,//翻页
-        pm: that.data.pm,
+
+        startNum: that.data.countRout,
+        num: 20
       },
       method: 'POST',
       success: function (res) {
         if (res.data.errno === 0) {
           // 数据需要处理一下，做一个拼接
           that.setData({
-            routes: res.data.data.routes,
-            countRout: that.countRout + 10
+            routes: res.data.data,
+            countRout: that.countRout + res.data.data.length//这个值由后台确定
           })
         }
       },
@@ -517,23 +565,43 @@ Page({
 
   },
   // 地点匹配
-  // 地点匹配
   searchSiteIndex: function (event) {
     //获取地址信息
     let itemIndex = event.currentTarget.id;
+
+    let coord = [];//获取坐标
+    if (event.currentTarget.dataset.coord) {
+      coord = event.currentTarget.dataset.coord.split(",");
+
+    }
     let that = this;
     let search = this.data.search;
-    search.endSite = itemIndex;
+    console.log("searchMark:" + this.data.searchMark)
+    if (this.data.searchMark === 1) {
+      search.startSite = itemIndex;//设置起始地点的数据
+      search.startLatitude = coord[0];//起始坐标维度
+      search.startLongitude = coord[1];//起始坐标的经度
+    } else if (this.data.searchMark === 2) {
+      search.endSite = itemIndex;
+    } else {
+      return false;
+    }
+
     this.setData({
+      searchMark: 0,
       search: search
     })
     console.log(that.data.search.startLatitude);
+    console.log("开始：" + this.data.search.startSite)
+    console.log("结束：" + this.data.search.endSite)
+    // if (this.data.search.startSite != null && this.data.search.endSite!=null){
     //获取到站点的ID从而将数据封装到数据传输获取站点数据
     wx.request({
       url: api.SearchRun,
       data: {
         startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
-        endSite: itemIndex,
+        endSite: this.data.search.endSite,
+        startSite: that.data.search.startSite,
         startNum: 0,
         num: 20
       },
@@ -558,7 +626,6 @@ Page({
       }
     })
 
-
   },
   // 交换起始位置和终点的内容
   swop: function () {
@@ -574,6 +641,19 @@ Page({
         startSite: swap.endSite
       }
     })
+  },
+  clearstatSite: function () {
+    let search = this.data.search;
+    search.startSite = '';
+    this.setData({
+      search: search
+    })
+  },
+  clearendSite: function () {
+    let search = this.data.search;
+    search.endSite = '';
+    this.setData({
+      search: search
+    })
   }
-
 })

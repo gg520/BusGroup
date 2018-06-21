@@ -10,7 +10,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     banner: [
       { url:'/static/images/ic_mu_index1.png'},
-      { url: '/static/images/ic_mu_index2.jpg'}
+      { url: '/static/images/ic_mu_index2.jpg'},
+      { url: '/static/images/ic_mu_index3.jpg' }
     ],
     //设置显示信息
     //乘客

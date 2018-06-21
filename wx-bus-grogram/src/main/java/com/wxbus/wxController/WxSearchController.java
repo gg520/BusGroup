@@ -76,26 +76,28 @@ public class WxSearchController {
         Integer startNum=JacksonUtil.parseInteger(body,"startNum");
         Integer num=JacksonUtil.parseInteger(body,"num");
         String startCoord=JacksonUtil.parseString(body,"startCoord");
+        Integer time=JacksonUtil.parseInteger(body,"time");
         logger.info("查找招募线路");
         //起始站点名称
-        String startSite=null;
+        String startSite=JacksonUtil.parseString(body,"startSite");
+        List<Route> routeList=null;
 
-        Integer time=JacksonUtil.parseInteger(body,"time");
+        if(startSite!=null&&"".equals(startSite)){
+            if(startSite.equals("我的位置")){
+                //查找所有站点
+                List<Station> stationList = stationService.findAllStation();
+                String [] stringsCoord=startCoord.split(",");
+                List<NewStation> newStationList=SortUtil.stationSort(stationList,stringsCoord);
 
-        //查找所有站点
-        List<Station> stationList = stationService.findAllStation();
-        String [] stringsCoord=startCoord.split(",");
-        List<NewStation> newStationList=SortUtil.stationSort(stationList,stringsCoord);
-
-        if(newStationList.get(0)!=null){
-            startSite=newStationList.get(0).getStationName();
+                if(newStationList.get(0)!=null){
+                    startSite=newStationList.get(0).getStationName();
+                }
+            }
         }
-        //起始点终止点不为空查询数据库
-        if(startSite==null||endSite==null){
-            return ResponseUtil.fail();
-        }
-        //查找线路
-        List<Route> routeList=routeService.findRouteByStartEnd(startSite,endSite, startNum, num,time);
+        routeList=routeService.findRouteByStartEnd(startSite,endSite, startNum, num,time);
+
+
+
         List<NewRoute> newRouteList=new ArrayList<NewRoute>();
         for(int i=0;i<routeList.size();i++){
             NewRoute newRoute=new NewRoute(routeList.get(i));
@@ -131,21 +133,26 @@ public class WxSearchController {
         //获取时间
         Integer time=JacksonUtil.parseInteger(body,"time");
         //起始站点名称
-        String startSite=null;
-        List<Station> stationList = stationService.findAllStation();
-
-        String [] stringsCoord=startCoord.split(",");
-        List<NewStation> newStationList=SortUtil.stationSort(stationList,stringsCoord);
+        String startSite=JacksonUtil.parseString(body,"startSite");
 
 
-        if(newStationList.get(0)!=null){
-            startSite=newStationList.get(0).getStationName();
+        List<Route> routeList=null;
+
+        if(startSite!=null&&"".equals(startSite)){
+            if(startSite.equals("我的位置")){
+                //查找所有站点
+                List<Station> stationList = stationService.findAllStation();
+                String [] stringsCoord=startCoord.split(",");
+                List<NewStation> newStationList=SortUtil.stationSort(stationList,stringsCoord);
+
+                if(newStationList.get(0)!=null){
+                    startSite=newStationList.get(0).getStationName();
+                }
+            }
         }
-        //起始点终止点不为空查询数据库
-        if(startSite==null||endSite==null){
-            return ResponseUtil.fail();
-        }
-        List<Route> routeList=routeService.findOpenRouteByStartEnd(startSite,endSite, startNum, num,time);
+
+        routeList=routeService.findOpenRouteByStartEnd(startSite,endSite, startNum, num,time);
+
         List<NewRoute> newRouteList=new ArrayList<NewRoute>();
         for(int i=0;i<routeList.size();i++){
             NewRoute newRoute=new NewRoute(routeList.get(i));

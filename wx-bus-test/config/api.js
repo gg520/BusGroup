@@ -13,7 +13,7 @@ module.exports = {
 
   ChangUserInfo:WxApiRoot+"user/changeUserInfo",//修改个人信息，完善个人信息
   ChangePassword:WxApiRoot+"user/changePassword",//修改密码
-  
+
   Payment: WxApiRoot +'pay/prepay',//支付
 
   OrderList: WxApiRoot +"order/orderList",//获取订单信息
@@ -28,11 +28,12 @@ module.exports = {
   RoutePlant: WxApiRoot + 'route/routePlant',//获取招募路线的信息
   RouteRun:WxApiRoot+ 'route/routeRun',//获取运行路线的信息
   RouteInquiryPeriod : WxApiRoot + 'route/routePeriod',//获取线路的招募周期
+  RouteAll: WxApiRoot + 'route/queryAllReoute',//获取所有正在招募和运行的线路
 
   SearchSite: WxApiRoot + "search/site",//搜索站点
   SearchPlant: WxApiRoot + "search/routePlant",//搜索招募线路3
   SearchRun: WxApiRoot + 'search/routeRun',  //搜索开通线路
-  SearchRoute: WxApiRoot +'route/queryAllReoute',//搜索所有线路
+  SearchRoute: WxApiRoot +'search/routeAll',//搜索所有线路
 
   CheckPassword:WxApiRoot+'check/password',//验证密码是否正确
   CheckInfo:WxApiRoot+"check/info",//验证是否完善信息

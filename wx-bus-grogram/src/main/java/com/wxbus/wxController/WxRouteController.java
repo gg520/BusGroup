@@ -240,8 +240,6 @@ public class WxRouteController {
             passengerCount=passenger_routeServise.findPassengerCountByRouteId(routeList.get(i).getRouteId());
             newRoute.setPassengerCount(passengerCount);
             newRouteList.add(newRoute);
-
-
         }
         return ResponseUtil.ok(newRouteList);
     }
@@ -272,7 +270,6 @@ public class WxRouteController {
             newRoute.setPassengerCount(passengerCount);
             newRouteList.add(newRoute);
         }
-
         return ResponseUtil.ok(newRouteList);
     }
 }

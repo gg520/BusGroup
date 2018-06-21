@@ -48,13 +48,44 @@ public class RouteServiceImpl implements RouteService {
     public List<Route>  findRouteByStartEnd(String startSite, String endSite,Integer startNum,Integer num,Integer time) {
         PageHelper.startPage(startNum, num);
         RouteExample routeExample=new RouteExample();
-        routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3);
+
         if(time!=null&&time!=0){
-            routeExample.clear();
-            if(time==1){
-                routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");//上午
-            }else if (time==2){
-                routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3).andStartTimeGreaterThan("12:00");//下午
+
+            if(time==1){//上午
+                if(startSite!=null&&endSite!=null&&!"".equals(startSite)&&!"".equals(endSite)){
+                    routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");
+
+                }else if(startSite!=null&&!"".equals(startSite)){
+                    routeExample.or().andStartSiteEqualTo(startSite).andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");
+                }else if(endSite!=null&&!"".equals(endSite)){
+                    routeExample.or().andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");
+                }else{
+                    routeExample.or().andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");
+                }
+
+            }else if (time==2){//下午
+                if(startSite!=null&&endSite!=null&&!"".equals(startSite)&&!"".equals(endSite)){
+                    routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3).andStartTimeGreaterThan("12:00");
+
+                }else if(startSite!=null&&!"".equals(startSite)){
+                    routeExample.or().andStartSiteEqualTo(startSite).andRouteStatusEqualTo(3).andStartTimeGreaterThan("12:00");
+                }else if(endSite!=null&&!"".equals(endSite)){
+                    routeExample.or().andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3).andStartTimeGreaterThan("12:00");
+                }else{
+                    routeExample.or().andRouteStatusEqualTo(3).andStartTimeGreaterThan("12:00");
+                }
+
+            }
+        }else{
+            if(startSite!=null&&endSite!=null&&!"".equals(startSite)&&!"".equals(endSite)){
+                routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3);
+
+            }else if(startSite!=null&&!"".equals(startSite)){
+                routeExample.or().andStartSiteEqualTo(startSite).andRouteStatusEqualTo(3);
+            }else if(endSite!=null&&!"".equals(endSite)){
+                routeExample.or().andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3);
+            }else{
+                routeExample.or().andRouteStatusEqualTo(3);
             }
         }
         log.info("起始坐标终点站点名称查找线路");
@@ -75,13 +106,43 @@ public class RouteServiceImpl implements RouteService {
     public List<Route> findOpenRouteByStartEnd(String startSite, String endSite,Integer startNum,Integer num,Integer time) {
         PageHelper.startPage(startNum, num);
         RouteExample routeExample=new RouteExample();
-        routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(5);
         if(time!=null&&time!=0){
-            routeExample.clear();
-            if(time==1){
-                routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(5).andStartTimeLessThan("12:00");//上午
-            }else if (time==2){
-                routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(5).andStartTimeGreaterThan("12:00");//下午
+
+            if(time==1){//上午
+                if(startSite!=null&&endSite!=null&&!"".equals(startSite)&&!"".equals(endSite)){
+                    routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");
+
+                }else if(startSite!=null&&!"".equals(startSite)){
+                    routeExample.or().andStartSiteEqualTo(startSite).andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");
+                }else if(endSite!=null&&!"".equals(endSite)){
+                    routeExample.or().andEndSiteEqualTo(endSite).andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");
+                }else{
+                    routeExample.or().andRouteStatusEqualTo(3).andStartTimeLessThan("12:00");
+                }
+
+            }else if (time==2){//下午
+                if(startSite!=null&&endSite!=null&&!"".equals(startSite)&&!"".equals(endSite)){
+                    routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(5).andStartTimeGreaterThan("12:00");
+
+                }else if(startSite!=null&&!"".equals(startSite)){
+                    routeExample.or().andStartSiteEqualTo(startSite).andRouteStatusEqualTo(5).andStartTimeGreaterThan("12:00");
+                }else if(endSite!=null&&!"".equals(endSite)){
+                    routeExample.or().andEndSiteEqualTo(endSite).andRouteStatusEqualTo(5).andStartTimeGreaterThan("12:00");
+                }else{
+                    routeExample.or().andRouteStatusEqualTo(5).andStartTimeGreaterThan("12:00");
+                }
+
+            }
+        }else{
+            if(startSite!=null&&endSite!=null&&!"".equals(startSite)&&!"".equals(endSite)){
+                routeExample.or().andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite).andRouteStatusEqualTo(5);
+
+            }else if(startSite!=null&&!"".equals(startSite)){
+                routeExample.or().andStartSiteEqualTo(startSite).andRouteStatusEqualTo(5);
+            }else if(endSite!=null&&!"".equals(endSite)){
+                routeExample.or().andEndSiteEqualTo(endSite).andRouteStatusEqualTo(5);
+            }else{
+                routeExample.or().andRouteStatusEqualTo(5);
             }
         }
         log.info("起始坐标终点站点名称查找已开线路");
