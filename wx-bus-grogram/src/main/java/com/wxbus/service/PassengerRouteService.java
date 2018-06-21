@@ -1,5 +1,6 @@
 package com.wxbus.service;
 
+import com.wxbus.daomain.Passenger;
 import com.wxbus.daomain.PassengerRoute;
 
 import java.util.List;
@@ -47,5 +48,14 @@ public interface PassengerRouteService {
      *@describe 根据收藏id删除收藏信息
      */
     void deletePassengerRouteByPrId(Integer pRId);
+    /**
+     *@type interface
+     *@parameter  [passengerRoute]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 添加个人收藏信息
+     */
+    void addPassengerRoute(PassengerRoute passengerRoute);
 
 }

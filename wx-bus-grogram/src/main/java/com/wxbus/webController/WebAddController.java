@@ -109,7 +109,7 @@ public class WebAddController {
         if(route ==null){
             return ResponseUtil.fail();
         }
-        String creatUser=String.valueOf(request.getSession().getAttribute("user"));
+        Integer creatUser=Integer.parseInt(request.getSession().getAttribute("user").toString());
         route.setCreatUser(creatUser);
         route.setCreatTime(new Date());
         routeService.addRoute(route);

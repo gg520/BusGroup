@@ -26,9 +26,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @WebAppConfiguration
 @AutoConfigureMockMvc
-public class WxSearchControllerTest {
-    @Autowired
-    WxRouteController wxRouteController;
+public class WxCollectionControllerTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
@@ -38,36 +36,20 @@ public class WxSearchControllerTest {
     }
 
     @Test
-    public void site() {
+    public void getCollect() {
     }
 
     @Test
-    public void routePlant() {
+    public void clearCollect() {
     }
 
     @Test
-    public void routeRun() throws Exception{
-        Map<String,Object> map=new HashMap<String,Object>();
-        map.put("startCoord","11,21");
-        map.put("endSite","龙湖");
-        map.put("startNum",0);
-        map.put("num",5);
+    public void addCollect() throws Exception{
+        Map<String,Integer> map=new HashMap<String,Integer>();
+        map.put("routeId",2);
+        map.put("passengerId",3);
         String body= JsonUtil.stringify(map);
-        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/weixin/search/routeRun").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print()).andReturn();
-        System.out.println(result.getResponse().toString());
-    }
-    @Test
-    public void routeAll() throws Exception{
-        Map<String,Object> map=new HashMap<String,Object>();
-        map.put("startCoord","11,21");
-        map.put("endSite","龙湖");
-        map.put("startSite","我的位置");
-        map.put("startNum",0);
-        map.put("num",5);
-        String body= JsonUtil.stringify(map);
-        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/weixin/search/routeAll").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
+        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/weixin/collect/addCollect").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         System.out.println(result.getResponse().toString());

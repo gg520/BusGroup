@@ -62,7 +62,7 @@ public class WxRouteController {
         Route route =new Route();
         route.setStartSite(JacksonUtil.parseString(body,"startsite"));
         route.setEndSite(JacksonUtil.parseString(body,"endsite"));
-        route.setCreatUser(String.valueOf(id));
+        route.setCreatUser(id);
         route.setCreatTime(new Date());
         route.setStartTime(JacksonUtil.parseString(body,"starttime"));
         route.setEndTime(JacksonUtil.parseString(body,"endtime"));

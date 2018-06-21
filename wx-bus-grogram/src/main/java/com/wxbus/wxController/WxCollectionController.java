@@ -121,12 +121,21 @@ public class WxCollectionController {
      *@creattime 2018/6/21
      *@describe 添加个人信息
      */
-    @RequestMapping(value = "/clearCollect",method = RequestMethod.POST)
-    public Object addCollect(@RequestBody PassengerRoute passengerRoute){
+    @RequestMapping(value = "/addCollect",method = RequestMethod.POST)
+    public Object addCollect(@RequestBody String body,HttpServletRequest request){
         logger.info("添加个人信息");
-        if(passengerRoute==null){
-            return  ResponseUtil.fail(500,"传入信息为空");
+        UserToken userToken=tokenMap.get(request.getHeader("X-Bus-Token"));
+        Integer passengerId=userToken.getUserId();
+        if(passengerId==null||"".equals(passengerId)){
+            return ResponseUtil.fail();
         }
-        return ResponseUtil.ok();
+        Integer routeId=JacksonUtil.parseInteger(body,"routeId");
+        PassengerRoute passengerRoute=new PassengerRoute();
+        passengerRoute.setCreatTime(new Date());
+        passengerRoute.setPassengerId(passengerId);
+        passengerRoute.setRouteId(routeId);
+        passengerRoute.setStartStatus(0);
+        passengerRouteService.addPassengerRoute(passengerRoute);
+        return ResponseUtil.ok("添加成功");
     }
 }

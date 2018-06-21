@@ -88,4 +88,30 @@ public class WxUserController {
         }
         return ResponseUtil.ok("更新成功");
     }
+    @RequestMapping(value = "changePassword",method = RequestMethod.POST)
+    /**
+     *@type method
+     *@parameter  [body, request]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 更改密码
+     */
+    public Object changePassword(@RequestBody String body,HttpServletRequest request){
+        logger.info("更改密码");
+        UserToken userToken=tokenMap.get(request.getHeader("X-Bus-Token"));
+        Integer passengerId=userToken.getUserId();
+        Passenger passenger=userService.findById(passengerId);
+        String oldPassword=JacksonUtil.parseString(body,"oldPassword");
+        String newPassword=JacksonUtil.parseString(body,"newPassword");
+        oldPassword=MD5Util.toMD5(oldPassword);
+        newPassword=MD5Util.toMD5(newPassword);
+        if(passenger.getPassengerPassword()!=oldPassword){
+            return ResponseUtil.fail(500,"原密码不匹配");
+        }
+        passenger.setPassengerPassword(newPassword);
+        userService.updatePassenger(passenger);
+        return ResponseUtil.ok("更改成功");
+
+    }
 }

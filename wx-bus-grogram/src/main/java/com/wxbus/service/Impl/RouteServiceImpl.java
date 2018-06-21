@@ -203,5 +203,38 @@ public class RouteServiceImpl implements RouteService {
         routeExample.setOrderByClause("recruit_time asc");
         return routeMapper.selectByExample(routeExample);
     }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [startNum, num, startSite, endSite, startCoord]
+     *@back  java.util.List<com.wxbus.daomain.Route>
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 查找全部招募和正在运行线路
+     */
+    public List<Route> findAllRunWaitRoute(Integer startNum, Integer num, String startSite, String endSite) {
+        log.info("查找全部招募和正在运行线路");
+        PageHelper.startPage(startNum,num);
+        RouteExample routeExample=new RouteExample();
+        if(startSite==null||"".equals(startSite)){
+            if(endSite==null||"".equals(endSite)){
+                routeExample.or().andRouteStatusEqualTo(3);
+                routeExample.or().andRouteStatusEqualTo(5);
+                return routeMapper.selectByExample(routeExample);
+            }
+            routeExample.or().andRouteStatusEqualTo(3).andEndSiteEqualTo(endSite);
+            routeExample.or().andRouteStatusEqualTo(5).andEndSiteEqualTo(endSite);
+            return routeMapper.selectByExample(routeExample);
+        }
+        else if(endSite==null||"".equals(endSite)){
+            routeExample.or().andRouteStatusEqualTo(3).andStartSiteEqualTo(startSite);
+            routeExample.or().andRouteStatusEqualTo(5).andStartSiteEqualTo(startSite);
+            return routeMapper.selectByExample(routeExample);
+        }
+        routeExample.or().andRouteStatusEqualTo(3).andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite);
+        routeExample.or().andRouteStatusEqualTo(5).andStartSiteEqualTo(startSite).andEndSiteEqualTo(endSite);
+        return routeMapper.selectByExample(routeExample);
+    }
 }
 

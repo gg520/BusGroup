@@ -153,11 +153,39 @@ public class WxSearchController {
             passengerCount=passenger_routeServise.findPassengerCountByRouteId(routeList.get(i).getRouteId());
             newRoute.setPassengerCount(passengerCount);
             newRouteList.add(newRoute);
-
-
         }
         return ResponseUtil.ok(newRouteList);
+    }
+    @RequestMapping(value = "routeAll",method = RequestMethod.POST)
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 搜索已经运行的线路和正在招募的线路
+     */
+    public Object routeAll(@RequestBody String body){
+        logger.info("搜索已经运行的线路和正在招募的线路");
+        String startCoord=JacksonUtil.parseString(body,"startCoord");
+        String endSite=JacksonUtil.parseString(body,"endSite");
+        String startSite=JacksonUtil.parseString(body,"startSite");
+        Integer startNum=JacksonUtil.parseInteger(body,"startNum");
+        Integer num=JacksonUtil.parseInteger(body,"num");
+        List<Route> routeList=new ArrayList<Route>();
+        if("我的位置".equals(startSite)){
+            //查找所有站点
+            List<Station> stationList = stationService.findAllStation();
+            String [] stringsCoord=startCoord.split(",");
+            List<NewStation> newStationList=SortUtil.stationSort(stationList,stringsCoord);
+            if(newStationList.get(0)!=null){
+                startSite=newStationList.get(0).getStationName();
+            }
+            routeList=routeService.findAllRunWaitRoute(startNum,num,startSite,endSite);
+            return ResponseUtil.ok(routeList);
 
-
+        }
+        routeList= routeService.findAllRunWaitRoute(startNum,num,startSite,endSite);
+        return ResponseUtil.ok(routeList);
     }
 }
