@@ -29,5 +29,23 @@ public interface PassengerRouteService {
      *@describe 通过乘客的id查找该乘客订单的信息
      */
     List<PassengerRoute> findBoughtRouteByPassengerId(Integer passengerId);
+    /**
+     *@type interface
+     *@parameter  [passengerId]
+     *@back  java.util.List<com.wxbus.daomain.PassengerRoute>
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 通过乘客的id查找该乘客收藏的信息
+     */
+    List<PassengerRoute> findCollectionRouteByPassengerId(Integer passengerId);
+    /**
+     *@type interface
+     *@parameter  [pRId]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 根据收藏id删除收藏信息
+     */
+    void deletePassengerRouteByPrId(Integer pRId);
 
 }

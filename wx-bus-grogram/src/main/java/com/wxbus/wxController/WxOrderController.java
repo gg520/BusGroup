@@ -4,6 +4,7 @@ import com.sun.javafx.collections.MappingChange;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.daomain.PassengerRoute;
 import com.wxbus.daomain.Route;
+import com.wxbus.pojo.NewUserRoute;
 import com.wxbus.pojo.UserToken;
 import com.wxbus.service.PassengerRouteService;
 import com.wxbus.service.RouteService;
@@ -56,18 +57,68 @@ public class WxOrderController {
         }
         List<PassengerRoute> passengerRouteList=passengerRouteService.findBoughtRouteByPassengerId(passengerId);
         //存放返回的json值
-        List<Map> mapList=new ArrayList<Map>();
+        List<NewUserRoute> newUserRouteList=new ArrayList<NewUserRoute>();
         if(passengerRouteList==null||passengerRouteList.size()==0){
             ResponseUtil.ok(0);
         }
-        for(Iterator iterator=passengerRouteList.iterator();iterator.hasNext();){
-            Map<Object,Object> newMap=new HashMap<Object, Object>();
-            PassengerRoute passengerRoute=(PassengerRoute) iterator.next();
-            if(showType==0){
-                route=routeService.findRouteById(passengerRoute.getRouteId());
-            }
+        //获取系统当前时间
+        Date date=new Date();
 
+
+        for(int i=0;i<passengerRouteList.size();i++){
+            NewUserRoute newUserRoute=new NewUserRoute();
+            PassengerRoute passengerRoute=passengerRouteList.get(i);
+            route=routeService.findRouteById(passengerRoute.getRouteId());
+            if (passengerRoute.getEndTime().getTime()<date.getTime()){
+                newUserRoute.setRouteStatus(1);
+            }
+            else {
+                newUserRoute.setRouteStatus(0);
+            }
+            newUserRoute.setOrderNumber(passengerRoute.getOrderNumber());
+            newUserRoute.setReserveDay(passengerRoute.getReserveDays());
+            newUserRoute.setCreatUser(route.getCreatUser());
+            newUserRoute.setStartSite(route.getStartSite());
+            newUserRoute.setEndSite(route.getEndSite());
+            newUserRoute.setPrice(route.getPrice());
+            newUserRoute.setStartTime(route.getStartTime());
+            newUserRoute.setPayMoney(passengerRoute.getPayMoney());
+            newUserRoute.setRouteId(passengerRoute.getRouteId());
+            newUserRouteList.add(newUserRoute);
         }
-        return ResponseUtil.ok();
+        if(showType==0){
+            return  ResponseUtil.ok(newUserRouteList);
+        }
+        else if(showType==1){
+            List<NewUserRoute> newUserRouteList1=new ArrayList<NewUserRoute>();
+            for(Iterator iterator=newUserRouteList.iterator();iterator.hasNext();){
+                NewUserRoute newUserRoute1=(NewUserRoute) iterator.next();
+                if(newUserRoute1.getRouteStatus()==1){
+                    newUserRouteList1.add(newUserRoute1);
+                }
+            }
+            return ResponseUtil.ok(newUserRouteList1);
+        }
+        else if(showType==2){
+            List<NewUserRoute> newUserRouteList1=new ArrayList<NewUserRoute>();
+            for(Iterator iterator=newUserRouteList.iterator();iterator.hasNext();){
+                NewUserRoute newUserRoute1=(NewUserRoute) iterator.next();
+                if(newUserRoute1.getRouteStatus()==2){
+                    newUserRouteList1.add(newUserRoute1);
+                }
+            }
+            return ResponseUtil.ok(newUserRouteList1);
+        }
+        else if(showType==3){
+            List<NewUserRoute> newUserRouteList1=new ArrayList<NewUserRoute>();
+            for(Iterator iterator=newUserRouteList.iterator();iterator.hasNext();){
+                NewUserRoute newUserRoute1=(NewUserRoute) iterator.next();
+                if(newUserRoute1.getCreatUser().equals(passengerId)){
+                    newUserRouteList1.add(newUserRoute1);
+                }
+            }
+            return ResponseUtil.ok(newUserRouteList1);
+        }
+        return ResponseUtil.fail(500,"没有相关信息f");
     }
 }

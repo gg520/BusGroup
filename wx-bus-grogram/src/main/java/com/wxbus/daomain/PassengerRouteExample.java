@@ -515,62 +515,52 @@ public class PassengerRouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyEqualTo(String value) {
+        public Criteria andPayMoneyEqualTo(Double value) {
             addCriterion("pay_money =", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyNotEqualTo(String value) {
+        public Criteria andPayMoneyNotEqualTo(Double value) {
             addCriterion("pay_money <>", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyGreaterThan(String value) {
+        public Criteria andPayMoneyGreaterThan(Double value) {
             addCriterion("pay_money >", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyGreaterThanOrEqualTo(String value) {
+        public Criteria andPayMoneyGreaterThanOrEqualTo(Double value) {
             addCriterion("pay_money >=", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyLessThan(String value) {
+        public Criteria andPayMoneyLessThan(Double value) {
             addCriterion("pay_money <", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyLessThanOrEqualTo(String value) {
+        public Criteria andPayMoneyLessThanOrEqualTo(Double value) {
             addCriterion("pay_money <=", value, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyLike(String value) {
-            addCriterion("pay_money like", value, "payMoney");
-            return (Criteria) this;
-        }
-
-        public Criteria andPayMoneyNotLike(String value) {
-            addCriterion("pay_money not like", value, "payMoney");
-            return (Criteria) this;
-        }
-
-        public Criteria andPayMoneyIn(List<String> values) {
+        public Criteria andPayMoneyIn(List<Double> values) {
             addCriterion("pay_money in", values, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyNotIn(List<String> values) {
+        public Criteria andPayMoneyNotIn(List<Double> values) {
             addCriterion("pay_money not in", values, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyBetween(String value1, String value2) {
+        public Criteria andPayMoneyBetween(Double value1, Double value2) {
             addCriterion("pay_money between", value1, value2, "payMoney");
             return (Criteria) this;
         }
 
-        public Criteria andPayMoneyNotBetween(String value1, String value2) {
+        public Criteria andPayMoneyNotBetween(Double value1, Double value2) {
             addCriterion("pay_money not between", value1, value2, "payMoney");
             return (Criteria) this;
         }

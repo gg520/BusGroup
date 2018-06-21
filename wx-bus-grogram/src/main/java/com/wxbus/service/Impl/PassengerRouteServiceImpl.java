@@ -51,7 +51,40 @@ public class PassengerRouteServiceImpl implements PassengerRouteService {
     public List<PassengerRoute> findBoughtRouteByPassengerId(Integer  passengerId) {
         PassengerRouteExample passengerRouteExample=new PassengerRouteExample();
         passengerRouteExample.or().andPassengerIdEqualTo(passengerId).andStartStatusEqualTo(1);
+        passengerRouteExample.setOrderByClause("creatTime");
 
         return passengerRouteMapper.selectByExample(passengerRouteExample);
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [passengerId]
+     *@back  java.util.List<com.wxbus.daomain.PassengerRoute>
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 通过乘客的id查找该乘客收藏的信息
+     */
+    public List<PassengerRoute> findCollectionRouteByPassengerId(Integer passengerId) {
+        PassengerRouteExample passengerRouteExample=new PassengerRouteExample();
+        passengerRouteExample.or().andPassengerIdEqualTo(passengerId).andStartStatusEqualTo(0);
+        passengerRouteExample.setOrderByClause("creatTime");
+        return passengerRouteMapper.selectByExample(passengerRouteExample);
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [pRId]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 根据收藏id删除收藏信息
+     */
+    public void deletePassengerRouteByPrId(Integer pRId) {
+        PassengerRouteExample passengerRouteExample=new PassengerRouteExample();
+        passengerRouteExample.or().andPRIdEqualTo(pRId).andStartStatusEqualTo(0);
+        passengerRouteMapper.deleteByExample(passengerRouteExample);
+
     }
 }
