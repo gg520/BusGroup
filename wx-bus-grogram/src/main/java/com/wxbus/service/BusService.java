@@ -23,4 +23,13 @@ public interface BusService {
      *@describe 汽车状态查找汽车
      */
     List<Bus> findBusByStatus(Integer status,Integer startNum,Integer num);
+    /**
+     *@type interface
+     *@parameter  [bus]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/11
+     *@describe 添加汽车信息
+     */
+    void addBus(Bus bus);
 }

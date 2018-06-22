@@ -33,7 +33,7 @@ public class WxInterceptorConfig extends WebMvcConfigurerAdapter {
          * 将除登录意外不需要验证登录的链接放到/view的子链接下
          * 其他的链接必须登录才能获取
          */
-        registry.addInterceptor(new WeixinLoginHandlerInterceptor()).addPathPatterns("/weixin/**").excludePathPatterns("/weixin/auth/*","/weixin/view/**","/weixin/route/**",
+        registry.addInterceptor(new WeixinLoginHandlerInterceptor()).addPathPatterns("/weixin/**").excludePathPatterns("/weixin/collect/**","/weixin/order/**","/weixin/check/**","/weixin/user/**","/weixin/auth/*","/weixin/view/**","/weixin/route/**",
                 "/weixin/search/**");
 
     }

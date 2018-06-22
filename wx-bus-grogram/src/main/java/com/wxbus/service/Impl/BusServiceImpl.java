@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Service
 public class BusServiceImpl implements BusService{
-    private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
+    private final Log log= LogFactory.getLog(BusServiceImpl.class.getName());
     @Resource
     private BusMapper busMapper;
     @Override
@@ -33,16 +33,17 @@ public class BusServiceImpl implements BusService{
      *@describe 通过id查找汽车信息
      */
     public Bus findBusById(String busId) {
-        if(busId==null||"".equals(busId))
+        if (busId == null || "".equals(busId)){
             return new Bus();
-        BusExample busExample=new BusExample();
+        }
+
+        BusExample busExample = new BusExample();
         busExample.or().andBusIdEqualTo(busId);
-        List<Bus> list=busMapper.selectByExample(busExample);
-        if(list!=null&&list.size()>0)
-            return list.get(0);
+        List<Bus> list = busMapper.selectByExample(busExample);
+        if (list != null && list.size() > 0)
+        {return list.get(0);}
         return new Bus();
     }
-
     @Override
     /**
      *@type method
@@ -58,5 +59,20 @@ public class BusServiceImpl implements BusService{
         BusExample busExample=new BusExample();
         busExample.or().andBusStatusEqualTo(status);
         return busMapper.selectByExample(busExample);
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [bus]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/11
+     *@describe 添加汽车信息
+     */
+    public void addBus(Bus bus) {
+        log.info("添加汽车信息");
+        busMapper.insertSelective(bus);
+
     }
 }

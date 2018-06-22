@@ -57,7 +57,6 @@ public class WxCollectionController {
         if(passengerId==null||"".equals(passengerId)){
             return ResponseUtil.fail();
         }
-        //findPassengerCountByRouteId
         List<PassengerRoute> passengerRouteList=passengerRouteService.findCollectionRouteByPassengerId(passengerId);
         //存放返回的json值
         List<NewUserRoute> newUserRouteList=new ArrayList<NewUserRoute>();

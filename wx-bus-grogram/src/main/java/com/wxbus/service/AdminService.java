@@ -28,4 +28,13 @@ public interface AdminService {
      * @msg 用于登录时放入session的管理员信息
      */
     Admin admin(String username, String password);
-}
+
+    /**
+     *@type interface
+     *@parameter  []
+     *@back  java.util.List<com.wxbus.daomain.Admin>
+     *@author  如花
+     *@creattime 2018/6/13
+     *@describe 查找所有管理员
+     */
+    List<Admin> findAllAdmin(Integer startNum,Integer num);}

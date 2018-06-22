@@ -43,6 +43,7 @@ public interface UserService {
      *@creattime 2018/5/26
      *@describe 更新乘客信息
      */
-    void updatePassenger(Passenger passenger);
+    Integer updatePassenger(Passenger passenger);
+
 
 }

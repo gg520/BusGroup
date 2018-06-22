@@ -1,5 +1,6 @@
 package com.wxbus.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.wxbus.dao.AdminMapper;
 import com.wxbus.daomain.Admin;
 import com.wxbus.daomain.AdminExample;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @Service
 public class AdminServiceImpl implements AdminService {
-    private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
+    private final Log log= LogFactory.getLog(AdminServiceImpl.class.getName());
     @Resource
     private AdminMapper adminMapper;
     @Override
@@ -50,11 +51,18 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    /**
+     *@type method
+     *@parameter  [admin]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/13
+     *@describe 添加管理员
+     */
     public void addAdmin(Admin admin) {
         log.info("添加管理员");
         adminMapper.insertSelective(admin);
     }
-
     @Override
     public Admin admin(String username, String password) {
         AdminExample adminExample=new AdminExample();
@@ -65,5 +73,21 @@ public class AdminServiceImpl implements AdminService {
         }else {
             return null;
         }
+    }
+    @Override
+    /**
+     *@type method
+     *@parameter  []
+     *@back  java.util.List<com.wxbus.daomain.Admin>
+     *@author  如花
+     *@creattime 2018/6/13
+     *@describe 查找所有管理员
+     */
+    public List<Admin> findAllAdmin(Integer startNum,Integer num) {
+        log.info("查找所有管理员");
+        PageHelper.startPage(startNum,num);
+        AdminExample adminExample=new AdminExample();
+
+        return adminMapper.selectByExample(adminExample);
     }
 }

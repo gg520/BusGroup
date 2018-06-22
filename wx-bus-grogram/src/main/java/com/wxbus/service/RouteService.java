@@ -79,6 +79,16 @@ public interface RouteService {
      *@describe 查找全部路线
      */
     List<Route> findAllRoute(Integer startNum,Integer num,Integer time);
+    /**
+     *@type interface
+     *@parameter  [startNum, num, startSite, endSite, startCoord]
+     *@back  java.util.List<com.wxbus.daomain.Route>
+     *@author  如花
+     *@creattime 2018/6/21
+     *@describe 查找全部招募和正在运行线路
+     */
+    List<Route> findAllRunWaitRoute(Integer startNum,Integer num,String startSite, String endSite);
+
 
 
 

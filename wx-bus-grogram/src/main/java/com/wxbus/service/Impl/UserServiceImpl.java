@@ -12,7 +12,7 @@ import com.wxbus.pojo.UserInfo;
 import com.wxbus.service.UserService;
 import com.wxbus.util.JsonUtil;
 import com.wxbus.util.TimeUtil;
-import org.apache.commons.logging.Log;
+import com.wxbus.util.MD5Util;import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -179,13 +179,13 @@ public class UserServiceImpl implements UserService {
      *@back  void
      *@author  如花
      *@creattime 2018/5/26
-     *@describe
+     *@describe 更新用户信息
      */
-    public void updatePassenger(Passenger passenger) {
+    public Integer updatePassenger(Passenger passenger) {
         log.info("更新用户信息");
         PassengerExample passengerExample=new PassengerExample();
-        passengerExample.or().andPassengerMobileEqualTo(passenger.getPassengerMobile()).andPassengerPasswordEqualTo(passenger.getPassengerPassword());
-        passengerMapper.updateByExampleSelective(passenger,passengerExample);
+        passengerExample.or().andIdEqualTo(passenger.getId());
+        return passengerMapper.updateByExampleSelective(passenger,passengerExample);
 
     }
 }

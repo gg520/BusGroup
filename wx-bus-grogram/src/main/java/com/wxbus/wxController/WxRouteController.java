@@ -1,8 +1,10 @@
 package com.wxbus.wxController;
 
-import com.wxbus.daomain.*;
+import com.wxbus.daomain.NewRoute;
+import com.wxbus.daomain.Route;
+import com.wxbus.daomain.Station;
 import com.wxbus.service.*;
-import com.wxbus.util.*;
+import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.ResponseUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -66,8 +68,6 @@ public class WxRouteController {
         route.setEndTime(JacksonUtil.parseString(body,"endtime"));
         route.setRouteStatus(0);
         route.setRunTime(JacksonUtil.parseString(body,"period"));
-        route.setStartRecruit(JacksonUtil.parseString(body,"periodStart"));
-        route.setEndsRecruit(JacksonUtil.parseString(body,"periodEnd"));
         if(route.getStartSite()==null||route.getEndSite()==null){
             return ResponseUtil.fail();
         }
@@ -101,67 +101,44 @@ public class WxRouteController {
 
         }
         else{
-            DriverBusRoute driverBusRoute=driverBusRouteService.findInfoByRouteId(routeId);//执行查询司机、车辆和线路数据
-
-            String driverId=driverBusRoute.getDriverId();
-            String busId=driverBusRoute.getBusId();
-
-            Route route=routeService.findRouteById(routeId);//查找线路信息
-            Driver driver=driverService.findDriverById(driverId);//查询数据
-            String driverName=driver.getDriverName();//查询司机姓名
-            String driverMobile=driver.getDriverMobile();//查询司机电话
-            Bus bus=busService.findBusById(busId);//查询汽车信息
-//            Integer busNum=bus.getBusNum();//查询汽车编号
-
+            String driverId=driverBusRouteService.findInfoByRouteId(routeId).getDriverId();
+            String busId=driverBusRouteService.findInfoByRouteId(routeId).getBusId();
+            Route route=routeService.findRouteById(routeId);
+            String driverName=driverService.findDriverById(driverId).getDriverName();
+            String driverMobile=driverService.findDriverById(driverId).getDriverMobile();
+            Integer busNum=busService.findBusById(busId).getBusNum();
             String stationId=route.getStationId();
+            Map<Object,Object> map1=new HashMap<Object,Object>();
+            Map<Object,Object> map2=new HashMap<Object,Object>();
+            String[] newStationId=stationId.split(",");
+            for(int i=0;i<newStationId.length;i++){
 
-            Map<Object,Object> map1=new HashMap<Object, Object>();
-            Map<Object,Object> map2=new HashMap<Object, Object>();
-            if(stationId!=null&&"".equals(stationId)){
-                for(String stId:stationId.split(",")){
-                    Integer id= Integer.parseInt(stId);
-                    Station station=stationService.findStationById(id);
-                    map2.put("stationid",station.getStationId());
-                    map2.put("stationname",station.getStationName());
-                }
+                Integer id= Integer.parseInt(newStationId[i]);
+                Station station=stationService.findStationById(id);
+                map2.put("stationId",station.getStationId());
+                map2.put("stationName",station.getStationName());
 
             }
-
 
 
             List mapList = new ArrayList<>();
             map1.put("routeId",route.getRouteId());
             map1.put("startSite",route.getStartSite());
             map1.put("endSite",route.getEndSite());
-            map1.put("starttime",route.getStartTime());
-            map1.put("arrivaltime",route.getEndTime());
-            map1.put("routeStatus",route.getRouteStatus());
+            map1.put("startTime",route.getStartTime());
+            map1.put("endTime",route.getEndTime());
             map1.put("price",route.getPrice());
-            map1.put("recruitTime",route.getRecruitTime());//周期
-
-            map1.put("startRecruit",route.getStartRecruit());
-            map1.put("endsRecruit",route.getEndsRecruit());
-
-            if(busId!=null||!"".equals(busId)){
-                map1.put("busNum",bus.getBusNum());//编号
-                map1.put("busId",bus.getBusId());//汽车牌号
-            }
-
-            if(driverName!=null||!"".equals(driverName)){
-                map1.put("driver",driverName);
-                map1.put("phone",driverMobile);
-            }
-            if(map2.size()>0){
-                mapList.add(map2);
-                map1.put("stations",mapList);
-            }
-
+            map1.put("recruitTime",route.getRecruitTime());
+            map1.put("busId",busId);
+            map1.put("busNum",busNum);
+            map1.put("driverName",driverName);
+            map1.put("driverMobile",driverMobile);
+            mapList.add(map2);
+            map1.put("station",mapList);
 
             /*NewRoute newRoute =new NewRoute(route);
             Integer passengerCount=passenger_routeServise.findPassengerCountByRouteId(routeId);
             newRoute.setPassengerCount(passengerCount);*/
-
-            System.out.println(JsonUtil.stringify(map1));
             return ResponseUtil.ok(map1);
 
 
@@ -272,4 +249,5 @@ public class WxRouteController {
         }
         return ResponseUtil.ok(newRouteList);
     }
+
 }

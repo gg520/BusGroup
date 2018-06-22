@@ -32,5 +32,24 @@ public interface StationService {
      *@describe 通过id查站点
      */
     Station findStationById(Integer stationId);
+    /**
+     *@type interface
+     *@parameter  [startNum, num, status]
+     *@back  java.util.List<com.wxbus.daomain.Station>
+     *@author  如花
+     *@creattime 2018/6/11
+     *@describe 按状态查找站点信息
+     */
+    List<Station> findStationByStatus(Integer startNum,Integer num,Integer status);
+    /**
+     *@type interface
+     *@parameter  [station]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/12
+     *@describe 添加站点
+     */
+    void addStation(Station station);
+
 
 }
