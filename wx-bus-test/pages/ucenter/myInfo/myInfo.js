@@ -299,5 +299,18 @@ Page({
     }else{
       util.showWarningToast("密码不能为空");
     }
+  },
+  upAcatar:function(){
+    let userInfo=this.data.userInfo;
+    let that=this;
+    wx.chooseImage({
+      success: function(res) {
+        userInfo.avatarUrl=res.tempFilePaths;
+        that.setData({
+          userInfo:userInfo,
+        });
+        res.tempFiles;//文件上传
+      },
+    })
   }
 })

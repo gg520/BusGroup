@@ -18,7 +18,8 @@
     "pages/ucenter/myInfo/myInfo",
     "pages/ucenter/myCollect/myCollect",
     "pages/search/search/search",
-    "pages/search/searchStation/searchStation"
+    "pages/search/searchStation/searchStation",
+    "pages/help/help"
   ],
   "window": {
     "backgroundTextStyle": "dark",

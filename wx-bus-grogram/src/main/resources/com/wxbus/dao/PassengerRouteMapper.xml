@@ -8,10 +8,10 @@
     -->
     <id column="p_r_id" jdbcType="INTEGER" property="pRId" />
     <result column="order_number" jdbcType="VARCHAR" property="orderNumber" />
-    <result column="passenger_id" jdbcType="VARCHAR" property="passengerId" />
+    <result column="passenger_id" jdbcType="INTEGER" property="passengerId" />
     <result column="route_id" jdbcType="INTEGER" property="routeId" />
     <result column="reserve_day" jdbcType="INTEGER" property="reserveDay" />
-    <result column="pay_money" jdbcType="VARCHAR" property="payMoney" />
+    <result column="pay_money" jdbcType="DOUBLE" property="payMoney" />
     <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
     <result column="start_status" jdbcType="INTEGER" property="startStatus" />
@@ -181,8 +181,8 @@
       route_id, reserve_day, pay_money, 
       creat_time, end_time, start_status, 
       reserve_days)
-    values (#{pRId,jdbcType=INTEGER}, #{orderNumber,jdbcType=VARCHAR}, #{passengerId,jdbcType=VARCHAR}, 
-      #{routeId,jdbcType=INTEGER}, #{reserveDay,jdbcType=INTEGER}, #{payMoney,jdbcType=VARCHAR}, 
+    values (#{pRId,jdbcType=INTEGER}, #{orderNumber,jdbcType=VARCHAR}, #{passengerId,jdbcType=INTEGER}, 
+      #{routeId,jdbcType=INTEGER}, #{reserveDay,jdbcType=INTEGER}, #{payMoney,jdbcType=DOUBLE}, 
       #{creatTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{startStatus,jdbcType=INTEGER}, 
       #{reserveDays,jdbcType=LONGVARCHAR})
   </insert>
@@ -232,7 +232,7 @@
         #{orderNumber,jdbcType=VARCHAR},
       </if>
       <if test="passengerId != null">
-        #{passengerId,jdbcType=VARCHAR},
+        #{passengerId,jdbcType=INTEGER},
       </if>
       <if test="routeId != null">
         #{routeId,jdbcType=INTEGER},
@@ -241,7 +241,7 @@
         #{reserveDay,jdbcType=INTEGER},
       </if>
       <if test="payMoney != null">
-        #{payMoney,jdbcType=VARCHAR},
+        #{payMoney,jdbcType=DOUBLE},
       </if>
       <if test="creatTime != null">
         #{creatTime,jdbcType=TIMESTAMP},
@@ -281,7 +281,7 @@
         order_number = #{record.orderNumber,jdbcType=VARCHAR},
       </if>
       <if test="record.passengerId != null">
-        passenger_id = #{record.passengerId,jdbcType=VARCHAR},
+        passenger_id = #{record.passengerId,jdbcType=INTEGER},
       </if>
       <if test="record.routeId != null">
         route_id = #{record.routeId,jdbcType=INTEGER},
@@ -290,7 +290,7 @@
         reserve_day = #{record.reserveDay,jdbcType=INTEGER},
       </if>
       <if test="record.payMoney != null">
-        pay_money = #{record.payMoney,jdbcType=VARCHAR},
+        pay_money = #{record.payMoney,jdbcType=DOUBLE},
       </if>
       <if test="record.creatTime != null">
         creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
@@ -317,10 +317,10 @@
     update passenger_route
     set p_r_id = #{record.pRId,jdbcType=INTEGER},
       order_number = #{record.orderNumber,jdbcType=VARCHAR},
-      passenger_id = #{record.passengerId,jdbcType=VARCHAR},
+      passenger_id = #{record.passengerId,jdbcType=INTEGER},
       route_id = #{record.routeId,jdbcType=INTEGER},
       reserve_day = #{record.reserveDay,jdbcType=INTEGER},
-      pay_money = #{record.payMoney,jdbcType=VARCHAR},
+      pay_money = #{record.payMoney,jdbcType=DOUBLE},
       creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
       end_time = #{record.endTime,jdbcType=TIMESTAMP},
       start_status = #{record.startStatus,jdbcType=INTEGER},
@@ -337,10 +337,10 @@
     update passenger_route
     set p_r_id = #{record.pRId,jdbcType=INTEGER},
       order_number = #{record.orderNumber,jdbcType=VARCHAR},
-      passenger_id = #{record.passengerId,jdbcType=VARCHAR},
+      passenger_id = #{record.passengerId,jdbcType=INTEGER},
       route_id = #{record.routeId,jdbcType=INTEGER},
       reserve_day = #{record.reserveDay,jdbcType=INTEGER},
-      pay_money = #{record.payMoney,jdbcType=VARCHAR},
+      pay_money = #{record.payMoney,jdbcType=DOUBLE},
       creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
       end_time = #{record.endTime,jdbcType=TIMESTAMP},
       start_status = #{record.startStatus,jdbcType=INTEGER}
@@ -359,7 +359,7 @@
         order_number = #{orderNumber,jdbcType=VARCHAR},
       </if>
       <if test="passengerId != null">
-        passenger_id = #{passengerId,jdbcType=VARCHAR},
+        passenger_id = #{passengerId,jdbcType=INTEGER},
       </if>
       <if test="routeId != null">
         route_id = #{routeId,jdbcType=INTEGER},
@@ -368,7 +368,7 @@
         reserve_day = #{reserveDay,jdbcType=INTEGER},
       </if>
       <if test="payMoney != null">
-        pay_money = #{payMoney,jdbcType=VARCHAR},
+        pay_money = #{payMoney,jdbcType=DOUBLE},
       </if>
       <if test="creatTime != null">
         creat_time = #{creatTime,jdbcType=TIMESTAMP},
@@ -392,10 +392,10 @@
     -->
     update passenger_route
     set order_number = #{orderNumber,jdbcType=VARCHAR},
-      passenger_id = #{passengerId,jdbcType=VARCHAR},
+      passenger_id = #{passengerId,jdbcType=INTEGER},
       route_id = #{routeId,jdbcType=INTEGER},
       reserve_day = #{reserveDay,jdbcType=INTEGER},
-      pay_money = #{payMoney,jdbcType=VARCHAR},
+      pay_money = #{payMoney,jdbcType=DOUBLE},
       creat_time = #{creatTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       start_status = #{startStatus,jdbcType=INTEGER},
@@ -409,10 +409,10 @@
     -->
     update passenger_route
     set order_number = #{orderNumber,jdbcType=VARCHAR},
-      passenger_id = #{passengerId,jdbcType=VARCHAR},
+      passenger_id = #{passengerId,jdbcType=INTEGER},
       route_id = #{routeId,jdbcType=INTEGER},
       reserve_day = #{reserveDay,jdbcType=INTEGER},
-      pay_money = #{payMoney,jdbcType=VARCHAR},
+      pay_money = #{payMoney,jdbcType=DOUBLE},
       creat_time = #{creatTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       start_status = #{startStatus,jdbcType=INTEGER}

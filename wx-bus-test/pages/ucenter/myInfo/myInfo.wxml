@@ -3,7 +3,7 @@
   <view class="title">头像</view>
   <view class="upload">
     <view class="upload-item">
-      <image bindtap="up" src="{{userInfo.avatarUrl}}"></image>
+      <image bindtap="upAcatar" src="{{userInfo.avatarUrl}}"></image>
       <!-- <text>前方部位</text> -->
     </view>
 

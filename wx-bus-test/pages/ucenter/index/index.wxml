@@ -57,11 +57,11 @@
      <view class="item">
       <view class="a">
         <text class="icon kefu"></text>
-        <text class="txt">联系客服</text>
+        <text class="txt">意见反馈</text>
       </view>
     </view> 
      <view class="item">
-      <view class="a">
+      <view class="a" bindtap='goHelp'>
         <text class="icon help"></text>
         <text class="txt">帮助中心</text>
       </view>

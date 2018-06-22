@@ -107,12 +107,7 @@ page{
     font-size: 24rpx;
 }
 /* 关闭按钮 */
-/* .close {
-   position: absolute;
-  float: right;
-  /* height: 31.25rpx;
-  height: 31.25rpx; 
-} */
+
 .order .h .close {
   position: absolute;
   right: 0;

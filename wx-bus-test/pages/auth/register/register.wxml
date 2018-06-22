@@ -3,15 +3,15 @@
   <view class="title">图片3/3</view>
   <view class="upload">
     <view class="upload-item">
-      <image bindtap="up_" src="{{empFilePaths}}"></image>
+      <image bindtap="upAvater" src="{{avaterFilePaths}}"></image>
        <text>头像</text> 
     </view>
     <view class="upload-item">
-      <image bindtap="up" src="{{empFilePaths}}"></image>
+      <image bindtap="upFront" src="{{frontFilePaths}}"></image>
        <text>身份证正面</text> 
     </view>
     <view class="upload-item">
-      <image bindtap="up" src="{{empFilePaths}}"></image>
+      <image bindtap="upContrary" src="{{contraryFilePaths}}"></image>
        <text>身份证反面</text>
     </view>
   </view>
@@ -19,21 +19,21 @@
 <view class="accident-type">
   <view class="ac-type-item">
     <label>姓名</label>
-    <input type="text" placeholder="您的真实姓名" value='{{username}}'/>
+    <input type="text" placeholder="您的真实姓名" value='{{username}}' bindinput='usernameChange'/>
     <view class="important">*</view>
   </view>
   <view class="ac-type-item">
     <label>密码</label>
-    <input type="password" placeholder="您的密码" value='{{password1}}' bindinput='password1Change'/>
+    <input type="password" placeholder="您的密码" value='{{password}}' bindinput='passwordChange'/>
     <view class="important">
       *
     </view>
   </view>
   <view class="ac-type-item">
     <label>确认密码</label>
-    <input type="password" placeholder="您的密码" value='{{password2}}' bindinput='password2Change'/>
+    <input type="password" placeholder="确认密码" value='{{confirmPassword}}' bindinput='confirmPasswordChange'/>
     <view class="important">
-      <icon wx:if="{{password2.length > 0}}" type="{{pwsIcon?'success':'warn'}}" size='10'></icon>*
+      <icon wx:if="{{confirmPassword.length > 0}}" type="{{pwsIcon?'success':'warn'}}" size='10'></icon>*
     </view>
   </view>
   <view class="ac-type-item">
@@ -53,13 +53,13 @@
   </view>
   
   <view class="ac-type-item">
-    <label>身份证</label>
-    <input type="text" placeholder="您的身份证号码" placeholder-style="font-size: 28rpx" value='{{userInfo.address}}' />
+    <label>身份证号码</label>
+    <input type="text" placeholder="您的身份证号码" placeholder-style="font-size: 28rpx" value='{{citizenship}}' bindinput='citizenshipChange'/>
     <view class="important">
-      <icon wx:if="{{userInfo.mobile.length > 0}}" type="{{mobileIcon?'success':'warn'}}" size='10'></icon>*
+      <icon wx:if="{{citizenship.length > 0}}" type="{{citizenshipIcon?'success':'warn'}}" size='10'></icon>*
     </view>
   </view>
   
 </view>
 
-<button type="default"  bindtap="changeInfo">注册</button>
+<button type="default"  bindtap="startRegister">注册</button>

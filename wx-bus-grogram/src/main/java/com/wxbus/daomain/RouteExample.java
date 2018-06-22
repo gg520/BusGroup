@@ -265,62 +265,52 @@ public class RouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserEqualTo(String value) {
+        public Criteria andCreatUserEqualTo(Integer value) {
             addCriterion("creat_user =", value, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserNotEqualTo(String value) {
+        public Criteria andCreatUserNotEqualTo(Integer value) {
             addCriterion("creat_user <>", value, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserGreaterThan(String value) {
+        public Criteria andCreatUserGreaterThan(Integer value) {
             addCriterion("creat_user >", value, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserGreaterThanOrEqualTo(String value) {
+        public Criteria andCreatUserGreaterThanOrEqualTo(Integer value) {
             addCriterion("creat_user >=", value, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserLessThan(String value) {
+        public Criteria andCreatUserLessThan(Integer value) {
             addCriterion("creat_user <", value, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserLessThanOrEqualTo(String value) {
+        public Criteria andCreatUserLessThanOrEqualTo(Integer value) {
             addCriterion("creat_user <=", value, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserLike(String value) {
-            addCriterion("creat_user like", value, "creatUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatUserNotLike(String value) {
-            addCriterion("creat_user not like", value, "creatUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatUserIn(List<String> values) {
+        public Criteria andCreatUserIn(List<Integer> values) {
             addCriterion("creat_user in", values, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserNotIn(List<String> values) {
+        public Criteria andCreatUserNotIn(List<Integer> values) {
             addCriterion("creat_user not in", values, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserBetween(String value1, String value2) {
+        public Criteria andCreatUserBetween(Integer value1, Integer value2) {
             addCriterion("creat_user between", value1, value2, "creatUser");
             return (Criteria) this;
         }
 
-        public Criteria andCreatUserNotBetween(String value1, String value2) {
+        public Criteria andCreatUserNotBetween(Integer value1, Integer value2) {
             addCriterion("creat_user not between", value1, value2, "creatUser");
             return (Criteria) this;
         }
@@ -1075,62 +1065,52 @@ public class RouteExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriceEqualTo(String value) {
+        public Criteria andPriceEqualTo(Double value) {
             addCriterion("price =", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotEqualTo(String value) {
+        public Criteria andPriceNotEqualTo(Double value) {
             addCriterion("price <>", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThan(String value) {
+        public Criteria andPriceGreaterThan(Double value) {
             addCriterion("price >", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThanOrEqualTo(String value) {
+        public Criteria andPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("price >=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThan(String value) {
+        public Criteria andPriceLessThan(Double value) {
             addCriterion("price <", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThanOrEqualTo(String value) {
+        public Criteria andPriceLessThanOrEqualTo(Double value) {
             addCriterion("price <=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLike(String value) {
-            addCriterion("price like", value, "price");
-            return (Criteria) this;
-        }
-
-        public Criteria andPriceNotLike(String value) {
-            addCriterion("price not like", value, "price");
-            return (Criteria) this;
-        }
-
-        public Criteria andPriceIn(List<String> values) {
+        public Criteria andPriceIn(List<Double> values) {
             addCriterion("price in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotIn(List<String> values) {
+        public Criteria andPriceNotIn(List<Double> values) {
             addCriterion("price not in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceBetween(String value1, String value2) {
+        public Criteria andPriceBetween(Double value1, Double value2) {
             addCriterion("price between", value1, value2, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotBetween(String value1, String value2) {
+        public Criteria andPriceNotBetween(Double value1, Double value2) {
             addCriterion("price not between", value1, value2, "price");
             return (Criteria) this;
         }

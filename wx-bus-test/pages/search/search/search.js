@@ -90,6 +90,7 @@ Page({
           data: {
             startCoord: that.data.search.startLatitude + "," + that.data.search.startLongitude,
             endSite: that.data.search.endSite,
+            startSite:that.data.search.startSite,
             startNum: 0,
             num: 20
           },

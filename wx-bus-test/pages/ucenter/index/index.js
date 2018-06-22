@@ -226,5 +226,10 @@ Page({
     wx.navigateTo({
       url: '/pages/ucenter/myCollect/myCollect',
     })
+  },
+  goHelp:function(){
+    wx.navigateTo({
+      url: '/pages/help/help',
+    })
   }
 })

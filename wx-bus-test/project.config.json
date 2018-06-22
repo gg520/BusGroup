@@ -118,6 +118,12 @@
 					"name": "详细线路",
 					"pathName": "pages/route/routeInfo/routeInfo",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "帮助",
+					"pathName": "pages/help/help",
+					"query": ""
 				}
 			]
 		}

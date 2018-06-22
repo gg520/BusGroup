@@ -39,4 +39,5 @@ module.exports = {
   CheckInfo:WxApiRoot+"check/info",//验证是否完善信息
   GetQRcode:WxApiRoot+"qrcode/getQRcode",//獲取二維碼，即是二維碼的下載，post
   
+  HelpList:WxApiRoot+"help/helpList",//帮助信息，随机出现10条
 }
