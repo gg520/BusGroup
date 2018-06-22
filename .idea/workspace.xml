@@ -2,261 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8373423e-23ff-4b14-8d10-e391b49c018a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/code/说明信息" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/ResponseUserInfo.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/util/TimeArrayUtil.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxOrderController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxPayController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxTestController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application-tengxun.properties" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/css/animate.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/css/animate.min.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/css/bootstrap.min.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/css/demo.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/css/paper-dashboard.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/css/style.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/css/themify-icons.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/fonts/themify.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/fonts/themify.svg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/fonts/themify.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/fonts/themify.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/img/apple-icon.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/img/background.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/img/bg-1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/img/bg_2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/img/bg_3.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/img/favicon.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/img/new_logo.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/img/tim_80x80.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/bootstrap-checkbox-radio.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/bootstrap-notify.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/bootstrap.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/buiness/examline.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/chartist.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/demo.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/jquery-1.10.2.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/mybusiness.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/js/paper-dashboard.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper-dashboard.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_alerts.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_buttons.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_cards.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_chartist.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_checkbox-radio.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_dropdown.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_footers.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_inputs.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_misc.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_mixins.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_navbars.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_responsive.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_sidebar-and-main-panel.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_tables.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_typography.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/_variables.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_buttons.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_cards.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_chartist.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_icons.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_inputs.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_labels.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_navbars.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_sidebar.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_tabs.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_transparency.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/assets/sass/paper/mixins/_vendor-prefixes.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/documentation/css/documentation.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/static/documentation/documentation.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/addbus.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/adddriver.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/addline.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/addsite.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/addstaff.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/bus.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/driverinfor.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/examdriver.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/examline.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/hello.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/lineinfor.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/login.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/recruit.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/refund.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/siteinfor.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/templates/staffinfor.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/app.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/app.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/app.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/config/api.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/libs/bmap-wx.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/libs/dateTimePicker.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/login/login.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/login/login.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/login/login.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/login/login.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/register/register.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/register/register.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/register/register.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/register/register.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/reset/reset.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/reset/reset.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/reset/reset.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/auth/reset/reset.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/index/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/index/index.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/index/index.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/logs/logs.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/logs/logs.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/logs/logs.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/logs/logs.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/qrcode/qrcode.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/qrcode/qrcode.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/qrcode/qrcode.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/qrcode/qrcode.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/inquiryRoute/inquiryRoute.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/inquiryRoute/inquiryRoute.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/inquiryRoute/inquiryRoute.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/inquiryRoute/inquiryRoute.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/planRoute/planRoute.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/planRoute/planRoute.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/planRoute/planRoute.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/planRoute/planRoute.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/routeInfo/routeInfo.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/routeInfo/routeInfo.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/routeInfo/routeInfo.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/routeInfo/routeInfo.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/runRoute/runRoute.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/runRoute/runRoute.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/runRoute/runRoute.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/route/runRoute/runRoute.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/search/search/search.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/search/search/search.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/search/search/search.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/search/search/search.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/search/searchStation/searchStation.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/search/searchStation/searchStation.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/search/searchStation/searchStation.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/search/searchStation/searchStation.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/shopping/checkout/checkout.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/shopping/checkout/checkout.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/shopping/checkout/checkout.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/shopping/checkout/checkout.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/shopping/payResult/payResult.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/shopping/payResult/payResult.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/shopping/payResult/payResult.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/shopping/payResult/payResult.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/index/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/index/index.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/index/index.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/index/index.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/myCollect/myCollect.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/myCollect/myCollect.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/myCollect/myCollect.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/myCollect/myCollect.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/myInfo/myInfo.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/myInfo/myInfo.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/myInfo/myInfo.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/myInfo/myInfo.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/order/order.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/order/order.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/order/order.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/order/order.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/qrcode/qrcode.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/qrcode/qrcode.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/qrcode/qrcode.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/pages/ucenter/qrcode/qrcode.wxss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/project.config.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/services/user.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/QR_code.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/address-bg-bd.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/address_right.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/bus.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/changeCity_bg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/checkbox.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/clear_input.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/clock.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/del-address.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/detail_back.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/detail_kefu.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/edit-address.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/editor.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/go.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_affiche.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_circuit.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_circuit_next.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_collect.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_inform.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_choice_nor.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_choice_pressed.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_me_nor.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_me_pressed.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_search.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_search_pressed.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_shoping_nor.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_shoping_pressed.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_sort_nor.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_sort_pressed.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_topic_nor.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_menu_topic_pressed.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_onfont.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/ic_saoma.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon-chioce.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon-down-black.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon-go-black.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_add.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_arrive.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_arrive_bluck.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_blue_site.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_collect.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_collect_checked.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_empty.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_empty_next.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_end_site.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_error.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_go_more.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_indent.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_position.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_red_site.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_site.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_start_site.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_success.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_swop_site.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_time.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/icon_warning.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/route_empty.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/selnum.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/images/wxpay.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/voice/fail.mp3" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/static/voice/success.mp3" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-test/utils/util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxCollectionControllerTest.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/pom.xml" afterPath="$PROJECT_DIR$/wx-bus-grogram/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/annotation/support/WebLoginHanderIntercept.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/annotation/support/WebLoginHanderIntercept.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WebInterceptor.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WebInterceptorConfig.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WebMvcConfig.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WebMvcConfig.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WeixinConfig.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WeixinConfig.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/dao/PassengerRouteMapper.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/dao/PassengerRouteMapper.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/daomain/PassengerRoute.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/daomain/PassengerRoute.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/daomain/PassengerRouteExample.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/daomain/PassengerRouteExample.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/UserInfo.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/UserInfo.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/AdminService.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/AdminService.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/AdminServiceImpl.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/AdminServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/BusServiceImpl.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/BusServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/DriverBusRouteServiceImpl.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/DriverBusRouteServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/DriverServiceImpl.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/DriverServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WxInterceptorConfig.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WxInterceptorConfig.java" />
       <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/PassengerRouteServiceImpl.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/PassengerRouteServiceImpl.java" />
       <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/RouteServiceImpl.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/RouteServiceImpl.java" />
       <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/StationServiceImpl.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/StationServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/UserServiceImpl.java" />
       <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/PassengerRouteService.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/PassengerRouteService.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/UserTokenManager.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/UserTokenManager.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxLoginController.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxLoginController.java" />
+      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/RouteService.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/RouteService.java" />
+      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/WebAddController.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/WebAddController.java" />
+      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxCollectionController.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxCollectionController.java" />
       <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxRouteController.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxRouteController.java" />
+      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxSearchController.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxSearchController.java" />
       <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxUserController.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxUserController.java" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application-test.properties" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application-test.properties" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application.properties" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/com/wxbus/dao/PassengerRouteMapper.xml" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/com/wxbus/dao/PassengerRouteMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/WxBusGrogramApplicationTests.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/WxBusGrogramApplicationTests.java" />
+      <change beforePath="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxSearchControllerTest.java" afterPath="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxSearchControllerTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/wx-bus-grogram/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -284,60 +43,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WxOrderController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxOrderController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="66" column="78" lean-forward="false" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2379#2395#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PassengerRouteService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/PassengerRouteService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="30" column="61" lean-forward="false" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PassengerRouteServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/PassengerRouteServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WxSearchController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxSearchController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2070">
-              <caret line="102" column="39" lean-forward="false" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -357,13 +70,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/test/com/wxbus/service/Impl/RouteServieImplTest.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/test.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/AdminService.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/AdminServiceImpl.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/SearchController.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/LoginController.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/WebLoginController.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/pom.xml" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/StationController.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxStationController.java" />
@@ -378,36 +84,43 @@
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxRouteControllerTest.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/DriverBusRoute.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/RouteServieImpl.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/RouteService.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/DriverBusRouteImpl.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/DriverBusRouteService.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/DriverService.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/StationService.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/StationServiceImpl.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/DriverServiceImpl.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/BusService.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/WebSearchController.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/webController/WebSearchControllerTest.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/CheckServier.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/CheckServiceImpl.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxSearchControllerTest.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxSearchController.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxCheckInfoController.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxCheckInfoControllerTest.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application-test.properties" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application-prod.properties" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/resources/generator/generatorConfig.xml" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WxInterceptorConfig.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/UserService.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxUserControllerTest.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxRouteController.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/BusServiceImpl.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/DriverBusRouteServiceImpl.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxUserController.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/newUserRoute.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxOrderControllerTest.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxOrderController.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/NewUserRoute.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/PassengerRouteService.java" />
         <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/PassengerRouteServiceImpl.java" />
-        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxOrderController.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxCollectionControllerTest.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/WebAddController.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxRouteController.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WxInterceptorConfig.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxCollectionController.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxUserController.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/RouteServiceImpl.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/RouteService.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/StationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/StationService.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxSearchController.java" />
+        <option value="$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxSearchControllerTest.java" />
       </list>
     </option>
   </component>
@@ -445,8 +158,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-513" />
-    <option name="y" value="173" />
+    <option name="x" value="-325" />
+    <option name="y" value="60" />
     <option name="width" value="1364" />
     <option name="height" value="620" />
   </component>
@@ -465,10 +178,6 @@
       <foldersAlwaysOnTop value="false" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -530,7 +239,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="wxbus" type="462c0819:PsiDirectoryNode" />
-              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BusGroup" type="b2602c69:ProjectViewProjectNode" />
@@ -564,8 +273,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="wxbus" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="RouteService" type="1a9f42e2:ClassTreeNode" />
+              <item name="wxController" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BusGroup" type="b2602c69:ProjectViewProjectNode" />
@@ -577,23 +285,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="wxbus" type="462c0819:PsiDirectoryNode" />
               <item name="wxController" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BusGroup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BusGroup" type="462c0819:PsiDirectoryNode" />
-              <item name="wx-bus-grogram" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BusGroup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BusGroup" type="462c0819:PsiDirectoryNode" />
-              <item name="wx-bus-grogram" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="generator" type="462c0819:PsiDirectoryNode" />
+              <item name="WxSearchController" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="BusGroup" type="b2602c69:ProjectViewProjectNode" />
@@ -633,6 +325,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -661,18 +357,18 @@
       <recent name="com.wxbus.service.Impl" />
       <recent name="com.wxbus" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.wxbus.service.Impl" />
-      <recent name="com.wxbus.service" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\STUDY\GIT_STUDY\BusGroup\wx-bus-grogram\src\main\java\com\wxbus\webController" />
       <recent name="D:\IDE_workspase\BusGroup\code\wx-bus-grogram\src\main\java\com\wxbus" />
       <recent name="D:\IDE_workspase\BusGroup\wx-bus-grogram\src\main\java" />
       <recent name="D:\IDE_workspase\BusGroup\wx-bus-grogram\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wxbus.service.Impl" />
+      <recent name="com.wxbus.service" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -687,7 +383,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.generator">
+  <component name="RunManager" selected="JUnit.WxSearchControllerTest.routeAll">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -717,31 +413,6 @@
       <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
     </configuration>
-    <configuration name="WebSearchControllerTest.findCanUseBus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.wxbus.webController.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="wx-bus-grogram" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.wxbus.webController" />
-      <option name="MAIN_CLASS_NAME" value="com.wxbus.webController.WebSearchControllerTest" />
-      <option name="METHOD_NAME" value="findCanUseBus" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration name="WxCheckInfoControllerTest.checkPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -767,7 +438,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="WxRouteControllerTest.queryAllReoute" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WxCollectionControllerTest.addCollect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.wxbus.wxController.*" />
@@ -778,8 +449,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.wxbus.wxController" />
-      <option name="MAIN_CLASS_NAME" value="com.wxbus.wxController.WxRouteControllerTest" />
-      <option name="METHOD_NAME" value="queryAllReoute" />
+      <option name="MAIN_CLASS_NAME" value="com.wxbus.wxController.WxCollectionControllerTest" />
+      <option name="METHOD_NAME" value="addCollect" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -830,6 +501,31 @@
       <option name="PACKAGE_NAME" value="com.wxbus.wxController" />
       <option name="MAIN_CLASS_NAME" value="com.wxbus.wxController.WxSearchControllerTest" />
       <option name="METHOD_NAME" value="myTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="WxSearchControllerTest.routeAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.wxbus.wxController.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="wx-bus-grogram" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.wxbus.wxController" />
+      <option name="MAIN_CLASS_NAME" value="com.wxbus.wxController.WxSearchControllerTest" />
+      <option name="METHOD_NAME" value="routeAll" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1247,19 +943,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Maven.generator" />
       <item index="1" class="java.lang.String" itemvalue="Spring Boot.WxBusGrogramApplication" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.WxRouteControllerTest.queryAllReoute" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.WxRouteControllerTest.routeInfo" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.WebSearchControllerTest.findCanUseBus" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.WxCheckInfoControllerTest.checkPassword" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.WxSearchControllerTest.myTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.WxRouteControllerTest.routeInfo" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.WxCheckInfoControllerTest.checkPassword" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.WxSearchControllerTest.myTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.WxCollectionControllerTest.addCollect" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.WxSearchControllerTest.routeAll" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.WxRouteControllerTest.routeInfo" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.WxCheckInfoControllerTest.checkPassword" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.WxSearchControllerTest.myTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.WxRouteControllerTest.queryAllReoute" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.WebSearchControllerTest.findCanUseBus" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.WxSearchControllerTest.routeAll" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.WxCollectionControllerTest.addCollect" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.WxRouteControllerTest.routeInfo" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.WxCheckInfoControllerTest.checkPassword" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.WxSearchControllerTest.myTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1297,6 +993,8 @@
       <workItem from="1529458249796" duration="8396000" />
       <workItem from="1529477181421" duration="4735000" />
       <workItem from="1529487048976" duration="11969000" />
+      <workItem from="1529541646122" duration="9380000" />
+      <workItem from="1529573473978" duration="10352000" />
     </task>
     <task id="LOCAL-00001" summary="完善登录，线路查询其他小功能，同时更改项目目录">
       <created>1527944858239</created>
@@ -1316,23 +1014,11 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WxCheckInfoControllerTest_checkPassword - 2018.06.20 at 10h 39m 12s.xml">
-      <configuration name="WxCheckInfoControllerTest.checkPassword" configurationId="JUnit" />
+    <history-entry file="WxCollectionControllerTest_addCollect - 2018.06.21 at 18h 28m 03s.xml">
+      <configuration name="WxCollectionControllerTest.addCollect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WxCheckInfoControllerTest_checkPassword - 2018.06.20 at 10h 39m 57s.xml">
-      <configuration name="WxCheckInfoControllerTest.checkPassword" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WxCheckInfoControllerTest_checkPassword - 2018.06.20 at 10h 42m 26s.xml">
-      <configuration name="WxCheckInfoControllerTest.checkPassword" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WxCheckInfoControllerTest_checkPassword - 2018.06.20 at 10h 46m 07s.xml">
-      <configuration name="WxCheckInfoControllerTest.checkPassword" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WxCheckInfoControllerTest_checkPassword - 2018.06.20 at 10h 47m 22s.xml">
-      <configuration name="WxCheckInfoControllerTest.checkPassword" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WxCheckInfoControllerTest_checkPassword - 2018.06.20 at 10h 47m 58s.xml">
-      <configuration name="WxCheckInfoControllerTest.checkPassword" configurationId="JUnit" />
+    <history-entry file="WxCollectionControllerTest_addCollect - 2018.06.21 at 18h 29m 53s.xml">
+      <configuration name="WxCollectionControllerTest.addCollect" configurationId="JUnit" />
     </history-entry>
     <history-entry file="WxRouteControllerTest_routeInfo - 2018.06.20 at 11h 06m 34s.xml">
       <configuration name="WxRouteControllerTest.routeInfo" configurationId="JUnit" />
@@ -1346,12 +1032,24 @@
     <history-entry file="WxRouteControllerTest_routeInfo - 2018.06.20 at 17h 37m 34s.xml">
       <configuration name="WxRouteControllerTest.routeInfo" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="WxSearchControllerTest_routeAll - 2018.06.21 at 20h 51m 53s.xml">
+      <configuration name="WxSearchControllerTest.routeAll" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WxSearchControllerTest_routeAll - 2018.06.21 at 20h 54m 33s.xml">
+      <configuration name="WxSearchControllerTest.routeAll" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WxSearchControllerTest_routeAll - 2018.06.21 at 20h 55m 38s.xml">
+      <configuration name="WxSearchControllerTest.routeAll" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WxSearchControllerTest_routeAll - 2018.06.21 at 20h 58m 58s.xml">
+      <configuration name="WxSearchControllerTest.routeAll" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74502000" />
+    <option name="totallyTimeSpent" value="94234000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-513" y="173" width="1364" height="620" extended-state="0" />
+    <frame x="-325" y="60" width="1364" height="620" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.296741" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
@@ -1359,7 +1057,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24528302" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1369,11 +1067,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07189543" sideWeight="0.49394855" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29411766" sideWeight="0.49394855" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933104" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29371166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="497" y="123" width="372" height="482" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3029141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="497" y="123" width="372" height="482" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1401,7 +1099,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1410,97 +1108,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10.jar!/com/fasterxml/jackson/core/JsonGenerator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="638" column="0" lean-forward="false" selection-start-line="638" selection-start-column="0" selection-end-line="638" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10.jar!/com/fasterxml/jackson/core/json/JsonGeneratorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10.jar!/com/fasterxml/jackson/core/util/BufferRecycler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10.jar!/com/fasterxml/jackson/core/io/IOContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10.jar!/com/fasterxml/jackson/core/json/WriterBasedJsonGenerator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/SerializationConfig.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="589" column="0" lean-forward="false" selection-start-line="589" selection-start-column="0" selection-end-line="589" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/DatabindContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="164" column="0" lean-forward="false" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/util/TypeKey.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/ser/impl/ReadOnlyClassToSerializerMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/ser/SerializerCache.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/SerializationFeature.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/SerializerProvider.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/com/fasterxml/jackson/databind/ObjectMapper.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1529,14 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/StationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="94" column="30" lean-forward="true" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/daomain/DriverKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-120">
@@ -1558,14 +1157,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application-test.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1577,29 +1168,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="41" column="60" lean-forward="true" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxRouteControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WxInterceptorConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="35" column="110" lean-forward="false" selection-start-line="35" selection-start-column="110" selection-end-line="35" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxCheckInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1636,22 +1204,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/FullUserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="54" column="29" lean-forward="false" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxCheckInfoControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="59" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application-tengxun.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1664,7 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="639">
           <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1672,26 +1223,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="59" column="24" lean-forward="true" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxRouteController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="123" column="30" lean-forward="false" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="30" />
-          <folding>
-            <element signature="e#3767#3782#0" expanded="false" />
-            <element signature="e#3833#3848#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="45" column="16" lean-forward="false" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1707,7 +1238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-234">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1730,83 +1260,252 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/ResponseUserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/UserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="497">
           <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/FullUserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="187" column="38" lean-forward="false" selection-start-line="187" selection-start-column="38" selection-end-line="187" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="960">
+          <caret line="54" column="29" lean-forward="false" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/ResponseUserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxCheckInfoControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="59" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxOrderControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxLoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="74" />
+        <state relative-caret-position="150">
+          <caret line="220" column="17" lean-forward="false" selection-start-line="220" selection-start-column="17" selection-end-line="220" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/pojo/NewUserRoute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxCheckInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="105" column="34" lean-forward="false" selection-start-line="105" selection-start-column="34" selection-end-line="105" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/PassengerRouteServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="104" column="36" lean-forward="false" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/PassengerRouteService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="56" column="24" lean-forward="false" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxRouteControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="51" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/webController/WebAddController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="112" column="26" lean-forward="false" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WeixinConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WebMvcConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-59">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxCollectionControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="47" column="23" lean-forward="true" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
           <folding>
-            <element signature="e#4646#4662#0" expanded="false" />
+            <element signature="e#1337#1338#0" expanded="false" />
+            <element signature="e#1428#1429#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxSearchController.java">
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/config/WxInterceptorConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="102" column="39" lean-forward="false" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
+        <state relative-caret-position="44">
+          <caret line="34" column="11" lean-forward="true" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxCollectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <folding>
+            <element signature="e#2168#2182#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="185" column="38" lean-forward="true" selection-start-line="185" selection-start-column="38" selection-end-line="185" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="60" column="8" lean-forward="true" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="116">
+          <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/PassengerRouteService.java">
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="30" column="61" lean-forward="false" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="123">
+          <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/PassengerRouteServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/StationServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+        <state relative-caret-position="308">
+          <caret line="94" column="22" lean-forward="false" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/StationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxOrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="66" column="78" lean-forward="false" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
+        <state relative-caret-position="990">
+          <caret line="76" column="13" lean-forward="true" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxRouteController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-100">
+          <caret line="164" column="18" lean-forward="false" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/util/SortUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-280">
+          <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxQRcodeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="70" column="24" lean-forward="false" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/test/java/com/wxbus/wxController/WxSearchControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2379#2395#0" expanded="true" />
+            <element signature="e#2313#2328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/Impl/RouteServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="225" column="52" lean-forward="true" selection-start-line="225" selection-start-column="52" selection-end-line="225" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/service/RouteService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="89" column="16" lean-forward="false" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wx-bus-grogram/src/main/java/com/wxbus/wxController/WxSearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="177" column="32" lean-forward="false" selection-start-line="177" selection-start-column="32" selection-end-line="177" selection-end-column="32" />
+          <folding>
+            <element signature="e#5953#5960#0" expanded="true" />
           </folding>
         </state>
       </provider>
