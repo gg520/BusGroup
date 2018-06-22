@@ -49,7 +49,7 @@ public interface RouteService {
      *@back  void
      *@author  如花
      *@creattime 2018/5/17
-     *@describe
+     *@describe 更新线路信息
      */
     void updateRoute(Route route);
     /**

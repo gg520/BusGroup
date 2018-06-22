@@ -23,4 +23,22 @@ public interface DriverService {
      *@describe 按状态查找司机信息
      */
     List<Driver> findDriverByStatus(Integer startNum,Integer num,Integer status);
+    /**
+     *@type interface
+     *@parameter  [driver]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 添加司机
+     */
+    void addDriver(Driver driver);
+    /**
+     *@type interface
+     *@parameter  [driver]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 更新司机
+     */
+    void updateDrivate(Driver driver);
 }

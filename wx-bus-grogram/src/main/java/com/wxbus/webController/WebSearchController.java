@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,6 +23,8 @@ import java.util.List;
 public class WebSearchController {
 
     private final Log logger = LogFactory.getLog(WebSearchController.class);
+    @Autowired
+    private OverAllConfigService overAllConfigService;
     @Autowired
     private DriverService driverService;
     @Autowired
@@ -374,6 +377,79 @@ public class WebSearchController {
         }
         adminService.addAdmin(admin);
         return ResponseUtil.ok();
+    }
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/5/31
+     *@describe 招募中的线路查询
+     */
+    @RequestMapping(value = "/recruiting" ,method = RequestMethod.POST)
+    @ResponseBody
+    public Object recruitingRoute(@RequestBody String body){
+        logger.info("招募中的线路查询");
+        Integer startNum= JacksonUtil.parseInteger(body,"startNum");
+        Integer num= JacksonUtil.parseInteger(body,"num");
+        if(startNum==null||num==null){
+            return ResponseUtil.fail();
+        }
+        Integer status=3;
+        List<Route> routeList= routeService.findRouteByStatus(status,startNum,num,0);
+        for(int i=0;i<routeList.size();i++){
+
+            routeList.get(i).setStartCoord("\"x\":"+routeList.get(i).getStartCoord().split(",")[0]
+                    +",\"y\":"+routeList.get(i).getStartCoord().split(",")[1]);
+        }
+        return  ResponseUtil.ok(routeList);
+    }
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 招募失败的线路查询
+     */
+    @RequestMapping(value = "/unrecruiting" ,method = RequestMethod.POST)
+    @ResponseBody
+    public Object unrecruitingRoute(@RequestBody String body){
+        logger.info("招募失败的线路查询");
+        Integer startNum= JacksonUtil.parseInteger(body,"startNum");
+        Integer num= JacksonUtil.parseInteger(body,"num");
+        if(startNum==null||num==null){
+            return ResponseUtil.fail();
+        }
+        Integer status=4;
+        List<Route> routeList= routeService.findRouteByStatus(status,startNum,num,0);
+        for(int i=0;i<routeList.size();i++){
+
+            routeList.get(i).setStartCoord("\"x\":"+routeList.get(i).getStartCoord().split(",")[0]
+                    +",\"y\":"+routeList.get(i).getStartCoord().split(",")[1]);
+        }
+        return  ResponseUtil.ok(routeList);
+    }
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 查询运行周期
+     */
+    @RequestMapping(value = "/runtime" ,method = RequestMethod.POST)
+    @ResponseBody
+    public Object runtime(@RequestBody String body){
+        logger.info("查询运行周期");
+        Integer startNum= JacksonUtil.parseInteger(body,"startNum");
+        Integer num= JacksonUtil.parseInteger(body,"num");
+        if(startNum==null||num==null){
+            return ResponseUtil.fail();
+        }
+        List<OverallConfig> overallConfigList=new ArrayList<OverallConfig>();
+        overallConfigList=overAllConfigService.findAllOverallConfig(startNum,num);
+        return ResponseUtil.ok(overallConfigList);
     }
 
 

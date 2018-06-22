@@ -38,18 +38,17 @@ public class WebSearchControllerTest{
     @Autowired
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
-
     @Before
-    public  void setup() throws Exception{
+    public  void setup(){
         mockMvc= MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
     @Test
-    public void waitCheck() throws Exception{
+    public void waitCheckRoute() throws Exception{
         Map<String,Integer> map=new HashMap<String,Integer>();
         map.put("startNum",0);
         map.put("num",1);
         String body=JsonUtil.stringify(map);
-        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/examline/toWaitCheck").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
+        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/search/waitcheckroute").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         System.out.println(result.getResponse().toString());
@@ -60,16 +59,14 @@ public class WebSearchControllerTest{
         System.out.println("请求入参");
         RequestBuilder request = MockMvcRequestBuilders.post("uri").contentType(MediaType.APPLICATION_JSON_UTF8).
                 header("SESSIONNO", "").content(body);*/
-
     }
-
     @Test
-    public void runCheck() throws Exception{
+    public void runCheckRoute() throws Exception{
         Map<String,Integer> map=new HashMap<String,Integer>();
         map.put("startNum",0);
         map.put("num",1);
         String body=JsonUtil.stringify(map);
-        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.get("/web/examline/toRunCheck").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
+        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/search/runcheckroute").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         System.out.println(result.getResponse().toString());
@@ -140,6 +137,28 @@ public class WebSearchControllerTest{
         map.put("num",20);
         String body=JsonUtil.stringify(map);
         MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/search/findalladmin").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print()).andReturn();
+        System.out.println(result.getResponse().toString());
+    }
+    @Test
+    public void recruitingRoute() throws Exception{
+        Map<String,Integer> map=new HashMap<String,Integer>();
+        map.put("startNum",0);
+        map.put("num",10);
+        String body=JsonUtil.stringify(map);
+        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/search/recruiting").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print()).andReturn();
+        System.out.println(result.getResponse().toString());
+    }
+    @Test
+    public void runtime() throws Exception{
+        Map<String,Integer> map=new HashMap<String,Integer>();
+        map.put("startNum",0);
+        map.put("num",10);
+        String body=JsonUtil.stringify(map);
+        MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post("/web/search/runtime").accept(MediaType.APPLICATION_JSON_UTF8).content(body))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print()).andReturn();
         System.out.println(result.getResponse().toString());
