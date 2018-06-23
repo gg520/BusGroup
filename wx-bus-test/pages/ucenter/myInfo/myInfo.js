@@ -169,22 +169,13 @@ Page({
     util.request(
       api.ChangUserInfo,
       {
-        // username: this.data.username,
-        // phone: this.data.mobile,
-        // startsite: this.data.startsite,
-        // endsite: this.data.endsite,
-        // starttime: this.data.starttime,
-        // endtime: this.data.endtime,
-        // period: this.data.period,
         userInfo: this.data.userInfo,
       }, 'POST').then(function (res) {
         console.log(res);
         if (res.errno === 0) {
           //成功
           util.showSuccessToast("提交成功");
-          // wx.navigateBack({//返回上页
-          //   delta: 1
-          // })
+          wx.setStorageSync('userInfo', res.data.userInfo);
         }
       })
     wx.hideLoading();
@@ -233,13 +224,14 @@ Page({
     wx.showLoading({
       title: '验证中...',
     });
+    let that = this;
     util.request(
       api.CheckPassword,
       { password: this.data.oldpw}, 'POST').then(function (res) {
         console.log(res);
         if (res.errno === 0) {
           //成功，将模态框改成
-          this.setData({
+          that.setData({
             showcheck: false,//旧密码验证
             shownewpw: true,//新密码显示
             // oldpw: '',//旧密码
@@ -247,6 +239,8 @@ Page({
             newpw2: '',//新密码2
           })
           
+        }else if(res.errno===-1){
+          util.showErrorToast("密码错误");
         }
       })
     wx.hideLoading();
@@ -312,5 +306,41 @@ Page({
         res.tempFiles;//文件上传
       },
     })
+  },
+  changeNickName:function(e){
+    if (e.detail.value.length>0){
+      let userInfo=this.data.userInfo;
+      userInfo.nickName = e.detail.value;
+      this.setData({
+        userInfo:userInfo,
+      })
+    }
+  },
+  changeAddress:function(e){
+    if (e.detail.value.length > 0) {
+      let userInfo = this.data.userInfo;
+      userInfo.address = e.detail.value;
+      this.setData({
+        userInfo: userInfo,
+      })
+    }
+  },
+  changeName:function(e){
+    if (e.detail.value.length > 0) {
+      let userInfo = this.data.userInfo;
+      userInfo.name = e.detail.value;
+      this.setData({
+        userInfo: userInfo,
+      })
+    }
+  },
+  changeCitizenship:function(e){
+    if (e.detail.value.length > 0) {
+      let userInfo = this.data.userInfo;
+      userInfo.citizenship = e.detail.value;
+      this.setData({
+        userInfo: userInfo,
+      })
+    }
   }
 })

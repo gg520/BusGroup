@@ -9,6 +9,12 @@ import java.util.Date;
  */
 public class TimeUtil {
 
+    /**
+     * 将日期转换成指定的日期格式
+     * @param date
+     * @param type
+     * @return
+     */
     public static String getTimeByType(Date date,String type){
         if(date==null)
             return null;
@@ -19,6 +25,12 @@ public class TimeUtil {
         return simpleDateFormat.format(date);
     }
 
+    /**
+     * 将字符串转换成日期
+     * @param date
+     * @param type
+     * @return
+     */
     public static Date getTimeByString(String date,String type){
         if(date==null)
             return null;
@@ -34,4 +46,5 @@ public class TimeUtil {
         }
         return null;
     }
+
 }

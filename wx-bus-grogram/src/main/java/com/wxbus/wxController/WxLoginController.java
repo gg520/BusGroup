@@ -116,6 +116,7 @@ public class WxLoginController {
             user.setLastLoginTime(new Date());
             user.setLastLoginIp(IpUtil.client(request));
 //            responseUserInfo.setAddress();
+            responseUserInfo.setNickName(user.getPassengerNickname());
             responseUserInfo.setCitizenship(user.getPassengerCitizenship());
             responseUserInfo.setMobile(user.getPassengerMobile());
             responseUserInfo.setBirthday(TimeUtil.getTimeByType(user.getPassengerBirthday(),"yyyy-MM-dd"));
@@ -139,11 +140,6 @@ public class WxLoginController {
         return ResponseUtil.ok(result);
     }
 
-    @RequestMapping(value = "test/{id}")
-    public Object test(@PathVariable("id")Integer id){
-//        System.err.println(id);
-        return id;
-    }
 
 //    @PostMapping(value = "login")
 //    public Object login(@RequestBody String body){
@@ -248,17 +244,19 @@ public class WxLoginController {
      *@creattime 2018/5/26
      *@describe 更新用户信息用于更改密码
      */
-    @RequestMapping(value ="/reset",method = {RequestMethod.GET})
-    public Object reset(Passenger passenger){
+    @RequestMapping(value ="/reset",method = {RequestMethod.POST})
+    public Object reset(@RequestBody String body){
         logger.info("更新用户");
-        if(passenger!=null){
-            if(passenger.getPassengerMobile()!=null&&passenger.getPassengerPassword()!=null){
-                userService.updatePassenger(passenger);
-                return ResponseUtil.ok();
-            }
-            else{
-                return ResponseUtil.fail();
-            }
+        String mobile=JacksonUtil.parseString(body,"mobile");
+        String password=JacksonUtil.parseString(body,"password");
+        String code = JacksonUtil.parseString(body,"code");//验证码暂不处理，该功能未实现
+        if(mobile!=null&&!"".equals(mobile)&&password!=null&&!"".equals(password)){
+            password=MD5Util.toMD5(password);
+            Passenger passenger=new Passenger();
+            passenger.setPassengerMobile(mobile);
+            passenger.setPassengerPassword(password);
+            userService.updatePassenger(passenger);
+            return ResponseUtil.ok();
         }
         else {
             return ResponseUtil.fail();

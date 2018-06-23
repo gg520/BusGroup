@@ -52,7 +52,7 @@ public class PassengerRouteServiceImpl implements PassengerRouteService {
         log.info("通过乘客的id查找该乘客订单的信息");
         PassengerRouteExample passengerRouteExample=new PassengerRouteExample();
         passengerRouteExample.or().andPassengerIdEqualTo(passengerId).andStartStatusEqualTo(1);
-        passengerRouteExample.setOrderByClause("creatTime");
+        passengerRouteExample.setOrderByClause("creat_time");
 
         return passengerRouteMapper.selectByExample(passengerRouteExample);
     }
@@ -70,7 +70,7 @@ public class PassengerRouteServiceImpl implements PassengerRouteService {
         log.info("通过乘客的id查找该乘客收藏的信息");
         PassengerRouteExample passengerRouteExample=new PassengerRouteExample();
         passengerRouteExample.or().andPassengerIdEqualTo(passengerId).andStartStatusEqualTo(0);
-        passengerRouteExample.setOrderByClause("creatTime");
+        passengerRouteExample.setOrderByClause("creat_time");
         return passengerRouteMapper.selectByExample(passengerRouteExample);
     }
 

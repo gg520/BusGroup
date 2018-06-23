@@ -8,10 +8,13 @@ import com.wxbus.pojo.FullUserInfo;
 import com.wxbus.pojo.ResponseUserInfo;
 import com.wxbus.pojo.UserInfo;
 import com.wxbus.pojo.UserToken;
+import com.wxbus.service.HeadersName;
 import com.wxbus.service.UserService;
+import com.wxbus.service.UserTokenManager;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.MD5Util;
 import com.wxbus.util.ResponseUtil;
+import com.wxbus.util.TimeUtil;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -39,11 +42,9 @@ import java.util.Map;
 @RequestMapping(value = "/weixin/user")
 public class WxUserController {
     private final Log logger= LogFactory.getLog(WxUserController.class.getName());
-    private static Map<String, UserToken> tokenMap = new HashMap<>();
     @Autowired
     private UserService userService;
-//    @RequestMapping(value = "changeUserInfo",method = RequestMethod.POST)
-
+    @RequestMapping(value = "changeUserInfo",method = RequestMethod.POST)
     /**
      *@type method
      *@parameter  [body]
@@ -58,35 +59,37 @@ public class WxUserController {
         if(responseUserInfo==null){
             return ResponseUtil.badArgument();
         }
-        UserToken userToken=tokenMap.get(request.getHeader("X-Bus-Token"));
-        if(userToken.getUser().equals("司机")){
-            return ResponseUtil.fail(500,"司机没有此权限");
+        String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail401();
         }
+
         Passenger passenger=new Passenger();
-        passenger.setId(userToken.getUserId());
+        passenger.setId(JacksonUtil.parseInteger(json,"userId"));
         passenger.setPassengerCitizenship(responseUserInfo.getCitizenship());
         passenger.setPassengerNickname(responseUserInfo.getNickName());
         passenger.setPassengerAvater(responseUserInfo.getAvatarUrl());
         passenger.setPassengerAddress(responseUserInfo.getAddress());
         if(responseUserInfo.getGender()==0){
             passenger.setPassengerGender("女");
+        }else{
+            passenger.setPassengerGender("男");
         }
-        passenger.setPassengerGender("男");
         passenger.setPassengerMobile(responseUserInfo.getMobile());
         passenger.setPassengerName(responseUserInfo.getName());
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date date=simpleDateFormat.parse(responseUserInfo.getBirthday());
-            passenger.setPassengerBirthday(date);
-        }
-        catch (ParseException pe){
-            pe.printStackTrace();
-        }
+//        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+
+//            Date date=simpleDateFormat.parse(responseUserInfo.getBirthday());
+        passenger.setPassengerBirthday(TimeUtil.getTimeByString(responseUserInfo.getBirthday(),"yyyy-MM-dd"));
+
         Integer flag=userService.updatePassenger(passenger);
         if(flag==0){
             return ResponseUtil.fail(500,"更新失败");
         }
-        return ResponseUtil.ok("更新成功");
+        Map map=new HashMap();
+        map.put("userInfo", responseUserInfo);
+
+        return ResponseUtil.ok(map);
     }
     @RequestMapping(value = "changePassword",method = RequestMethod.POST)
     /**
@@ -99,14 +102,18 @@ public class WxUserController {
      */
     public Object changePassword(@RequestBody String body,HttpServletRequest request){
         logger.info("更改密码");
-        UserToken userToken=tokenMap.get(request.getHeader("X-Bus-Token"));
-        Integer passengerId=userToken.getUserId();
+        String json=UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail401();
+        }
+
+        Integer passengerId=JacksonUtil.parseInteger(json,"userId");
         Passenger passenger=userService.findById(passengerId);
         String oldPassword=JacksonUtil.parseString(body,"oldPassword");
         String newPassword=JacksonUtil.parseString(body,"newPassword");
         oldPassword=MD5Util.toMD5(oldPassword);
         newPassword=MD5Util.toMD5(newPassword);
-        if(passenger.getPassengerPassword()!=oldPassword){
+        if(!passenger.getPassengerPassword().equals(oldPassword)){
             return ResponseUtil.fail(500,"原密码不匹配");
         }
         passenger.setPassengerPassword(newPassword);

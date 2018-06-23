@@ -1,7 +1,7 @@
 //服务器的信息
 // var WxApiRoot ="http://47.94.232.43:8888/weixin/";//测试本地后台数据
-var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
-// var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
+// var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
+var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
 
 module.exports = {
   Test:WxApiRoot+"test/test2",//测试数据，只用于开发前台测试接口连接问题
@@ -39,5 +39,5 @@ module.exports = {
   CheckInfo:WxApiRoot+"check/info",//验证是否完善信息
   GetQRcode:WxApiRoot+"qrcode/getQRcode",//獲取二維碼，即是二維碼的下載，post
   
-  HelpList:WxApiRoot+"help/helpList",//帮助信息，随机出现10条
+  HelpList:WxApiRoot+"help/helpList",//随机获取十个帮助信息
 }

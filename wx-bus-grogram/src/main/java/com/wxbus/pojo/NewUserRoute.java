@@ -44,7 +44,7 @@ public class NewUserRoute {
     //'订单编号',
     private String orderNumber;
     //订购的天数
-    private String  reserveDay;
+    private Integer  reserveDay;
     //"起始地点",
     private  String startSite;
     //'到达地点',
@@ -74,11 +74,11 @@ public class NewUserRoute {
         this.orderNumber = orderNumber;
     }
 
-    public String getReserveDay() {
+    public Integer getReserveDay() {
         return reserveDay;
     }
 
-    public void setReserveDay(String  reserveDay) {
+    public void setReserveDay(Integer reserveDay) {
         this.reserveDay = reserveDay;
     }
 

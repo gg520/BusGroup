@@ -6,17 +6,17 @@ import com.wxbus.daomain.PassengerRoute;
 import com.wxbus.daomain.Route;
 import com.wxbus.pojo.NewUserRoute;
 import com.wxbus.pojo.UserToken;
+import com.wxbus.service.HeadersName;
 import com.wxbus.service.PassengerRouteService;
 import com.wxbus.service.RouteService;
+import com.wxbus.service.UserTokenManager;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.ResponseUtil;
+import com.wxbus.util.TimeUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -31,12 +31,11 @@ import java.util.*;
 @RequestMapping("/weixin/order")
 public class WxOrderController {
     private final Log logger = LogFactory.getLog(WxOrderController.class);
-    private static Map<String, UserToken> tokenMap = new HashMap<>();
     @Autowired
     private PassengerRouteService passengerRouteService;
     @Autowired
     private RouteService routeService;
-    @GetMapping(value = "orderList")
+    @PostMapping(value = "/orderList")
     /**
      *@type method
      *@parameter  [body, request]
@@ -45,13 +44,17 @@ public class WxOrderController {
      *@creattime 2018/6/20
      *@describe  获取用户所有订单信息
      */
-    public Object orderList(@RequestBody String body , HttpServletRequest request){
+    public Object orderList(@RequestBody String body, HttpServletRequest request){
         logger.info("获取用户所有订单信息");
         //获取线路信息
         Route route=new Route();
         Integer showType= JacksonUtil.parseInteger(body,"showType");
-        UserToken userToken=tokenMap.get(request.getHeader("X-Bus-Token"));
-        Integer passengerId=userToken.getUserId();
+        String json=UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail401();
+        }
+
+        Integer passengerId=JacksonUtil.parseInteger(json,"userId");
         if(passengerId==null||"".equals(passengerId)){
             return ResponseUtil.fail();
         }
@@ -69,14 +72,13 @@ public class WxOrderController {
             NewUserRoute newUserRoute=new NewUserRoute();
             PassengerRoute passengerRoute=passengerRouteList.get(i);
             route=routeService.findRouteById(passengerRoute.getRouteId());
-            if (passengerRoute.getEndTime().getTime()<date.getTime()){
+            if((TimeUtil.getTimeByString(route.getEndsRecruit(),"yyyy-MM-dd").getTime())<(new Date().getTime())){
+                newUserRoute.setRouteStatus(2);
+            }else{
                 newUserRoute.setRouteStatus(1);
             }
-            else {
-                newUserRoute.setRouteStatus(0);
-            }
             newUserRoute.setOrderNumber(passengerRoute.getOrderNumber());
-            newUserRoute.setReserveDay(passengerRoute.getReserveDays());
+            newUserRoute.setReserveDay(passengerRoute.getReserveDay());
             newUserRoute.setCreatUser(route.getCreatUser());
             newUserRoute.setStartSite(route.getStartSite());
             newUserRoute.setEndSite(route.getEndSite());
@@ -119,6 +121,6 @@ public class WxOrderController {
             }
             return ResponseUtil.ok(newUserRouteList1);
         }
-        return ResponseUtil.fail(500,"没有相关信息f");
+        return ResponseUtil.fail(500,"没有相关信息");
     }
 }

@@ -2,6 +2,7 @@ package com.wxbus.annotation.support;
 
 import com.wxbus.service.HeadersName;
 import com.wxbus.service.UserTokenManager;
+import com.wxbus.util.JsonUtil;
 import com.wxbus.util.ResponseUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -51,10 +52,10 @@ public class WeixinLoginHandlerInterceptor implements HandlerInterceptor{
             if(token==null||token.length()<=0|| UserTokenManager.getUserId(token)==null){
 
                 System.out.println(token);
-                response.setStatus(302);//未登录
+                response.setStatus(200);//未登录
                 response.setContentType("text/html;charset=utf-8");
                 PrintWriter out=response.getWriter();
-                out.println(ResponseUtil.fail(-1,"未登录"));
+                out.println(JsonUtil.stringify(ResponseUtil.fail401()));
                 out.close();
                 logger.info("成功拦截");
                 return false;

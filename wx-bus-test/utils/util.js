@@ -34,16 +34,17 @@ function request(url,data={},method="GET"){
         "Connect_Platform":"Weixin_Passenger"
       },
       success:function(res){
+        console.log(res.data)
         if(res.statusCode==200){//链接后台成功
-          if(res.data.errno==401){
+          if (res.data.errno==401){
             //清除登录的相关内容
+            console.log("执行跳转")
             try{
               wx.removeStorageSync("userInfo");
               wx.removeStorageSync("token");
             }catch(e){
 
             }
-
             wx.navigateTo({
               url: '/pages/auth/login/login',
             });

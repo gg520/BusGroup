@@ -184,7 +184,7 @@ public class UserServiceImpl implements UserService {
     public Integer updatePassenger(Passenger passenger) {
         log.info("更新用户信息");
         PassengerExample passengerExample=new PassengerExample();
-        passengerExample.or().andIdEqualTo(passenger.getId());
+        passengerExample.or().andPassengerMobileEqualTo(passenger.getPassengerMobile());
         return passengerMapper.updateByExampleSelective(passenger,passengerExample);
 
     }
