@@ -30,6 +30,9 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
     @Resource
     private PassengerMapper passengerMapper;
+
+
+
     @Autowired
     private DriverMapper driverMapper;
 
@@ -183,9 +186,13 @@ public class UserServiceImpl implements UserService {
      */
     public Integer updatePassenger(Passenger passenger) {
         log.info("更新用户信息");
-        PassengerExample passengerExample=new PassengerExample();
-        passengerExample.or().andPassengerMobileEqualTo(passenger.getPassengerMobile());
-        return passengerMapper.updateByExampleSelective(passenger,passengerExample);
 
+        return passengerMapper.updateByPrimaryKeySelective(passenger);
+
+    }
+
+    @Override
+    public int addDriver(Driver driver) {
+        return driverMapper.insertSelective(driver);
     }
 }

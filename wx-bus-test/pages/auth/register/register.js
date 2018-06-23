@@ -93,21 +93,12 @@ Page({
       },
       method: 'POST',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        
       },
       success: function (res) {
-        if (res.data.errno == 0) {
-          app.globalData.hasLogin = true;
-          wx.setStorageSync('userInfo', res.data.data.userInfo);
-          wx.setStorage({
-            key: "token",
-            data: res.data.data.token,
-            success: function () {
-              wx.switchTab({
-                url: '/pages/ucenter/index/index'
-              });
-            }
-          });
+        if (res.errno == 0) {
+          
         }
       }
     });

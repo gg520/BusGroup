@@ -279,9 +279,9 @@ button {
   top: 50%;
   left: 0;
   z-index: 9999;
-  background: #f9f9f9;
+  background: #fff;
   margin: -180rpx 105rpx;
-  border-radius: 36rpx;
+  border-radius: 20rpx;
 }
 
 .modal-title {
@@ -298,7 +298,8 @@ button {
 .modal-input {
   display: flex;
   background: #fff;
-  border: 2rpx solid #ddd;
+   border: 2rpx solid #ddd; 
+  /* border-bottom: 1px solid #eee; */
   border-radius: 4rpx;
   font-size: 28rpx;
 }
@@ -337,6 +338,7 @@ input-holder {
 
 .btn-confirm {
   width: 50%;
-  color: #ec5300;
+  color: #339900;
   text-align: center;
+  font-weight: bold;
 }

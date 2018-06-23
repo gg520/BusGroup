@@ -1,7 +1,7 @@
 //服务器的信息
 
-// var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
-var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
+var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
+// var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
 
 module.exports = {
   Test:WxApiRoot+"test/test2",//测试数据，只用于开发前台测试接口连接问题

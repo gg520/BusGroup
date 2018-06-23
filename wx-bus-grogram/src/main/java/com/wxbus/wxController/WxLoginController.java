@@ -2,6 +2,7 @@ package com.wxbus.wxController;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
+import com.wxbus.daomain.Driver;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.pojo.FullUserInfo;
 import com.wxbus.pojo.ResponseUserInfo;
@@ -211,30 +212,42 @@ public class WxLoginController {
      *@creattime 2018/5/26
      *@describe 微信用户注册
      */
-//    @RequestMapping(value ="/register",method = {RequestMethod.POST})
-//    public Object register(@RequestBody Driver driver, HttpServletRequest request){
-//        logger.info("用户注册");
-//        Date date = new Date();
-//        driver.setRegisterTime(date);
-//        driver.setRegisterIp(IpUtil.client(request));
-//
-//        passenger.setFistLoginTime(date);
-//        passenger.setFistLoginIp(IpUtil.client(request));
-//        passenger.setWeixinOpenid(CharUtil.getRandomString(8));
-//        passenger.setDeleted(0);
-//        if(passenger!=null){
-//            if(passenger.getPassengerMobile()==null||passenger.getPassengerPassword()==null ||
-//                    passenger.getPassengerGender()==null||passenger.getPassengerAvater()==null){
-//                return ResponseUtil.fail();
-//
-//            }
-//            userService.addPassenger(passenger);
-//            return ResponseUtil.ok();
-//        }
-//        else {
-//            return ResponseUtil.fail();
-//        }
-//    }
+    @RequestMapping(value ="/register",method = {RequestMethod.POST})
+    public Object register(@RequestBody String boby, HttpServletRequest request){
+        logger.info("用户注册");
+        Date date = new Date();
+        Driver driver=new Driver();
+        driver.setRegisterTime(date);
+        driver.setRegisterIp(IpUtil.client(request));
+
+        driver.setDriverName(JacksonUtil.parseString(boby,"username"));
+        driver.setDriverPassword(JacksonUtil.parseString(boby,"password"));
+        driver.setDriverMobile(JacksonUtil.parseString(boby,"mobile"));
+        driver.setDriverCitizenship(JacksonUtil.parseString(boby,"citizenship"));
+        driver.setDriverId(JacksonUtil.parseString(boby,"coddrivenum"));
+        driver.setDriverGender(JacksonUtil.parseString(boby,"gender"));
+
+        driver.setFirstGetlicence(TimeUtil.getTimeByString(JacksonUtil.parseString(boby,"firstGetLicence"),"yyyy-MM-dd"));
+
+        driver.setDrivingType(JacksonUtil.parseString(boby,"driverType"));
+
+        driver.setDriverNationality(JacksonUtil.parseString(boby,"nationality"));
+        driver.setDriverAddress(JacksonUtil.parseString(boby,"address"));
+        driver.setDriverAvater(JacksonUtil.parseString(boby,"avter"));
+
+        if(driver!=null){
+            if(driver.getDriverName()==null||driver.getDriverMobile()==null ||
+                    driver.getDriverGender()==null||driver.getDriverPassword()==null){
+                return ResponseUtil.fail();
+
+            }
+            userService.addDriver(driver);
+            return ResponseUtil.ok();
+        }
+        else {
+            return ResponseUtil.fail();
+        }
+    }
 
     /**
      *@type method

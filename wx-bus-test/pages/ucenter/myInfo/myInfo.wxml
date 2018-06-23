@@ -62,7 +62,9 @@
   <view class="info-item">
     <label>身份证号码</label>
     <input type="text" value="{{userInfo.citizenship}}" bindinput='changeCitizenship' placeholder='您的身份证号码'/>
-    <view class="important">*</view>
+    <view class="important">
+      <icon wx:if="{{userInfo.citizenship.length > 0}}" type="{{citizenshipIcon?'success':'warn'}}" size='10'></icon>*
+    </view>
   </view>
 </view>
 <button type="default"  bindtap="changeInfo">修改</button>
@@ -73,13 +75,13 @@
   <view class="modal-title">密码验证</view>
   <view class="modal-content">
     <view class="modal-input">
-      <input placeholder-class="input-holder" type="password" maxlength="15" class="input" placeholder="请输入当前密码" bindinput='changChackpw' ></input>
+      <input placeholder-class="input-holder" type="password" maxlength="15" class="input" placeholder="当前密码，若未设置密码输入任意值" bindinput='changChackpw' ></input>
     </view>
   </view>
   
   <view class="modal-footer">
     <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-    <view class="btn-confirm" bindtap="checkConfirm" data-status="confirm">确定</view>
+    <view class="btn-confirm" bindtap="checkConfirm" data-status="confirm">验证</view>
   </view>
 </view>
 
@@ -96,6 +98,6 @@
   
   <view class="modal-footer">
     <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-    <view class="btn-confirm" bindtap="newConfirm" data-status="confirm">确定</view>
+    <view class="btn-confirm" bindtap="newConfirm" data-status="confirm">修改</view>
   </view>
 </view>

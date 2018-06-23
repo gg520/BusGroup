@@ -96,11 +96,12 @@ Page({
           delta: 1
         })
       }).catch((err) => {
+        wx.hideLoading();
         app.globalData.hasLogin = false;
         console.log(err);
         util.showErrorToast('微信登录失败');
       })
-      wx.hideLoading();
+      
     })
   },
   // 用户登录
@@ -140,14 +141,14 @@ Page({
           } else if (res.data.errno === -1) {
             util.showWarningToast(res.data.errmsg);
           }
-          
+          wx.hideLoading();
         },
         fail:function(mgs){
-
+          wx.hideLoading();
         },
         
       })
-      wx.hideLoading();
+      
     })
 
     

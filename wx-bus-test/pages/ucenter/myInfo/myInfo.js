@@ -63,17 +63,18 @@ Page({
   
     let _self=this;
     var isPhone = _self.testPhone(_self.data.userInfo.mobile)
-    console.log("isPhone" + isPhone)
+    let citizenshipIcon=false;
+    let mobileIcon=false;
     if (isPhone) {
-      console.log(isPhone)
-      _self.setData({//设置正确性
-        mobileIcon: 'true'
-      })
-    } else {
-      _self.setData({
-        mobileIcon: 'false'
-      })
+        mobileIcon=true;
     }
+    if (_self.testIP(_self.data.userInfo.citizenship)){
+      citizenshipIcon=true;
+    }
+    _self.setData({
+      mobileIcon: mobileIcon,
+      citizenshipIcon: citizenshipIcon,
+    })
   },
 
   /**
@@ -139,6 +140,17 @@ Page({
       }
     }
   },
+  testIP:function(ip){
+    if (ip != null && ip) {
+      console.log(ip)
+      var length = ip.length
+      if (ip = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(ip)) {
+        return true
+      } else {
+        return false
+      }
+    }
+  },
   mobileChange:function(e){
     
     var _self = this
@@ -161,11 +173,31 @@ Page({
   },
   changeInfo:function(){
     //获取信息
+    
+    //将信息发送到后台
+   
+    
+    
+    
+    if (this.data.userInfo.nickName.length < 0) {
+      util.showErrorToast("昵称不能为空");
+      return false;
+    }
+    if (!this.data.mobileIcon) {
+      util.showErrorToast("手机号码错误");
+      return false;
+    }
+    if (this.data.userInfo.name.length < 0) {
+      util.showErrorToast("姓名不能为空");
+      return false;
+    }
+    if (!this.testIP(this.data.userInfo.citizenship)) {
+      util.showErrorToast("身份证不合法");
+      return false;
+    }
     wx.showLoading({
       title: '加载中...',
     });
-    //将信息发送到后台
-    console.log(this.data.startsite)
     util.request(
       api.ChangUserInfo,
       {
@@ -176,9 +208,12 @@ Page({
           //成功
           util.showSuccessToast("提交成功");
           wx.setStorageSync('userInfo', res.data.userInfo);
+          wx.hideLoading();
+        }else{
+          wx.hideLoading();
         }
       })
-    wx.hideLoading();
+    
   },
   changpw:function(e){//每次修改密码将以前输入的记录清空
     var pwd = e.detail.value;
@@ -338,9 +373,18 @@ Page({
     if (e.detail.value.length > 0) {
       let userInfo = this.data.userInfo;
       userInfo.citizenship = e.detail.value;
-      this.setData({
-        userInfo: userInfo,
-      })
+      if(this.testIP(e.detail.value)){
+        this.setData({
+          userInfo: userInfo,
+          citizenshipIcon:true
+        })
+        
+      }else{
+        this.setData({
+          userInfo: userInfo,
+          citizenshipIcon: false
+        })
+      }
     }
   }
 })

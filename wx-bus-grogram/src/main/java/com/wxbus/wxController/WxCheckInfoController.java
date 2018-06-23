@@ -94,12 +94,25 @@ public class WxCheckInfoController {
      *@describe 
      */
     @RequestMapping(value = "/password",method =RequestMethod.POST)
-    public Object checkPassword(@RequestBody String body){
+    public Object checkPassword(@RequestBody String body,HttpServletRequest request){
+
+        String token=request.getHeader(HeadersName.TOKEN);
+        //获取信息
+
+        String json = UserTokenManager.getUserId(token);
+        Integer id=Integer.valueOf(JacksonUtil.parseString(json, "userId"));
+        //数据库中获取数据
+        Passenger pger=checkServier.getPassengerInfo(id);
+        if(pger.getPassengerPassword()==null||"".equals(pger.getPassengerPassword())){
+            logger.warn("密码未设置");
+            return ResponseUtil.ok();
+        }
         if(body==null||"".equals(body)){
             return  ResponseUtil.fail(500,"传入密码不能为空");
 
         }
         else{
+
             String password=JacksonUtil.parseString(body,"password");
             Passenger passenger=checkServier.findPassangerByPassword(password);
             if(passenger==null){

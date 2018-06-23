@@ -1,5 +1,6 @@
 package com.wxbus.service;
 
+import com.wxbus.daomain.Driver;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.pojo.UserInfo;
 
@@ -45,5 +46,5 @@ public interface UserService {
      */
     Integer updatePassenger(Passenger passenger);
 
-
+    int addDriver(Driver driver);
 }
