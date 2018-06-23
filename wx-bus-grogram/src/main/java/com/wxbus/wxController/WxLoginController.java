@@ -214,14 +214,14 @@ public class WxLoginController {
      */
     @RequestMapping(value ="/register",method = {RequestMethod.POST})
     public Object register(@RequestBody String boby, HttpServletRequest request){
-        logger.info("用户注册");
+        logger.info("司机用户注册");
         Date date = new Date();
         Driver driver=new Driver();
         driver.setRegisterTime(date);
         driver.setRegisterIp(IpUtil.client(request));
 
         driver.setDriverName(JacksonUtil.parseString(boby,"username"));
-        driver.setDriverPassword(JacksonUtil.parseString(boby,"password"));
+        driver.setDriverPassword(MD5Util.toMD5(JacksonUtil.parseString(boby,"password").trim()));
         driver.setDriverMobile(JacksonUtil.parseString(boby,"mobile"));
         driver.setDriverCitizenship(JacksonUtil.parseString(boby,"citizenship"));
         driver.setDriverId(JacksonUtil.parseString(boby,"coddrivenum"));

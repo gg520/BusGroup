@@ -39,14 +39,26 @@
       <image src='/static/images/bus.png' background-size="cover"></image>
       <text>车辆绑定</text>
     </view>
-    
+   
+
+    <view class='item' bindtap='Routeinfo' wx:if="{{isDirver}}">
+      <image src='/static/images/ic_circuit_next.png' background-size="cover"></image>
+      <text>当前线路</text>
+    </view>
+
+
+    <view class='item' bindtap='gocode' wx:if="{{isDirver}}">
+      <image src='/static/images/QR_code.png' background-size="cover"></image>
+      <text>验票码</text>
+    </view>
+
 
     
-    <view class='item' bindtap='goPlantRoute'>
+    <view class='item' bindtap='goPlantRoute' wx:if="{{!isDirver}}">
       <image src='/static/images/ic_circuit.png' background-size="cover"></image>
       <text>团招募</text>
     </view>
-    <view class='item' bindtap='goRunRoute'>
+    <view class='item' bindtap='goRunRoute' wx:if="{{!isDirver}}">
       <image src='/static/images/ic_circuit_next.png' background-size="cover"></image>
       <text>已开线路</text>
     </view>

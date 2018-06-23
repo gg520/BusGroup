@@ -53,7 +53,6 @@ Page({
     } else {
       console.log("未登录")
       this.setData({
-
         exitLoginBtn: false,
         isPassenger: false,
         isDirver: false,

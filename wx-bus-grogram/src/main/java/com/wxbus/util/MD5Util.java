@@ -8,6 +8,8 @@ import java.security.MessageDigest;
 public class MD5Util {
 
     public static String toMD5(String plainText) {
+        if(plainText==null||"".equals(plainText))
+            return null;
         try {
             //生成实现指定摘要算法的 MessageDigest 对象。
             MessageDigest md = MessageDigest.getInstance("MD5");
