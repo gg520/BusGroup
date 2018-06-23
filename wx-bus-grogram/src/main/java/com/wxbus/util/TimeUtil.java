@@ -47,4 +47,23 @@ public class TimeUtil {
         return null;
     }
 
+    public static long getDifDay(Date start,Date ends){
+        long endLong=ends.getTime();
+        long startLong=start.getTime();
+//        System.out.println("endLong:"+endLong+"  startLong:"+startLong);
+//        System.out.println("差："+(endLong-startLong));
+//        System.out.println((endLong-startLong)/(1000*60*60*24));
+        return (endLong-startLong)/(1000*60*60*24);
+    }
+
+    public static void main(String[] args) {
+//        System.out.println(getTimeByString("2018-06-30","yyyy-MM-dd"));
+//        System.out.println(getTimeByString("2018-06-30","yyyy-MM-dd").getTime());
+//        System.out.println(getTimeByString("2018-07-31","yyyy-MM-dd"));
+//        System.out.println(getTimeByString("2018-07-31","yyyy-MM-dd").getTime());
+
+        System.out.println(String.valueOf(getDifDay(getTimeByString("2018-06-30","yyyy-MM-dd"),getTimeByString("2018-07-31","yyyy-MM-dd"))));
+    }
+
+
 }

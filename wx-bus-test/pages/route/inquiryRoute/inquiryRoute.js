@@ -28,40 +28,18 @@ Page({
     periodEnd:'',
   },
   start:function(){
-    //正则
-    //手机
-    var mobile=new RegExp("^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$");
-    //固定电话
-    var phone = new RegExp("^(0\\d{2}-\\d{8}(-\\d{1,4})?)|(0\\d{3}-\\d{7,8}(-\\d{1,4})?)$");
+    
     if (this.data.startsite.length <= 0||this.data.endsite <= 0){
       util.showErrorToast("地点不能为空");
       return false;
     }
-    if (this.data.period.length<=0){
-      util.showErrorToast("周期不能为空");
-      return false;
-    }
-    try{
-      parseInt(this.data.period);
-    }
-    catch(e){
-      util.showErrorToast("周期必须是整数");
-      return false;
-    }
+    
     if (this.data.starttime.length <= 0 || this.data.endtime.length <= 0){
       util.showErrorToast("未选择时间");
       return false;
     }
     if (this.data.periodStart.length <= 0 || this.data.periodEnd <= 0){
       util.showErrorToast("未选择日期");
-      return false;
-    }
-    if(this.data.username.length <= 0 || this.data.mobile.length <= 0){
-    // if (this.data.mobile.length <= 0){
-      util.showErrorToast("未输入姓名或电话");
-      return false;
-    } else if (phone.test(this.data.mobile) || mobile.test(this.data.mobile.length)){
-      util.showErrorToast("电话号码错误");
       return false;
     }
     wx.showLoading({
@@ -72,15 +50,14 @@ Page({
     util.request(
       api.RouteInquiry,
       {
-        username: this.data.username,
-        phone: this.data.mobile,
         startsite: this.data.startsite,
         endsite: this.data.endsite,
         starttime: this.data.starttime,
         endtime: this.data.endtime,
-        period: this.data.period,
+
         periodStart: this.data.periodStart,
         periodEnd: this.data.periodEnd,
+        massage: this.data.massage,
       },'POST').then(function(res){
         console.log(res);
         if (res.errno === 0){
@@ -106,11 +83,7 @@ Page({
       endsite: e.detail.value
     })
   },
-  bindUsernameInput:function(e){
-    this.setData({
-      username: e.detail.value
-    })
-  },
+ 
   bindPeriodStartChange:function(e){
     //设置开始时间
     //根据开始时间设置默认时间
@@ -132,14 +105,9 @@ Page({
       periodEnd: e.detail.value
     })
   },
-  bindMobileInput:function(e){
-    
+ bindMessageInput:function(e){
     this.setData({
-      mobile: e.detail.value
-    })
-  }, bindMessageInput:function(e){
-    this.setData({
-      message: e.detail.value
+      massage: e.detail.value
     })
   },
   clearInput: function (e) {
@@ -155,9 +123,9 @@ Page({
           endsite: ''
         });
         break;
-      case 'clear-message':
+      case 'clear-massage':
         this.setData({
-          message: ''
+          massage: ''
         });
         break;
       case 'clear-username':
@@ -244,7 +212,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**
@@ -265,19 +233,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {//刷新界面
-    this.setData({
-      startsite: '中原工学院南区',//出发地点
-      endsite: '郑州火车站',//结束地点
-      period: '8',//招募周期
-      starttimename: "出发时间",
-      starttime: '08:00',
-      endtime: '17:00',
-      endtimename: '返程时间',
-      username: '郭苏州',//您的姓名
-      mobile: '13592573327',//您的真实电话
-      startChioceIcon: '/static/images/icon_time.png',
-      endChioceIcon: '/static/images/icon_time.png',
-    })
   },
 
   /**

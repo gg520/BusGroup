@@ -32,14 +32,14 @@
       </view> -->
       <!-- 启程时间 -->
       <view class="chioce-item chioce-item-last">
-        <picker mode="time" value="{{starttimename}}" start="00:00" end="23:59" bindchange="bindStartTimeChange">
+        <picker mode="time" value="{{starttimename}}" start="06:00" end="22:30" bindchange="bindStartTimeChange">
         <view >{{starttimename}}</view>
         </picker>
         <image class="icon-chioce" src="{{startChioceIcon}}"></image>
       </view>
       <!-- 返程时间  -->
       <view class="chioce-item chioce-item-last">
-        <picker mode="time" value="{{endtimename}}" start="00:00" end="23:59" bindchange="bindEndTimeChange">
+        <picker mode="time" value="{{endtimename}}" start="12:00" end="22:30" bindchange="bindEndTimeChange">
         <view >{{endtimename}}</view>
         </picker>
         <image class="icon-chioce" src="{{startChioceIcon}}"></image>
@@ -47,17 +47,9 @@
       
 
     <view class="form-item">
-      <input class="username" value="{{username}}" bindinput="bindUsernameInput" placeholder="您的姓名" />
-    	<image wx:if="{{ username.length > 0 }}" id="clear-username" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
+      <input class="username" value="{{massage}}" bindinput="bindMessageInput" placeholder="备注信息" />
+    	<image wx:if="{{ massage.length > 0 }}" id="clear-massage" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
     </view>
-
-    <view class="form-item">
-      <input class="mobile" value="{{mobile}}" bindinput="bindMobileInput" placeholder="您的电话" />
-    	<image wx:if="{{ mobile.length > 0 }}" id="clear-mobile" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
-    </view>
-		
-    
-
     	<button type="default" class="register-btn" bindtap="start">确定</button>
 
     </view>

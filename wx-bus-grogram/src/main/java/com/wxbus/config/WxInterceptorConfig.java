@@ -35,7 +35,7 @@ public class WxInterceptorConfig extends WebMvcConfigurerAdapter {
          */
         registry.addInterceptor(new WeixinLoginHandlerInterceptor()).addPathPatterns("/weixin/**").excludePathPatterns("/weixin/auth/*","/weixin/view/**","/weixin/route/**",
                 "/weixin/search/**");
-
+        registry.addInterceptor(new WeixinLoginHandlerInterceptor()).addPathPatterns("/weixin/route/routeInfo");
     }
 
     /**

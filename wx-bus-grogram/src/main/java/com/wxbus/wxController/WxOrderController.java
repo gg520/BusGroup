@@ -123,4 +123,19 @@ public class WxOrderController {
         }
         return ResponseUtil.fail(500,"没有相关信息");
     }
+
+    @PostMapping("orderAdd")
+    /**
+     * 下单，需要websocket
+     *
+     * 逻辑思想：
+     *      下单申请，验证登录，验证权限，验证信息是否全面
+     *      信息正确进行支付，支付不成功需重新下单
+     *
+     *
+     */
+    public Object orderAdd(@RequestBody String body){
+
+        return ResponseUtil.fail401();
+    }
 }

@@ -1,5 +1,5 @@
 //服务器的信息
-// var WxApiRoot ="http://47.94.232.43:8888/weixin/";//测试本地后台数据
+
 // var WxApiRoot = "http://139.199.166.250:8888/weixin/";//腾讯服务器
 var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
 

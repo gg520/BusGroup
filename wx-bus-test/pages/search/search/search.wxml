@@ -3,14 +3,14 @@
   <view class="search-header">
     <view class="input-box">
       <image class="icon" src="/static/images/icon_red_site.png"></image>
-      <input name="start_site" class="keywrod" value="{{inputStartSite}}" confirm-type="search" bindfocus="inputStartFocus" bindconfirm="onKeywordConfirm"  placeholder='起始地点' />
+      <input name="start_site" class="keywrod" value="{{search.startSite}}" confirm-type="search" bindfocus="inputStartFocus" bindconfirm="onKeywordConfirm"  placeholder='起始地点' />
       
     </view>
  
   <image class="icon_last" src="/static/images/icon_swop_site.png" bindtap='swop'></image>
     <view class="input-box">
       <image class="icon" src="/static/images/icon_blue_site.png"></image>
-      <input name="end_site" class="keywrod"  value="{{inputEndSite}}" confirm-type="search"  bindfocus="inputEndFocus" bindconfirm="onKeywordConfirm" placeholder='到达地点' />
+      <input name="end_site" class="keywrod"  value="{{search.endSite}}" confirm-type="search"  bindfocus="inputEndFocus" bindconfirm="onKeywordConfirm" placeholder='到达地点' />
      
     </view>
   </view>

@@ -53,6 +53,10 @@ public class ResponseUtil {
         return fail(402, "参数不对");
     }
 
+    public static final Object fail302(){
+        return fail(302,"权限不足");
+    }
+
     public static final Object badArgument(){
         return fail402();
     }

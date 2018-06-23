@@ -22,7 +22,7 @@
 
     <view class="orders">
     <!-- 根据订单编号获取订单详细信息 -->
-      <navigator url="/pages/route/routeInfo/routeInfo?orderNumber={{item.orderNumber}}" class="order" wx:for="{{orderList}}" wx:key="id">
+      <navigator url="" class="order" wx:for="{{orderList}}" wx:key="id">
             <view class="h">
                 <view class="l">订单编号：{{item.orderNumber}}</view>
                 <view class="r {{ item.routeStatus == 1 ? 'ok' : ''}}">{{ item.routeStatus == 1 ? '未过期' : '已过期'}}</view>

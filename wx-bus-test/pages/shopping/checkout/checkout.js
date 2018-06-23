@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+   
   },
 
   submitOrder:function(){
@@ -17,9 +17,7 @@ Page({
     });
     
     //结算付款
-    //请求后台
-    //将数据保存到后台
-    util.request(api.OrderAdd, 
+    util.request(api.Payment, 
     { 
       routeId: this.data.routeid,
       payMoney: this.data.totalmoney,//支付的总钱数
@@ -27,8 +25,35 @@ Page({
       reserveDays: this.data.selectdays,//订购的日期列表
 
     }, 'POST').then(function (res) {
-      if(res.data.erron===0){
-          console.log("结算成功");
+      if (res.errno===0){
+          var id=res.data.id;
+          var nonceStr=res.data.nonceStr;
+          var prePayId= res.data.package;
+          var signType= res.data.signType;
+          var paySign= res.data.paySign;
+          wx.requestPayment({
+            timeStamp: String(Date.parse(new Date())),   //时间戳,
+            nonceStr: nonceStr,
+            package: prePayId,
+            signType: signType,
+            paySign: paySign,
+            success: function (res) {
+              // 保留当前页面，跳转到应用内某个页面，使用wx.nevigeteBack可以返回原页面
+              wx.navigateTo({
+                url: '/pages/shopping/payResult/payResult?result=' +'成功&id='+id
+              })
+            },
+            fail: function (res) {
+              console.log(res.errMsg)
+              wx.navigateTo({
+                url: '/pages/shopping/payResult/payResult?result=' + '失败&nonceStr='+ nonceStr+
+                '&package=' + prePayId+
+                '&signType='+ signType+
+                '&paySign='+ paySign+"&id="+id,
+              })
+              
+            }
+          })
       }else{
         console.log("结算失败");
       }

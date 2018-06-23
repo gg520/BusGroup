@@ -91,9 +91,29 @@ Page({
   //线路征集
   goInquiryRoute: function () {
     if (app.globalData.hasLogin) {
-      wx.navigateTo({
-        url: '/pages/route/inquiryRoute/inquiryRoute',
+      //判断是否实名认证了
+      wx.request({
+        url: api.CheckInfo,
+        header: {
+          "X-Bus-Token": wx.getStorageSync("token"),
+          "Connect_Platform": "Weixin_Passenger"
+        },
+        success: function (res) {
+          if (res.data.errno === 0) {
+            //验证通过
+            wx.navigateTo({
+              url: '/pages/route/inquiryRoute/inquiryRoute',
+            });
+
+          } else if (res.errno === 401) {
+            util.showWarningToast("未登录");
+            }else{
+            //验证失败
+            util.showWarningToast("未实名认证");
+          }
+        }
       })
+
     } else {
       util.showWarningToast("未登录");
     }
@@ -135,6 +155,8 @@ Page({
               url: '/pages/qrcode/qrcode',
             });
 
+          } else if (res.errno === 401) {
+            util.showWarningToast("未登录");
           }else{
             //验证失败
             util.showWarningToast("未实名认证");

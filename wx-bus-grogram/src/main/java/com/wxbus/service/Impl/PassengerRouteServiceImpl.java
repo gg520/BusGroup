@@ -101,7 +101,7 @@ public class PassengerRouteServiceImpl implements PassengerRouteService {
      *@describe 添加个人收藏
      */
     public void addPassengerRoute(PassengerRoute passengerRoute) {
-        log.info("添加个人收藏");
+//        log.info("添加个人收藏");
         passengerRouteMapper.insertSelective(passengerRoute);
 
     }

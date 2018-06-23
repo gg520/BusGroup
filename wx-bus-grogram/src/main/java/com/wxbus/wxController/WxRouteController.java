@@ -5,6 +5,7 @@ import com.wxbus.service.*;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.JsonUtil;
 import com.wxbus.util.ResponseUtil;
+import com.wxbus.util.TimeUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,19 +67,16 @@ public class WxRouteController {
         route.setStartTime(JacksonUtil.parseString(body,"starttime"));
         route.setEndTime(JacksonUtil.parseString(body,"endtime"));
         route.setRouteStatus(0);
-        route.setRunTime(JacksonUtil.parseString(body,"period"));
+        route.setStartRecruit(JacksonUtil.parseString(body,"periodStart"));
+        route.setEndsRecruit(JacksonUtil.parseString(body,"periodEnd"));
+        route.setMassage(JacksonUtil.parseString(body,"massage"));
+        route.setRunTime(String.valueOf(TimeUtil.getDifDay(TimeUtil.getTimeByString(route.getStartRecruit(),"yyyy-MM-dd"),TimeUtil.getTimeByString(route.getEndsRecruit(),"yyyy-MM-dd"))));
         if(route.getStartSite()==null||route.getEndSite()==null){
             return ResponseUtil.fail();
         }
         routeService.addRoute(route);
-
-
         System.out.println(body);
-        logger.info("招募路线查询");
-
-
-
-
+        logger.info("线路征集");
         return ResponseUtil.ok();
     }
 
