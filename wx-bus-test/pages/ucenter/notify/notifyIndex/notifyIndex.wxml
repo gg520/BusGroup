@@ -1,0 +1,56 @@
+ <view class='container'>
+  <view class="doc-commonNavs" style="background:#fff;">
+    <view class="doc-Navslist">
+      <view wx:for="{{common_navs_list}}" wx:key="{{item}}" class="doc-badge doc-navTitle" data-id='{{index}}'
+ style="{{index==id?'border-bottom:2px solid #108EE9;color:#138FE9;':''}}" bindtap="NavClick">{{item}}
+        <view wx:if="{{item=='最新消息'}}">{{length}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+  <view class='news' wx:if='{{id==0}}'>
+    <view wx:for='{{currentnews}}' class='news-item' bindtap='havareadcurrentnews' data-id='{{item.id}}'>
+      <view class='head'>
+                
+      <view class='timeandtitle'>
+        <view class='titleandpub'>
+          <text class='title'>{{item.title}} 
+            <text class='noread'>未读</text> 
+          </text>
+          <text class='publisher'>{{item.publisher}}</text>
+        </view>
+        <text class='time'>{{item.time}}</text></view>
+      </view>
+      <view>
+        <text class='contend'>{{item.contend}}</text>
+      </view>
+    </view>
+      <view class='nonews' wx:if='{{currentnews.length<=0}}'>
+        <image src='/static/images/nonews.jpg'/>
+      </view>
+  </view>
+
+
+
+  <view class='news' wx:if='{{id==1}}'>
+    <view wx:for='{{pastnews}}' class='news-item' bindtap='havareadpastnews' data-num='{{item.id}}'>
+      <view class='head'>
+        <view class='timeandtitle'><view class='titleandpub'>
+          <text class='title'>{{item.title}} </text>
+          <text class='publisher'>{{item.publisher}}</text>
+        </view>
+        <text class='time'>{{item.time}}</text>
+      </view>
+    </view>
+    <view>
+      <text class='contend'>{{item.contend}}</text>
+    </view>              
+  </view>
+  <view class='nonews' wx:if='{{pastnews.length<=0}}'>
+    <image src='/static/images/nonews.jpg'/>
+  </view>
+</view>
+
+  

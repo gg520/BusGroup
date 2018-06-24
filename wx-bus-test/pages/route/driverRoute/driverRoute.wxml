@@ -1,0 +1,76 @@
+
+<scroll-view>
+<view class='address-box' style='border-bottom: 7px solid #eee;'></view>
+<!-- 线路途径站点 -->
+<view class="accident">
+<view class='info-title'>线路概要 </view>
+  <view class="ac-item-start">
+    <label style='color:#00ff99'>起点</label>
+    <view class="lh">
+      <text bindtap="openMap">{{tasks.startsite}}</text>
+    </view>
+  </view>
+
+  <view >
+  <view class="ac-item-mid">
+    <label style='color:#3399ff'>途经</label>
+    <view class="lh">
+      <text bindtap="openMap">...</text>
+    </view>
+  </view>
+  </view>
+  <view class="ac-item-ends">
+    <label style='color:red'>终点</label>
+    <view class="lh">
+      <text>{{tasks.endsite}}</text>
+    </view>
+  </view>
+</view>
+<!-- 站点 ends -->
+
+<!-- 信息 -->
+<view style='border-bottom: 3px solid #eee;'></view>
+<view class="accident-type">
+<view class='info-title'>线路信息 </view>
+ 
+  <view class="ac-type-item">
+    <label>出发时间：</label>
+    <text >{{tasks.starttime}}</text>
+    <label>到达时间：</label>
+    <text >{{tasks.endtime}}</text>
+  </view>
+  <view class="ac-type-item">
+    <label>乘坐人数：</label>
+    <text >{{tasks.totalnum}}</text>
+    <label>车牌：</label>
+    <text >{{tasks.busnum}}</text>
+  </view>
+
+</view>
+<view class='solid-item'></view>
+<!-- 信息ends -->
+<!--途径站点信息-->
+<view style='border-bottom: 3px solid #eee;'></view>
+<view class="accident-type">
+<view class='info-title'>站点信息 </view>
+ 
+  <view class="site-info-border">
+    <label  >站点名称</label>
+    <lable >到达时间</lable>
+    <lable >下车人数</lable>
+  </view>
+  <view wx:for='{{ tasks.site}}'class="ac-type-item">
+    <text>{{item.sitename}}</text>
+    <view class='border'>
+    <text>{{item.reachtime}}</text>
+    <text >{{item.offnum}}</text>
+    </view>
+  </view>
+
+</view>
+
+
+
+  <!-- <button bindtap='getDays'>测试</button>   -->
+
+</scroll-view>

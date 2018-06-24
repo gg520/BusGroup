@@ -1,0 +1,34 @@
+<!--pages/Form/Form.wxml-->
+<view class="container">
+
+<view class="doc-describe">问题和意见</view>
+
+<view class="doc-listform">
+  <textarea  show-confirm-bar=""  value='{{message}}'  bindinput="changeMessage"  style="position:relative;" placeholder='请填写问题描述以便我们提供更好的帮助'>
+    <view style="position:absolute;bottom:10px;right:10px;color:#aaa;"><text style="color:#000;">{{textareaNum}} </text> / 140</view>
+  </textarea>
+  </view>
+
+  
+
+
+<!-- <view/ class="doc-describe">上传图片</view> -->
+
+<!-- <view class="doc-Images">
+<view><text class='text'>你可以上传最多3张问题截图</text></view>
+  <view  wx:for="{{imageList}}" wx:key="{{item}}"  class="doc-ImageList">
+        <image src="{{item}}" class='image'> 
+        <text data-index='{{index}}'  class="iconfont icon-close" style="color:rgba(0,0,0,0.3)"  bindtap="deleteImg"></text>
+      </image>
+    </view>  
+    
+  <button bindtap="ChooseImage" class="chooseImage">+</button>
+    </view> -->
+    
+<view class="doc-describe">联系方式</view>
+ <view class="form-item">
+      <input class="mobile" bindinput="bind_mobile" placeholder="输入手机号便于我们与您取得联系" />
+    </view>
+<button type="default" class="register-btn" bindtap="commit">确定提交</button>
+<view class="doc-describe1"></view>
+</view>

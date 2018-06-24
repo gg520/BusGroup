@@ -1,0 +1,62 @@
+<view class="container">
+    <view class="location">
+        <view class="location-city" bindtap="switchCity">
+            <text>猜你想问</text>
+        </view>
+        <view class="location-cancel" bindtap='push'>换一换
+          <image src="/static/images/icon_push.png"></image>
+
+        </view>
+        
+        
+    </view>
+    <view class="addressList">
+    <scroll-view  scroll-with-animation="{{true}}" >
+
+        <view class="destination" wx:for="{{helps}}" data-name="{{item.name}}" data-id='{{item.id}}'  bindtap="godest" >
+               <view class="destination-content">
+                   <view class="content-image">
+                   <image src="/static/images/icon_quan.png"></image>
+                </view>
+                  <view class="content">
+                      <text class="content-name">{{item.name}}</text>
+                  </view>
+               </view> 
+        </view>
+        
+    </scroll-view>
+    <button type="default" class="register-btn" bindtap="goFeedBack">意见反馈</button>
+</view>
+</view>
+
+<!-- 模态框 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if='{{showModal}}'></view>
+<view class="modal-dialog" wx:if='{{showModal}}'>
+  <view class="modal-title">{{showTittle}}
+    <view class="close" bindtap="closeModal">
+      <image src="/static/images/icon_close1.png"></image>
+    </view>
+  </view>
+  
+  <scroll-view class="modal-content">
+   {{showText}}
+  </scroll-view>
+  
+  <scroll-view class="container" scroll-y="true">
+  <view class="bottom-btn">
+    <view class="btn-left">
+      <text>是否对您有帮助：</text>
+    </view>
+    <view class="group {{use=='used'?'active':''}}" bindtap='goused' data-index='used'>
+      <image src='/static/images/icon_user.png'></image>
+      <text>有用</text>
+    </view>
+    <view class="group {{use=='useless'?'active':''}}" bindtap='goused' data-index='useless'>
+      <image src='/static/images/icon_useless.png'></image>
+      <text>无用</text>
+    </view>
+  </view>
+  
+</scroll-view>
+
+</view>

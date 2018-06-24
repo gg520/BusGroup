@@ -1,0 +1,50 @@
+<view class=''>
+  <view class="banner" >
+    <image src="{{imgUrl}}"></image>
+  </view>
+
+  <view class="form">
+    <view class="form-title">基本信息</view>
+    <view class="form-content">
+      <view class="form-item">
+        <label>车牌号</label>
+        <text class="num-car">{{carnumber}}</text>
+      </view>
+      <view class="form-item">
+        <label>发动机号</label>
+        <text class='engine-num'>{{enginenum}}</text>
+      </view>
+        <view class="form-item">
+        <label>所有人</label>
+        <text class='engine-num'>{{owner}}</text>
+      </view>
+    </view>
+    <view class="form-title">其他信息</view>
+    <view class="form-content">
+      <view class="form-item">
+        <label>座位数</label>
+        <text class='engine-num'>{{seatting}}</text>
+      </view>
+      <view class="form-item">
+        <label>车辆类型</label>
+        <text class='engine-num'>{{category}}</text>
+      </view>
+      <view class="form-item">
+        <label>品牌型号</label>
+        <text class='engine-num'>{{model}}</text>
+      </view>
+      <view class="form-item">
+        <label>注册日期</label>
+        <text class='engine-num'>{{registration_date}}</text>
+      </view>
+      <view class="form-item">
+        <label>发证日期</label>
+        <text class='engine-num'>{{oppen_date}}</text>
+        </view>
+        <view class="form-item">
+        <label>运行线路</label>
+        <text class='engine-num'>{{road}}</text>
+      </view>
+    </view>
+  </view>
+</view>

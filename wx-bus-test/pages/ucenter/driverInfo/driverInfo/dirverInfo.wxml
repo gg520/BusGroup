@@ -1,0 +1,33 @@
+<view class="form">
+ <view class='post'>
+<image  class='avatar' src='{{ avatar}}'/>
+<text class='text'>{{name}}</text>
+</view>
+  <view class="form-content">
+    <view class="form-item">
+      <label>联系电话</label>
+      <text class='engine-num'>{{phone}}</text>
+    </view>
+    <view class="form-item">
+      <label>驾驶证号</label>
+      <text class='engine-num'>{{licence}}</text>
+    </view>
+    <view class="form-item">
+      <label>身份证号</label>
+      <text class='engine-num'>{{identityid}}</text>
+    </view>
+    <view class="form-item">
+      <label>信誉积分</label>
+      <text class='engine-num'>{{score}}</text>
+    </view>
+    <view class="form-item">
+      <label>当前状态</label>
+      <text class='engine-num'>{{status}}</text>
+      </view>
+      <view class="form-item">
+      <label>当前住址</label>
+      <text class='engine-num'>{{address}}</text>
+      </view>
+      </view>
+      <button class='button' bindtap='changeinfo'>更改信息</button>
+</view>
