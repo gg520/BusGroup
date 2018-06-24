@@ -4,78 +4,78 @@ var app=getApp();
 Page({
   data: {
     orderList: [
-      // {
-      //   routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   orderNumber: '订单编号',
-      //   reserveDay:'20',//订购的天数
-      //   startSite: "起始地点",
-      //   endSite: '到达地点', 
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   payMoney: "200",//总价 reserveDay*price
-      //   routeId:'1',//线路ID
-      // },
-      // {
-      //   routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   orderNumber: '订单编号',
-      //   reserveDay: '20',//订购的天数
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   payMoney: "200",//总价 reserveDay*price
-      //   routeId: '1',//线路ID
-      // },
-      // {
-      //   routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   orderNumber: '订单编号',
-      //   reserveDay: '20',//订购的天数
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   payMoney: "200",//总价 reserveDay*price
-      //   routeId: '1',//线路ID
-      // },
-      // {
-      //   routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   orderNumber: '订单编号',
-      //   reserveDay: '20',//订购的天数
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   payMoney: "200",//总价 reserveDay*price
-      //   routeId: '1',//线路ID
-      // },
-      // {
-      //   routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   orderNumber: '订单编号',
-      //   reserveDay: '20',//订购的天数
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   payMoney: "200",//总价 reserveDay*price
-      //   routeId: '1',//线路ID
-      // },
-      // {
-      //   routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   orderNumber: '订单编号',
-      //   reserveDay: '20',//订购的天数
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   payMoney: "200",//总价 reserveDay*price
-      //   routeId: '1',//线路ID
-      // },
+      {
+        routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
+        orderNumber: '订单编号',
+        reserveDay:'20',//订购的天数
+        startSite: "起始地点",
+        endSite: '到达地点', 
+        price: "10", //单价
+        startTime: "07:00",//出发时间
+        payMoney: "200",//总价 reserveDay*price
+        routeId:'1',//线路ID
+      },
+      {
+        routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
+        orderNumber: '订单编号',
+        reserveDay: '20',//订购的天数
+        startSite: "起始地点",
+        endSite: '到达地点',
+        price: "10", //单价
+        startTime: "07:00",//出发时间
+        payMoney: "200",//总价 reserveDay*price
+        routeId: '1',//线路ID
+      },
+      {
+        routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
+        orderNumber: '订单编号',
+        reserveDay: '20',//订购的天数
+        startSite: "起始地点",
+        endSite: '到达地点',
+        price: "10", //单价
+        startTime: "07:00",//出发时间
+        payMoney: "200",//总价 reserveDay*price
+        routeId: '1',//线路ID
+      },
+      {
+        routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
+        orderNumber: '订单编号',
+        reserveDay: '20',//订购的天数
+        startSite: "起始地点",
+        endSite: '到达地点',
+        price: "10", //单价
+        startTime: "07:00",//出发时间
+        payMoney: "200",//总价 reserveDay*price
+        routeId: '1',//线路ID
+      },
+      {
+        routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
+        orderNumber: '订单编号',
+        reserveDay: '20',//订购的天数
+        startSite: "起始地点",
+        endSite: '到达地点',
+        price: "10", //单价
+        startTime: "07:00",//出发时间
+        payMoney: "200",//总价 reserveDay*price
+        routeId: '1',//线路ID
+      },
+      {
+        routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
+        orderNumber: '订单编号',
+        reserveDay: '20',//订购的天数
+        startSite: "起始地点",
+        endSite: '到达地点',
+        price: "10", //单价
+        startTime: "07:00",//出发时间
+        payMoney: "200",//总价 reserveDay*price
+        routeId: '1',//线路ID
+      },
     ],
     showType: 0
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
-    this.getOrderList();
+    // this.getOrderList();
   },
   getOrderList() {
     let that = this;//api.OrderList

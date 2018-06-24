@@ -3,7 +3,52 @@ package com.wxbus.util;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 服务器响应的参数格式：
+ *     errno:0 成功 -1 自定义错误 401 未登录 402 参数不对 403 参数值不对 302 权限不足 501 业务不支持 502 系统内部异常
+ */
 public class ResponseUtil {
+
+    /**
+     * 系统内部异常
+     * @return
+     */
+    public static final Object serious(){
+        return fail502();
+    }
+
+    /**
+     * 业务不支持
+     * @return
+     */
+    public static final Object unsupport(){
+        return fail501();
+    }
+
+    /**
+     * 权限不足
+     * @return
+     */
+    public static  final Object refuse(){
+        return fail302();
+    }
+
+    /**
+     * 参数不对
+     * @return
+     */
+    public static final Object badArgument(){
+        return fail402();
+    }
+
+    /**
+     * 未登录
+     * @return
+     */
+    public static final Object unlogin(){
+        return fail401();
+    }
+
     public static final Object ok() {
         Map<String, Object> obj = new HashMap<String, Object>();
         obj.put("errno", 0);
@@ -45,9 +90,7 @@ public class ResponseUtil {
         return fail(401, "请登录");
     }
 
-    public static final Object unlogin(){
-        return fail401();
-    }
+
 
     public static final Object fail402() {
         return fail(402, "参数不对");
@@ -57,9 +100,7 @@ public class ResponseUtil {
         return fail(302,"权限不足");
     }
 
-    public static final Object badArgument(){
-        return fail402();
-    }
+
 
     public static final Object fail403() {
         return fail(403, "参数值不对");
@@ -73,16 +114,10 @@ public class ResponseUtil {
         return fail(501, "业务不支持");
     }
 
-    public static final Object unsupport(){
-        return fail501();
-    }
+
 
     public static final Object fail502() {
         return fail(502, "系统内部错误");
-    }
-
-    public static final Object serious(){
-        return fail502();
     }
 
 

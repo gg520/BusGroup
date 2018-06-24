@@ -1,7 +1,7 @@
 <view class="container">
     <view class="location">
         <view class="location-city" bindtap="switchCity">
-            <text>郑州</text>
+            <text>{{city}}</text>
         </view>
         <input type="text" class="location-input" value="{{value}}"  bindinput="searchInput"placeholder="{{searchSite=='start'?'您在哪儿上车':'您在哪下车'}}"placeholder-style="color:#cccccc" focus='{{true}}'/>
         <navigator  ><view class="location-cancel" bindtap='back'>取消</view></navigator>

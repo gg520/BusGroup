@@ -161,8 +161,8 @@ public class WxLoginController {
                                HttpServletResponse response){
         logger.info("微信账号密码登录");
 
-        String username= JacksonUtil.parseString(body, "username");
-        String password= JacksonUtil.parseString(body, "password");
+        String username= JacksonUtil.parseString(body, "username").trim();
+        String password= JacksonUtil.parseString(body, "password").trim();
 
         if(username==null||"".equals(username)||"".equals(password)||password==null){
             return ResponseUtil.fail(-1,"账号或密码不能为空");
@@ -214,26 +214,27 @@ public class WxLoginController {
      */
     @RequestMapping(value ="/register",method = {RequestMethod.POST})
     public Object register(@RequestBody String boby, HttpServletRequest request){
-        logger.info("司机用户注册");
+        logger.info("司机用户注册"+boby);
         Date date = new Date();
         Driver driver=new Driver();
         driver.setRegisterTime(date);
         driver.setRegisterIp(IpUtil.client(request));
-
-        driver.setDriverName(JacksonUtil.parseString(boby,"username"));
+//        boby=JacksonUtil.parseString(boby,"userInfo");
+        driver.setDriverName(JacksonUtil.parseString(boby,"name"));
         driver.setDriverPassword(MD5Util.toMD5(JacksonUtil.parseString(boby,"password").trim()));
         driver.setDriverMobile(JacksonUtil.parseString(boby,"mobile"));
-        driver.setDriverCitizenship(JacksonUtil.parseString(boby,"citizenship"));
-        driver.setDriverId(JacksonUtil.parseString(boby,"coddrivenum"));
+        driver.setDriverCitizenship(JacksonUtil.parseString(boby,"citizenship"));//身份证号码
+        driver.setDriverLicence(JacksonUtil.parseString(boby,"licence"));//驾驶证号码
         driver.setDriverGender(JacksonUtil.parseString(boby,"gender"));
+        driver.setBirthday(TimeUtil.getTimeByString(JacksonUtil.parseString(boby,"birthday"),"yyyy-MM-dd"));
 
-        driver.setFirstGetlicence(TimeUtil.getTimeByString(JacksonUtil.parseString(boby,"firstGetLicence"),"yyyy-MM-dd"));
+        driver.setFirstGetlicence(TimeUtil.getTimeByString(JacksonUtil.parseString(boby,"firstgetlicence"),"yyyy-MM-dd"));
 
-        driver.setDrivingType(JacksonUtil.parseString(boby,"driverType"));
+        driver.setDrivingType(JacksonUtil.parseString(boby,"bustype"));
 
-        driver.setDriverNationality(JacksonUtil.parseString(boby,"nationality"));
+//        driver.setDriverNationality(JacksonUtil.parseString(boby,"nationality"));
         driver.setDriverAddress(JacksonUtil.parseString(boby,"address"));
-        driver.setDriverAvater(JacksonUtil.parseString(boby,"avter"));
+        driver.setDriverAvater(JacksonUtil.parseString(boby,"avatarUrl"));//头像
 
         if(driver!=null){
             if(driver.getDriverName()==null||driver.getDriverMobile()==null ||
@@ -241,8 +242,31 @@ public class WxLoginController {
                 return ResponseUtil.fail();
 
             }
+
+            if(userService.checkDriverByDriver(driver)){
+                return ResponseUtil.fail(-1,"账号已被注册");
+            }
+
+            //查询服务器
+
+            int num=0;
+            while (true){
+                num++;
+                if(num%10==0){
+                    UserTokenManager.addDriverIdLength();
+                }
+                driver.setDriverId(UUIDUtil.getDriverId(UserTokenManager.getDriverIdLength()));//生成ID
+                if(userService.findDriverById(driver.getDriverId())==null){
+                    break;
+                }
+            }
+
+
             userService.addDriver(driver);
-            return ResponseUtil.ok();
+
+            Map map=new HashMap();
+            map.put("driverId",driver.getDriverId());
+            return ResponseUtil.ok(map);
         }
         else {
             return ResponseUtil.fail();

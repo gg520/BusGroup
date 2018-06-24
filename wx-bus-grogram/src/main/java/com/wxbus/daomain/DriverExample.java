@@ -702,6 +702,76 @@ public class DriverExample {
             return (Criteria) this;
         }
 
+        public Criteria andDriverLicenceIsNull() {
+            addCriterion("driver_licence is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceIsNotNull() {
+            addCriterion("driver_licence is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceEqualTo(String value) {
+            addCriterion("driver_licence =", value, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceNotEqualTo(String value) {
+            addCriterion("driver_licence <>", value, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceGreaterThan(String value) {
+            addCriterion("driver_licence >", value, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceGreaterThanOrEqualTo(String value) {
+            addCriterion("driver_licence >=", value, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceLessThan(String value) {
+            addCriterion("driver_licence <", value, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceLessThanOrEqualTo(String value) {
+            addCriterion("driver_licence <=", value, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceLike(String value) {
+            addCriterion("driver_licence like", value, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceNotLike(String value) {
+            addCriterion("driver_licence not like", value, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceIn(List<String> values) {
+            addCriterion("driver_licence in", values, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceNotIn(List<String> values) {
+            addCriterion("driver_licence not in", values, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceBetween(String value1, String value2) {
+            addCriterion("driver_licence between", value1, value2, "driverLicence");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverLicenceNotBetween(String value1, String value2) {
+            addCriterion("driver_licence not between", value1, value2, "driverLicence");
+            return (Criteria) this;
+        }
+
         public Criteria andDriverNationalityIsNull() {
             addCriterion("driver_nationality is null");
             return (Criteria) this;

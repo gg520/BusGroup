@@ -1,5 +1,8 @@
 var api = require("../../../config/api.js");
 var util = require("../../../utils/util.js");
+var bmap=require("../../../libs/bmap-wx.js");
+
+var city="";
 Page({
 
   /**
@@ -37,6 +40,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this;
     //判断参数
     console.log(options.value);
     var value = options.value;
@@ -59,6 +63,41 @@ Page({
     this.setData({
       history:history,
     })
+    //加载地图获取城市名称
+    
+    //获取到站点信息，然后根据站点信息获取数据的显示怎么显示
+
+    var BMap=new bmap.BMapWX({//创建
+      ak:'N0KvpqkorE9GPG467fqlThoTX6QLFjGH'
+    });
+    var fail=function(data){
+      console.log(data);
+    };
+
+    var success=function(data){
+      console.log("获取的位置信息："+data)
+      wxMarkerData = data.wxMarkerData;
+      console.log("信息：" + wxMarkerData[0].address)
+      city = data.originalData.result.addressComponent.city;
+      console.log("城市信息：" + city.substring(0,city.length-1))
+      that.setData({
+        city: city.substring(0, city.length - 1)
+      })
+    }
+    // 发起regeocoding检索请求 
+    BMap.regeocoding({
+      fail: fail,
+      success: success,
+      // iconPath: '../../img/marker_red.png',
+      // iconTapPath: '../../img/marker_red.png'
+      // location: '37,113'
+
+      //  address: '地址：' + data[i].address + '\n',
+      // desc: '描述：' + data[i].desc + '\n',
+      // business: '商圈：' + data[i].business
+
+    });
+
   },
   searchInput:function(e){
     let that = this;
@@ -114,7 +153,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      city: city.substring(0, city.length - 1)
+    })
   },
 
   /**

@@ -8,11 +8,12 @@
   </view>
 
   <view class="user-menu">
+    <!-- start passger  -->
     <view wx:if="{{isPassenger}}">
       <view class="item">
         <view class="a" bindtap="goMyInfo">
           <image class='icon local-image' src='/static/images/ic_inform.png'></image>
-          <text class="txt">个人信息</text>
+          <text class="txt">个人资料</text>
         </view>
       </view> 
       <view class="item">
@@ -28,36 +29,46 @@
         </view>
       </view>
     </view>
+    <!-- end passger  -->
+     <!-- start driver  -->
     <view wx:if="{{isDirver}}">
       <view class="item">
-        <view class="a" bindtap="goFootprint">
+        <view class="a" bindtap="goDriverFootprint">
           <image class='icon local-image' src='/static/images/ic_inform.png'></image>
-          <text class="txt">个人信息</text>
+          <text class="txt">个人资料</text>
         </view>
       </view> 
       <view class="item">
-        <view class="a" bindtap='goOreder'>
+        <view class="a" bindtap='goStask'>
           <image class='icon local-image' src='/static/images/icon_indent.png'></image>
           <text class="txt">任务记录</text>
         </view>
       </view>
       <view class="item">
-        <view class="a" bindtap=''>
+        <view class="a" bindtap='goBusInfo'>
           <image class='icon local-image' src='/static/images/ic_collect.png'></image>
           <text class="txt">车辆信息</text>
         </view>
       </view>
+       <!--<view class="item">
+      <view class="a" bindtap='goOreder'>
+        <image class='icon local-image' src='/static/images/ic_menu_sort_nor.png'></image>
+        <text class="txt">出勤服务</text>
+      </view> 
+    </view>-->
+
     </view>
+    <!-- end driver  -->
     <view class="item">
-      <view class="a" bindtap="goAddress">
+      <view class="a" bindtap="goAnnouncement">
         <image class='icon local-image' src='/static/images/ic_affiche.png'></image>
-        <text class="txt">通知公告</text>
+        <text class="txt">系统公告</text>
       </view>
     </view>
      <view class="item">
-      <view class="a">
-        <text class="icon kefu"></text>
-        <text class="txt">意见反馈</text>
+      <view class="a" bindtap='goInform'>
+        <image class='icon local-image' src='/static/images/icon_message.png'></image>
+        <text class="txt">个人消息</text>
       </view>
     </view> 
      <view class="item">
@@ -65,10 +76,9 @@
         <text class="icon help"></text>
         <text class="txt">帮助中心</text>
       </view>
-    </view> 
+    </view>
   </view>
 
   <view class="logout" bindtap="exitLogin" hidden='{{userInfo.exitLoginBtn}}'>退出登录</view>
 
-  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 数据</button> -->
 </view>

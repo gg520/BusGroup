@@ -55,41 +55,51 @@ public class WxUserController {
      */
     public Object changeUserInfo(@RequestBody String body, HttpServletRequest request){
         logger.info("修改个人信息");
-        ResponseUserInfo responseUserInfo= JacksonUtil.parseObject(body,"userInfo",ResponseUserInfo.class);
-        if(responseUserInfo==null){
-            return ResponseUtil.badArgument();
-        }
-        String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
-        if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
+
+        if("Weixin_Passenger".equals(request.getHeader(HeadersName.CONN_USER))){
+
+            ResponseUserInfo responseUserInfo= JacksonUtil.parseObject(body,"userInfo",ResponseUserInfo.class);
+            if(responseUserInfo==null){
+                return ResponseUtil.badArgument();
+            }
+            String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+            if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
+                return ResponseUtil.fail302();
+            }
+
+            Passenger passenger=new Passenger();
+            passenger.setId(JacksonUtil.parseInteger(json,"userId"));
+            passenger.setPassengerCitizenship(responseUserInfo.getCitizenship());
+            passenger.setPassengerNickname(responseUserInfo.getNickName());
+            passenger.setPassengerAvater(responseUserInfo.getAvatarUrl());
+            passenger.setPassengerAddress(responseUserInfo.getAddress());
+            if(responseUserInfo.getGender()==0){
+                passenger.setPassengerGender("女");
+            }else{
+                passenger.setPassengerGender("男");
+            }
+            passenger.setPassengerMobile(responseUserInfo.getMobile());
+            passenger.setPassengerName(responseUserInfo.getName());
+    //        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+
+    //            Date date=simpleDateFormat.parse(responseUserInfo.getBirthday());
+            passenger.setPassengerBirthday(TimeUtil.getTimeByString(responseUserInfo.getBirthday(),"yyyy-MM-dd"));
+
+            Integer flag=userService.updatePassenger(passenger);
+            if(flag==0){
+                return ResponseUtil.fail502();
+            }
+            Map map=new HashMap();
+            map.put("userInfo", responseUserInfo);
+
+            return ResponseUtil.ok(map);
+        }else if("Weixin_Passenger".equals(request.getHeader(HeadersName.CONN_USER))){
+
+            //司机修改个人信息
+
             return ResponseUtil.fail302();
         }
-
-        Passenger passenger=new Passenger();
-        passenger.setId(JacksonUtil.parseInteger(json,"userId"));
-        passenger.setPassengerCitizenship(responseUserInfo.getCitizenship());
-        passenger.setPassengerNickname(responseUserInfo.getNickName());
-        passenger.setPassengerAvater(responseUserInfo.getAvatarUrl());
-        passenger.setPassengerAddress(responseUserInfo.getAddress());
-        if(responseUserInfo.getGender()==0){
-            passenger.setPassengerGender("女");
-        }else{
-            passenger.setPassengerGender("男");
-        }
-        passenger.setPassengerMobile(responseUserInfo.getMobile());
-        passenger.setPassengerName(responseUserInfo.getName());
-//        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-
-//            Date date=simpleDateFormat.parse(responseUserInfo.getBirthday());
-        passenger.setPassengerBirthday(TimeUtil.getTimeByString(responseUserInfo.getBirthday(),"yyyy-MM-dd"));
-
-        Integer flag=userService.updatePassenger(passenger);
-        if(flag==0){
-            return ResponseUtil.fail502();
-        }
-        Map map=new HashMap();
-        map.put("userInfo", responseUserInfo);
-
-        return ResponseUtil.ok(map);
+        return ResponseUtil.fail302();
     }
     @RequestMapping(value = "changePassword",method = RequestMethod.POST)
     /**

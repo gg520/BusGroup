@@ -47,4 +47,13 @@ public interface UserService {
     Integer updatePassenger(Passenger passenger);
 
     int addDriver(Driver driver);
+
+    Driver findDriverById(String id);
+
+    /**
+     * 验证没有是否有重复的手机，身份证ID ， 驾驶证号码
+     * @param driver
+     * @return
+     */
+    boolean checkDriverByDriver(Driver driver);
 }

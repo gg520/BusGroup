@@ -19,7 +19,15 @@
     "pages/ucenter/myCollect/myCollect",
     "pages/search/search/search",
     "pages/search/searchStation/searchStation",
-    "pages/help/help"
+    "pages/ucenter/driverInfo/changeInfo/changeInfo",
+    "pages/ucenter/driverInfo/driverInfo/dirverInfo",
+    "pages/route/driverRoute/driverRoute",
+    "pages/ucenter/driverTask/driverTask",
+    "pages/ucenter/busInfo/busInfo",
+    "pages/help/help/help",
+    "pages/help/feedback/feedback",
+    "pages/ucenter/notify/notifyIndex/notifyIndex",
+    "pages/proclamation/proclamation"
   ],
   "window": {
     "backgroundTextStyle": "dark",

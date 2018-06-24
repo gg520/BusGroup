@@ -15,6 +15,8 @@ public class UserTokenManager {
     private static Map<String, UserToken> tokenMap = new HashMap<>();
     private static Map<Integer, UserToken> idMap = new HashMap<>();
 
+    private static Integer driverIdLength=6;//司机端的ID长度
+
     //日志
     private static final Log logger= LogFactory.getLog(UserTokenManager.class.getName());
 
@@ -83,5 +85,13 @@ public class UserTokenManager {
 
 //        System.out.println("生成的token："+token);
         return userToken;
+    }
+
+    public static Integer getDriverIdLength() {
+        return driverIdLength;
+    }
+
+    public static void addDriverIdLength(){
+        driverIdLength++;
     }
 }

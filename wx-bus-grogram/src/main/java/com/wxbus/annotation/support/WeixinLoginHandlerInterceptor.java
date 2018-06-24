@@ -38,9 +38,6 @@ public class WeixinLoginHandlerInterceptor implements HandlerInterceptor{
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
 
-
-//        logger.info("拦截执行");
-
 //        String platform= request.getHeader(CONNECT_PLATFORM);//获取链接的平台信息
         String platform= request.getHeader(HeadersName.CONN_USER);//获取链接的平台信息
         if(platform==null||platform.length()<=0)//不是微信平台不做拦截
@@ -55,7 +52,7 @@ public class WeixinLoginHandlerInterceptor implements HandlerInterceptor{
                 response.setStatus(200);//未登录
                 response.setContentType("text/html;charset=utf-8");
                 PrintWriter out=response.getWriter();
-                out.println(JsonUtil.stringify(ResponseUtil.fail401()));
+                out.println(JsonUtil.stringify(ResponseUtil.unlogin()));
                 out.close();
                 logger.info("成功拦截");
                 return false;

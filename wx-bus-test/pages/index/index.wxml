@@ -41,7 +41,7 @@
     </view>
    
 
-    <view class='item' bindtap='Routeinfo' wx:if="{{isDirver}}">
+    <view class='item' bindtap='DriverRouteinfo' wx:if="{{isDirver}}">
       <image src='/static/images/ic_circuit_next.png' background-size="cover"></image>
       <text>当前线路</text>
     </view>

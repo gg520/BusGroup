@@ -198,5 +198,10 @@ Page({
   },
   bindGetUserInfo: function (e) {
     console.log(e.detail.userInfo)
+  },
+  DriverRouteinfo:function(){
+    wx.navigateTo({
+      url: '/pages/route/driverRoute/driverRoute',
+    })
   }
 })

@@ -229,7 +229,28 @@ Page({
   },
   goHelp:function(){
     wx.navigateTo({
-      url: '/pages/help/help',
+      url: '/pages/help/help/help',
+    })
+  },
+  goDriverFootprint:function(){
+    wx.navigateTo({
+      url: '/pages/ucenter/driverInfo/driverInfo/dirverInfo',
+    })
+  },
+  goStask:function(){
+    wx.navigateTo({
+      url: '/pages/ucenter/driverTask/driverTask',
+    })
+  },
+  goBusInfo:function(){
+    wx.navigateTo({
+      url: '/pages/ucenter/busInfo/busInfo',
+    })
+  },
+  goInform:function(){
+    wx.navigateTo({
+      url: '/pages/ucenter/notify/notifyIndex/notifyIndex',
     })
   }
+
 })

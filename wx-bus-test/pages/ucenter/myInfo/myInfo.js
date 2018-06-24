@@ -175,10 +175,6 @@ Page({
     //获取信息
     
     //将信息发送到后台
-   
-    
-    
-    
     if (this.data.userInfo.nickName.length < 0) {
       util.showErrorToast("昵称不能为空");
       return false;

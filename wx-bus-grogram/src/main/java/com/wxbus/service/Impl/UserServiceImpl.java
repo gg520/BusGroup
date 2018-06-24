@@ -195,4 +195,36 @@ public class UserServiceImpl implements UserService {
     public int addDriver(Driver driver) {
         return driverMapper.insertSelective(driver);
     }
+
+    @Override
+    public Driver findDriverById(String id) {
+
+        DriverExample example=new DriverExample();
+        example.or().andDriverIdEqualTo(id);
+        List<Driver> driverList= driverMapper.selectByExample(example);
+        if(driverList!=null&&driverList.size()>0){
+            return driverList.get(0);
+        }
+        return null;
+    }
+    @Override
+    public boolean checkDriverByDriver(Driver driver){
+        DriverExample example=new DriverExample();
+        example.createCriteria();
+        if(driver!=null){
+            if(driver.getDriverMobile()!=null&&!"".equals(driver.getDriverMobile())){
+                example.or().andDriverMobileEqualTo(driver.getDriverMobile());
+            }
+            if(driver.getDriverCitizenship()!=null&&!"".equals(driver.getDriverCitizenship())){
+                example.or().andDriverCitizenshipEqualTo(driver.getDriverCitizenship());
+            }
+            if(driver.getDriverLicence()!=null&&!"".equals(driver.getDriverLicence())){
+                example.or().andDriverLicenceEqualTo(driver.getDriverLicence());
+            }
+        }
+        if(driverMapper.selectByExample(example)!=null){
+            return true;
+        }
+        return false;
+    }
 }
