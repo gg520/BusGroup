@@ -32,11 +32,11 @@
   </view>
   <view class="ac-type-item">
     <label>性别</label>
-    <picker mode="selector" range ="{{gender}}" value="{{genderindex}}" bindchange='genderChange'>
+    <picker class="{cc}}" mode="selector" range ="{{gender}}" value="{{genderindex}}" bindchange='genderChange'>
       
       {{gender[genderindex]}}
     </picker>
-
+    <view class="important">*</view>
   </view>
   
   <view class="ac-type-item">
@@ -44,10 +44,12 @@
     <picker class="{cc}}" mode="date" value="{{userInfo.birthday}}" start="1949-01-01" end="2099-12-31" bindchange="birthdayinput">
       {{userInfo.birthday.length>0? userInfo.birthday:'未设置出生日期'}}
     </picker>
+    <view class="important">*</view>
   </view>
   <view class="ac-type-item">
     <label>家庭地址</label>
     <input type="text" placeholder="家庭详细地址" bindinput='Addressinput' placeholder-style="font-size: 28rpx" value='{{userInfo.address}}' />
+    <view class="important">*</view>
   </view>
 </view>
 <view class="person-info">
@@ -55,7 +57,7 @@
   
    <view class="ac-type-item">
     <label>准驾车型</label>
-    <picker mode="selector" range ="{{bustype}}" value="{{typeindex}}" bindchange='bustypeChange'>
+    <picker class="{cc}}" mode="selector" range ="{{bustype}}" value="{{typeindex}}" bindchange='bustypeChange'>
       {{bustype[typeindex]}}
     </picker>
     <view class="important">*</view>
@@ -86,7 +88,8 @@
   <view class="info-item">
     <label>身份证号码</label>
     <input type="text" value="{{userInfo.citizenship}}" bindinput='changeCitizenship' placeholder='您的身份证号码'/>
-    <view class="important">*</view>
+    <view class="important">
+    <icon wx:if="{{userInfo.citizenship.length > 0}}" type="{{citizenshipIcon?'success':'warn'}}" size='10'></icon>*</view>
   </view>
 </view>
 <button type="default"  bindtap="register">注册</button>

@@ -9,19 +9,19 @@ Page({
    */
   data: {
     userInfo:{
-      name: '陈二狗', 
-      mobile: '13592573328', 
+      name: '', 
+      mobile: '', 
       gender: '男', 
       birthday: '', 
-      address: '456456456', 
-      licence: '456456', 
+      address: '', 
+      licence: '', 
       firstgetlicence: '', 
-      password: '123456', 
-      citizenship: '333333333333333333', 
+      password: '', 
+      citizenship: '', 
       bustype: 'A1', 
       avatarUrl: 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png', //头像
-      // frontFilePaths: '/static/images/icon_add.png',//身份证正面
-      // contraryFilePaths: '/static/images/icon_add.png',//反面
+      frontFilePaths: '/static/images/icon_add.png',//身份证正面
+      contraryFilePaths: '/static/images/icon_add.png',//反面
       },
     bustype: ['A1', 'A2','A3'],
     typeindex:0,
@@ -29,7 +29,7 @@ Page({
     gender:['男','女'],
     mobileIcon: '',//手机号码是否正确
     brithday: '2018-04-10',
-    password: '123456',
+    password: '',
     imageflag:[],
     showModal: false,//模态框显示
     showcheck: false,//旧密码验证
@@ -171,9 +171,18 @@ Page({
   mobileinput:function(e){
     let userinfo = this.data.userInfo;
     userinfo.mobile = e.detail.value;
-    this.setData({
-      userInfo: userinfo
-    })
+    if (this.testPhone(e.detail.value)){
+      this.setData({
+        userInfo: userinfo,
+        mobileIcon:true
+      })
+    }else{
+      this.setData({
+        userInfo: userinfo,
+        mobileIcon: false
+      })
+    }
+    
   },
   //获取出生日期
   birthdayinput:function(e)
@@ -223,9 +232,18 @@ Page({
     let userinfo = this.data.userInfo;
     userinfo.citizenship = e.detail.value;
     userinfo.licence=e.detail.value;
-    this.setData({
-      userInfo: userinfo
-    })
+    if (this.checkcitizenship(e.detail.value)){
+      this.setData({
+        userInfo: userinfo,
+        citizenshipIcon:true,
+      })
+    }else{
+      this.setData({
+        userInfo: userinfo,
+        citizenshipIcon: false,
+      })
+    }
+    
   },
   //头像
   upAvater: function () {
@@ -391,12 +409,12 @@ Page({
     }
     else if (!this.checkcitizenship(this.data.userInfo.citizenship))
     {
-      util.showErrorToast("手机号格式不正确")
+      util.showErrorToast("证件格式不正确")
     }
-    // else if (!this.checkimagenum(this.data.imageflag.length))
-    // {
-    //   util.showErrorToast("请补全图像信息")
-    // }
+    else if (!this.checkimagenum(this.data.imageflag.length))
+    {
+      util.showErrorToast("请补全图像信息")
+    }
     else{
     //注册信息提交到后台
   //  console.log(this.data.startsite)

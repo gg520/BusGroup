@@ -186,8 +186,10 @@ public class UserServiceImpl implements UserService {
      */
     public Integer updatePassenger(Passenger passenger) {
         log.info("更新用户信息");
+        PassengerExample example=new PassengerExample();
+        example.or().andPassengerMobileEqualTo(passenger.getPassengerMobile());
 
-        return passengerMapper.updateByPrimaryKeySelective(passenger);
+        return passengerMapper.updateByExampleSelective(passenger,example);
 
     }
 

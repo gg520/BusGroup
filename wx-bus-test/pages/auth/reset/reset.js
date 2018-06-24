@@ -1,16 +1,22 @@
 var api = require('../../../config/api.js');
 var app = getApp();
+var send;
 Page({
   data: {
     mobile: '',
     code: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    second:'',
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     // 页面渲染完成
-
+    this.setData({
+      second: 0,
+      alreadySend: false,
+      send: false
+    })
   },
   onReady: function () {
 
@@ -28,11 +34,46 @@ Page({
 
   },
   sendCode: function () {
-    wx.showModal({
-      title: '注意',
-      content: '由于目前不支持手机短信发送，因此验证码任意值都可以',
-      showCancel: false
-    });
+    if (this.data.send){
+      return false;
+    }
+    let that=this;
+    //验证手机号码
+    if (this.data.mobile.length == 0) {
+      wx.showModal({
+        title: '错误信息',
+        content: '手机号不能为空',
+        showCancel: false
+      });
+      return false;
+    }
+    if (!(/^1[34578]\d{9}$/.test(this.data.mobile))) {
+      wx.showModal({
+        title: '错误信息',
+        content: '手机号输入错误',
+        showCancel: false
+      });
+      return false;
+    }
+    wx.request({
+      url: 'https://www.didu86.com/Clothes-manager-web/codenum',
+      data: {
+        tel: this.data.mobile,
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        var result = res.data.code;
+        console.log(result)
+        
+        that.setData({
+          result: result
+        })
+        that.timer();
+      }
+    })
+    
   },
   startReset: function () {
     var that = this;
@@ -45,7 +86,22 @@ Page({
       });
       return false;
     }
-
+    if(this.data.code!=this.data.result){
+      wx.showModal({
+        title: '错误信息',
+        content: '验证码输入错误',
+        showCancel: false
+      });
+      return false;
+    }
+    if (!(/^1[34578]\d{9}$/.test(this.data.mobile))) {
+      wx.showModal({
+        title: '错误信息',
+        content: '手机号输入错误',
+        showCancel: false
+      });
+      return false;
+    }
     if (this.data.password.length < 3) {
       wx.showModal({
         title: '错误信息',
@@ -63,7 +119,7 @@ Page({
       });
       return false;
     }
-
+    
     wx.request({
       url: api.AuthReset,
       data: {
@@ -136,5 +192,42 @@ Page({
         });
         break;
     }
-  }
+  },
+  ceshi(){
+    wx.request({
+      url: 'https://www.didu86.com/Clothes-manager-web/codenum',
+      data: {
+        tel: '13592573327',
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        var result = res.data.code;
+        console.log(result)
+
+      }
+    })
+  },
+  timer: function () {
+
+    var second = 60;
+    var interval = setInterval(function () {
+      second--;
+      this.setData({
+        second: second,
+        send:true,
+      });
+
+      if (second < 0) {
+        clearInterval(interval);
+
+        this.setData({
+          second: second,
+          send: false,
+        });
+      }
+    }.bind(this), 1000);
+  },
+
 })
