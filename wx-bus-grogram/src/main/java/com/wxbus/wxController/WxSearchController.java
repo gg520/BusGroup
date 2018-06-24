@@ -56,7 +56,7 @@ public class WxSearchController {
 
         }
         else{
-            return ResponseUtil.fail();
+            return ResponseUtil.fail403();
         }
 
     }

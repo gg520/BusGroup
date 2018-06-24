@@ -7,11 +7,12 @@ const app = getApp()
 
 Page({
   data: {
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),//判断小程序的API，回调，参数，组件等是否在当前版本可用。
     banner: [
       { url:'/static/images/ic_mu_index1.png'},
       { url: '/static/images/ic_mu_index2.jpg'},
-      // { url: '/static/images/ic_mu_index3.jpg' }
+      { url: '/static/images/ic_mu_index5.jpg' },
+      { url: '/static/images/ic_mu_index4.jpg' }
     ],
     //设置显示信息
     //乘客

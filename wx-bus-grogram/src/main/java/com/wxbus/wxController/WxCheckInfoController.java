@@ -108,7 +108,7 @@ public class WxCheckInfoController {
             return ResponseUtil.ok();
         }
         if(body==null||"".equals(body)){
-            return  ResponseUtil.fail(500,"传入密码不能为空");
+            return  ResponseUtil.fail403();
 
         }
         else{

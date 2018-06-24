@@ -51,7 +51,7 @@ public class WxOrderController {
         Integer showType= JacksonUtil.parseInteger(body,"showType");
         String json=UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
         if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
-            return ResponseUtil.fail401();
+            return ResponseUtil.fail302();
         }
 
         Integer passengerId=JacksonUtil.parseInteger(json,"userId");

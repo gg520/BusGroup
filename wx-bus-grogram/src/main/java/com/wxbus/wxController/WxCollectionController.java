@@ -60,7 +60,7 @@ public class WxCollectionController {
         String jsonID=UserTokenManager.getUserId(token);
         System.out.println(JacksonUtil.parseString(jsonID,"user"));
         if(!"乘客".equals(JacksonUtil.parseString(jsonID,"user").trim())){
-            return ResponseUtil.fail401();
+            return ResponseUtil.fail302();
         }
         Integer passengerId=JacksonUtil.parseInteger(jsonID,"userId");
         if(passengerId==null||"".equals(passengerId)){
@@ -131,13 +131,13 @@ public class WxCollectionController {
      */
     @RequestMapping(value = "/addCollect",method = RequestMethod.POST)
     public Object addCollect(@RequestBody String body,HttpServletRequest request){
-        logger.info("添加个人信息");
+        logger.info("添加收藏信息");
 
 
         String token=request.getHeader(HeadersName.TOKEN);
         String jsonID=UserTokenManager.getUserId(token);
-        if(JacksonUtil.parseString(jsonID,"user")!="乘客"){
-            return ResponseUtil.fail401();
+        if(!"乘客".equals(JacksonUtil.parseString(jsonID,"user"))){
+            return ResponseUtil.fail302();
         }
         Integer passengerId=JacksonUtil.parseInteger(jsonID,"userId");
         if(passengerId==null||"".equals(passengerId)){

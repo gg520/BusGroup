@@ -61,7 +61,7 @@ public class WxUserController {
         }
         String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
         if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
-            return ResponseUtil.fail401();
+            return ResponseUtil.fail302();
         }
 
         Passenger passenger=new Passenger();
@@ -84,7 +84,7 @@ public class WxUserController {
 
         Integer flag=userService.updatePassenger(passenger);
         if(flag==0){
-            return ResponseUtil.fail(500,"更新失败");
+            return ResponseUtil.fail502();
         }
         Map map=new HashMap();
         map.put("userInfo", responseUserInfo);
@@ -104,7 +104,7 @@ public class WxUserController {
         logger.info("更改密码");
         String json=UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
         if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
-            return ResponseUtil.fail401();
+            return ResponseUtil.fail302();
         }
 
         Integer passengerId=JacksonUtil.parseInteger(json,"userId");
@@ -114,7 +114,7 @@ public class WxUserController {
         oldPassword=MD5Util.toMD5(oldPassword);
         newPassword=MD5Util.toMD5(newPassword);
         if(!passenger.getPassengerPassword().equals(oldPassword)){
-            return ResponseUtil.fail(500,"原密码不匹配");
+            return ResponseUtil.fail502();
         }
         passenger.setPassengerPassword(newPassword);
         userService.updatePassenger(passenger);

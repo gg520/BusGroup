@@ -57,7 +57,9 @@ public class WxRouteController {
         if(str==null||"".equals(str)){
             return ResponseUtil.fail401();
         }
-
+        if(!"乘客".equals(JacksonUtil.parseString(str,"user"))){
+            return ResponseUtil.fail302();
+        }
         Integer id=JacksonUtil.parseInteger(str,"userId");
         Route route =new Route();
         route.setStartSite(JacksonUtil.parseString(body,"startsite"));
@@ -94,7 +96,7 @@ public class WxRouteController {
         Integer routeId =JacksonUtil.parseInteger(body,"routeId");
         logger.info("获取线路的详细信息:"+routeId);
         if(routeId==null||"".equals(routeId)){
-            return ResponseUtil.fail();
+            return ResponseUtil.fail403();
 
         }
         else{
@@ -188,7 +190,7 @@ public class WxRouteController {
         Integer num=JacksonUtil.parseInteger(body,"num");
         Integer routeStatus=3;
         if(startNum==null||num==null){
-            return ResponseUtil.fail();
+            return ResponseUtil.fail403();
         }
         Integer time=JacksonUtil.parseInteger(body,"time");
         List<Route> routeList = routeService.findRouteByStatus(routeStatus,startNum,num,time);
@@ -226,7 +228,7 @@ public class WxRouteController {
         Integer time=JacksonUtil.parseInteger(body,"time");
         Integer routeStatus=5;
         if(startNum==null||num==null){
-            return ResponseUtil.fail();
+            return ResponseUtil.fail403();
         }
         List<Route> routeList = routeService.findRouteByStatus(routeStatus,startNum,num,time);
         List<NewRoute> newRouteList=new ArrayList<NewRoute>();
@@ -255,7 +257,7 @@ public class WxRouteController {
         Integer num=JacksonUtil.parseInteger(body,"num");
         Integer time=JacksonUtil.parseInteger(body,"time");
         if(startNum==null||num==null){
-            return ResponseUtil.fail();
+            return ResponseUtil.fail403();
         }
         List<Route> routeList = routeService.findAllRoute(startNum,num,time);
         List<NewRoute> newRouteList=new ArrayList<NewRoute>();

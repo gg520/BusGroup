@@ -61,12 +61,12 @@ public class WxQRcodeController {
 
                 }else{
                     logger.info("实名验证结果：未认证");
-                    response.setStatus(402);//未登录
+                    response.setStatus(200);//未登录
                     response.setContentType("text/html;charset=utf-8");
                     PrintWriter out=null;
                     try{
                         out=response.getWriter();
-                        out.println(ResponseUtil.fail(-1,"未实名验证"));
+                        out.println(ResponseUtil.fail(302,"未实名验证"));
                     }catch (Exception e){
                         e.printStackTrace();
                     }finally {
