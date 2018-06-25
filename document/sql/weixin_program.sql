@@ -12,6 +12,10 @@ File Encoding         : 65001
 
 Date: 2018-06-25 17:01:48
 */
+-- ---------------------------
+-- 创建数据库
+-- ---------------------------
+-- CREATE DATABASE weixin_program CHARACTER SET utf8;
 
 SET FOREIGN_KEY_CHECKS=0;
 
@@ -20,15 +24,25 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
-  `admin_id` varchar(255) NOT NULL,
-  `admin_password` varchar(255) NOT NULL,
-  `admin_owner` varchar(255) NOT NULL,
-  `admin_power` int(255) NOT NULL,
-  PRIMARY KEY (`admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `admin_id` varchar(255) NOT NULL,-- 管理员ID、唯一标识符、同时是登录ID
+  `admin_password` varchar(255) NOT NULL,-- 登录密码，经过加密后的数据
+  `admin_owner` varchar(255) NOT NULL,-- 该管理员所属公司
+  `admin_power` int(255) NOT NULL,/* 管理员权限，
+                                     1 公司车辆管理员---> 管理公司车辆信息管理“增删改查”；
+                                     2 公司人事管理员---> 管理公司的司机状态、审核绩效“司机的账号信息的增删改查、司机跑的路线的查看”；
+                                     3 公司管理员 ---> 管理加盟公司审核信息；----> 待定功能
+                                     4 平台人事管理员 ---> 管理司机的注册信息审核，“查看乘客的操作记录”；
+                                     5 平台路线管理员 ---> 管理路线申请资料、设定站定、票价、招募人数；
+                                     6 平台车辆管理员 ---> 给招募成功的线路绑定车辆和班次
+                                     7 紧急管理员 ---> 已开路线没有司机领取发车任务，有该管理员进行指定司机
+                                     8 管理员审核员 ---> 管理管理员，其他管理员的功能他都能做
+                                    */
+  PRIMARY KEY (`admin_id`)-- ID主键
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;-- 数据库表的编码方式
 
 -- ----------------------------
 -- Records of admin
+-- 插入管理员信息
 -- ----------------------------
 INSERT INTO `admin` VALUES ('admin', 'e10adc3949ba59abbe56e057f20f883e', '阳光公司', '8');
 
@@ -37,19 +51,19 @@ INSERT INTO `admin` VALUES ('admin', 'e10adc3949ba59abbe56e057f20f883e', '阳光
 -- ----------------------------
 DROP TABLE IF EXISTS `bus`;
 CREATE TABLE `bus` (
-  `bus_num` int(11) NOT NULL AUTO_INCREMENT,
-  `bus_id` varchar(255) NOT NULL,
-  `bus_type` varchar(255) NOT NULL,
-  `bus_owner` varchar(255) NOT NULL,
-  `characters` varchar(255) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `VIN` varchar(255) NOT NULL,
-  `engine_num` varchar(255) NOT NULL,
-  `registration_date` date NOT NULL,
-  `oppen_date` date NOT NULL,
-  `seating` int(255) NOT NULL,
-  `bus_status` int(255) NOT NULL DEFAULT '0' COMMENT '0空闲，1已用',
-  `bus_mark` int(255) NOT NULL DEFAULT '0' COMMENT '0可用，1不可用',
+  `bus_num` int(11) NOT NULL AUTO_INCREMENT,-- bus ID
+  `bus_id` varchar(255) NOT NULL,-- bus 车牌
+  `bus_type` varchar(255) NOT NULL,-- bus 类型 A1，A2，A3...
+  `bus_owner` varchar(255) NOT NULL,-- 所属运营商
+  `characters` varchar(255) NOT NULL,-- 使用性质
+  `model` varchar(255) NOT NULL,-- 品牌型号
+  `VIN` varchar(255) NOT NULL,-- 识别代码
+  `engine_num` varchar(255) NOT NULL,-- 发动机编码
+  `registration_date` date NOT NULL,-- 注册日期
+  `oppen_date` date NOT NULL,-- 行车证发证日期
+  `seating` int(255) NOT NULL,-- 座位数
+  `bus_status` int(255) NOT NULL DEFAULT '0' COMMENT '0空闲，1已用',-- 车子状态
+  `bus_mark` int(255) NOT NULL DEFAULT '0' COMMENT '0可用，1不可用',-- 车子车身状态
   PRIMARY KEY (`bus_num`),
   UNIQUE KEY `engine_num` (`engine_num`),
   UNIQUE KEY `bus_id` (`bus_id`),
@@ -61,6 +75,7 @@ CREATE TABLE `bus` (
 
 -- ----------------------------
 -- Records of bus
+-- 车辆添加内容，内容随机，不权威，仅供测试使用
 -- ----------------------------
 INSERT INTO `bus` VALUES ('3132', '豫A34579', 'A1', '回来了', '公司运营', '及', '1', '111', '2018-05-17', '2018-05-24', '20', '1', '0');
 INSERT INTO `bus` VALUES ('3133', 'adsa', 'A1', 'das', '私营', 'dsa', 'dsa', 'dsa', '2018-06-06', '2018-06-09', '20', '2', '0');
@@ -69,30 +84,31 @@ INSERT INTO `bus` VALUES ('3135', 'das', 'A1', 'dsa', '公司运营', 'dsa', 'dg
 
 -- ----------------------------
 -- Table structure for driver
+-- 创建司机表
 -- ----------------------------
 DROP TABLE IF EXISTS `driver`;
 CREATE TABLE `driver` (
-  `driver_num` int(11) NOT NULL AUTO_INCREMENT,
-  `driver_id` varchar(255) NOT NULL COMMENT '登录账号',
-  `driver_name` varchar(255) DEFAULT NULL,
-  `driver_gender` varchar(255) NOT NULL,
-  `driver_password` varchar(255) NOT NULL,
-  `driver_avater` varchar(255) DEFAULT NULL COMMENT '头像',
-  `driver_citizenship` varchar(255) NOT NULL,
-  `driver_licence` varchar(255) DEFAULT NULL COMMENT '驾驶证号码',
-  `driver_nationality` varchar(255) DEFAULT NULL,
-  `driver_address` varchar(255) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
-  `first_getlicence` date DEFAULT NULL,
-  `driver_mobile` varchar(255) DEFAULT NULL,
-  `register_ip` varchar(255) NOT NULL,
-  `register_time` datetime NOT NULL,
-  `last_login_time` datetime DEFAULT NULL,
-  `last_login_ip` varchar(255) DEFAULT NULL,
-  `driving_type` varchar(255) DEFAULT NULL,
-  `integral` int(255) DEFAULT '100' COMMENT '信誉积分',
-  `driver_mark` int(255) NOT NULL DEFAULT '0' COMMENT '0 私人司机 1 公司司机',
-  `driver_status` int(255) NOT NULL DEFAULT '1' COMMENT '0 可用、1 审核中、2 停用、3 删除',
+  `driver_num` int(11) NOT NULL AUTO_INCREMENT,-- 司机唯一标识量，主键
+  `driver_id` varchar(255) NOT NULL COMMENT '登录账号',-- 司机登录账号，注册申请的注册号，仅供登录
+  `driver_name` varchar(255) DEFAULT NULL,-- 司机真实姓名
+  `driver_gender` varchar(255) NOT NULL,-- 司机性别
+  `driver_password` varchar(255) NOT NULL,-- 司机登录密码
+  `driver_avater` varchar(255) DEFAULT NULL COMMENT '头像',-- 司机头像
+  `driver_citizenship` varchar(255) NOT NULL,-- 司机身份证
+  `driver_licence` varchar(255) DEFAULT NULL COMMENT '驾驶证号码',-- 驾驶证号码
+  `driver_nationality` varchar(255) DEFAULT NULL,-- 司机所属国籍
+  `driver_address` varchar(255) DEFAULT NULL,-- 司机详细地址
+  `birthday` date DEFAULT NULL,-- 司机出生年月
+  `first_getlicence` date DEFAULT NULL,-- 司机驾驶证第一次领证日期
+  `driver_mobile` varchar(255) DEFAULT NULL,-- 司机手机号码
+  `register_ip` varchar(255) NOT NULL,-- 司机注册ip
+  `register_time` datetime NOT NULL,--司机注册时间
+  `last_login_time` datetime DEFAULT NULL,-- 司机最后一次登录时间
+  `last_login_ip` varchar(255) DEFAULT NULL,-- 最后一次登录ip
+  `driving_type` varchar(255) DEFAULT NULL,-- 准驾车型 A1，A2，A3
+  `integral` int(255) DEFAULT '100' COMMENT '信誉积分',-- 信誉积分
+  `driver_mark` int(255) NOT NULL DEFAULT '0' COMMENT '0 私人司机 1 公司司机',-- 司机性质
+  `driver_status` int(255) NOT NULL DEFAULT '1' COMMENT '0 可用、1 审核中、2 停用、3 删除',-- 司机状态，权限等级
   PRIMARY KEY (`driver_num`),
   UNIQUE KEY `driver_id` (`driver_id`),
   UNIQUE KEY `driver_citizenship` (`driver_citizenship`),
@@ -104,6 +120,7 @@ CREATE TABLE `driver` (
 
 -- ----------------------------
 -- Records of driver
+-- 添加司机信息 随机内容，不可靠数据
 -- ----------------------------
 INSERT INTO `driver` VALUES ('11111', '123456', '陈二狗', '女', 'e10adc3949ba59abbe56e057f20f883e', 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png', '4108831995', '333333337333333332', '中国', '中原工学院', '2018-05-24', '2018-05-16', '13592573332', '192.168.1.1', '2018-05-01 08:55:23', '2018-05-16 08:55:27', '111', '到底', '100', '0', '0');
 INSERT INTO `driver` VALUES ('22222', '234567', '接口', '女', 'e10adc3949ba59abbe56e057f20f883e', 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png', '4242242', '333333333333333330', '中国', '中原工学院', '2018-05-02', '2018-05-07', '13592573333', '192.168.1.1', '2018-05-09 08:58:20', '2018-05-24 08:58:23', '222', '来了', '200', '0', '0');
@@ -113,6 +130,7 @@ INSERT INTO `driver` VALUES ('33336', '383493', '陈二狗', '男', 'e10adc3949b
 
 -- ----------------------------
 -- Table structure for driver_bus_route
+-- 创建司机、车辆和线路关联表
 -- ----------------------------
 DROP TABLE IF EXISTS `driver_bus_route`;
 CREATE TABLE `driver_bus_route` (
