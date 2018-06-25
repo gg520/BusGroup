@@ -1,12 +1,14 @@
-# BusGroup
+ BusGroup
 ===
+
 >一个微信小程序项目(后台spring boot + mybatis)
 
- 
+
 项目介绍：
 ==
 
-项目主要流程:
+
+### 项目主要流程:
 
 >1、乘客发布需求;
 
@@ -23,10 +25,13 @@
 >7、乘客到点上车
 
 
-项目背景：
+### 项目背景：
+
 >该项目是由大三考研党们聚集在一起，参与老师发布的实训题目启动的；
 
-结构目录：
+
+### 结构目录：
+
 * docment : 项目开发文档信息
 
 * wx-bus-grogram ： 项目后台代码
@@ -72,6 +77,13 @@ V 1.0.0
 V 1.+.+
 * 第一个版本完成后，会在考研复习之余进行维护和新功能的开发，考研后如果条件允许也会进行后期的开发
 
+
+项目代码
+====
+
+* [码云](https://gitee.com/gg914/BusGroup)
+
+
 警告
 ==
 
@@ -85,7 +97,7 @@ V 1.+.+
 致谢
 ===
 本项目主要基于或参考以下项目：
->[litemall](https://github.com/linlinjava/litemall)
+* [litemall](https://github.com/linlinjava/litemall)
 一个基于微信小程序前台，后台根据springboot+mybatis（Vue）
 
 交流
