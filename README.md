@@ -1,7 +1,7 @@
  BusGroup
 ===
 
->一个微信小程序项目(后台spring boot + mybatis)
+>一个微信小程序项目(后台spring boot + mybatis)+thymeleaf(web端前台模板引擎)
 
 
 项目介绍：
@@ -98,7 +98,7 @@ V 1.+.+
 ===
 本项目主要基于或参考以下项目：
 * [litemall](https://github.com/linlinjava/litemall)
-一个基于微信小程序前台，后台根据springboot+mybatis（Vue）
+Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端
 
 交流
 ===
