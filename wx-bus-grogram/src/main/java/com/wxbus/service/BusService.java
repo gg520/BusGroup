@@ -32,4 +32,13 @@ public interface BusService {
      *@describe 添加汽车信息
      */
     void addBus(Bus bus);
+    /**
+     *@type interface
+     *@parameter  [bus]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 更新汽车信息
+     */
+    void updatebus(Bus bus);
 }

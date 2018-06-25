@@ -1,0 +1,20 @@
+<view class="container">
+    
+   
+    <scroll-view  scroll-with-animation="{{true}}" >
+        <view class="destination" wx:for="{{address}}" data-title="{{item.title}}" data-date="{{item.date}}" data-id='{{item.id}}' data-content='{{item.content}}' bindtap="goContent" wx:key="{{item.id}}">
+               <view class="destination-content">
+                
+                   <view class="content">
+                        <text class="content-name">{{item.title}}</text>
+                    <text class="content-detail">{{item.date}}</text>
+                   </view>
+                   <view class="content-image">
+                   <image src="/static/images/icon-go-black.png"></image>
+                </view>
+               </view> 
+        </view>
+          <!--  -->
+    </scroll-view>
+
+</view>

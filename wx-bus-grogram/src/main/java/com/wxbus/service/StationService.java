@@ -50,6 +50,15 @@ public interface StationService {
      *@describe 添加站点
      */
     void addStation(Station station);
+    /**
+     *@type interface
+     *@parameter  [station]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 站点更新
+     */
+    void updateStation(Station station);
 
 
 }

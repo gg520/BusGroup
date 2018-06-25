@@ -187,6 +187,7 @@ public class RouteServiceImpl implements RouteService {
      *@describe 更新线路
      */
     public void updateRoute(Route route) {
+        log.info("更新线路");
         routeMapper.updateByPrimaryKeySelective(route);
         
     }

@@ -20,7 +20,7 @@ public class WebInterceptorConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        registry.addInterceptor(new WebLoginHanderIntercept()).addPathPatterns("/web/**").excludePathPatterns("/web/login/**","/web/view/**","/web/index");
+        registry.addInterceptor(new WebLoginHanderIntercept()).addPathPatterns("/web/**").excludePathPatterns("/web/operate/**","/web/add/**","/web/search/**","/web/login/**","/web/view/**","/web/index");
 
     }
 }

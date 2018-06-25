@@ -75,4 +75,18 @@ public class BusServiceImpl implements BusService{
         busMapper.insertSelective(bus);
 
     }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [bus]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 更新汽车信息
+     */
+    public void updatebus(Bus bus) {
+        log.info("更新汽车信息");
+        busMapper.updateByPrimaryKeySelective(bus);
+    }
 }

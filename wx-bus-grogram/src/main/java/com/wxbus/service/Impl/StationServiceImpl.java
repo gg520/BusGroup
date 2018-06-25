@@ -95,7 +95,19 @@ public class StationServiceImpl implements StationService {
     public void addStation(Station station) {
         log.info("添加站点信息");
         stationMapper.insertSelective(station);
-
     }
 
+    @Override
+    /**
+     *@type method
+     *@parameter  [station]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 更新站点
+     */
+    public void updateStation(Station station) {
+        log.info("更新站点");
+        stationMapper.updateByPrimaryKey(station);
+    }
 }

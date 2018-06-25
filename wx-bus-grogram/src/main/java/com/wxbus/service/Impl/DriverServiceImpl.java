@@ -64,4 +64,33 @@ public class DriverServiceImpl implements DriverService{
 
         return driverMapper.selectByExample(driverExample);
     }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [driver]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 添加司机
+     */
+    public void addDriver(Driver driver) {
+        log.info("添加司机");
+        driverMapper.insertSelective(driver);
+
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [driver]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/22
+     *@describe 更新司机
+     */
+    public void updateDrivate(Driver driver) {
+        log.info("更新司机");
+        driverMapper.updateByPrimaryKeySelective(driver);
+    }
 }
