@@ -4,7 +4,7 @@
 var WxApiRoot = "http://localhost:8888/weixin/";//测试本地后台数据
 
 module.exports = {
-  Test:WxApiRoot+"test/test2",//测试数据，只用于开发前台测试接口连接问题
+  // Test:WxApiRoot+"test/test2",//测试数据，只用于开发前台测试接口连接问题
 
   AuthLoginByWeixin: WxApiRoot + 'auth/loginByWeixin',//微信登录
   AuthReset: WxApiRoot + 'auth/reset', //重置密码
@@ -13,6 +13,7 @@ module.exports = {
 
   ChangUserInfo:WxApiRoot+"user/changeUserInfo",//修改个人信息，完善个人信息
   ChangePassword:WxApiRoot+"user/changePassword",//修改密码
+  ChangeAvater: WxApiRoot +"file/submitPicture",//修改头像
 
   Payment: WxApiRoot +'pay/prepay',//支付
 
@@ -37,10 +38,11 @@ module.exports = {
 
   CheckPassword:WxApiRoot+'check/password',//验证密码是否正确
   CheckInfo:WxApiRoot+"check/info",//验证是否完善信息
+  CheckPDB:WxApiRoot+'check/checkPDB',//验证乘客和该线路的关系，
   GetQRcode:WxApiRoot+"qrcode/getQRcode",//獲取二維碼，即是二維碼的下載，post
   
   HelpList:WxApiRoot+"help/helpList",//随机获取十个帮助信息
 
   //司机端接口
-  FeedBack: WxApiRoot + 'feedBack/feedBackInfo',//反馈信息
+  FeedBack: WxApiRoot + 'help/feedBackInfo',//反馈信息
 }

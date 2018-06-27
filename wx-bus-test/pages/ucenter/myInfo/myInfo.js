@@ -334,7 +334,26 @@ Page({
         that.setData({
           userInfo:userInfo,
         });
+        console.log(res.tempFilePaths)
         res.tempFiles;//文件上传
+        wx.uploadFile({
+          url: api.ChangeAvater, 
+          filePath: res.tempFilePaths[0],
+          name: 'passengeravater',
+          formData: {
+            'user': 'test'
+          },
+          header: {
+            "Content-Type": "application/json",
+            "X-Bus-Token": wx.getStorageSync("token"),
+            "Connect_Platform": "Weixin_Passenger"
+          },
+          success: function (res) {
+            var data = res.data
+            //do something
+          }
+        })
+
       },
     })
   },

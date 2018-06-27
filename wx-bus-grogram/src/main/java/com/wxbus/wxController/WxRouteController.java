@@ -68,6 +68,8 @@ public class WxRouteController {
         route.setCreatTime(new Date());
         route.setStartTime(JacksonUtil.parseString(body,"starttime"));
         route.setEndTime(JacksonUtil.parseString(body,"endtime"));
+        route.setStartCoord(JacksonUtil.parseString(body,"startCoor"));
+        route.setEndCoord(JacksonUtil.parseString(body,"endCoor"));
         route.setRouteStatus(0);
         route.setStartRecruit(JacksonUtil.parseString(body,"periodStart"));
         route.setEndsRecruit(JacksonUtil.parseString(body,"periodEnd"));

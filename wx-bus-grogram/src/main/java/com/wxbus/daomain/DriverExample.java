@@ -282,76 +282,6 @@ public class DriverExample {
             return (Criteria) this;
         }
 
-        public Criteria andDriverCitizenshipIsNull() {
-            addCriterion("driver_citizenship is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipIsNotNull() {
-            addCriterion("driver_citizenship is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipEqualTo(String value) {
-            addCriterion("driver_citizenship =", value, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipNotEqualTo(String value) {
-            addCriterion("driver_citizenship <>", value, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipGreaterThan(String value) {
-            addCriterion("driver_citizenship >", value, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipGreaterThanOrEqualTo(String value) {
-            addCriterion("driver_citizenship >=", value, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipLessThan(String value) {
-            addCriterion("driver_citizenship <", value, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipLessThanOrEqualTo(String value) {
-            addCriterion("driver_citizenship <=", value, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipLike(String value) {
-            addCriterion("driver_citizenship like", value, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipNotLike(String value) {
-            addCriterion("driver_citizenship not like", value, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipIn(List<String> values) {
-            addCriterion("driver_citizenship in", values, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipNotIn(List<String> values) {
-            addCriterion("driver_citizenship not in", values, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipBetween(String value1, String value2) {
-            addCriterion("driver_citizenship between", value1, value2, "driverCitizenship");
-            return (Criteria) this;
-        }
-
-        public Criteria andDriverCitizenshipNotBetween(String value1, String value2) {
-            addCriterion("driver_citizenship not between", value1, value2, "driverCitizenship");
-            return (Criteria) this;
-        }
-
         public Criteria andDriverIdIsNull() {
             addCriterion("driver_id is null");
             return (Criteria) this;
@@ -699,6 +629,76 @@ public class DriverExample {
 
         public Criteria andDriverAvaterNotBetween(String value1, String value2) {
             addCriterion("driver_avater not between", value1, value2, "driverAvater");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipIsNull() {
+            addCriterion("driver_citizenship is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipIsNotNull() {
+            addCriterion("driver_citizenship is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipEqualTo(String value) {
+            addCriterion("driver_citizenship =", value, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipNotEqualTo(String value) {
+            addCriterion("driver_citizenship <>", value, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipGreaterThan(String value) {
+            addCriterion("driver_citizenship >", value, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipGreaterThanOrEqualTo(String value) {
+            addCriterion("driver_citizenship >=", value, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipLessThan(String value) {
+            addCriterion("driver_citizenship <", value, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipLessThanOrEqualTo(String value) {
+            addCriterion("driver_citizenship <=", value, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipLike(String value) {
+            addCriterion("driver_citizenship like", value, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipNotLike(String value) {
+            addCriterion("driver_citizenship not like", value, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipIn(List<String> values) {
+            addCriterion("driver_citizenship in", values, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipNotIn(List<String> values) {
+            addCriterion("driver_citizenship not in", values, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipBetween(String value1, String value2) {
+            addCriterion("driver_citizenship between", value1, value2, "driverCitizenship");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverCitizenshipNotBetween(String value1, String value2) {
+            addCriterion("driver_citizenship not between", value1, value2, "driverCitizenship");
             return (Criteria) this;
         }
 

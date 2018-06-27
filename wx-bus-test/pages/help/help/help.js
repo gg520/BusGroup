@@ -7,12 +7,12 @@ Page({
    */
   data: {
     helps: [
-      { id: 0, name: "什么是巴士团", describe: "江西省南昌市青山湖区双港东大街169号1" },
-      { id: 1, name: "怎么团", describe: "江西省南昌市青山湖区双港东大街169号2" },
-      { id: 2, name: "怎么团成功", describe: "江西省南昌市青山湖区双港东大街169号3" },
-      { id: 3, name: "什么是招募", describe: "江西省南昌市青山湖区双港东大街169号4" },
-      { id: 4, name: "怎么参与招募", describe: "江西省南昌市青山湖区双港东大街169号5" },
-      { id: 5, name: "怎么招募成功", describe: "江西省南昌市青山湖区双港东大街169号6" },
+      // { id: 0, name: "什么是巴士团", describe: "江西省南昌市青山湖区双港东大街169号1" },
+      // { id: 1, name: "怎么团", describe: "江西省南昌市青山湖区双港东大街169号2" },
+      // { id: 2, name: "怎么团成功", describe: "江西省南昌市青山湖区双港东大街169号3" },
+      // { id: 3, name: "什么是招募", describe: "江西省南昌市青山湖区双港东大街169号4" },
+      // { id: 4, name: "怎么参与招募", describe: "江西省南昌市青山湖区双港东大街169号5" },
+      // { id: 5, name: "怎么招募成功", describe: "江西省南昌市青山湖区双港东大街169号6" },
     ],
     showModal: false,
     showTittle: '',
@@ -24,10 +24,10 @@ Page({
 
     let helps = this.data.helps;
     for (let i = 0; i < helps.length; i++) {
-      if (e.currentTarget.dataset.id == helps[i].id) {
+      if (e.currentTarget.dataset.id == helps[i].helpId) {
         this.setData({
-          showTittle: helps[i].name,
-          showText: helps[i].describe,
+          showTittle: helps[i].helpName,
+          showText: helps[i].helpMessage,
           showModal: true,
         })
       }
@@ -78,10 +78,11 @@ Page({
     this.myRequest();
   },
   myRequest: function () {
+    let that=this;
     wx.showLoading({
       title: '加载中...',
     })
-    util.request(api.HelpList, "POST").then(function (res) {
+    util.request(api.HelpList,{}, "POST").then(function (res) {
       if (res.errno === 0) {
         that.setData({
           helps: res.data,

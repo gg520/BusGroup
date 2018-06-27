@@ -13,13 +13,13 @@
     <view class="addressList">
     <scroll-view  scroll-with-animation="{{true}}" >
 
-        <view class="destination" wx:for="{{helps}}" data-name="{{item.name}}" data-id='{{item.id}}'  bindtap="godest" >
+        <view class="destination" wx:for="{{helps}}" data-name="{{item.helpName}}" data-id='{{item.helpId}}'  bindtap="godest" >
                <view class="destination-content">
                    <view class="content-image">
                    <image src="/static/images/icon_quan.png"></image>
                 </view>
                   <view class="content">
-                      <text class="content-name">{{item.name}}</text>
+                      <text class="content-name">{{item.helpName}}</text>
                   </view>
                </view> 
         </view>

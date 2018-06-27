@@ -1,7 +1,8 @@
 //app.js
 var util=require("./utils/util.js")
 var api=require("./config/api.js")
-var user=require("./services/user.js")
+var user=require("./services/user.js");
+var bmap=require("./libs/bmap-wx.js");
 App({
   onLaunch: function () {
     let that = this;
@@ -36,6 +37,9 @@ App({
        
       }
     })
+
+    
+
     //获取位置
     // user.getUserInfo();
     wx.getUserInfo({
@@ -67,4 +71,5 @@ App({
     endSite: '',//到达站点
     startSite: '我的位置',//起始位置
   },
+  
 })

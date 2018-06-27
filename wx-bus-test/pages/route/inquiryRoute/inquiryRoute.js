@@ -2,6 +2,9 @@
 
 var api=require("../../../config/api.js");
 var util=require("../../../utils/util.js");
+
+var bmap=require("../../../libs/bmap-wx.js");
+
 var routeInquiryPeriod=7;
 var app=getApp();
 
@@ -11,6 +14,8 @@ Page({
    */
   data: {
     startsite: '',//出发地点   中原工学院南区
+    startCoor:'',
+    endCoor:'',
     endsite: '',//结束地点  郑州火车站
     period: '',//招募周期  8
     starttimename: "出发时间",//
@@ -31,6 +36,11 @@ Page({
     
     if (this.data.startsite.length <= 0||this.data.endsite <= 0){
       util.showErrorToast("地点不能为空");
+      return false;
+    }
+
+    if(this.data.startCoor.length<=0 || this.data.endCoor.length<=0 ){
+      util.showErrorToast("地点信息错误");
       return false;
     }
     
@@ -54,7 +64,8 @@ Page({
         endsite: this.data.endsite,
         starttime: this.data.starttime,
         endtime: this.data.endtime,
-
+        startCoor:this.data.startCoor,
+        endCoor:this.data.endCoor,
         periodStart: this.data.periodStart,
         periodEnd: this.data.periodEnd,
         massage: this.data.massage,
@@ -73,17 +84,95 @@ Page({
 
   bindStartsiteInput:function(e){
     // console.log("地点1")
+    
+    if (e.detail.value.length==0){
+      this.setData({
+        startsite: e.detail.value,
+        sugStartData:'',
+      })
+      return false;
+    }
     this.setData({
-      startsite: e.detail.value
+      startsite: e.detail.value,
+    })
+    let that = this;
+
+    //将地图搜索地址获取
+    var BMap = new bmap.BMapWX({
+      ak: 'N0KvpqkorE9GPG467fqlThoTX6QLFjGH'
+    });
+    var fail = function (data) {
+      console.log(data)
+    };
+    var success = function (data) {
+      console.log(data.result)
+      that.setData({
+        sugStartData: data.result
+      });
+    }
+    BMap.suggestion({
+      query: e.detail.value,
+      region: this.data.city,
+      city_limit: true,
+      fail: fail,
+      success: success
+    });
+  },
+  goStartSite:function(e){
+    //获取坐标，获取数据
+    console.log(e.currentTarget.dataset.name)
+    // console.log( app.getCityName())
+    this.setData({
+      startsite: e.currentTarget.dataset.name,
+      startCoor: e.currentTarget.dataset.lat + "," + e.currentTarget.dataset.lng,
+      sugStartData:'',
     })
   },
+
   bindEndsiteInput:function(e){
     // console.log("地点2")
+   
+    if (e.detail.value.length == 0) {
+      this.setData({
+        endsite: e.detail.value,
+        sugEndData: '',
+      })
+      return false;
+    }
     this.setData({
-      endsite: e.detail.value
+      endsite: e.detail.value,
+    })
+    let that = this;
+
+    //将地图搜索地址获取
+    var BMap = new bmap.BMapWX({
+      ak: 'N0KvpqkorE9GPG467fqlThoTX6QLFjGH'
+    });
+    var fail = function (data) {
+      console.log(data)
+    };
+    var success = function (data) {
+      console.log(data.result)
+      that.setData({
+        sugEndData: data.result
+      });
+    }
+    BMap.suggestion({
+      query: e.detail.value,
+      region: this.data.city,
+      city_limit: true,
+      fail: fail,
+      success: success
+    });
+  },
+  goEndSite:function(e){
+    console.log(e.currentTarget.dataset.name)
+    this.setData({
+      endsite: e.currentTarget.dataset.name,
+      endCoor: e.currentTarget.dataset.lat + "," + e.currentTarget.dataset.lng,
+      sugEndData: '',
     })
   },
- 
   bindPeriodStartChange:function(e){
     //设置开始时间
     //根据开始时间设置默认时间
@@ -115,7 +204,8 @@ Page({
     switch (e.currentTarget.id) {
       case 'clear-startsite':
         this.setData({
-          startsite: ''
+          startsite: '',
+          sugStartData:'',
         });
         break;
       case 'clear-endsite':
@@ -150,22 +240,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取后台的招募 周期，即是招募时间
-    wx.showLoading({
-      title: '加载中...',
+    let that=this;
+    var BMap = new bmap.BMapWX({//创建
+      ak: 'N0KvpqkorE9GPG467fqlThoTX6QLFjGH'
     });
-    //将信息发送到后台
-    console.log(this.data.startsite)
-    // util.request(
-    //   api.RouteInquiryPeriod,
-    //   {}, 'POST').then(function (res) {
-    //     console.log(res);
-    //     if (res.errno === 0) {
-    //       //获取招募周期
-    //       routeInquiryPeriod=res.data;
-    //     }
-    // })
-    wx.hideLoading();
+    var fail = function (data) {
+      console.log(data);
+    };
+    var city='';
+    var success = function (data) {
+      
+      wxMarkerData = data.wxMarkerData;
+      
+      city = data.originalData.result.addressComponent.city;
+      console.log("城市信息：" + city.substring(0, city.length - 1))
+      
+      that.setData({
+        city: city.substring(0, city.length - 1)
+      })
+    }
+    // 发起regeocoding检索请求 
+    BMap.regeocoding({
+      fail: fail,
+      success: success,
+     
+
+    });
+    
+    
+  
     //初始化线路招募周期
     this.initDefault();
   },

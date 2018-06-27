@@ -57,12 +57,10 @@ public class TimeUtil {
     }
 
     public static void main(String[] args) {
-//        System.out.println(getTimeByString("2018-06-30","yyyy-MM-dd"));
-//        System.out.println(getTimeByString("2018-06-30","yyyy-MM-dd").getTime());
-//        System.out.println(getTimeByString("2018-07-31","yyyy-MM-dd"));
-//        System.out.println(getTimeByString("2018-07-31","yyyy-MM-dd").getTime());
 
-        System.out.println(String.valueOf(getDifDay(getTimeByString("2018-06-30","yyyy-MM-dd"),getTimeByString("2018-07-31","yyyy-MM-dd"))));
+        //测试文件：./路径的数据4
+
+
     }
 
 

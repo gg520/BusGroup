@@ -251,6 +251,10 @@ Page({
     wx.navigateTo({
       url: '/pages/ucenter/notify/notifyIndex/notifyIndex',
     })
+  },
+  goAnnouncement:function(){
+    wx.navigateTo({
+      url: '/pages/system/messageList/messageList',
+    })
   }
-
 })

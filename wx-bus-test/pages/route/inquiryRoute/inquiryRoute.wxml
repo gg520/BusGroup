@@ -7,13 +7,19 @@
     		<input class="site" value="{{startsite}}" bindinput="bindStartsiteInput" placeholder="出发地点" auto-focus/>
     		<image wx:if="{{ startsite.length > 0 }}" id="clear-startsite" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
     	</view>
+      <!-- 设置推荐的地址  -->
+      <view wx:for='{{sugStartData}}' >
+        <text data-lat='{{item.location.lat}}' data-lng='{{item.location.lng}}' data-name='{{item.name}}' bindtap='goStartSite'>{{item.name}}</text>
+      </view>
 
 <!--到达地点  -->
     	<view class="form-item">
     		<input class="site" value="{{endsite}}" bindinput="bindEndsiteInput" placeholder="到达地点"/>
     		<image class="clear" id="clear-endsite" wx:if="{{ endsite.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
     	</view>
-
+      <view wx:for='{{sugEndData}}' >
+        <text data-lat='{{item.location.lat}}' data-lng='{{item.location.lng}}' data-name='{{item.name}}' bindtap='goEndSite'>{{item.name}}</text>
+      </view>
       <!-- <view class="form-item">
     		<input class="site" value="{{period}}" bindinput="bindPeriodInput" placeholder="招募周期"/>
     		<image class="clear" id="clear-period" wx:if="{{ period.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
