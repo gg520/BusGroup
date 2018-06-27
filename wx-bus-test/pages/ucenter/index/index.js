@@ -18,6 +18,7 @@ Page({
     isPassenger:false,
     //司机
     isDirver:false,
+    new:false,
   },
  
 
@@ -25,6 +26,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -52,17 +55,19 @@ Page({
         this.setData({
           userInfo: userInfo,
           exitLoginBtn: false,
-          isDirver: true
+          isDirver: true,
+          new: util.getNotify()
         });
       }
       if (user === 'Weixin_Passenger') {
         this.setData({
           userInfo: userInfo,
           exitLoginBtn: false,
-          isPassenger: true
+          isPassenger: true,
+          new: util.getNotify()
         });
       }
-
+      
 
     } else {//没有登录
       console.log("在界面验证登录为未登录");

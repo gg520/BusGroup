@@ -2,7 +2,7 @@
     
    
     <scroll-view  scroll-with-animation="{{true}}" >
-        <view class="destination" wx:for="{{address}}" data-title="{{item.title}}" data-date="{{item.date}}" data-id='{{item.id}}' data-content='{{item.content}}' bindtap="goContent" wx:key="{{item.id}}">
+        <view class="destination" wx:for="{{versions}}" data-title="{{item.title}}" data-date="{{item.date}}" data-id='{{item.id}}' data-content='{{item.content}}' bindtap="goContent" wx:key="{{item.id}}">
                <view class="destination-content">
                 
                    <view class="content">

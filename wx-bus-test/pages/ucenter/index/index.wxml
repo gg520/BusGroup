@@ -11,9 +11,12 @@
     <!-- start passger  -->
     <view wx:if="{{isPassenger}}">
       <view class="item">
+       
         <view class="a" bindtap="goMyInfo">
+         
           <image class='icon local-image' src='/static/images/ic_inform.png'></image>
           <text class="txt">个人资料</text>
+          
         </view>
       </view> 
       <view class="item">
@@ -67,13 +70,16 @@
     </view>
      <view class="item">
       <view class="a" bindtap='goInform'>
-        <image class='icon local-image' src='/static/images/icon_message.png'></image>
+         <image class='icon local-image' wx:if='{{new}}' src='/static/images/icon_new_message.png'></image> 
+          <image class='icon local-image' wx:else src='/static/images/icon_message.png'></image>  
+        
         <text class="txt">个人消息</text>
+        
       </view>
     </view> 
      <view class="item">
       <view class="a" bindtap='goHelp'>
-        <text class="icon help"></text>
+        <image class="icon local-image" src='/static/images/icon_help.png'></image>
         <text class="txt">帮助中心</text>
       </view>
     </view>

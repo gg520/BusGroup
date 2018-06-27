@@ -1,11 +1,12 @@
-// pages/system/messageList/messageList.js
+
+var api=require("../../../config/api.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    address: [
+    versions: [
       { id: 0, title: "巴士团0.8.0", date:'05月30日', content: "测试更改" },
       { id: 1, title: "巴士团0.7.0", date: '05月30日', content: "测试更改" },
       { id: 2, title: "巴士团0.6.0", date: '05月30日', content: "测试更改" },
@@ -36,7 +37,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    wx.request({
+      url: api.SystemMessage,
+      method:"GET",
+      header: {
+        "Content-Type": "application/json",
+        "Connect_Platform": "Weixin_Passenger"
+      }, 
+      success: function (res) {
+        if(res.errno===0){
+          this.setData({
+            versions:res.data
+          })
+        }else{
+
+        }
+      },
+      fail:function(err){
+        console.log(err)
+      }
+    })
   },
 
   /**

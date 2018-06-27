@@ -34,7 +34,7 @@ public class WxInterceptorConfig extends WebMvcConfigurerAdapter {
          * 其他的链接必须登录才能获取
          */
         registry.addInterceptor(new WeixinLoginHandlerInterceptor()).addPathPatterns("/weixin/**").excludePathPatterns("/weixin/auth/*","/weixin/view/**","/weixin/route/**",
-                "/weixin/search/**");
+                "/weixin/search/**","/weixin/help/**");
         registry.addInterceptor(new WeixinLoginHandlerInterceptor()).addPathPatterns("/weixin/route/routeInfo");
     }
 

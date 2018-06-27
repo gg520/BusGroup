@@ -67,8 +67,9 @@ Page({
         scanType: 'QR_CODE',
         success: (res) => {
           console.log(res.result);
+          var result = res.result;
           //result是一个网址，向网站发送请求，验证自己是否可以坐车
-          util.request(res.result, { userInfo: wx.getStorageSync('userInfo') }, 'POST').then(res => {
+          util.request(api.CheckPDB, { result }, 'POST').then(res => {
             if (res.errno === 0) {
               //返回的消息正确说明可以上车，启动一个音频文件提示
               wx.playBackgroundAudio({
