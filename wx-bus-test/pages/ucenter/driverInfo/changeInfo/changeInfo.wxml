@@ -6,44 +6,20 @@
   <view class="form-content">
     <view class="form-item">
       <label>联系电话</label>
-       <input type="text" class='engine-num' bindinput='phoneinput' maxlength="11" value='{{phone}}' placeholder="输入新手机号" />
+       <input type="text" class='engine-num' value='{{phone}}' bindinput='phoneinput' maxlength="11"  placeholder="输入新手机号" />
     </view>
     <view class='form-item'>
     <label>验证码</label>
     <view class='code'>
     <input  value="{{code}}"class='engine-num-code' bindinput="bindCodeInput" />
-<view class="code-btn" bindtap="sendCode" type='default'>获取</view>
+<view class="code-btn" bindtap="sendCode" type='default'>{{second<=0?'获取验证码':second+'s'}}</view>
     </view>
     </view>
-      <view class="form-item">
-      <label>当前住址</label>
-      <view class="engine-num">
-    <text bindtap='open'>{{province}}-{{city}}-{{county}}</text>
-  </view>
-      </view>
       <view class="form-item">
       <label>详细住址</label>
-      <input  class='engine-num' value='{{address}}' bindinput='addressinput'  placeholder="输入详细地址" />
+      <input  class='address' bindinput='addressinput' value='{{address}}'  placeholder="输入详细地址" />
       </view>
       </view> 
       <button class='button' bindtap='changeinfo' >提交更改</button>
 
-
-       <view wx:if="{{condition}}" class="citypicker">
-  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
-    <view class="cityheader">
-      <view bindtap="open1" class="city-cancel">取消</view>
-      <view bindtap="open" class="city-true">确定</view>
-    </view>
-    <picker-view-column>
-      <view wx:for="{{provinces}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{citys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
-    </picker-view-column>
-  </picker-view>
-</view>
 </view>

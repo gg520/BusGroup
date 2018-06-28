@@ -45,6 +45,9 @@ module.exports = {
 
   SystemMessage:WxApiRoot+"system/message",//获取系统公告
 
+  GetNotify: WxApiRoot + 'user/getNotify',//获取通知信息
+  ReadNotify:WxApiRoot+'user/readNotify',//已读设置
+
   //司机端接口
   FeedBack: WxApiRoot + 'help/feedBackInfo',//反馈信息
 
@@ -52,11 +55,12 @@ module.exports = {
   FeedBack: WxApiRoot + 'feedBack/feedBackInfo',//反馈信息
   FindBusInfo: WxApiRoot + 'Bus-info/ FindBusInfo',//查询车辆信息
   Bindcar: WxApiRoot + 'Bindcar/Bindcar',//扫码绑定车辆
-  CheckTicket: WxApiRoot + 'CheckTicket/CheckTicket',//扫码验证乘客是否可以乘车
-  GetNotify: WxApiRoot + 'search/GetNotify',//获取通知信息
+  CheckTicket: WxApiRoot + 'check/checkTicket',//扫码验证乘客是否可以乘车
+ 
 
-  FindDriverInfo: WxApiRoot + 'DriverInfo/ FindDriverInfo',//查询司机信息信息
-  ModifyDriverInfo: WxApiRoot + 'DriverInfo/ ModifyDriverInfo',//修改司机信息
+  FindDriverInfo: WxApiRoot + 'user/findDriverInfo',//查询司机信息信息
+  ModifyDriverInfo: WxApiRoot + 'user/modifyDriverInfo',//修改司机信息
+
   FindTask: WxApiRoot + 'DriverInfo/FindTask',//查询司机所有任务记录
   FindTaskByTime: WxApiRoot + 'DriverInfo/FindTaskByTime',//按时间查询司机某一天的任务记录
   FindCurrentRoad: WxApiRoot + 'DriverInfo/FindCurrentRoad',//查询司机当前任务

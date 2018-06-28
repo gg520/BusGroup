@@ -34,27 +34,40 @@ Page({
    */
   onLoad: function () {
     //从后台读取消息数据（历史消息与最新消息）
-    this.setData({
-      currentnews: [{ mark: 0, title: '扣分提醒', content: '您好，您于2018-08-09-15：30未出行所领任务，扣除信誉积分0.1分！', sendtime: '05-23-07:30', sender: '张三' }],
-      pastnews: [{ mark: 0, title: '过年好', content: '中国国际巴士团携全体员工祝各位老司机新年快乐', sendtime: '05-23-07:30', sender: '张三' },]
-    });
+    let that = this 
+    // this.setData({
+    //   currentnews: [{ mark: 0, title: '扣分提醒', content: '您好，您于2018-08-09-15：30未出行所领任务，扣除信誉积分0.1分！', sendtime: '05-23-07:30', sender: '张三' }],
+    //   pastnews: [{ mark: 0, title: '过年好', content: '中国国际巴士团携全体员工祝各位老司机新年快乐', sendtime: '05-23-07:30', sender: '张三' },]
+    // });
 
     //请求后台数据，将已读消息与未读消息存放在news数组中
     util.request(api.GetNotify,
       {
       }, "POST").then(function (res) {
         if (res.errno == 0) {
-          this.setData({
-            news: res.data.News
+          const currentnew=[];
+          const pastnew =[];
+          var length=0;
+          for(let i=0; i<res.data.length;i++){
+            if (res.data[i].mark==0){
+              currentnew.push(res.data[i]);
+              length++;
+            }else{
+              pastnew.push(res.data[i]);
+            }
+          }
+          that.setData({
+            news: res.data,
+            length,
+            pastnews: pastnew,
+            currentnews: currentnew
           })
-
-
         }
         else {
           wx.showModal({
             showCancel: false,
             title: '错误反馈',
-            content: '修改失败:' + res.errmsg,
+            content:  res.errmsg,
             success: function (res) {
               if (res.confirm) {
                 wx.redirectTo({
@@ -66,27 +79,7 @@ Page({
         }
       })
 
-    const currentnew = this.data.currentnews;
-    const pastnew = this.data.pastnews;
-    //从news中取出未读消息放在currentnews中，取出已读消息放在pastnews中
-    for (let i = 0; i < this.data.news.length; i++) {
-      if (this.data.news[i].mark == 0) {
-        currentnew.push(this.data.news[i])
-      }
-      else {
-        pastnew.push(this.data.news[i])
-      }
-    }
-
-    for (let i = 0; i < pastnew.length; i++) {
-      pastnew[i].mark = i;
-      currentnew[i].mark = i
-    }
-    this.setData({
-      currentnews: currentnew,
-      pastnews: pastnew,
-      length: currentnew.length
-    })
+    
 
 
 
@@ -153,24 +146,17 @@ Page({
   },
   //最新消息详情页处理
   havareadcurrentnews: function (e) {
-    const historynew = this.data.pastnews;
-    const currentnew = this.data.currentnews;
-    historynew.push(this.data.currentnews[e.currentTarget.dataset.id])
-    currentnew.splice(e.currentTarget.dataset.id, 1)
-    this.setData({
-      pastnews: historynew,
-      option: !this.data.option
-    })
+    
     wx.redirectTo({
       url:
-      '/pages/Driver-notify/currentnewsdetail/detail?title=' + this.data.pastnews[this.data.pastnews.length - 1].title + '&contend=' + this.data.pastnews[this.data.pastnews.length - 1].content + '&time=' + this.data.pastnews[this.data.pastnews.length - 1].sendtime + '&publisher=' + this.data.pastnews[this.data.pastnews.length - 1].sender
+      '../notifyDetail/notifyDetail?title=' + e.currentTarget.dataset.title + '&contend=' + e.currentTarget.dataset.content + '&time=' + e.currentTarget.dataset.date + '&id=' +e.currentTarget.dataset.id
     })
   },
   //历史消息详情页处理
   havareadpastnews: function (e) {
-    console.log(e.currentTarget.dataset.num)
-    wx.navigateTo({
-      url: '/pages/Driver-notify/pastnewsdetail/detail?title=' + this.data.pastnews[e.currentTarget.dataset.num].title + '&contend=' + this.data.pastnews[e.currentTarget.dataset.num].content + '&time=' + this.data.pastnews[e.currentTarget.dataset.num].sendtime + '&publisher=' + this.data.pastnews[e.currentTarget.dataset.num].sender
-    })
+  //   console.log(e.currentTarget.dataset.num)
+  //   wx.navigateTo({
+  //     url: '/pages/Driver-notify/pastnewsdetail/detail?title=' + this.data.pastnews[e.currentTarget.dataset.num].title + '&contend=' + this.data.pastnews[e.currentTarget.dataset.num].content + '&time=' + this.data.pastnews[e.currentTarget.dataset.num].sendtime + '&publisher=' + this.data.pastnews[e.currentTarget.dataset.num].sender
+  //   })
   }
 })

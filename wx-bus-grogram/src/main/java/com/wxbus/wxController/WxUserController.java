@@ -3,14 +3,14 @@ package com.wxbus.wxController;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.sun.net.httpserver.HttpsServer;
+import com.wxbus.daomain.Driver;
+import com.wxbus.daomain.Message;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.pojo.FullUserInfo;
 import com.wxbus.pojo.ResponseUserInfo;
 import com.wxbus.pojo.UserInfo;
 import com.wxbus.pojo.UserToken;
-import com.wxbus.service.HeadersName;
-import com.wxbus.service.UserService;
-import com.wxbus.service.UserTokenManager;
+import com.wxbus.service.*;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.MD5Util;
 import com.wxbus.util.ResponseUtil;
@@ -19,10 +19,7 @@ import me.chanjar.weixin.common.exception.WxErrorException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +27,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,6 +42,13 @@ public class WxUserController {
     private final Log logger= LogFactory.getLog(WxUserController.class.getName());
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MessageService messageService;
+
+    @Autowired
+    private DriverService driverService;
+
     @RequestMapping(value = "changeUserInfo",method = RequestMethod.POST)
     /**
      *@type method
@@ -130,5 +135,88 @@ public class WxUserController {
         userService.updatePassenger(passenger);
         return ResponseUtil.ok("更改成功");
 
+    }
+
+    @PostMapping(value = "getNotify")
+    /**
+     *@type method
+     *@parameter  [request]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/27
+     *@describe 获取司机的消息
+     */
+    public Object getDriverNotify(HttpServletRequest request){
+        String json=UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if("乘客".equals(JacksonUtil.parseString(json,"user"))){
+            Integer passengerId=JacksonUtil.parseInteger(json,"userId");
+            List<Message> messageList=messageService.findMessageByIdReceivetype(passengerId,"乘客");
+            if(messageList.size()>0){
+                return ResponseUtil.ok(messageList);
+            }
+            return ResponseUtil.fail(500,"未查到相关信息");
+        }
+        Integer driverNum=JacksonUtil.parseInteger(json,"userId");
+        List<Message> messageList=messageService.findMessageByIdReceivetype(driverNum,"司机");
+        if(messageList.size()>0){
+            return ResponseUtil.ok(messageList);
+        }
+        return ResponseUtil.fail(500,"未查到相关信息");
+    }
+
+    @PostMapping(value = "findDriverInfo")
+    /**
+     *@type method
+     *@parameter  [request]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/26
+     *@describe 查找司机详细信息
+     */
+    public Object findDriverInfo(HttpServletRequest request){
+        logger.info("查找司机详细信息");
+        String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if("乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail401();
+        }
+        Integer driverNum=JacksonUtil.parseInteger(json,"userId");
+        Driver driver=driverService.findDriverByDriverNum(driverNum);
+        if(driver==null){
+            return ResponseUtil.fail(500,"不存在此信息");
+        }
+        Map<Object,Object> map=new HashMap<>();
+        map.put("driverinfo",driver);
+        return ResponseUtil.ok(map);
+    }
+
+
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/26
+     *@describe 修改司机个人信息
+     */
+    @PostMapping(value = "modifyDriverInfo")
+    public Object modifyDriverInfo(@RequestBody String body, HttpServletRequest request){
+        logger.info("修改司机个人信息");
+        String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if("乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail401();
+        }
+        Integer driverNum=JacksonUtil.parseInteger(json,"userId");
+        Driver driver=driverService.findDriverByDriverNum(driverNum);
+        if(driver==null){
+            return ResponseUtil.fail(500,"未找到相关司机信息");
+        }
+//        String avaterUrl=JacksonUtil.parseString(body,"avaterurl");
+        String phone=JacksonUtil.parseString(body,"phone");
+        String address=JacksonUtil.parseString(body,"address");
+//        driver.setDriverAvater(avaterUrl);
+        driver.setDriverMobile(phone);
+        driver.setDriverAddress(address);
+        driverService.updateDrivate(driver);
+        return ResponseUtil.ok();
     }
 }

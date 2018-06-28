@@ -10,14 +10,15 @@
 }
 .avatar{
   margin-top: 25px;
-  height:300rpx;
+  height:200rpx;
   width: 200rpx;
   border-radius:50%;
 }
 .text{
-  height:80px;
-  width:60px;
-  font-size: 25px;
+  height:80rpx;
+  width:auto;
+  font-size: 40rpx;
+  /* font-weight: bold; */
 }
 .form-title {
     width: 100%;

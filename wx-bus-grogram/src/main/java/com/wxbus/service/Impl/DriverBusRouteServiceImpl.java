@@ -33,4 +33,25 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
         }
         return new DriverBusRoute();
     }
+
+    @Override
+    public List<DriverBusRoute> findInfoByDriverId(String dreverId) {
+        log.info("根据司机id查找所绑定车");
+        DriverBusRouteExample driverBusRouteExample=new DriverBusRouteExample();
+        driverBusRouteExample.or().andDriverIdEqualTo(dreverId);
+        List<DriverBusRoute> driverBusRouteList=driverBusRouteMapper.selectByExample(driverBusRouteExample);
+        return  driverBusRouteList;
+    }
+
+    @Override
+    public void addDriverBusRoute(DriverBusRoute driverBusRoute) {
+        log.info("添加司机车辆绑定信息");
+        driverBusRouteMapper.insertSelective(driverBusRoute);
+    }
+
+    @Override
+    public void updateDriverBusRoute(DriverBusRoute driverBusRoute) {
+        log.info("更新信息");
+        driverBusRouteMapper.updateByPrimaryKeySelective(driverBusRoute);
+    }
 }

@@ -12,14 +12,14 @@ Page({
     stdate: "",
     selectdate: '只看某天',//选定要查看的当天时间
     tasks: [
-      { picUrl: '', startsite: '二七', endsite: '火车站', isEditCart: false, busid: '', routeid: 1001, starttime: '05-23-07:30', endtime: '05-23-09:30' },
-      { picUrl: '', startsite: '博颂路风华路', endsite: '省实验小学', isEditCart: false, busid: '', routeid: 1002, starttime: '05-24-07:30', endtime: '05-24-09:30' },
-      { picUrl: '', startsite: '风华路', endsite: '博颂路', isEditCart: false, busid: '', routeid: 1003, starttime: '05-25-07:30', endtime: '05-25-09:30' },
-      { picUrl: '', startsite: '河南职业学院', endsite: '郑东新区小学', busid: '', routeid: 1004, starttime: '05-27-07:30', endtime: '05-27-09:30' },
-      { picUrl: '', startsite: '二七', endsite: '火车站', isEditCart: false, busid: '', routeid: 1001, starttime: '05-23-07:30', endtime: '05-23-09:30' },
-      { picUrl: '', startsite: '博颂路风华路', endsite: '省实验小学', isEditCart: false, busid: '', routeid: 1002, starttime: '05-24-07:30', endtime: '05-24-09:30' },
-      { picUrl: '', startsite: '风华路', endsite: '博颂路', isEditCart: false, busid: '', routeid: 1003, starttime: '05-25-07:30', endtime: '05-25-09:30' },
-      { picUrl: '', startsite: '河南职业学院', endsite: '郑东新区小学', busid: '', routeid: 1004, starttime: '05-27-07:30', endtime: '05-27-09:30' }
+      { startsite: '二七', endsite: '火车站', starttime: '05-23-07:30', endtime: '05-23-09:30' },
+      { startsite: '博颂路风华路', endsite: '省实验小学', starttime: '05-24-07:30', endtime: '05-24-09:30' },
+      { startsite: '风华路', endsite: '博颂路', starttime: '05-25-07:30', endtime: '05-25-09:30' },
+      { startsite: '河南职业学院', endsite: '郑东新区小学', starttime: '05-27-07:30', endtime: '05-27-09:30' },
+      { startsite: '二七', endsite: '火车站', starttime: '05-23-07:30', endtime: '05-23-09:30' },
+      { startsite: '博颂路风华路', endsite: '省实验小学', starttime: '05-24-07:30', endtime: '05-24-09:30' },
+      { startsite: '风华路', endsite: '博颂路', starttime: '05-25-07:30', endtime: '05-25-09:30' },
+      { startsite: '河南职业学院', endsite: '郑东新区小学', starttime: '05-27-07:30', endtime: '05-27-09:30' }
     ],
     countRout: 0,
     showType: 0,
@@ -35,14 +35,14 @@ Page({
     });
     let that = this;
     wx.request({
-      url: api.RouteRun,
+      url: api.FindTask,
       data: {
         countRout: 0,
         pm: 0
       },
       header: {
         "Content-Type": "application/json",
-        "Connect_Platform": "Weixin_Passenger"
+        "Connect_Platform": "Weixin_Driver"
       },
       method: 'POST',
       success: function (res) {

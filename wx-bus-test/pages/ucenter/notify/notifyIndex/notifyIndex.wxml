@@ -10,14 +10,19 @@
 
 
 <view class='news' wx:if='{{id==0}}'>
-    <view wx:for='{{currentnews}}' class='news-item' bindtap='havareadcurrentnews' data-id='{{item.mark}}'>
+    <view wx:for='{{currentnews}}' class='news-item' bindtap='havareadcurrentnews' data-id='{{item.id}}'
+    data-content='{{item.content}}' data-title='{{item.title}} ' data-date='{{item.sendtime}}'>
       <view class='head'>
-                  
-        <view class='timeandtitle'><view class='titleandpub'><text class='title'>{{item.title}} <text class='noread'>未读</text> </text><text class='publisher'></text></view><text class='time'>{{item.sendtime}}</text></view>
+        <view class='timeandtitle'><view class='titleandpub'>
+          <text class='title'>{{item.title}} 
+            <text class='noread'>未读</text> 
+          </text>
+          <text class='publisher'></text>
+          </view>
+            <text class='time'>{{item.sendtime}}</text>
+          </view>
         </view>
-
-      
-        <view><text class='contend'>{{item.content}}</text></view>              
+        <view><text class='contend'>{{item.content}}</text></view>
     </view>
 
     <view class='nonews' wx:if='{{currentnews.length<=0}}'>

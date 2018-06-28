@@ -142,12 +142,19 @@ function getNotify(){
   //获取后天通知消息
   this.request(api.GetNotify, {}, "POST").then(function (res) {
     if (res.errno === 0) {
+      console.log(res.data.length)
       if (res.data.length > 0) {
+        
         return true;
+      }else{
+        return false;
       }
     }
+    else{
+      return false;
+    }
   });
-  return false;
+  
 }
 module.exports = {
   formatTime,

@@ -36,9 +36,7 @@ Page({
     //验证登陆状态，请求后台数据
     if (app.globalData.hasLogin) {
       util.request(api.FindBusInfo,
-        {
-          token: wx.getStorageInfoSync('token')
-        }, "POST").then(function (res) {
+        {}, "POST").then(function (res) {
           if (res.errno == 0) {
             this.setData({
               carnumber: res.data.carnumber,//车牌号
@@ -56,7 +54,6 @@ Page({
           }
         });
     }
-
   },
   onHide: function () {
 

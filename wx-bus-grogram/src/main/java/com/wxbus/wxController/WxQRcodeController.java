@@ -49,7 +49,7 @@ public class WxQRcodeController {
                     logger.info("实名验证成功");
 
                     //将用户的ID生成到二维码信息中
-                    String info="passenger:"+id;
+                    String info=String.valueOf(id);
                     QRcodeUtil qrcodeUtil=new QRcodeUtil();
 
                     try {

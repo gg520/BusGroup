@@ -1,6 +1,6 @@
 // pages/ucenter/index/index.js
 var util=require("../../../utils/util.js");
-
+var api = require("../../../config/api.js")
 var app=getApp();
 Page({
 
@@ -40,8 +40,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that =this
     if (app.globalData.hasLogin) {
+      util.request(api.GetNotify, {}, "POST").then(function (res) {
+        if (res.errno === 0) {
+          console.log(res.data.length)
+          if (res.data.length > 0) {
+
+            that.setData({
+              new:true
+            })
+          } 
+        }
+      });
       //验证是否登录
       console.log("界面验证已经成功登录");
       let userInfo = wx.getStorageSync('userInfo');
@@ -56,7 +67,6 @@ Page({
           userInfo: userInfo,
           exitLoginBtn: false,
           isDirver: true,
-          new: util.getNotify()
         });
       }
       if (user === 'Weixin_Passenger') {
@@ -64,7 +74,7 @@ Page({
           userInfo: userInfo,
           exitLoginBtn: false,
           isPassenger: true,
-          new: util.getNotify()
+        
         });
       }
       

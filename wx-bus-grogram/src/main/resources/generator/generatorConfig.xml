@@ -44,5 +44,6 @@
         <table tableName="admin" domainObjectName="Admin"></table>
         <table tableName="overall_configC" domainObjectName="OverallConfig"></table>
         <table tableName="helper" domainObjectName="Helper"></table>
+        <table tableName="message" domainObjectName="Message"></table>
     </context>
 </generatorConfiguration>

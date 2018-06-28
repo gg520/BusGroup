@@ -105,4 +105,18 @@ public class PassengerRouteServiceImpl implements PassengerRouteService {
         passengerRouteMapper.insertSelective(passengerRoute);
 
     }
+
+    @Override
+    public PassengerRoute findByPassengerIdRouteId(Integer passengerId, Integer routeId) {
+        log.info("查找乘客司机绑定的信息");
+        //必须状态码是1
+        PassengerRouteExample passengerRouteExample=new PassengerRouteExample();
+        passengerRouteExample.or().andRouteIdEqualTo(routeId).andPassengerIdEqualTo(passengerId).andStartStatusEqualTo(1);
+
+        List<PassengerRoute > list=passengerRouteMapper.selectByExample(passengerRouteExample);
+        if(list!=null&&list.size()>0){
+            return list.get(0);
+        }
+        return null;
+    }
 }

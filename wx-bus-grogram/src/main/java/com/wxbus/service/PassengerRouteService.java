@@ -57,5 +57,14 @@ public interface PassengerRouteService {
      *@describe 添加个人收藏信息
      */
     void addPassengerRoute(PassengerRoute passengerRoute);
+    /**
+     *@type interface
+     *@parameter  [passengerId, routeId]
+     *@back  com.wxbus.daomain.PassengerRoute
+     *@author  如花
+     *@creattime 2018/6/25
+     *@describe 查找乘客司机绑定的信息
+     */
+    PassengerRoute findByPassengerIdRouteId(Integer passengerId,Integer routeId);
 
 }

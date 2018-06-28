@@ -1,10 +1,10 @@
 package com.wxbus.wxController;
 
+import com.wxbus.daomain.Driver;
+import com.wxbus.daomain.DriverBusRoute;
 import com.wxbus.daomain.Passenger;
-import com.wxbus.service.CheckServier;
-import com.wxbus.service.HeadersName;
-import com.wxbus.service.UserService;
-import com.wxbus.service.UserTokenManager;
+import com.wxbus.daomain.PassengerRoute;
+import com.wxbus.service.*;
 import com.wxbus.util.JacksonUtil;
 import com.wxbus.util.QRcodeUtil;
 import com.wxbus.util.ResponseUtil;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by g1154 on 2018/5/5.
@@ -30,6 +31,12 @@ public class WxCheckInfoController {
 
     @Autowired
     private CheckServier checkServier;
+    @Autowired
+    private DriverService driverService;
+    @Autowired
+    private DriverBusRouteService driverBusRouteService;
+    @Autowired
+    private PassengerRouteService passengerRouteService;
 
     @GetMapping("info")
     public Object info(HttpServletRequest request){
@@ -122,4 +129,89 @@ public class WxCheckInfoController {
         }
     }
 
+
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/26
+     *@describe 检查乘客是否可以坐车（两种方法）
+     */
+    @RequestMapping(value = "/checkTicket",method =RequestMethod.POST)
+    public Object checkTicket(@RequestBody String body,HttpServletRequest request){
+        logger.info("司机检查乘客是否可以坐车");
+        String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if("乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail302();
+        }
+        Integer driverNum=JacksonUtil.parseInteger(json,"userId");
+        Driver driver=driverService.findDriverByDriverNum(driverNum);
+        if(driver==null){
+            return ResponseUtil.fail(500,"未找到相关司机信息");
+        }
+        String driverId=driver.getDriverId();
+        DriverBusRoute driverBusRoute=new DriverBusRoute();
+        List<DriverBusRoute> list=driverBusRouteService.findInfoByDriverId(driverId);
+        if(list==null||list.size()<=0){
+            return  ResponseUtil.fail(500,"未找到相关绑定信息");
+        }
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getDriverOutTime()==null){
+                driverBusRoute=list.get(i);
+            }
+        }
+        Integer routeId=driverBusRoute.getRouteId();
+        Integer passengerId=JacksonUtil.parseInteger(body,"passengerId");
+        PassengerRoute passengerRoute=passengerRouteService.findByPassengerIdRouteId(passengerId,routeId);
+        if(passengerRoute==null){
+            return ResponseUtil.fail(500,"此乘客未绑定车辆");
+        }
+//        if(passengerRoute.getStartStatus()!=1){
+//            return ResponseUtil.fail(500,"此乘客未支付");
+//        }
+        return ResponseUtil.ok("此乘客可以乘坐");
+    }
+    /**
+     *@type method
+     *@parameter  [body]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/27
+     *@describe 验证乘客是否有坐车权限（两种方法）
+     */
+    @RequestMapping(value = "/checkPDB",method =RequestMethod.POST)
+    public Object checkPDB(@RequestBody String body,HttpServletRequest request){
+        logger.info("验证乘客是否有坐车权限");
+        String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if(!"乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail401();
+        }
+        Integer passengerId=JacksonUtil.parseInteger(json,"userId");
+        String driverCitizenship=JacksonUtil.parseString(body,"driverCitizenship");
+        Driver driver=driverService.findDriverByCitizenship(driverCitizenship);
+        if(driver==null){
+            return ResponseUtil.fail(500,"未找到相关司机信息");
+        }
+        String driverId=driver.getDriverId();
+        DriverBusRoute driverBusRoute=new DriverBusRoute();
+        List<DriverBusRoute> list=driverBusRouteService.findInfoByDriverId(driverId);
+        if(list==null||list.size()<=0){
+            return  ResponseUtil.fail(500,"未找到相关绑定信息");
+        }
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getDriverOutTime()==null){
+                driverBusRoute=list.get(i);
+            }
+        }
+        Integer routeId=driverBusRoute.getRouteId();
+        PassengerRoute passengerRoute=passengerRouteService.findByPassengerIdRouteId(passengerId,routeId);
+        if(passengerRoute==null){
+            return ResponseUtil.fail(500,"此乘客未绑定车辆");
+        }
+        if(passengerRoute.getStartStatus()!=1){
+            return ResponseUtil.fail(500,"此乘客未支付");
+        }
+        return ResponseUtil.ok("此乘客可以乘坐");
+    }
 }

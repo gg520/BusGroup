@@ -1,0 +1,18 @@
+
+<view class='container'>
+         <view class ='news-head'>
+                <view class='head'>            
+                   <view class='timeandtitle'>
+                      <view class='titleandpub'>
+                         <text class='title'>{{title}}</text>
+                         <!-- <text class='publisher'>{{publisher}} </text> -->
+                         </view>
+                         <text class='time'>{{time}}</text>
+                    </view>
+                   </view>
+          </view>
+          <view class ='news-detail'>
+          <span class='contend'>{{contend}}</span>
+          </view>
+          <button class='readed' bindtap='haveread'>我知道了</button>
+</view>

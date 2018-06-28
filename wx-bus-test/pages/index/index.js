@@ -204,5 +204,109 @@ Page({
     wx.navigateTo({
       url: '/pages/route/driverRoute/driverRoute',
     })
+  },
+  Bindcar: function () {
+    if (app.globalData.hasLogin) {
+      wx.scanCode
+        ({
+          scanType: 'QR_CODE',
+          success: (res) => {
+            
+            var result = res.result
+            util.request(api.Bindcar,
+              {
+                result
+              },
+              'POST', ).then(function (res) {
+                if (res.errno === 0) {
+                  wx.showModal({
+                    showCancel: false,
+                    title: '绑定结果',
+                    content: '绑定车辆成功',
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.redirectTo({
+                          url: '/pages/Bus-info/index',
+                        })
+                      }
+                    }
+                  })
+                }
+                else {
+                  wx.showModal({
+                    showCancel: false,
+                    title: '绑定结果',
+                    content: res.data.errreason,
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.redirectTo({
+                          url: '/pages/Bus-info/index',
+                        })
+                      }
+                    }
+                  })
+                }
+
+              })
+          }
+        })
+    }
+
+    else {
+      util.showWarningToast("未登录");
+    }
+  },
+
+  Checkticket:function(){
+    let that = this
+    if (app.globalData.hasLogin) {
+      wx.scanCode
+        ({
+          scanType: 'QR_CODE',
+          success: (res) => {
+            var result = res.result;
+            
+            util.request(
+              api.CheckTicket,
+              {
+                passengerId: result
+              },
+              'POST', ).then(function (res) {
+                if (res.errno === 0) {
+                  const innerAudioContext = wx.createInnerAudioContext()
+                  innerAudioContext.autoplay = true
+                  innerAudioContext.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
+                  innerAudioContext.onPlay(() => {
+                    console.log('开始播放')
+                  })
+                  innerAudioContext.onError((res) => {
+                    console.log(res.errMsg)
+                    console.log(res.errCode)
+                  })
+                }
+                else {
+                  const innerAudioContext = wx.createInnerAudioContext()
+                  innerAudioContext.autoplay = true
+                  innerAudioContext.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
+                  innerAudioContext.onPlay(() => {
+                    console.log('开始播放')
+                  })
+                  innerAudioContext.onError((res) => {
+                    console.log(res.errMsg)
+                    console.log(res.errCode)
+                  })
+
+                }
+
+
+
+              })
+          }
+        })
+    }
+
+    else {
+      util.showWarningToast("未登录");
+    }
   }
 })

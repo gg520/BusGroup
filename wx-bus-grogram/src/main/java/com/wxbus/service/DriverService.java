@@ -41,4 +41,9 @@ public interface DriverService {
      *@describe 更新司机
      */
     void updateDrivate(Driver driver);
+
+
+    Driver findDriverByDriverNum(Integer driverNum);
+
+    Driver findDriverByCitizenship(String citizenship);
 }

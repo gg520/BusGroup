@@ -93,4 +93,21 @@ public class DriverServiceImpl implements DriverService{
         log.info("更新司机");
         driverMapper.updateByPrimaryKeySelective(driver);
     }
+
+    @Override
+    public Driver findDriverByDriverNum(Integer driverNum) {
+        log.info("根据主键查找司机信息");
+        return driverMapper.selectByPrimaryKey(driverNum);
+    }
+
+    @Override
+    public Driver findDriverByCitizenship(String citizenship) {
+        DriverExample driverExample=new DriverExample();
+        driverExample.or().andDriverCitizenshipEqualTo(citizenship);
+        List<Driver> list=driverMapper.selectByExample(driverExample);
+        if(list!=null&&list.size()>0){
+            return list.get(0);
+        }
+        return new Driver();
+    }
 }

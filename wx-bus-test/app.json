@@ -29,7 +29,8 @@
     "pages/ucenter/notify/notifyIndex/notifyIndex",
     "pages/proclamation/proclamation",
     "pages/system/messageList/messageList",
-    "pages/system/messageContent/messageContent"
+    "pages/system/messageContent/messageContent",
+    "pages/ucenter/notify/notifyDetail/notifyDetail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
