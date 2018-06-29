@@ -26,7 +26,7 @@
     </view>
 
     <view class='nonews' wx:if='{{currentnews.length<=0}}'>
-    <image src='/static/images/route_empty.png'/>
+    <image src='/static/images/nonews.jpg'/>
     </view>
 </view>
 

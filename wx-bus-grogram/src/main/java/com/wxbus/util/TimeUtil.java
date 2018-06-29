@@ -1,5 +1,7 @@
 package com.wxbus.util;
 
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,10 +58,18 @@ public class TimeUtil {
         return (endLong-startLong)/(1000*60*60*24);
     }
 
+    /**
+     * 获取下一天的时间
+     * @param date
+     * @return
+     */
+    public static Date getNextDate(Date date){
+        return new Date(date.getTime()+(1000*60*60*24));
+    }
     public static void main(String[] args) {
 
         //测试文件：./路径的数据4
-
+        System.out.println(getTimeByType(getNextDate(new Date()),"yyyy-MM-dd HH:mm:ss"));
 
     }
 

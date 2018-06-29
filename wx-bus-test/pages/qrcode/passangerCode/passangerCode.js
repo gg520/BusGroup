@@ -1,6 +1,6 @@
 // pages/qrcode/qrcode.js
-var util = require("../../utils/util.js");
-var api = require("../../config/api.js");
+var util = require("../../../utils/util.js");
+var api = require("../../../config/api.js");
 var app = getApp();
 
 Page({
@@ -10,14 +10,14 @@ Page({
    */
   data: {
     //生成的二维码图片的临时地址
-    imgpath:'',
+    imgpath: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that=this;
+    let that = this;
     //第一步：获取是否已经实名验证，如果验证过了生成，如果没有
     wx.downloadFile({
       url: api.GetQRcode,
@@ -31,13 +31,13 @@ Page({
           //成功
           console.log(res.tempFilePath);
           that.setData({
-            imgpath:res.tempFilePath,
+            imgpath: res.tempFilePath,
           });
-        }else{
+        } else {
           //错误数据
         }
       }
-      
+
     })
   },
 
@@ -45,48 +45,48 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

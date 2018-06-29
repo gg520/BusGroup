@@ -244,7 +244,7 @@ public class WxLoginController {
             }
 
             if(userService.checkDriverByDriver(driver)){
-                return ResponseUtil.fail(-1,"账号已被注册");
+                return ResponseUtil.fail(301,"账号已被注册");
             }
 
             //查询服务器

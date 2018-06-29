@@ -21,33 +21,49 @@
       </view>
     </view>
     <view wx:else>
-      <view class="chooseCity pd-70" wx:for="{{tasks}}" bindtap='goRoute' id='{{item.routeid}}'>
+    <view class="orders">
+    <!-- 根据订单编号获取订单详细信息 -->
+      <navigator url="" class="order" wx:for="{{tasks}}" wx:key="id">
+            <view class="h">
+                <view class="l">日期：{{item.creatTime}}</view>
+                <!-- <view class="r {{ item.routeStatus == 1 ? 'ok' : ''}}">{{ item.routeStatus == 1 ? '未过期' : '已过期'}}</view> -->
+            </view>
+            <view class="chooseCity pd-70" wx:for="{{tasks}}" bindtap='goRoute' id='{{item.routeid}}'>
         <view class="citySelect" >
-          <view class="startCity" >{{item.startsite}}</view>
+          <view class="startCity" >{{item.startSite}}</view>
           <view class="citySelect_img">
             <view>
               <image class="changeCity_bg" src="/static/images/changeCity_bg.png"></image>
             </view>
             <image class="samll_plane" src="/static/images/bus.png"></image>
           </view>
-          <view class="endCity">{{item.endsite}}</view>
+          <view class="endCity">{{item.endSite}}</view>
         </view>
 
         <view class="chooseDate">
           <block>
            
               <view class="startDate">
-                <text class="date">发车：{{item.starttime}}</text>
+                <text class="date">发车：{{item.startTime}}</text>
               </view>
           </block>
           <block>
 
               <view class="endDate">
-                <text class="date">到达：{{item.endtime}}</text>
+                <text class="date">到达：{{item.endTime}}</text>
               </view>
           </block>
         </view> 
       </view>
+            <!-- <view class="b">
+                <view class="l" style='color:#b4282d;font-weight:bold'>实付：￥{{item.payMoney}}元</view>
+            </view> -->
+      </navigator>
+    </view>
+
+
+
+      
     </view>
     </view>
   </view>

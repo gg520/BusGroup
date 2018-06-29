@@ -23,6 +23,8 @@ public interface DriverBusRouteService {
      *@describe 根据司机id查找所绑定车牌号
      */
     List<DriverBusRoute> findInfoByDriverId(String dreverId);
+
+    List<DriverBusRoute> findInfoByIdAndTime(String driverId,String driverTime);
     /**
      *@type interface
      *@parameter  [driverBusRoute]
@@ -41,4 +43,21 @@ public interface DriverBusRouteService {
      *@describe 更新信息
      */
     void updateDriverBusRoute(DriverBusRoute driverBusRoute);
+
+
+    /**
+     *
+     * @param driverId 司机登录账号
+     * @param busId 车牌号码
+     * @return
+     */
+    boolean checkDriverByDriverID(String driverId,String busId);
+
+    /**
+     * 设置扫码成功值
+     * @param driverId
+     * @param busId
+     * @return
+     */
+    boolean setBindSuccess(String driverId,String busId);
 }

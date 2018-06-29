@@ -36,4 +36,33 @@ public class MessageServiceImpl implements MessageService{
         messageExample.or().andReceiverEqualTo(id).andReceivetypeEqualTo(receivetype);
         return messageMapper.selectByExampleWithBLOBs(messageExample);
     }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [message]
+     *@back  void
+     *@author  如花
+     *@creattime 2018/6/28
+     *@describe 更新消息
+     */
+    public void updateMessage(Message message) {
+        log.info("更新消息");
+        messageMapper.updateByPrimaryKeySelective(message);
+
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [id]
+     *@back  com.wxbus.daomain.Message
+     *@author  如花
+     *@creattime 2018/6/28
+     *@describe 根据主键查找消息
+     */
+    public Message findMessageById(Integer id) {
+        log.info("根据主键查找消息");
+        return messageMapper.selectByPrimaryKey(id);
+    }
 }

@@ -57,21 +57,17 @@ public class WxBindController {
             return ResponseUtil.fail(500,"未找到相关司机信息");
         }
         String driverId=driver.getDriverId();
-        String busId=JacksonUtil.parseString(body,"result");
-        List<DriverBusRoute> list=driverBusRouteService.findInfoByDriverId(driverId);
-        for(int i=0;i<list.size();i++){
-            if(list.get(i).getDriverOutTime()==null){
-                DriverBusRoute driverBusRoute=list.get(i);
-                driverBusRoute.setDriverOutTime(new Date());
-                //更新司机绑定车辆的解绑时间
-                driverBusRouteService.updateDriverBusRoute(driverBusRoute);
+        String busId=JacksonUtil.parseString(body,"result");//获取ip
+
+        //验证车辆是否可以绑定车辆
+        if(!driverBusRouteService.checkDriverByDriverID(driverId,busId)){//司机登录账号，汽车牌号
+            return ResponseUtil.fail(-1,"未领取任务");
+        }else {
+            //可以扫码，将状态设置成为1
+            if(driverBusRouteService.setBindSuccess(driverId,busId)){
+                return ResponseUtil.ok();
             }
         }
-        DriverBusRoute driverBusRoute=new DriverBusRoute();
-        driverBusRoute.setBusId(busId);
-        driverBusRoute.setDriverId(driverId);
-        driverBusRoute.setDirverTime(new Date());
-        driverBusRouteService.addDriverBusRoute(driverBusRoute);
-        return ResponseUtil.ok();
+        return ResponseUtil.fail();
     }
 }

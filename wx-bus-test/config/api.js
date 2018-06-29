@@ -39,8 +39,10 @@ module.exports = {
   CheckPassword:WxApiRoot+'check/password',//验证密码是否正确
   CheckInfo:WxApiRoot+"check/info",//验证是否完善信息
   CheckPDB:WxApiRoot+'check/checkPDB',//验证乘客和该线路的关系，
+
   GetQRcode:WxApiRoot+"qrcode/getQRcode",//獲取二維碼，即是二維碼的下載，post
-  
+  GetDriveQRcode: WxApiRoot + 'qrcode/getCheckQRcode',//获取验票二维码
+
   HelpList:WxApiRoot+"help/helpList",//随机获取十个帮助信息
 
   SystemMessage:WxApiRoot+"system/message",//获取系统公告
@@ -52,20 +54,20 @@ module.exports = {
   FeedBack: WxApiRoot + 'help/feedBackInfo',//反馈信息
 
   //司机端接口
-  FeedBack: WxApiRoot + 'feedBack/feedBackInfo',//反馈信息
-  FindBusInfo: WxApiRoot + 'Bus-info/ FindBusInfo',//查询车辆信息
-  Bindcar: WxApiRoot + 'Bindcar/Bindcar',//扫码绑定车辆
+  // FeedBack: WxApiRoot + 'feedBack/feedBackInfo',//反馈信息
+  FindBusInfo: WxApiRoot + 'driver/findBusInfo',//查询车辆信息
+  Bindcar: WxApiRoot + 'bind/bindCar',//扫码绑定车辆
   CheckTicket: WxApiRoot + 'check/checkTicket',//扫码验证乘客是否可以乘车
  
 
   FindDriverInfo: WxApiRoot + 'user/findDriverInfo',//查询司机信息信息
   ModifyDriverInfo: WxApiRoot + 'user/modifyDriverInfo',//修改司机信息
 
-  FindTask: WxApiRoot + 'DriverInfo/FindTask',//查询司机所有任务记录
-  FindTaskByTime: WxApiRoot + 'DriverInfo/FindTaskByTime',//按时间查询司机某一天的任务记录
-  FindCurrentRoad: WxApiRoot + 'DriverInfo/FindCurrentRoad',//查询司机当前任务
+  FindTask: WxApiRoot + 'driver/findTask',//查询司机所有任务记录
+  FindTaskByTime: WxApiRoot + 'driver/findTaskByTime',//按时间查询司机某一天的任务记录
+  FindCurrentRoad: WxApiRoot + 'driver/findCurrentRoad',//查询司机当前任务
 
 
 
-  GetCheckQRcode: WxApiRoot + 'qrcode/ GetCheckQRcode',//获取验票二维码
+  
 }

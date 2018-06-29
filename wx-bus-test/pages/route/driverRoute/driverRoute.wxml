@@ -12,7 +12,7 @@
   </view>
 
   <view >
-  <view class="ac-item-mid">
+  <view class="ac-item-mid" >
     <label style='color:#3399ff'>途经</label>
     <view class="lh">
       <text bindtap="openMap">...</text>

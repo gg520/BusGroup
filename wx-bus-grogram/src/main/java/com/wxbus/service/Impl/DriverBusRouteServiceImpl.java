@@ -5,11 +5,14 @@ import com.wxbus.daomain.Bus;
 import com.wxbus.daomain.DriverBusRoute;
 import com.wxbus.daomain.DriverBusRouteExample;
 import com.wxbus.service.DriverBusRouteService;
+import com.wxbus.util.TimeUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -44,6 +47,14 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
     }
 
     @Override
+    public List<DriverBusRoute> findInfoByIdAndTime(String driverId, String driverTime) {
+        DriverBusRouteExample example=new DriverBusRouteExample();
+        Date date=TimeUtil.getTimeByString(driverTime,"yyyy-MM-dd");
+        example.or().andDriverIdEqualTo(driverId).andDirverTimeBetween(date,TimeUtil.getNextDate(date));
+        return driverBusRouteMapper.selectByExample(example);
+    }
+
+    @Override
     public void addDriverBusRoute(DriverBusRoute driverBusRoute) {
         log.info("添加司机车辆绑定信息");
         driverBusRouteMapper.insertSelective(driverBusRoute);
@@ -53,5 +64,34 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
     public void updateDriverBusRoute(DriverBusRoute driverBusRoute) {
         log.info("更新信息");
         driverBusRouteMapper.updateByPrimaryKeySelective(driverBusRoute);
+    }
+
+    @Override
+    public boolean checkDriverByDriverID(String driverId,String busId) {
+
+        DriverBusRouteExample example=new DriverBusRouteExample();
+        example.or().andDriverIdEqualTo(driverId).andDriverOutTimeIsNull();
+        int i=driverBusRouteMapper.countByExample(example);
+        if(i>=1){//未解绑
+            example.clear();
+            example.or().andDriverIdEqualTo(driverId).andDriverStatusEqualTo(0).andBusIdEqualTo(busId);//有数据
+            i=driverBusRouteMapper.countByExample(example);
+            if(i==1)
+                return true;//未解绑，已经接取任务
+        }
+        return false;
+    }
+
+    @Override
+    public boolean setBindSuccess(String driverId, String busId) {
+        DriverBusRouteExample example=new DriverBusRouteExample();
+        example.or().andBusIdEqualTo(busId).andDriverIdEqualTo(driverId).andDriverStatusEqualTo(0).andDriverOutTimeIsNull();
+        //将数据添加
+        DriverBusRoute driverBusRoute=new DriverBusRoute();
+        driverBusRoute.setDriverStatus(1);
+        if(driverBusRouteMapper.updateByExampleSelective(driverBusRoute,example)==1)
+            return true;
+
+        return false;
     }
 }

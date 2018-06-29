@@ -1,7 +1,10 @@
 package com.wxbus.wxController;
 
+import com.wxbus.dao.DriverMapper;
+import com.wxbus.daomain.Driver;
 import com.wxbus.daomain.Passenger;
 import com.wxbus.service.CheckServier;
+import com.wxbus.service.DriverService;
 import com.wxbus.service.HeadersName;
 import com.wxbus.service.UserTokenManager;
 import com.wxbus.util.JacksonUtil;
@@ -29,6 +32,9 @@ public class WxQRcodeController {
 
     @Autowired
     private CheckServier checkServier;
+
+    @Autowired
+    private DriverService driverService;
 
     @GetMapping(value = "getQRcode")
     public void getQRcode(HttpServletRequest request, HttpServletResponse response){
@@ -77,5 +83,38 @@ public class WxQRcodeController {
             }
 
         }
+    }
+
+
+    /**
+     *@type method
+     *@parameter  [request, response]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/27
+     *@describe 获取司机验票二维码
+     */
+    @GetMapping(value = "getCheckQRcode")
+    public Object getDriverQcode(HttpServletRequest request,HttpServletResponse response){
+        String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if("乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail401();
+        }
+        Integer driverNum=JacksonUtil.parseInteger(json,"userId");
+        Driver driver= driverService.findDriverByDriverNum(driverNum);
+        Boolean flag=(driver.getDriverCitizenship()!=null&&!"".equals(driver.getDriverCitizenship()))&&(driver.getDriverName()!=null&&!"".equals(driver.getDriverName()));
+        if(flag){
+            logger.info("开始生成验证码");
+            //将司机的身份证信息和司机名字放入二维码
+            String message=driver.getDriverCitizenship();
+            QRcodeUtil qRcodeUtil=new QRcodeUtil();
+            try {
+                qRcodeUtil.getTwoDimension(message,response,300);
+            }catch (Exception e){
+                logger.error("生成二维码异常");
+                e.printStackTrace();
+            }
+        }
+        return ResponseUtil.ok();
     }
 }

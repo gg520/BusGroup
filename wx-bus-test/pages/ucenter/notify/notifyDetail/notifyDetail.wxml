@@ -1,18 +1,12 @@
-
-<view class='container'>
-         <view class ='news-head'>
-                <view class='head'>            
-                   <view class='timeandtitle'>
-                      <view class='titleandpub'>
-                         <text class='title'>{{title}}</text>
-                         <!-- <text class='publisher'>{{publisher}} </text> -->
-                         </view>
-                         <text class='time'>{{time}}</text>
-                    </view>
-                   </view>
-          </view>
-          <view class ='news-detail'>
-          <span class='contend'>{{contend}}</span>
-          </view>
-          <button class='readed' bindtap='haveread'>我知道了</button>
+<view class="container">
+<block >
+    <view class="title">
+      <text>{{title}}</text>
+    </view>
+    <view class="info">
+      <text wx:if="{{time}}">发布时间：{{time}}</text>
+      <text wx:if="{{publisher}}" class='publisher'>发送人：{{publisher}}</text>
+    </view>
+    <view class='detail'><text>{{contend}}</text></view>
+  </block>
 </view>

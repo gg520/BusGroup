@@ -45,12 +45,22 @@ Page({
       util.request(api.GetNotify, {}, "POST").then(function (res) {
         if (res.errno === 0) {
           console.log(res.data.length)
-          if (res.data.length > 0) {
+          var length=0;
+          for(let i=0;i<res.data.length;i++){
+            if(res.data[i].mark==0){
+              length++;
+            }
+          }
+          if (length > 0) {
 
             that.setData({
               new:true
             })
-          } 
+          } else{
+            that.setData({
+              new: false
+            })
+          }
         }
       });
       //验证是否登录

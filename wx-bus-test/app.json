@@ -14,7 +14,6 @@
     "pages/shopping/checkout/checkout",
     "pages/shopping/payResult/payResult",
     "pages/ucenter/order/order",
-    "pages/qrcode/qrcode",
     "pages/ucenter/myInfo/myInfo",
     "pages/ucenter/myCollect/myCollect",
     "pages/search/search/search",
@@ -30,7 +29,9 @@
     "pages/proclamation/proclamation",
     "pages/system/messageList/messageList",
     "pages/system/messageContent/messageContent",
-    "pages/ucenter/notify/notifyDetail/notifyDetail"
+    "pages/ucenter/notify/notifyDetail/notifyDetail",
+    "pages/qrcode/driverCode/driverCode",
+    "pages/qrcode/passangerCode/passangerCode"
   ],
   "window": {
     "backgroundTextStyle": "dark",

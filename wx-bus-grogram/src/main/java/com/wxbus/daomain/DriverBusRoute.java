@@ -1,5 +1,7 @@
 package com.wxbus.daomain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class DriverBusRoute {
@@ -41,6 +43,7 @@ public class DriverBusRoute {
      *
      * @mbggenerated
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
     private Date dirverTime;
 
     /**

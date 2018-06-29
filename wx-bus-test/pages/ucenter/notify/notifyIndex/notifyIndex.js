@@ -147,6 +147,14 @@ Page({
   //最新消息详情页处理
   havareadcurrentnews: function (e) {
     
+    util.request(api.ReadNotify, { id: e.currentTarget.dataset.id},"POST").then(function(res){
+      if(res.errno === 0){
+
+      }else{
+        
+      }
+    })
+
     wx.redirectTo({
       url:
       '../notifyDetail/notifyDetail?title=' + e.currentTarget.dataset.title + '&contend=' + e.currentTarget.dataset.content + '&time=' + e.currentTarget.dataset.date + '&id=' +e.currentTarget.dataset.id

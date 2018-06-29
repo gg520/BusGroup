@@ -219,4 +219,25 @@ public class WxUserController {
         driverService.updateDrivate(driver);
         return ResponseUtil.ok();
     }
+
+
+    @PostMapping(value = "readNotify")
+    /**
+     *@type method
+     *@parameter  [request]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/28
+     *@describe 设置信息已读
+     */
+    public Object readNotify(@RequestBody String body){
+        Integer messagedId=JacksonUtil.parseInteger(body,"id");
+        Message message=messageService.findMessageById(messagedId);
+        if(message==null){
+            return ResponseUtil.fail(500,"未查到此消息");
+        }
+        message.setMark(1);
+        messageService.updateMessage(message);
+        return ResponseUtil.ok();
+    }
 }

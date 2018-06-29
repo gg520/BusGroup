@@ -69,13 +69,20 @@ Page({
           console.log(res.result);
           var result = res.result;
           //result是一个网址，向网站发送请求，验证自己是否可以坐车
-          util.request(api.CheckPDB, { result }, 'POST').then(res => {
+          util.request(api.CheckPDB, { driverCitizenship:result }, 'POST').then(res => {
             if (res.errno === 0) {
               //返回的消息正确说明可以上车，启动一个音频文件提示
-              wx.playBackgroundAudio({
-                dataUrl: '/static/voice/success.mp3',
-              });
-              console.log("成功" + res);
+              util.showSuccessToast("成功")
+              const innerAudioContext = wx.createInnerAudioContext()
+              innerAudioContext.autoplay = true
+              innerAudioContext.src = '/static/voice/success.mp3'
+              innerAudioContext.onPlay(() => {
+                console.log('开始播放')
+              })
+              innerAudioContext.onError((res) => {
+                console.log(res.errMsg)
+                console.log(res.errCode)
+              })
             } else {//不可以上车，启动另一个音频文件说明不能上车
               // console.log(res);
               wx.playBackgroundAudio({
@@ -153,7 +160,7 @@ Page({
           if(res.data.errno===0){
             //验证通过
             wx.navigateTo({
-              url: '/pages/qrcode/qrcode',
+              url: '/pages/qrcode/passangerCode/passangerCode',
             });
 
           } else if (res.errno === 401) {
@@ -205,58 +212,6 @@ Page({
       url: '/pages/route/driverRoute/driverRoute',
     })
   },
-  Bindcar: function () {
-    if (app.globalData.hasLogin) {
-      wx.scanCode
-        ({
-          scanType: 'QR_CODE',
-          success: (res) => {
-            
-            var result = res.result
-            util.request(api.Bindcar,
-              {
-                result
-              },
-              'POST', ).then(function (res) {
-                if (res.errno === 0) {
-                  wx.showModal({
-                    showCancel: false,
-                    title: '绑定结果',
-                    content: '绑定车辆成功',
-                    success: function (res) {
-                      if (res.confirm) {
-                        wx.redirectTo({
-                          url: '/pages/Bus-info/index',
-                        })
-                      }
-                    }
-                  })
-                }
-                else {
-                  wx.showModal({
-                    showCancel: false,
-                    title: '绑定结果',
-                    content: res.data.errreason,
-                    success: function (res) {
-                      if (res.confirm) {
-                        wx.redirectTo({
-                          url: '/pages/Bus-info/index',
-                        })
-                      }
-                    }
-                  })
-                }
-
-              })
-          }
-        })
-    }
-
-    else {
-      util.showWarningToast("未登录");
-    }
-  },
-
   Checkticket:function(){
     let that = this
     if (app.globalData.hasLogin) {
@@ -273,9 +228,11 @@ Page({
               },
               'POST', ).then(function (res) {
                 if (res.errno === 0) {
+                  //验证可以坐车
+                  util.showSuccessToast("成功");
                   const innerAudioContext = wx.createInnerAudioContext()
                   innerAudioContext.autoplay = true
-                  innerAudioContext.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
+                  innerAudioContext.src = '/static/voice/success.mp3'
                   innerAudioContext.onPlay(() => {
                     console.log('开始播放')
                   })
@@ -285,16 +242,17 @@ Page({
                   })
                 }
                 else {
-                  const innerAudioContext = wx.createInnerAudioContext()
-                  innerAudioContext.autoplay = true
-                  innerAudioContext.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
-                  innerAudioContext.onPlay(() => {
-                    console.log('开始播放')
-                  })
-                  innerAudioContext.onError((res) => {
-                    console.log(res.errMsg)
-                    console.log(res.errCode)
-                  })
+                  util.showErrorToast(res.errmsg);
+                  // const innerAudioContext = wx.createInnerAudioContext()
+                  // innerAudioContext.autoplay = true
+                  // innerAudioContext.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
+                  // innerAudioContext.onPlay(() => {
+                  //   console.log('开始播放')
+                  // })
+                  // innerAudioContext.onError((res) => {
+                  //   console.log(res.errMsg)
+                  //   console.log(res.errCode)
+                  // })
 
                 }
 
@@ -306,6 +264,47 @@ Page({
     }
 
     else {
+      util.showWarningToast("未登录");
+    }
+  },
+  //司机验票码
+  gocode:function(){
+    //保存司机id的验票码
+    if (app.globalData.hasLogin) {
+      wx.navigateTo({
+        url: '/pages/qrcode/driverCode/driverCode',
+      })
+    }
+    else {
+      util.showWarningToast("未登录");
+    }
+  },
+  Blindcar:function(){
+    //车辆绑定
+    if (app.globalData.hasLogin) {
+      wx.scanCode
+        ({
+          scanType: 'QR_CODE',
+          success: (res) => {
+            var result = res.result;
+
+            util.request(
+              api.Bindcar,
+              {
+                result: result
+              },
+              'POST').then(function (res) {
+                if (res.errno === 0) {
+                  //验证可以坐车
+                  util.showSuccessToast("成功");
+                 
+                } else {
+                  util.showErrorToast(res.errmsg);
+                }
+              })
+          }
+        })
+    }else {
       util.showWarningToast("未登录");
     }
   }
