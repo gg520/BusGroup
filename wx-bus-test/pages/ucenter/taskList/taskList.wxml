@@ -1,0 +1,30 @@
+<view class="container">
+<view class='head'></view>
+      <view class="chooseCity pd-70" wx:for="{{tasks}}" bindtap='goRoute' data-id='{{item.routeid}}'>
+        <view class="citySelect" >
+          <view class="startCity" >{{item.startSite}}</view>
+          <view class="citySelect_img">
+            <view>
+              <image class="changeCity_bg" src="/static/images/changeCity_bg.png"></image>
+            </view>
+            <image class="samll_plane" src="/static/images/bus.png"></image>
+          </view>
+          <view class="endCity">{{item.endSite}}</view>
+        </view>
+
+        <view class="chooseDate">
+          <block>
+              <view class="startDate">
+                <text class="date">发车：{{item.startTime}}</text>
+              </view>
+          </block>
+          <block>
+              <view class="endDate">
+                <text class="date">到达：{{item.endTime}}</text>
+              </view>
+          </block>
+        </view> 
+
+      </view>
+</view>
+

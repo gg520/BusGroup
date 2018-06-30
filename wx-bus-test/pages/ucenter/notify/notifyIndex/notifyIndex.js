@@ -162,9 +162,9 @@ Page({
   },
   //历史消息详情页处理
   havareadpastnews: function (e) {
-  //   console.log(e.currentTarget.dataset.num)
-  //   wx.navigateTo({
-  //     url: '/pages/Driver-notify/pastnewsdetail/detail?title=' + this.data.pastnews[e.currentTarget.dataset.num].title + '&contend=' + this.data.pastnews[e.currentTarget.dataset.num].content + '&time=' + this.data.pastnews[e.currentTarget.dataset.num].sendtime + '&publisher=' + this.data.pastnews[e.currentTarget.dataset.num].sender
-  //   })
+    wx.redirectTo({
+      url:
+      '../notifyDetail/notifyDetail?title=' + e.currentTarget.dataset.title + '&contend=' + e.currentTarget.dataset.content + '&time=' + e.currentTarget.dataset.date + '&id=' + e.currentTarget.dataset.id
+    })
   }
 })

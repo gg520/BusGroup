@@ -70,4 +70,48 @@ public class WxBindController {
         }
         return ResponseUtil.fail();
     }
+
+
+    @PostMapping(value = "driverOpenBindCar")
+    /**
+     *@type method
+     *@parameter  [body, request]
+     *@back  java.lang.Object
+     *@author  如花
+     *@creattime 2018/6/29
+     *@describe 司机解绑
+     */
+    public Object driverOpenBindCar(HttpServletRequest request){
+        logger.info("司机解绑");
+        String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
+        if("乘客".equals(JacksonUtil.parseString(json,"user"))){
+            return ResponseUtil.fail401();
+        }
+        Integer driverNum=JacksonUtil.parseInteger(json,"userId");
+        Driver driver=driverService.findDriverByDriverNum(driverNum);
+        if(driver==null){
+            return ResponseUtil.fail(500,"未找到相关司机信息");
+        }
+        String driverId=driver.getDriverId();
+        DriverBusRoute driverBusRoute=new DriverBusRoute();
+        List<DriverBusRoute> list=driverBusRouteService.findInfoByDriverId(driverId);
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getDriverOutTime()==null){
+                driverBusRoute=list.get(i);
+            }
+        }
+        if(driverBusRoute==null){
+            return ResponseUtil.fail();
+        }
+        driverBusRoute.setDriverOutTime(new Date());
+        driverBusRouteService.updateDriverBusRoute(driverBusRoute);
+        DriverBusRoute driverBusRoute1=new DriverBusRoute();
+        driverBusRoute1.setBusId(driverBusRoute.getBusId());
+        driverBusRoute1.setBusTime(driverBusRoute.getBusTime());
+        driverBusRoute1.setRouteId(driverBusRoute.getRouteId());
+        driverBusRoute1.setRouteStatus(driverBusRoute.getRouteStatus());
+        driverBusRoute1.setDriverStatus(driverBusRoute.getDriverStatus());
+        driverBusRouteService.addDriverBusRoute(driverBusRoute1);
+        return ResponseUtil.ok();
+    }
 }

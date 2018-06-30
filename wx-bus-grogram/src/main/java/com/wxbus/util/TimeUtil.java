@@ -4,7 +4,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by g1154 on 2018/4/25.
@@ -66,10 +68,53 @@ public class TimeUtil {
     public static Date getNextDate(Date date){
         return new Date(date.getTime()+(1000*60*60*24));
     }
+
+
+    /**
+     * 站点时间估测
+     * 平均时间，
+     * @param start
+     * @param end
+     * @param num 中间站点的个数加一
+     * @return
+     */
+    public static List getTimeByNum(String start,String end,int num){
+
+        if(start==null||end==null||"".equals(start)||"".equals(end)||num==0){
+            return null;
+        }
+        String day=getTimeByType(new Date(),"yyyy-MM-dd");
+        start=day+" "+start;
+        end=day+" "+end;
+
+        System.out.println(start);
+        System.out.println(end);
+        Date startDate=getTimeByString(start,"yyyy-MM-dd HH:mm");
+        Date endDate=getTimeByString(end,"yyyy-MM-dd HH:mm");
+
+        long dif=endDate.getTime()-startDate.getTime();
+
+        long dids=dif/num;
+
+        List<String> timeList=new ArrayList<>();
+
+        for(int i=1;i<num;i++){
+           timeList.add(getTimeByType(new Date(startDate.getTime()+dids*i),"HH:mm"));
+        }
+
+        System.out.println(startDate+"   "+endDate);
+
+
+
+        return timeList;
+    }
+
     public static void main(String[] args) {
 
-        //测试文件：./路径的数据4
-        System.out.println(getTimeByType(getNextDate(new Date()),"yyyy-MM-dd HH:mm:ss"));
+//      getTimeByNum("07:00","10:00",2);
+        System.out.println(getTimeByNum("08:00","12:00",3));
+//        System.out.println(getTimeByType(new Date() , "HH:mm"));
+//        System.out.println(getTimeByType(getNextDate(new Date()),"yyyy-MM-dd HH:mm:ss"));
 
     }
 

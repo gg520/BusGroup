@@ -52,6 +52,11 @@
       <text>验票码</text>
     </view>
 
+     <view class='item' bindtap='gostask' wx:if="{{isDirver}}">
+      <image src='/static/images/icon_stask.png' background-size="cover"></image>
+      <text>任务查询</text>
+    </view>
+
 
     
     <view class='item' bindtap='goPlantRoute' wx:if="{{!isDirver}}">

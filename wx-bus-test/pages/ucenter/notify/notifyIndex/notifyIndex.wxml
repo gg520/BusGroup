@@ -2,7 +2,7 @@
   <view class="doc-commonNavs" style="background:#fff;">
     <view class="doc-Navslist">
       <view wx:for="{{common_navs_list}}" wx:key="{{item}}" class="doc-badge doc-navTitle" data-id='{{index}}' style="{{index==id?'border-bottom:2px solid #108EE9;color:#138FE9;':''}}" bindtap="NavClick" >{{item}}
-        <view wx:if="{{item=='最新消息'}}">{{length}}</view>
+        <view wx:if="{{item=='最新消息'}}" wx:if='{{length>0}}'>{{length}}</view>
       </view>
     </view>
     </view>
@@ -33,14 +33,15 @@
 
 
             <view class='news' wx:if='{{id==1}}'>
-                <view wx:for='{{pastnews}}' class='news-item' bindtap='havareadpastnews' data-num='{{item.mark}}'>
+                <view wx:for='{{pastnews}}' class='news-item' bindtap='havareadpastnews' data-id='{{item.id}}'
+    data-content='{{item.content}}' data-title='{{item.title}} ' data-date='{{item.sendtime}}'>
                    <view class='head'>
                              
                    <view class='timeandtitle'><view class='titleandpub'><text class='title'>{{item.title}} </text><text class='publisher'></text></view><text class='time'>{{item.sendtime}}</text></view>
                    </view>
 
                   
-                   <view><text class='contend'>{{item.content}}</text></view>              
+                   <view><text class='contend'>{{item.content}}</text></view>
                 </view>
 
                 <view class='nonews' wx:if='{{pastnews.length<=0}}'>

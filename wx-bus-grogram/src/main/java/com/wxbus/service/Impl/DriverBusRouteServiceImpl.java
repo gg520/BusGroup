@@ -1,5 +1,6 @@
 package com.wxbus.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.wxbus.dao.DriverBusRouteMapper;
 import com.wxbus.daomain.Bus;
 import com.wxbus.daomain.DriverBusRoute;
@@ -93,5 +94,34 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
             return true;
 
         return false;
+    }
+
+    public List<DriverBusRoute> findDriverTask(Integer startNum, Integer num) {
+        PageHelper.startPage(startNum,num);
+        log.info("分页查找司机可领任务");
+        DriverBusRouteExample driverBusRouteExample=new DriverBusRouteExample();
+        driverBusRouteExample.or().andDriverIdIsNull().andBusIdIsNotNull();
+        return driverBusRouteMapper.selectByExample(driverBusRouteExample);
+    }
+
+    @Override
+    /**
+     *@type method
+     *@parameter  [driverId]
+     *@back  com.wxbus.daomain.DriverBusRoute
+     *@author  如花
+     *@creattime 2018/6/29
+     *@describe 查找管理员给司机分配线路或车辆，即司机解绑时间为空
+     */
+    public DriverBusRoute findInfoByDriverIdOutTime(String driverId) {
+        log.info("查找管理员给司机分配线路车辆");
+        DriverBusRouteExample driverBusRouteExample=new DriverBusRouteExample();
+        driverBusRouteExample.or().andDriverIdEqualTo(driverId).andDriverOutTimeIsNull();
+        List<DriverBusRoute > list=driverBusRouteMapper.selectByExample(driverBusRouteExample);
+        if(list!=null&&list.size()>0){
+            return list.get(0);
+        }
+
+        return new DriverBusRoute();
     }
 }

@@ -37,12 +37,18 @@ Page({
     });
     let that = this;
     util.request(api.FindCurrentRoad, {},"POST").then(function(res){
+      wx.hideLoading();
       if (res.errno === 0) {
         console.log("设置：" + res.data)
         that.setData({
-          routes: res.data.routes,
+          tasks: res.data,
           countRout: that.countRout + 10//这个值由后台确定
         })
+      }else{
+        
+        
+        wx.navigateBack();
+        util.showErrorToast(res.errmsg);
       }
     })
     // wx.request({
@@ -73,6 +79,44 @@ Page({
    */
   onShow: function () {
 
+    //加载请求后台数据,
+    //console.log(this.data.tasks.site.length)
+    wx.showLoading({
+      title: '加载中...',
+    });
+    let that = this;
+    util.request(api.FindCurrentRoad, {}, "POST").then(function (res) {
+      wx.hideLoading();
+      if (res.errno === 0) {
+        console.log("设置：" + res.data)
+        that.setData({
+          tasks: res.data,
+          countRout: that.countRout + 10//这个值由后台确定
+        })
+      } else {
+
+
+        wx.navigateBack();
+        util.showErrorToast(res.errmsg);
+      }
+    })
+    // wx.request({
+    //   url: api.FindCurrentRoad,
+    //   data: {
+    //   },
+    //   method: '',
+    //   success: function (res) {
+    //     console.log("请求数据：" + res.data)
+
+    //   },
+    //   fail: function (res) {
+    //     util.showErrorToast("加载失败");
+    //   },
+    //   complete: function () {
+    //     console.log(that.data)
+    //     wx.hideLoading();
+    //   }
+    // })
   },
 
   /**

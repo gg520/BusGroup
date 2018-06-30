@@ -201,7 +201,7 @@ public class WxDriverController {
         logger.info("查找司机的当前任务");
         String json= UserTokenManager.getUserId(request.getHeader(HeadersName.TOKEN));
         if("乘客".equals(JacksonUtil.parseString(json,"user"))){
-            return ResponseUtil.fail401();
+            return ResponseUtil.fail302();
         }
         Integer driverNum=JacksonUtil.parseInteger(json,"userId");
         Driver driver= driverService.findDriverByDriverNum(driverNum);
@@ -218,21 +218,43 @@ public class WxDriverController {
                 driverBusRoute=list.get(i);
             }
         }
+        if(driverBusRoute.getBusId()==null){
+            return ResponseUtil.fail(-1,"没有任务");
+        }
+        String busId=driverBusRoute.getBusId();
+        Bus bus=busService.findByBudPI(busId);
+
+        if(bus==null||bus.getBusOwner()==null){
+            return ResponseUtil.fail(-1,"任务错误");
+        }
+
         Integer routeId=driverBusRoute.getRouteId();
         Route route=routeService.findRouteById(routeId);
         if(route==null){
             return ResponseUtil.fail();
         }
         Map<Object,Object> map1=new HashMap<>();
-        Map<Object,Object> map2=new HashMap<>();
+
         String stationId=route.getStationId();
         List mapList=new ArrayList<>();
-        if(stationId!=null&&"".equals(stationId)){
-            for(String staId:stationId.split(",")){
+        if(stationId!=null&&!"".equals(stationId)){
+            String[] sid=stationId.split(",");
+
+            List<String> stringList=TimeUtil.getTimeByNum(route.getStartTime(),route.getEndTime(),sid.length+1);
+
+            int index=0;
+            for(String staId:sid){
+                Map<Object,Object> map2=new HashMap<>();
                 Integer id= Integer.parseInt(staId);
                 Station station=stationService.findStationById(id);
-                map2.put("stationid",station.getStationId());
-                map2.put("stationname",station.getStationName());
+                if(station!=null){
+                    map2.put("stationid",station.getStationId());
+                    map2.put("stationname",station.getStationName());
+                    map2.put("stationTime",stringList.get(index));
+                    index++;
+                    mapList.add(map2);
+                }
+
             }
         }
         map1.put("startSite",route.getStartSite());
@@ -240,8 +262,9 @@ public class WxDriverController {
         map1.put("startTime",route.getStartTime());
         map1.put("endTime",route.getEndTime());
         map1.put("busId",driverBusRoute.getBusId());
-        if(map2.size()>0){
-            mapList.add(map2);
+        map1.put("busId",bus.getBusId());
+        map1.put("seat",bus.getSeating());
+        if(mapList.size()>0){
             map1.put("site",mapList);
         }
         return ResponseUtil.ok(map1);

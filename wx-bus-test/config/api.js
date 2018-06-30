@@ -45,7 +45,7 @@ module.exports = {
 
   HelpList:WxApiRoot+"help/helpList",//随机获取十个帮助信息
 
-  SystemMessage:WxApiRoot+"system/message",//获取系统公告
+  SystemMessage: WxApiRoot +"system/getNotice",//获取系统公告
 
   GetNotify: WxApiRoot + 'user/getNotify',//获取通知信息
   ReadNotify:WxApiRoot+'user/readNotify',//已读设置
@@ -66,6 +66,8 @@ module.exports = {
   FindTask: WxApiRoot + 'driver/findTask',//查询司机所有任务记录
   FindTaskByTime: WxApiRoot + 'driver/findTaskByTime',//按时间查询司机某一天的任务记录
   FindCurrentRoad: WxApiRoot + 'driver/findCurrentRoad',//查询司机当前任务
+
+  TaskList: WxApiRoot +'task/getDriverTask',
 
 
 

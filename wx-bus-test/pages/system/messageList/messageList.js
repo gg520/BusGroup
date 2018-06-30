@@ -39,7 +39,7 @@ Page({
   onShow: function () {
     wx.request({
       url: api.SystemMessage,
-      method:"GET",
+      method:"POST",
       header: {
         "Content-Type": "application/json",
         "Connect_Platform": "Weixin_Passenger"

@@ -41,4 +41,11 @@ public interface BusService {
      *@describe 更新汽车信息
      */
     void updatebus(Bus bus);
+
+    /**
+     * 根据车牌号码查找
+     * @param pi
+     * @return
+     */
+    Bus findByBudPI(String pi);
 }

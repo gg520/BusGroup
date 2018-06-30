@@ -7,7 +7,7 @@
   <view class="ac-item-start">
     <label style='color:#00ff99'>起点</label>
     <view class="lh">
-      <text bindtap="openMap">{{tasks.startsite}}</text>
+      <text bindtap="openMap">{{tasks.startSite}}</text>
     </view>
   </view>
 
@@ -22,7 +22,7 @@
   <view class="ac-item-ends">
     <label style='color:red'>终点</label>
     <view class="lh">
-      <text>{{tasks.endsite}}</text>
+      <text>{{tasks.endSite}}</text>
     </view>
   </view>
 </view>
@@ -35,15 +35,15 @@
  
   <view class="ac-type-item">
     <label>出发时间：</label>
-    <text >{{tasks.starttime}}</text>
+    <text >{{tasks.startTime}}</text>
     <label>到达时间：</label>
-    <text >{{tasks.endtime}}</text>
+    <text >{{tasks.endTime}}</text>
   </view>
   <view class="ac-type-item">
     <label>乘坐人数：</label>
-    <text >{{tasks.totalnum}}</text>
+    <text >{{tasks.seat}}</text>
     <label>车牌：</label>
-    <text >{{tasks.busnum}}</text>
+    <text >{{tasks.busId}}</text>
   </view>
 
 </view>
@@ -56,15 +56,15 @@
  
   <view class="site-info-border">
     <label  >站点名称</label>
-    <lable >到达时间</lable>
-    <lable >下车人数</lable>
+     <lable >到达时间</lable>
+    <lable ></lable> 
   </view>
   <view wx:for='{{ tasks.site}}'class="ac-type-item">
-    <text>{{item.sitename}}</text>
-    <view class='border'>
-    <text>{{item.reachtime}}</text>
-    <text >{{item.offnum}}</text>
-    </view>
+    <text>{{item.stationname}}</text>
+     <view class='border'>
+    <text>{{item.stationTime}}</text>
+    <!--<text >{{item.offnum}}</text>-->
+    </view> 
   </view>
 
 </view>

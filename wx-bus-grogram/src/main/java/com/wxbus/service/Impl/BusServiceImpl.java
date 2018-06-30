@@ -89,4 +89,19 @@ public class BusServiceImpl implements BusService{
         log.info("更新汽车信息");
         busMapper.updateByPrimaryKeySelective(bus);
     }
+
+    @Override
+    public Bus findByBudPI(String pi) {
+
+        BusExample example=new BusExample();
+        example.or().andBusIdEqualTo(pi);
+
+        List<Bus> busList=busMapper.selectByExample(example);
+        if(busList!=null&&busList.size()>0){
+            return busList.get(0);
+        }
+        return null;
+    }
+
+
 }

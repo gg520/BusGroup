@@ -31,7 +31,8 @@
     "pages/system/messageContent/messageContent",
     "pages/ucenter/notify/notifyDetail/notifyDetail",
     "pages/qrcode/driverCode/driverCode",
-    "pages/qrcode/passangerCode/passangerCode"
+    "pages/qrcode/passangerCode/passangerCode",
+    "pages/ucenter/taskList/taskList"
   ],
   "window": {
     "backgroundTextStyle": "dark",

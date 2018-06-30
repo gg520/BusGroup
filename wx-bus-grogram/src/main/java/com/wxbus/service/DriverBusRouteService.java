@@ -60,4 +60,16 @@ public interface DriverBusRouteService {
      * @return
      */
     boolean setBindSuccess(String driverId,String busId);
+
+
+    List<DriverBusRoute> findDriverTask(Integer startNum,Integer num);
+    /**
+     *@type interface
+     *@parameter  [driverId,status]
+     *@back  com.wxbus.daomain.DriverBusRoute
+     *@author  如花
+     *@creattime 2018/6/29
+     *@describe 查找管理员给司机分配线路车辆，即司机解绑时间为空,切司机状态为0领任务
+     */
+    DriverBusRoute findInfoByDriverIdOutTime(String driverId);
 }

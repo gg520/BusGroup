@@ -67,6 +67,7 @@ Page({
         scanType: 'QR_CODE',
         success: (res) => {
           console.log(res.result);
+          
           var result = res.result;
           //result是一个网址，向网站发送请求，验证自己是否可以坐车
           util.request(api.CheckPDB, { driverCitizenship:result }, 'POST').then(res => {
@@ -90,7 +91,11 @@ Page({
               });
             }
           })
+        },
+        complete:function(){
+          app.globalData.hasLogin = true;
         }
+
       })
     } else {
       util.showWarningToast("未登录");
@@ -259,6 +264,9 @@ Page({
 
 
               })
+          },
+          complete: function () {
+            app.globalData.hasLogin = true;
           }
         })
     }
@@ -302,10 +310,18 @@ Page({
                   util.showErrorToast(res.errmsg);
                 }
               })
+          },
+          complete: function () {
+            app.globalData.hasLogin = true;
           }
         })
     }else {
       util.showWarningToast("未登录");
     }
+  },
+  gostask:function(){
+    wx.navigateTo({
+      url: '/pages/ucenter/taskList/taskList',
+    })
   }
 })
