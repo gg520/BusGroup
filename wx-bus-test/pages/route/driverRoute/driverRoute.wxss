@@ -12,12 +12,9 @@ page {
     margin-bottom: 20rpx;
     padding-top: 10.5rpx;
 }
-
-
-
 .accident {
   width: 100%;
-  background-color: #fff;
+  background-color: #ff
 }
 /* 起点 */
 .ac-item-start {
@@ -554,4 +551,12 @@ page {
   top: 0;
   width: 40rpx;
   height: 40rpx;
+}
+.dispatchCar{
+  font-size: 30rpx;
+  color:  cornflowerblue
+}
+.road{
+  padding-left:180rpx;
+  padding-top:100rpx
 }

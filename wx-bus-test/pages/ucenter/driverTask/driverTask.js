@@ -27,11 +27,9 @@ Page({
 
   getAllStask(){
     let that=this;
-    wx.showLoading({
-      title: '加载中...',
-    });
+   
     util.request(api.FindTask, {}, "POST").then(function (res) {
-      wx.hideLoading();
+     
       // console.log("请求数据：" + res.data)
       if (res.errno === 0) {
 
@@ -69,15 +67,13 @@ Page({
   bindDateChange: function (e) {
     let that=this;
     console.log("修改日期")
-    wx.showLoading({
-      title: '加载中...',
-    });
+   
     this.setData({
       selectdate: e.detail.value,//获取到要查询的当天日期交给后台处理
       showType: 1,
     })
     util.request(api.FindTaskByTime, { time:e.detail.value}, "POST").then(function (res) {
-      wx.hideLoading();
+     
       // console.log("请求数据：" + res.data)
       if (res.errno === 0) {
 

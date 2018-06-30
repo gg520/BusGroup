@@ -104,6 +104,9 @@ Page({
   //线路征集
   goInquiryRoute: function () {
     if (app.globalData.hasLogin) {
+      wx.showLoading({
+        title: '加载中...',
+      })
       //判断是否实名认证了
       wx.request({
         url: api.CheckInfo,
@@ -124,6 +127,9 @@ Page({
             //验证失败
             util.showWarningToast("未实名认证");
           }
+        },
+        complete(){
+          wx.hideLoading();
         }
       })
 
@@ -154,6 +160,9 @@ Page({
     if (app.globalData.hasLogin) {
 
       //判断是否实名认证了
+      wx.showLoading({
+        title: '加载中...',
+      })
       wx.request({
 
         url: api.CheckInfo, 
@@ -174,6 +183,8 @@ Page({
             //验证失败
             util.showWarningToast("未实名认证");
           }
+        },complete(){
+          wx.hideLoading();
         }
       })
      

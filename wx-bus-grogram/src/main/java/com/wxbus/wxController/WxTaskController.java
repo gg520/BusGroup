@@ -1,7 +1,6 @@
 package com.wxbus.wxController;
 
 
-import com.alibaba.druid.sql.visitor.functions.Right;
 import com.wxbus.daomain.Driver;
 import com.wxbus.daomain.DriverBusRoute;
 import com.wxbus.daomain.Route;
@@ -76,6 +75,11 @@ public class WxTaskController {
             Map<Object,Object> map1=new HashMap<>();
             map1.put("tasks",mapList);
             return ResponseUtil.ok(map1);
+        }else{
+            driverBusRoute=driverBusRouteService.findInfoByDriverIsNullAndNotOutTime();
+            if(driverBusRoute==null){
+                return ResponseUtil.fail(-1,"没有可领任务");
+            }
         }
         //否则返回司机可领任务
         Integer startNum=JacksonUtil.parseInteger(body,"startNum");

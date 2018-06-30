@@ -28,18 +28,28 @@ Page({
       util.request(api.FindBusInfo,
         {}, "POST").then(function (res) {
           if (res.errno == 0) {
-            that.setData({
-              carnumber: res.data.busId,//车牌号
-              enginenum: res.data.engineNum,
-              category: res.data.busType,
-              owner: res.data.characters,
-              seatting: res.data.seating,
-              model: res.data.model,
-              // datas[i].creatTime.substring(0, datas[i].creatTime.indexOf('T'));
-              registration_date: res.data.registrationDate.substring(0, res.data.registrationDate.indexOf('T')),
-              oppen_date: res.data.oppenDate.substring(0, res.data.oppenDate.indexOf('T')),
-              road: res.data.road,
-            })
+            if(res.data.busId==null){
+              
+              wx.navigateBack({
+                
+              })
+              util.showWarningToast("未绑定车辆")
+              
+            }else{
+              that.setData({
+                carnumber: res.data.busId,//车牌号
+                enginenum: res.data.engineNum,
+                category: res.data.busType,
+                owner: res.data.characters,
+                seatting: res.data.seating,
+                model: res.data.model,
+                // datas[i].creatTime.substring(0, datas[i].creatTime.indexOf('T'));
+                registration_date: res.data.registrationDate.substring(0, res.data.registrationDate.indexOf('T')),
+                oppen_date: res.data.oppenDate.substring(0, res.data.oppenDate.indexOf('T')),
+                road: res.data.road,
+              })
+            }
+            
           } else {
             util.showErrorToast(res.errmsg)
           }

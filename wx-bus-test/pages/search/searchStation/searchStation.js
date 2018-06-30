@@ -107,6 +107,9 @@ Page({
       this.setData({
         flagSeach: true
       });
+      wx.showLoading({
+        title: '加载中...',
+      });
       wx.request({
         url: api.SearchSite,
         data: {
@@ -132,6 +135,8 @@ Page({
         },
         fail: function (res) {
 
+        },complete(){
+          wx.hideLoading();
         }
       })
     } else {

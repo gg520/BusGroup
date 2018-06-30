@@ -79,9 +79,7 @@ Page({
   },
   myRequest: function () {
     let that=this;
-    wx.showLoading({
-      title: '加载中...',
-    })
+   
     util.request(api.HelpList,{}, "POST").then(function (res) {
       if (res.errno === 0) {
         that.setData({
@@ -89,7 +87,7 @@ Page({
         })
       }
     });
-    wx.hideLoading();
+   
   },
   push: function () {
     this.myRequest();

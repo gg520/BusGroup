@@ -4,72 +4,7 @@ var app = getApp();
 Page({
   data: {
     collectList: [
-      // {
-      //   pRId:'',//订单
-      //   creatTime: '2018-05-05 12:00:00',//收藏时间，要求返回的是日期转格式后的字符串格式：yyyy-MM-dd HH:mm:ss
-      //   routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   routeId: '1',//线路ID
-      //   hidden:true
-      // },
-      // {
-      //   creatTime: '2018-05-05 12:00:00',//收藏时间，要求返回的是日期转格式后的字符串格式：yyyy-MM-dd HH:mm:ss
-      //   routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   routeId: '1',//线路ID
-      //   hidden: false
-      // },
-      // {
-      //   creatTime: '2018-05-05 12:00:00',//收藏时间，要求返回的是日期转格式后的字符串格式：yyyy-MM-dd HH:mm:ss
-      //   routeStatus: "1",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   routeId: '1',//线路ID
-      // },
-      // {
-      //   creatTime: '2018-05-05 12:00:00',//收藏时间，要求返回的是日期转格式后的字符串格式：yyyy-MM-dd HH:mm:ss
-      //   routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   routeId: '1',//线路ID
-      // },
-      // {
-      //   creatTime: '2018-05-05 12:00:00',//收藏时间，要求返回的是日期转格式后的字符串格式：yyyy-MM-dd HH:mm:ss
-      //   routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   routeId: '1',//线路ID
-      // },
-      // {
-      //   creatTime: '2018-05-05 12:00:00',//收藏时间，要求返回的是日期转格式后的字符串格式：yyyy-MM-dd HH:mm:ss
-      //   routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   routeId: '1',//线路ID
-      // },
-      // {
-      //   creatTime: '2018-05-05 12:00:00',//收藏时间，要求返回的是日期转格式后的字符串格式：yyyy-MM-dd HH:mm:ss
-      //   routeStatus: "2",//线路状态是否过期 1 未过期，2 过期   要求后台做出判断，这个值跟数据库中的数据不对应
-      //   startSite: "起始地点",
-      //   endSite: '到达地点',
-      //   price: "10", //单价
-      //   startTime: "07:00",//出发时间
-      //   routeId: '1',//线路ID
-      // },
+     
     ],
     showType: 0
   },
@@ -101,9 +36,7 @@ Page({
       content: '删除该收藏？', 
       success: function (res) {
         if (res.confirm) {
-          wx.showLoading({
-            title: '加载中...',
-          });
+         
 
           //根据ID删除数据
           util.request(api.CollectClear, { pRId: id }, "POST").then(function (res) {
@@ -121,7 +54,7 @@ Page({
               });
             }
           });
-          wx.hideLoading();
+          
         }
       }
     });

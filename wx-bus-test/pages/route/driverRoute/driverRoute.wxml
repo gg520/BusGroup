@@ -1,4 +1,4 @@
-
+<view class='container'>
 <scroll-view>
 <view class='address-box' style='border-bottom: 7px solid #eee;'></view>
 <!-- 线路途径站点 -->
@@ -74,3 +74,7 @@
   <!-- <button bindtap='getDays'>测试</button>   -->
 
 </scroll-view>
+<view class='road'>
+<text class='dispatchCar' bindtap='dispatchCar'>已完成任务？现在解绑车辆</text>
+</view>
+</view>

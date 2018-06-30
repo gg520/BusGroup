@@ -418,46 +418,94 @@ Page({
     else{
     //注册信息提交到后台
   //  console.log(this.data.startsite)
-    util.request(
-      api.AuthRegister,
-      {
-        name: this.data.userInfo.name,
-        mobile: this.data.userInfo.mobile,
-        gender: this.data.userInfo.gender,
-        birthday: this.data.userInfo.birthday,
-        address: this.data.userInfo.address,
-        licence: this.data.userInfo.licence,
-        firstgetlicence: this.data.userInfo.firstgetlicence,
-        password: this.data.userInfo.password,
-        citizenship: this.data.userInfo.citizenship,
-        bustype: this.data.userInfo.bustype, 
-        avatarUrl: this.data.userInfo.avatarUrl,
-      }, 'POST').then(function (res) {
-        console.log(res);
-        wx.hideLoading();
-        if (res.errno === 0) {
-          //成功
-          wx.showModal({
-            title: '注册成功',
-            confirmColor: '#b4282d',
-            content: '注册号码：' + res.data.driverId,
-            success: function (res) {
-              if (res.confirm) {
-                wx.navigateBack({
-                  delta: 1
-                })
-              }
+  wx.showLoading({
+    title: '加载中...',
+  })
+  wx.request({
+    url: api.AuthRegister,
+    data:{
+      name: this.data.userInfo.name,
+      mobile: this.data.userInfo.mobile,
+      gender: this.data.userInfo.gender,
+      birthday: this.data.userInfo.birthday,
+      address: this.data.userInfo.address,
+      licence: this.data.userInfo.licence,
+      firstgetlicence: this.data.userInfo.firstgetlicence,
+      password: this.data.userInfo.password,
+      citizenship: this.data.userInfo.citizenship,
+      bustype: this.data.userInfo.bustype,
+      avatarUrl: this.data.userInfo.avatarUrl,
+    },
+    method:"POST",
+    success:function(res){
+      if (res.errno === 0) {
+        //成功
+        wx.showModal({
+          title: '注册成功',
+          confirmColor: '#b4282d',
+          content: '注册号码：' + res.data.driverId,
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateBack({
+                delta: 1
+              })
             }
-          });
-        }
-        else {
-          util.showErrorToast(res.errmsg)
-          // wx.navigateBack({
-          //   delta: 1
-          // })
-        }
-      })
-    wx.hideLoading();
+          }
+        });
+      }
+      else {
+        util.showErrorToast(res.errmsg)
+        // wx.navigateBack({
+        //   delta: 1
+        // })
+      }
+    },fail:function(mes){
+
+    },
+    complete(){
+      wx.hideLoading();
+    }
+  })
+    // wx.request(
+    //   api.AuthRegister,
+    //   {
+    //     name: this.data.userInfo.name,
+    //     mobile: this.data.userInfo.mobile,
+    //     gender: this.data.userInfo.gender,
+    //     birthday: this.data.userInfo.birthday,
+    //     address: this.data.userInfo.address,
+    //     licence: this.data.userInfo.licence,
+    //     firstgetlicence: this.data.userInfo.firstgetlicence,
+    //     password: this.data.userInfo.password,
+    //     citizenship: this.data.userInfo.citizenship,
+    //     bustype: this.data.userInfo.bustype, 
+    //     avatarUrl: this.data.userInfo.avatarUrl,
+    //   }, 'POST').then(function (res) {
+    //     console.log(res);
+    //     wx.hideLoading();
+    //     if (res.errno === 0) {
+    //       //成功
+    //       wx.showModal({
+    //         title: '注册成功',
+    //         confirmColor: '#b4282d',
+    //         content: '注册号码：' + res.data.driverId,
+    //         success: function (res) {
+    //           if (res.confirm) {
+    //             wx.navigateBack({
+    //               delta: 1
+    //             })
+    //           }
+    //         }
+    //       });
+    //     }
+    //     else {
+    //       util.showErrorToast(res.errmsg)
+    //       // wx.navigateBack({
+    //       //   delta: 1
+    //       // })
+    //     }
+    //   })
+    // wx.hideLoading();
     }
   },
 })

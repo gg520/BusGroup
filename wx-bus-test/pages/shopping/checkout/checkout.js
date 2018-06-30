@@ -12,9 +12,7 @@ Page({
   },
 
   submitOrder:function(){
-    wx.showLoading({
-      title: '加载中...',
-    });
+    
     
     //结算付款
     util.request(api.Payment, 
@@ -58,7 +56,7 @@ Page({
         console.log("结算失败");
       }
     });
-    wx.hideLoading();
+    
     // wx.navigateTo({
     //   url: '/pages/shopping/payResult/payResult',
     // })
@@ -78,9 +76,7 @@ Page({
         selectdays: options.selectdays,//选择的日期
       });
       //获取到线路的id，根据id获取后台的线路信息
-      wx.showLoading({
-        title: '加载中...',
-      });
+     
 
       util.request(api.RouteInfo, { routeId: options.routeid }, 'POST').then(function (res) {
         // console.log("数据：" + JSON.stringify(res.data));
@@ -114,7 +110,7 @@ Page({
         }
       });
 
-      wx.hideLoading();
+      
     } else {
       util.showErrorToast("加载失败");
     }

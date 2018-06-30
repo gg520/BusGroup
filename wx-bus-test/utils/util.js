@@ -23,6 +23,9 @@ const formatNumber = n => {
  */
 function request(url,data={},method="GET"){
   console.log(data)
+  wx.showLoading({
+    title: '加载中...',
+  });
   return new Promise(function (resolve,reject){
     wx.request({
       url: url,
@@ -57,6 +60,9 @@ function request(url,data={},method="GET"){
       },
       fail:function(err){
         reject(err)
+      },
+      complete:function(){
+        wx.hideLoading();
       }
     })
   });

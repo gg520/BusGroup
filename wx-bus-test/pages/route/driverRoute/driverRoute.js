@@ -11,12 +11,12 @@ Page({
 
     tasks:
     {
-      startsite: '',//二七
-      endsite: '',//火车站
-      starttime: '',//05-23-07:30
-      endtime: '',//05-23-09:30
-      totalnum: '',//05-23-09:30
-      busnum: '',//豫A095X
+      // startsite: '',//二七
+      // endsite: '',//火车站
+      // starttime: '',//05-23-07:30
+      // endtime: '',//05-23-09:30
+      // totalnum: '',//05-23-09:30
+      // busnum: '',//豫A095X
       site: [
         // { siteid: '001', sitename: '文化路三全路', reachtime: '7:00' },
         // { siteid: '002', sitename: '三全路瞿东路', reachtime: '7:20' },
@@ -30,44 +30,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //加载请求后台数据,
-    //console.log(this.data.tasks.site.length)
-    wx.showLoading({
-      title: '加载中...',
-    });
-    let that = this;
-    util.request(api.FindCurrentRoad, {},"POST").then(function(res){
-      wx.hideLoading();
-      if (res.errno === 0) {
-        console.log("设置：" + res.data)
-        that.setData({
-          tasks: res.data,
-          countRout: that.countRout + 10//这个值由后台确定
-        })
-      }else{
-        
-        
-        wx.navigateBack();
-        util.showErrorToast(res.errmsg);
-      }
-    })
-    // wx.request({
-    //   url: api.FindCurrentRoad,
-    //   data: {
-    //   },
-    //   method: '',
-    //   success: function (res) {
-    //     console.log("请求数据：" + res.data)
-        
-    //   },
-    //   fail: function (res) {
-    //     util.showErrorToast("加载失败");
-    //   },
-    //   complete: function () {
-    //     console.log(that.data)
-    //     wx.hideLoading();
-    //   }
-    // })
+   
+    
+
   },
   /* 生命周期函数--监听页面初次渲染完成
   */
@@ -79,14 +44,10 @@ Page({
    */
   onShow: function () {
 
-    //加载请求后台数据,
-    //console.log(this.data.tasks.site.length)
-    wx.showLoading({
-      title: '加载中...',
-    });
+   
     let that = this;
     util.request(api.FindCurrentRoad, {}, "POST").then(function (res) {
-      wx.hideLoading();
+     
       if (res.errno === 0) {
         console.log("设置：" + res.data)
         that.setData({
@@ -100,23 +61,7 @@ Page({
         util.showErrorToast(res.errmsg);
       }
     })
-    // wx.request({
-    //   url: api.FindCurrentRoad,
-    //   data: {
-    //   },
-    //   method: '',
-    //   success: function (res) {
-    //     console.log("请求数据：" + res.data)
-
-    //   },
-    //   fail: function (res) {
-    //     util.showErrorToast("加载失败");
-    //   },
-    //   complete: function () {
-    //     console.log(that.data)
-    //     wx.hideLoading();
-    //   }
-    // })
+   
   },
 
   /**
@@ -148,8 +93,41 @@ Page({
     })
     console.log(this.data.flag)
   },
+  //司机完成任务解绑车辆
+  dispatchCar: function () {
+    console.log(this.data.tasks.busId)
+    wx.showModal({
+      title: '注意',
+      busnum: '',//豫A095X
+      content: '解绑车牌号为' + this.data.tasks.busId + '的车辆前，请确认已完成该线路任务',
+      confirmText: '确认解绑',
+      showCancel: true,
+      success: function (res) {
+        if (res.confirm) {
+          util.request(
+            api.driverOpenBindCar,
+            {},
+            'POST').then(function (res) {
+              if (res.errno === 0) {
+                //成功
+                util.showSuccessToast("解绑成功");
+                wx.navigateTo({
+                  url: '/pages/ucenter/index/index',
+                })
+              }
+              else {
+                util.showErrorToast(res.errmsg)
+                wx.navigateBack({
 
-  /**
-   * 用户点击右上角分享
-   */
+                })
+              }
+
+
+            })
+
+        }
+
+      }
+    });
+  }
 })

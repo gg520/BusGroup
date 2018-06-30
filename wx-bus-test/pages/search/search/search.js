@@ -85,6 +85,9 @@ Page({
       console.log(that.data.search)
       //有数据就进行搜索查询啊
       if (that.data.search.startSite != null && that.data.search.endSite){//数据都已经输完
+        wx.showLoading({
+          title: '加载中...',
+        });
         wx.request({
           url: api.SearchRoute,
           data: {
@@ -111,7 +114,7 @@ Page({
           },
           complete: function () {
             console.log(that.data)
-
+            wx.hideLoading();
           }
         })
       }
@@ -173,6 +176,9 @@ Page({
     });
     //查找数据
     if (that.data.searchSite.length > 0) {
+      wx.showLoading({
+        title: '加载中...',
+      });
       wx.request({
         url: api.SearchRoute,
         data: {
@@ -202,7 +208,7 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       })
     } else {
@@ -277,10 +283,11 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       })
     } else {
+      
       //所有数据
       wx.request({
         url: api.SearchRoute,
@@ -308,11 +315,11 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       });
     }
-    wx.hideLoading();
+ 
   },
 
   goAll: function () {
@@ -351,7 +358,7 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       })
     } else {
@@ -381,12 +388,11 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       });
     }
 
-    wx.hideLoading();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -487,10 +493,9 @@ Page({
       },
       complete: function () {
         console.log(that.data)
-
+        wx.hideLoading();
       }
     });
-    wx.hideLoading();
   },
 
   /**
@@ -563,6 +568,9 @@ Page({
 
       console.log(that.data.search.startLatitude);
       //获取到站点的ID从而将数据封装到数据传输获取站点数据
+      wx.showLoading({
+        title: '加载中...',
+      });
       wx.request({
         url: api.SearchRoute,
         data: {
@@ -588,7 +596,7 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       })
     }

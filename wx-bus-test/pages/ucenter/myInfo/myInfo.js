@@ -191,9 +191,7 @@ Page({
       util.showErrorToast("身份证不合法");
       return false;
     }
-    wx.showLoading({
-      title: '加载中...',
-    });
+   
     util.request(
       api.ChangUserInfo,
       {
@@ -204,9 +202,9 @@ Page({
           //成功
           util.showSuccessToast("提交成功");
           wx.setStorageSync('userInfo', res.data.userInfo);
-          wx.hideLoading();
+          
         }else{
-          wx.hideLoading();
+         
         }
       })
     
@@ -252,9 +250,7 @@ Page({
       return false;
     }
     //验证信息
-    wx.showLoading({
-      title: '验证中...',
-    });
+
     let that = this;
     util.request(
       api.CheckPassword,
@@ -274,7 +270,7 @@ Page({
           util.showErrorToast("密码错误");
         }
       })
-    wx.hideLoading();
+  
   },
   inputNew1Change:function(e){
     this.setData({
@@ -293,9 +289,7 @@ Page({
         // var userInfo=this.data.userInfo;
         // userInfo.password = this.data.newpw2;
         //两次密码一致将密码更新
-        wx.showLoading({
-          title: '正在修改...',
-        });
+       
         util.request(
           api.ChangePassword,
           { 
@@ -317,7 +311,7 @@ Page({
           newpw1: '',//新密码1
           newpw2: '',//新密码2
         })
-        wx.hideLoading();
+       
       }else{
         util.showWarningToast("两次密码不一致");
       }

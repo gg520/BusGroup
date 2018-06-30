@@ -48,6 +48,9 @@ Page({
         searchMark: 1,//设置开始标量
         flagSeach: true
       });
+      wx.showLoading({
+        title: '加载中...',
+      });
       wx.request({
         url: api.SearchSite,
         data: {
@@ -74,6 +77,8 @@ Page({
         },
         fail: function (res) {
 
+        },complete:function(){
+          wx.hideLoading();
         }
       })
     } else {
@@ -95,6 +100,9 @@ Page({
         flagSeach: true
       });
       console.log("改变的位置：" + this.data.searchMark)
+      wx.showLoading({
+        title: '加载中...',
+      });
       wx.request({
         url: api.SearchSite,
         data: {
@@ -121,6 +129,9 @@ Page({
         },
         fail: function (res) {
 
+        },
+        complete:function(){
+          wx.hideLoading();
         }
       })
     } else {
@@ -177,9 +188,10 @@ Page({
       },
       complete: function () {
         console.log(that.data)
+        wx.hideLoading();
       }
     });
-    wx.hideLoading();
+    
   },
   /**
    * 不区分是招募线路还是已开线路的跳转
@@ -279,13 +291,13 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       });
     }
 
 
-    wx.hideLoading();
+    
   },
   goPm: function () {
     let that = this;
@@ -324,7 +336,7 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       })
     } else {
@@ -355,11 +367,11 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       });
     }
-    wx.hideLoading();
+    
   },
 
   goAll: function () {
@@ -399,7 +411,7 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       })
     } else {
@@ -429,12 +441,12 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       });
     }
 
-    wx.hideLoading();
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -516,10 +528,10 @@ Page({
       },
       complete: function () {
         console.log(that.data)
-
+        wx.hideLoading();
       }
     });
-    wx.hideLoading();
+    
   },
 
   /**
@@ -596,6 +608,9 @@ Page({
     console.log("结束：" + this.data.search.endSite)
     // if (this.data.search.startSite != null && this.data.search.endSite!=null){
     //获取到站点的ID从而将数据封装到数据传输获取站点数据
+    wx.showLoading({
+      title: '加载中...',
+    });
     wx.request({
       url: api.SearchRun,
       data: {
@@ -622,7 +637,7 @@ Page({
       },
       complete: function () {
         console.log(that.data)
-
+        wx.hideLoading();
       }
     })
 

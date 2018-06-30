@@ -399,7 +399,7 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       })
     } else {
@@ -429,12 +429,12 @@ Page({
         },
         complete: function () {
           console.log(that.data)
-
+          wx.hideLoading();
         }
       });
     }
     
-    wx.hideLoading();
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -100,7 +100,7 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
         PageHelper.startPage(startNum,num);
         log.info("分页查找司机可领任务");
         DriverBusRouteExample driverBusRouteExample=new DriverBusRouteExample();
-        driverBusRouteExample.or().andDriverIdIsNull().andBusIdIsNotNull();
+        driverBusRouteExample.or().andDriverIdIsNull().andBusIdIsNotNull().andDriverOutTimeIsNull();
         return driverBusRouteMapper.selectByExample(driverBusRouteExample);
     }
 
@@ -122,6 +122,18 @@ public class DriverBusRouteServiceImpl implements DriverBusRouteService{
             return list.get(0);
         }
 
-        return new DriverBusRoute();
+        return null;
+    }
+
+    @Override
+    public DriverBusRoute findInfoByDriverIsNullAndNotOutTime() {
+
+        DriverBusRouteExample example=new DriverBusRouteExample();
+        example.or().andDriverOutTimeIsNull().andDriverIdIsNull();
+        List<DriverBusRoute> driverBusRouteList= driverBusRouteMapper.selectByExample(example);
+
+        if(driverBusRouteList!=null&&driverBusRouteList.size()>0)
+            return driverBusRouteList.get(0);
+        return null;
     }
 }

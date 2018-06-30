@@ -141,11 +141,14 @@ Page({
           } else if (res.data.errno === -1) {
             util.showWarningToast(res.data.errmsg);
           }
-          wx.hideLoading();
+          
         },
         fail:function(mgs){
-          wx.hideLoading();
+          
         },
+        complete(){
+          wx.hideLoading();
+        }
         
       })
       

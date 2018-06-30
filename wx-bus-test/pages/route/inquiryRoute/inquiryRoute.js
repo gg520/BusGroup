@@ -52,9 +52,7 @@ Page({
       util.showErrorToast("未选择日期");
       return false;
     }
-    wx.showLoading({
-      title: '加载中...',
-    });
+    
     //将信息发送到后台
     console.log(this.data.startsite)
     util.request(
@@ -79,7 +77,7 @@ Page({
           })
         } 
       })
-    wx.hideLoading();
+    
   },
 
   bindStartsiteInput:function(e){

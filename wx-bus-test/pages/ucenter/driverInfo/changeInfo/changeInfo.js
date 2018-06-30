@@ -160,6 +160,9 @@ Page({
       });
       return false;
     }
+    wx.showLoading({
+      title: '加载中...',
+    });
     wx.request({
       url: 'https://www.didu86.com/Clothes-manager-web/codenum',
       data: {
@@ -176,6 +179,8 @@ Page({
           result: result
         })
         that.timer();
+      },complete(){
+        wx.hideLoading();
       }
     })
   },

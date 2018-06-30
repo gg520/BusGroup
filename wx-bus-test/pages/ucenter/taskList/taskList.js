@@ -19,13 +19,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  },
+
+  /* 生命周期函数--监听页面初次渲染完成
+  */
+  onReady: function () {
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
     //加载请求后台数据,options跳转带来的参数
     let that = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
     wx.request({
       url: api.TaskList,
       data: {
-        Tasknum: 10,//每次10条
-        startnum: 0,//起始位置
+        num: 10,//每次10条
+        startNum: 0,//起始位置
       },
       method: 'POST',
       header: {
@@ -52,20 +67,10 @@ Page({
           icon: 'none',
           duration: 2000
         })
+      }, complete() {
+        wx.hideLoading();
       }
     })
-
-  },
-
-  /* 生命周期函数--监听页面初次渲染完成
-  */
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
   },
 
@@ -89,8 +94,12 @@ Page({
   onPullDownRefresh: function () {
     //重新加载数据
     let that = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+
     wx.request({
-      api: api.GetTotalTask,
+      url: api.TaskList,
       data: {
         Tasknum: 10,
         startnum: that.data.startnum,
@@ -103,13 +112,17 @@ Page({
 
       },
       success: function (res) {
-        console.log("请求数据：" + res.data)
+        console.log(res.data.data.tasks)
         if (res.data.errno === 0) {
-          console.log("设置：" + res.data.tasks)
+          console.log("设置：")
           that.setData({
-            tasks: res.data.tasks,
+            tasks: res.data.data.tasks,
             startnum: that.data.startnum + 10
           })
+        } else if (res.data.errno === 401) {
+          wx.navigateTo({
+            url: '/pages/auth/login/login',
+          });
         }
       },
       fail: function (res) {
@@ -118,6 +131,8 @@ Page({
           icon: 'none',
           duration: 2000
         })
+      },complete(){
+        wx.hideLoading();
       }
     })
   },
@@ -142,7 +157,7 @@ Page({
               })
             }
           }
-
+         
           util.request(api.Gettask,
             { routeid: that.data.routeid }, "POST").then(function (res) {
               if (res.errno == 0) {

@@ -38,7 +38,7 @@ public class BusServiceImpl implements BusService{
         }
 
         BusExample busExample = new BusExample();
-        busExample.or().andBusNumEqualTo(Integer.valueOf(busId));
+        busExample.or().andBusIdEqualTo(busId);
         List<Bus> list = busMapper.selectByExample(busExample);
         if (list != null && list.size() > 0)
         {return list.get(0);}

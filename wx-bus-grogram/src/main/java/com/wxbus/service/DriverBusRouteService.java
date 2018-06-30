@@ -72,4 +72,6 @@ public interface DriverBusRouteService {
      *@describe 查找管理员给司机分配线路车辆，即司机解绑时间为空,切司机状态为0领任务
      */
     DriverBusRoute findInfoByDriverIdOutTime(String driverId);
+
+    DriverBusRoute findInfoByDriverIsNullAndNotOutTime();
 }
