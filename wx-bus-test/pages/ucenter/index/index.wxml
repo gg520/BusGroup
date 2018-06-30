@@ -1,7 +1,7 @@
 <!--pages/ucenter/index/index.wxml-->
 <view class="container">
   <view class="profile-info"  bindtap="goLogin">
-    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <image class="avatar" src="{{ userInfo.avatarUrl.length<=0?'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png':userInfo.avatarUrl}}"></image>
     <view class="info">
        <text class="name">{{userInfo.nickName}}</text> 
     </view>
