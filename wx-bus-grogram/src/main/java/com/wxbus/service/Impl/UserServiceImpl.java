@@ -2,6 +2,7 @@ package com.wxbus.service.Impl;
 
 
 import com.wxbus.dao.DriverMapper;
+import com.wxbus.dao.PassengerCustomMapper;
 import com.wxbus.dao.PassengerMapper;
 import com.wxbus.daomain.Driver;
 import com.wxbus.daomain.DriverExample;
@@ -35,6 +36,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private DriverMapper driverMapper;
+    @Autowired
+    private PassengerCustomMapper passengerCustomMapper;
 
     private final Log log= LogFactory.getLog(UserServiceImpl.class.getName());
 
@@ -74,9 +77,11 @@ public class UserServiceImpl implements UserService {
      * 添加用户
      * @param user
      */
-    public void add(Passenger user) {
+    public int add(Passenger user) {
         log.info("添加用户");
-        passengerMapper.insertSelective(user);
+        passengerCustomMapper.addPassenger(user);
+
+        return user.getId();
     }
 
     /**
@@ -186,10 +191,9 @@ public class UserServiceImpl implements UserService {
      */
     public Integer updatePassenger(Passenger passenger) {
         log.info("更新用户信息");
-        PassengerExample example=new PassengerExample();
-        example.or().andPassengerMobileEqualTo(passenger.getPassengerMobile());
 
-        return passengerMapper.updateByExampleSelective(passenger,example);
+
+        return passengerMapper.updateByPrimaryKeySelective(passenger);
 
     }
 

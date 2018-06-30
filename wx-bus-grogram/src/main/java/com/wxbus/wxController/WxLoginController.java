@@ -111,7 +111,9 @@ public class WxLoginController {
             user.setFistLoginIp(IpUtil.client(request));
             user.setFistLoginTime(new Date());
 //            user.setPassengerPassword();
-            userService.add(user);
+            user.setId(userService.add(user));
+            //获取插入后的id
+
         }
         else{
             user.setLastLoginTime(new Date());

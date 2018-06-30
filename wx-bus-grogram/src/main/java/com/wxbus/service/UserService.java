@@ -15,7 +15,7 @@ public interface UserService {
 
     Passenger queryByOid(String openId);
 
-    void add(Passenger user);
+    int add(Passenger user);
 
     void update(Passenger user);
     /**

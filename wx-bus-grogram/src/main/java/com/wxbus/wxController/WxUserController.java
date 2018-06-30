@@ -128,8 +128,8 @@ public class WxUserController {
         String newPassword=JacksonUtil.parseString(body,"newPassword");
         oldPassword=MD5Util.toMD5(oldPassword);
         newPassword=MD5Util.toMD5(newPassword);
-        if(!passenger.getPassengerPassword().equals(oldPassword)){
-            return ResponseUtil.fail502();
+        if(passenger.getPassengerPassword()!=null&&!passenger.getPassengerPassword().equals(oldPassword)){
+            return ResponseUtil.fail();
         }
         passenger.setPassengerPassword(newPassword);
         userService.updatePassenger(passenger);
